@@ -7,6 +7,10 @@ const axios = require('axios');
 const SALT_ROUNDS = 5;
 
 const User = db.define('user', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
@@ -17,6 +21,10 @@ const User = db.define('user', {
   },
   githubId: {
     type: Sequelize.INTEGER
+  },
+  adminAuth: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
@@ -84,12 +92,12 @@ User.authenticateGithub = async function(code){
       authorization: `token ${ data.access_token }`
     }
   });
-  const { email, id } = response.data;
+  const { name, email, id } = response.data;
 
   //step 3: either find user or create user
   let user = await User.findOne({ where: { githubId: id, email } });
   if(!user){
-    user = await User.create({ email, githubId: id });
+    user = await User.create({ name, email, githubId: id });
   }
   //step 4: return jwt token
   return user.generateToken();
