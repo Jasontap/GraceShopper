@@ -12,7 +12,6 @@ export class AllBooks extends React.Component{
     }
     render(){
         const books = this.props.books 
-        console.log('hey', this.props)
         return(
             <div >
                 <div >
