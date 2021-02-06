@@ -2004,9 +2004,14 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
   addToCart(productId, num = 1) {}
 
   render() {
+<<<<<<< HEAD
     const books = this.props.books.works;
     console.log(books);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books && books.map(book => {
+=======
+    const books = this.props.books;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books.map(book => {
+>>>>>>> main
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: book.cover_id
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
@@ -2039,6 +2044,53 @@ const mapDispatch = dispatch => {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(AllBooks));
+
+/***/ }),
+
+/***/ "./client/components/SingleBook.js":
+/*!*****************************************!*\
+  !*** ./client/components/SingleBook.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SingleBook": () => /* binding */ SingleBook,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  render() {
+    const {
+      book
+    } = this.props;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: book.img
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Title: ", book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Author: ", book.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", book.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Reviews: ", book.review))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Price: ", book.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add to Cart")));
+  }
+
+}
+
+const mapState = (state, {
+  match
+}) => {
+  const book = state.books.find(book => book.id === match.params.id * 1) || {};
+  return {
+    book
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {//   addToCart: (book)=>dispatch(addToCart(book))
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(SingleBook));
 
 /***/ }),
 
@@ -2188,17 +2240,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Home": () => /* reexport safe */ _home__WEBPACK_IMPORTED_MODULE_1__.default,
 /* harmony export */   "Login": () => /* reexport safe */ _auth_form__WEBPACK_IMPORTED_MODULE_2__.Login,
 /* harmony export */   "Signup": () => /* reexport safe */ _auth_form__WEBPACK_IMPORTED_MODULE_2__.Signup,
-/* harmony export */   "AllBooks": () => /* reexport safe */ _AllBooks__WEBPACK_IMPORTED_MODULE_3__.default
+/* harmony export */   "AllBooks": () => /* reexport safe */ _AllBooks__WEBPACK_IMPORTED_MODULE_3__.default,
+/* harmony export */   "SingleBook": () => /* reexport safe */ _SingleBook__WEBPACK_IMPORTED_MODULE_4__.default
 /* harmony export */ });
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navbar */ "./client/components/navbar.js");
 /* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./client/components/home.js");
 /* harmony import */ var _auth_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
 /* harmony import */ var _AllBooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AllBooks */ "./client/components/AllBooks.js");
+/* harmony import */ var _SingleBook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SingleBook */ "./client/components/SingleBook.js");
 /**
  * `components/index.js` exists simply as a 'central export' for our components.
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+
 
 
 
@@ -2363,6 +2418,9 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/allbooks",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.AllBooks
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      path: "/books/:id",
+      component: _components__WEBPACK_IMPORTED_MODULE_2__.SingleBook
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
       to: "/home"
     })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
