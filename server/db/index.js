@@ -28,7 +28,7 @@ const syncAndSeed =  async()=> {
       })
   }
 }catch(ex){
-    next(ex)
+    // next(ex)
   }
 
   // return {
