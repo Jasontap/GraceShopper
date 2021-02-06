@@ -4,9 +4,11 @@ const db = require('./db')
 
 const User = require('./models/user');
 const Book = require('./models/book');
+const Cart = require('./models/cart');
 const faker = require('faker');
 
 //associations could go here!
+Cart.belongsTo(User)
 
 const syncAndSeed =  async()=> {
   try{

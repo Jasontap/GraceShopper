@@ -6,7 +6,8 @@ export class AllBooks extends React.Component{
   render(){
     return(
       <div>
-        `Cart`
+        <h1>CART</h1>
+        
       </div>
     )
   }

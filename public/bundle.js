@@ -2001,6 +2001,8 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     this.props.getBooks();
   }
 
+  addToCart(productId, num = 1) {}
+
   render() {
     const books = this.props.books;
     console.log('hey', this.props);
@@ -2361,6 +2363,9 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/allbooks",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.AllBooks
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      path: "/mycart",
+      component: Cart
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
       to: "/home"
     })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
