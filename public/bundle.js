@@ -2004,14 +2004,9 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
   addToCart(productId, num = 1) {}
 
   render() {
-<<<<<<< HEAD
     const books = this.props.books.works;
     console.log(books);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books && books.map(book => {
-=======
-    const books = this.props.books;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books.map(book => {
->>>>>>> main
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: book.cover_id
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {

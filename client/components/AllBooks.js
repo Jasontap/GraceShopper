@@ -11,12 +11,8 @@ export class AllBooks extends React.Component{
         
     }
     render(){
-<<<<<<< HEAD
         const books = this.props.books.works
         console.log(books)
-=======
-        const books = this.props.books 
->>>>>>> main
         return(
             <div >
                 <div >
