@@ -15,3 +15,42 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    res.send(await User.findByPk(req.params.id));
+  }
+  catch(ex) {
+    next(ex);
+  }
+});
+
+router.post('/', async (req, res, next) => {
+  try {
+    res.status(201).send(await User.create(req.body));
+  }
+  catch(ex) {
+    next(ex);
+  }
+});
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    res.send(await user.update(req.body));
+  }
+  catch(ex) {
+    next(ex);
+  }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    await user.destroy();
+    req.send(user);
+  }
+  catch(ex) {
+    next(ex);
+  }
+})
