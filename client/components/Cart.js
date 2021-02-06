@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { getCart } from '../store/cart'
+import { getCart, removeFromCart } from '../store/cart'
 
 export class Cart extends React.Component{
   componentDidMount(){
@@ -13,10 +13,13 @@ export class Cart extends React.Component{
       <div>
         <h1>CART</h1>
         {
+          cart.length === 0?
+          <p>Your cart is Empty. Shop?</p> :
           cart.map(item => {
             return(
               <div key={item.id}>
-                <li>Title: {item.book} Quantity: {item.quantity}</li>
+                <h4>Title: {item.book}</h4>
+                <p>Quantity: {item.quantity}</p>
                 <button>Remove from Cart</button>
               </div>
             )
@@ -35,7 +38,7 @@ const mapState = ({cart}) => {
 const mapDispatch = (dispatch) => {
   return {
     getCart: (userId)=> dispatch(getCart(userId)),
-  //   removeFromCart: (book)=>dispatch(removeFromCart(book))
+    removeFromCart: (book)=>dispatch(removeFromCart(book,history))
   };
 };
 

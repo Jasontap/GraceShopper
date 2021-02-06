@@ -2069,10 +2069,10 @@ class Cart extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   render() {
     const cart = this.props.cart;
     console.log(this.props.cart);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "CART"), cart.map(item => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "CART"), cart.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Your cart is Empty. Shop?") : cart.map(item => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: item.id
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Title: ", item.book, " Quantity: ", item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Remove from Cart"));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Title: ", item.book), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Quantity: ", item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Remove from Cart"));
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Check Out"));
   }
 
@@ -2088,8 +2088,8 @@ const mapState = ({
 
 const mapDispatch = dispatch => {
   return {
-    getCart: userId => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_2__.getCart)(userId)) //   removeFromCart: (book)=>dispatch(removeFromCart(book))
-
+    getCart: userId => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_2__.getCart)(userId)),
+    removeFromCart: book => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_2__.removeFromCart)(book, history))
   };
 };
 
@@ -2595,7 +2595,7 @@ const fetchBooks = () => {
 
 function booksReducer(state = [], action) {
   if (action.type === SET_BOOKS) {
-    return action.books;
+    state = action.books;
   }
 
   return state;
@@ -2613,7 +2613,9 @@ function booksReducer(state = [], action) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "_getCart": () => /* binding */ _getCart,
+/* harmony export */   "_removeFromCart": () => /* binding */ _removeFromCart,
 /* harmony export */   "getCart": () => /* binding */ getCart,
+/* harmony export */   "removeFromCart": () => /* binding */ removeFromCart,
 /* harmony export */   "default": () => /* binding */ cartReducer
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -2622,12 +2624,19 @@ __webpack_require__.r(__webpack_exports__);
 
 const GET_CART = 'GET_CART';
 const ADD_BOOK_TO_CART = 'ADD_BOOK_TO_CART';
-const REMOVE_BOOK_FROM_CART = 'REMOVE_BOOK_FROM_CART'; //action creators
+const REMOVE_BOOK_FROM_CART = 'REMOVE_BOOK_FROM_CART';
+const UPDATE_CART = 'UPDATE_CART'; //action creators
 
 const _getCart = cart => {
   return {
     type: GET_CART,
     cart
+  };
+};
+const _removeFromCart = book => {
+  return {
+    type: REMOVE_BOOK_FROM_CART,
+    book
   };
 }; //thunks
 
@@ -2636,11 +2645,27 @@ const getCart = userId => {
     const cart = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`api/cart/${userId}/cart`)).data;
     dispatch(_getCart(cart));
   };
+};
+const removeFromCart = book => {
+  return async dispatch => {
+    const bookId = book.id;
+    await axios__WEBPACK_IMPORTED_MODULE_0___default().delete(`api/cart`, {
+      data: {
+        bookId
+      }
+    });
+    dispatch(_removeFromCart(book));
+    history.push('/mycart');
+  };
 }; //reducer
 
 function cartReducer(state = [], action) {
   if (action.type === GET_CART) {
     return action.cart;
+  }
+
+  if (action.type === REMOVE_BOOK_FROM_CART) {
+    state = state.filter(book => book.id !== action.book.id);
   }
 
   return state;

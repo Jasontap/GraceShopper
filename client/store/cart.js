@@ -5,6 +5,7 @@ import axios from 'axios'
 const GET_CART = 'GET_CART'
 const ADD_BOOK_TO_CART = 'ADD_BOOK_TO_CART'
 const REMOVE_BOOK_FROM_CART = 'REMOVE_BOOK_FROM_CART'
+const UPDATE_CART = 'UPDATE_CART'
 
 
 //action creators
@@ -13,6 +14,13 @@ export const _getCart = (cart) => {
     return {
       type: GET_CART,
       cart
+    }
+  };
+
+  export const _removeFromCart = (book) => {
+    return {
+      type: REMOVE_BOOK_FROM_CART,
+      book
     }
   };
 
@@ -26,12 +34,24 @@ export const getCart = (userId) => {
     }
   };
 
+  export const removeFromCart = (book) => {
+    return async (dispatch)=>{
+      const bookId=book.id;
+      await axios.delete(`api/cart`,{data: {bookId}})
+      dispatch(_removeFromCart(book))
+      history.push('/mycart');
+    }
+  };
+
 
 //reducer
 
 export default function cartReducer(state=[], action) {
     if(action.type === GET_CART){
       return action.cart
+    }
+    if(action.type === REMOVE_BOOK_FROM_CART){
+      state = state.filter(book => book.id !== action.book.id)
     }
   
     return state;

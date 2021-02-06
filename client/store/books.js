@@ -30,7 +30,7 @@ export const fetchBooks = () => {
 
 export default function booksReducer(state=[], action) {
     if(action.type === SET_BOOKS){
-      return action.books
+      state = action.books
     }
   
     return state;
