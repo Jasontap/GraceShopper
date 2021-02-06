@@ -10,6 +10,10 @@ const Book = db.define('book', {
     author: {
       type: Sequelize.STRING,
     },
+    genre: {
+        type: Sequelize.ENUM('fiction','nonfiction','fantasy'),
+
+    },
     price: {
       type: Sequelize.FLOAT,
     },

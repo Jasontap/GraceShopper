@@ -7,6 +7,9 @@ export class AllBooks extends React.Component{
     componentDidMount(){
         this.props.getBooks() 
     }
+    addToCart(productId,num=1){
+        
+    }
     render(){
         const books = this.props.books 
         console.log('hey', this.props)
@@ -23,7 +26,7 @@ export class AllBooks extends React.Component{
                             <p>{book.price}</p>
                             <img src={ book.imageUrl } />
                             <button 
-                                // onClick={()=>{this.props.addToCart()}
+                                // onClick={()=>{this.props.addToCart(productId)}
                             >Add to Cart</button>
                         </div>
                     );

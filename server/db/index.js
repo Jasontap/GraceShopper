@@ -21,6 +21,7 @@ const syncAndSeed =  async()=> {
       await Book.create({
         title: faker.lorem.words(),
         author: faker.random.number(),
+        genre: 'fiction',
         price: faker.commerce.price(),
         stock: faker.random.number(),
         review: 3,
