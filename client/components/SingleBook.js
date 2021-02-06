@@ -12,10 +12,16 @@ export class SingleBook extends React.Component{
             <img src={ book.img } />
           </div>
           <div>
+            <p>Title: { book.title }</p>
+          </div>
+          <div>
             <p>Author: { book.author }</p>
           </div>
           <div>
             <p>Description: { book.description }</p>
+          </div>
+          <div>
+            <p>Reviews: { book.review }</p>
           </div>
         </div>
         <div>
