@@ -1,12 +1,8 @@
 import React from "react"
 import { connect } from "react-redux"
-// import { fetchBooks} from '../store/allbooks'
-// import { Link } from 'react-router-dom'
+
 
 export class SingleBook extends React.Component{
-  componentDidMount(){
-      // this.props.getBook() need to make this function
-  }
   render(){
     const { book } = this.props;
     return(
@@ -45,7 +41,6 @@ const mapState = (state, { match })=> {
   
   const mapDispatch = (dispatch) => {
     return {
-    //   getBook: ()=> dispatch(fetchBook()),
     //   addToCart: (book)=>dispatch(addToCart(book))
     };
   };

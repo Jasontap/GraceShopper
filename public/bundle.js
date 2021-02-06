@@ -2057,13 +2057,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
- // import { fetchBooks} from '../store/allbooks'
-// import { Link } from 'react-router-dom'
 
 class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
-  componentDidMount() {// this.props.getBook() need to make this function
-  }
-
   render() {
     const {
       book
@@ -2085,8 +2080,7 @@ const mapState = (state, {
 };
 
 const mapDispatch = dispatch => {
-  return {//   getBook: ()=> dispatch(fetchBook()),
-    //   addToCart: (book)=>dispatch(addToCart(book))
+  return {//   addToCart: (book)=>dispatch(addToCart(book))
   };
 };
 
