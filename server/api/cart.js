@@ -5,7 +5,7 @@ module.exports = router
 //all users all carts
 router.get('/', async (req, res, next) => {
   try {
-    res.send(await Cart.findAll());
+    res.status(200).send(await Cart.findAll());
   } 
   catch (ex) {
     next(ex)
@@ -19,7 +19,7 @@ router.delete('/', async (req, res, next) => {
     const book = await Cart.findOne({where: {id: req.body.bookId}})
     console.log(book)
     await book.destroy()
-    res.status(200)
+    res.sendStatus(200)
 
   } 
   catch (ex) {
@@ -29,11 +29,24 @@ router.delete('/', async (req, res, next) => {
 
 router.get('/:id/cart', async (req, res, next) => {
   try {
-    res.send(await Cart.findAll({
+    res.status(200).send(await Cart.findAll({
       where: {
         userId: req.params.id
       }
     }));
+  }
+  catch(ex) {
+    next(ex)
+  }
+});
+
+router.post('/:id/cart', async (req, res, next) => {
+  try {
+    console.log(req.body)
+    const book = await Cart.create(req.body)
+    book.userId = req.params.id;
+    book.save();
+    res.status(201).send(book)
   }
   catch(ex) {
     next(ex)
