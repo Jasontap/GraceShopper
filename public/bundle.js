@@ -2001,21 +2001,23 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     this.props.getBooks();
   }
 
+  addToCart(productId, num = 1) {}
+
   render() {
-    const books = this.props.books;
-    console.log('hey', this.props);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books.map(book => {
+    const books = this.props.books.works;
+    console.log(books);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books && books.map(book => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        key: book.id
+        key: book.cover_id
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        to: `/books/${book.id}`
+        to: `/books/${book.cover_id}`
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-        src: book.img
+        src: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        to: `/books/${book.id}`
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, book.author), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, book.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-        src: book.imageUrl
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add to Cart"));
+        to: `/books/${book.cover_id}`
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, book.title)), "Authors: ", book.authors.map(author => {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, author.name);
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.edition_count / 10), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add to Cart"));
     })));
   }
 
@@ -2525,7 +2527,8 @@ const setBooks = books => {
 
 const fetchBooks = () => {
   return async dispatch => {
-    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/books')).data;
+    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://openlibrary.org/subjects/love.json?subject=love')).data;
+    console.log(books);
     dispatch(setBooks(books));
   };
 }; //reducer

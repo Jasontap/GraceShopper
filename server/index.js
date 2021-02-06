@@ -15,7 +15,7 @@ catch(ex){
 }
 
 const { db, syncAndSeed } = require('./db')
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 const app = require('./app')
 
 const init = async () => {
