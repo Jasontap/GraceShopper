@@ -13,11 +13,14 @@ const Book = db.define('book', {
     price: {
       type: Sequelize.FLOAT,
     },
-    numInStock: {
+    stock: {
       type: Sequelize.INTEGER,
     },
     review: {
       type: Sequelize.INTEGER,
+    },
+    img: {
+      type: Sequelize.STRING
     }
   })
   
