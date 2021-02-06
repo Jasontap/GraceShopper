@@ -1975,6 +1975,71 @@ const App = () => {
 
 /***/ }),
 
+/***/ "./client/components/AllBooks.js":
+/*!***************************************!*\
+  !*** ./client/components/AllBooks.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AllBooks": () => /* binding */ AllBooks,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_books__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/books */ "./client/store/books.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  componentDidMount() {
+    this.props.getBooks();
+  }
+
+  render() {
+    const books = this.props.books;
+    console.log('hey', this.props);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books.map(book => {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        key: book.id
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        to: `/books/${book.id}`
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+        src: book.img
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        to: `/books/${book.id}`
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, book.author), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, book.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+        src: book.imageUrl
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add to Cart"));
+    })));
+  }
+
+}
+
+const mapState = ({
+  books
+}) => {
+  return {
+    books
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    getBooks: () => dispatch((0,_store_books__WEBPACK_IMPORTED_MODULE_2__.fetchBooks)()) //   addToCart: (book)=>dispatch(addToCart(book))
+
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(AllBooks));
+
+/***/ }),
+
 /***/ "./client/components/auth-form.js":
 /*!****************************************!*\
   !*** ./client/components/auth-form.js ***!
@@ -2120,16 +2185,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Navbar": () => /* reexport safe */ _navbar__WEBPACK_IMPORTED_MODULE_0__.default,
 /* harmony export */   "Home": () => /* reexport safe */ _home__WEBPACK_IMPORTED_MODULE_1__.default,
 /* harmony export */   "Login": () => /* reexport safe */ _auth_form__WEBPACK_IMPORTED_MODULE_2__.Login,
-/* harmony export */   "Signup": () => /* reexport safe */ _auth_form__WEBPACK_IMPORTED_MODULE_2__.Signup
+/* harmony export */   "Signup": () => /* reexport safe */ _auth_form__WEBPACK_IMPORTED_MODULE_2__.Signup,
+/* harmony export */   "AllBooks": () => /* reexport safe */ _AllBooks__WEBPACK_IMPORTED_MODULE_3__.default
 /* harmony export */ });
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navbar */ "./client/components/navbar.js");
 /* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./client/components/home.js");
 /* harmony import */ var _auth_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
+/* harmony import */ var _AllBooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AllBooks */ "./client/components/AllBooks.js");
 /**
  * `components/index.js` exists simply as a 'central export' for our components.
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+
 
 
 
@@ -2290,6 +2358,9 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/home",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.Home
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      path: "/allbooks",
+      component: _components__WEBPACK_IMPORTED_MODULE_2__.AllBooks
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
       to: "/home"
     })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
@@ -2425,6 +2496,50 @@ const logout = () => {
 
 /***/ }),
 
+/***/ "./client/store/books.js":
+/*!*******************************!*\
+  !*** ./client/store/books.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "setBooks": () => /* binding */ setBooks,
+/* harmony export */   "fetchBooks": () => /* binding */ fetchBooks,
+/* harmony export */   "default": () => /* binding */ booksReducer
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+ //constants
+
+const SET_BOOKS = 'SET_BOOKS'; // const ADD_CART = 'ADD_CART'
+//action creators
+
+const setBooks = books => {
+  return {
+    type: SET_BOOKS,
+    books
+  };
+}; //thunks
+
+const fetchBooks = () => {
+  return async dispatch => {
+    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/books')).data;
+    dispatch(setBooks(books));
+  };
+}; //reducer
+
+function booksReducer(state = [], action) {
+  if (action.type === SET_BOOKS) {
+    state = action.books;
+  }
+
+  return state;
+}
+
+/***/ }),
+
 /***/ "./client/store/index.js":
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
@@ -2439,24 +2554,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "logout": () => /* reexport safe */ _auth__WEBPACK_IMPORTED_MODULE_3__.logout,
 /* harmony export */   "me": () => /* reexport safe */ _auth__WEBPACK_IMPORTED_MODULE_3__.me
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
 /* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-devtools-extension */ "./node_modules/redux-devtools-extension/index.js");
 /* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth */ "./client/store/auth.js");
+/* harmony import */ var _books__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./books */ "./client/store/books.js");
 
 
 
 
 
-const reducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
-  auth: _auth__WEBPACK_IMPORTED_MODULE_3__.default
+
+const reducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
+  auth: _auth__WEBPACK_IMPORTED_MODULE_3__.default,
+  books: _books__WEBPACK_IMPORTED_MODULE_4__.default
 });
-const middleware = (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_4__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default, (0,redux_logger__WEBPACK_IMPORTED_MODULE_0__.createLogger)({
+const middleware = (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default, (0,redux_logger__WEBPACK_IMPORTED_MODULE_0__.createLogger)({
   collapsed: true
 })));
-const store = (0,redux__WEBPACK_IMPORTED_MODULE_4__.createStore)(reducer, middleware);
+const store = (0,redux__WEBPACK_IMPORTED_MODULE_5__.createStore)(reducer, middleware);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
 

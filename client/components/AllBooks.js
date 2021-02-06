@@ -1,14 +1,15 @@
 import React from "react"
 import { connect } from "react-redux"
-// import { fetchBooks} from '../store/allbooks'
+import { fetchBooks} from '../store/books'
 import { Link } from 'react-router-dom'
 
 export class AllBooks extends React.Component{
     componentDidMount(){
-        // this.props.getBooks() need to make this function
+        this.props.getBooks() 
     }
     render(){
-        // const books = this.props.books 
+        const books = this.props.books 
+        console.log('hey', this.props)
         return(
             <div >
                 <div >
@@ -20,7 +21,7 @@ export class AllBooks extends React.Component{
                             <Link to={`/books/${book.id}`}><h3>{ book.title }</h3></Link>
                             <p>{book.author}</p>
                             <p>{book.price}</p>
-                            <img src={ campus.imageUrl } />
+                            <img src={ book.imageUrl } />
                             <button 
                                 // onClick={()=>{this.props.addToCart()}
                             >Add to Cart</button>
@@ -40,7 +41,7 @@ const mapState = ({books}) => {
   
   const mapDispatch = (dispatch) => {
     return {
-    //   getBooks: ()=> dispatch(fetchBooks()),
+      getBooks: ()=> dispatch(fetchBooks()),
     //   addToCart: (book)=>dispatch(addToCart(book))
     };
   };
