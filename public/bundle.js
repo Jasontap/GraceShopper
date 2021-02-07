@@ -1991,7 +1991,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_books__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/books */ "./client/store/books.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _store_cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/cart */ "./client/store/cart.js");
+
 
 
 
@@ -2001,23 +2003,23 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     this.props.getBooks();
   }
 
-  addToCart(productId, num = 1) {}
-
   render() {
     const books = this.props.books.works;
     console.log(books);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books && books.map(book => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: book.cover_id
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
         to: `/books/${book.cover_id}`
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
         src: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
         to: `/books/${book.cover_id}`
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, book.title)), "Authors: ", book.authors.map(author => {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, author.name);
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.edition_count / 10), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add to Cart"));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.edition_count / 10), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        onClick: () => this.props.addToCart(2, book)
+      }, "Add to Cart"));
     })));
   }
 
@@ -2033,12 +2035,69 @@ const mapState = ({
 
 const mapDispatch = dispatch => {
   return {
-    getBooks: () => dispatch((0,_store_books__WEBPACK_IMPORTED_MODULE_2__.fetchBooks)()) //   addToCart: (book)=>dispatch(addToCart(book))
-
+    getBooks: () => dispatch((0,_store_books__WEBPACK_IMPORTED_MODULE_2__.fetchBooks)()),
+    addToCart: (userId, book) => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_3__.addToCart)(userId, book))
   };
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(AllBooks));
+
+/***/ }),
+
+/***/ "./client/components/Cart.js":
+/*!***********************************!*\
+  !*** ./client/components/Cart.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Cart": () => /* binding */ Cart,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/cart */ "./client/store/cart.js");
+
+
+
+class Cart extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  componentDidMount() {
+    this.props.getCart(2);
+  }
+
+  render() {
+    const cart = this.props.cart;
+    console.log(this.props.cart);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "CART"), cart.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Your cart is Empty. Shop?") : cart.map(item => {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        key: item.id
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Title: ", item.book), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Quantity: ", item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        onClick: () => this.props.removeFromCart(item)
+      }, "Remove from Cart"));
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Check Out"));
+  }
+
+}
+
+const mapState = ({
+  cart
+}) => {
+  return {
+    cart
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    getCart: userId => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_2__.getCart)(userId)),
+    removeFromCart: book => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_2__.removeFromCart)(book, history))
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(Cart));
 
 /***/ }),
 
@@ -2236,18 +2295,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Login": () => /* reexport safe */ _auth_form__WEBPACK_IMPORTED_MODULE_2__.Login,
 /* harmony export */   "Signup": () => /* reexport safe */ _auth_form__WEBPACK_IMPORTED_MODULE_2__.Signup,
 /* harmony export */   "AllBooks": () => /* reexport safe */ _AllBooks__WEBPACK_IMPORTED_MODULE_3__.default,
-/* harmony export */   "SingleBook": () => /* reexport safe */ _SingleBook__WEBPACK_IMPORTED_MODULE_4__.default
+/* harmony export */   "Cart": () => /* reexport safe */ _Cart__WEBPACK_IMPORTED_MODULE_4__.default,
+/* harmony export */   "SingleBook": () => /* reexport safe */ _SingleBook__WEBPACK_IMPORTED_MODULE_5__.default
 /* harmony export */ });
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navbar */ "./client/components/navbar.js");
 /* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./client/components/home.js");
 /* harmony import */ var _auth_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth-form */ "./client/components/auth-form.js");
 /* harmony import */ var _AllBooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AllBooks */ "./client/components/AllBooks.js");
-/* harmony import */ var _SingleBook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SingleBook */ "./client/components/SingleBook.js");
+/* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.js");
+/* harmony import */ var _SingleBook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SingleBook */ "./client/components/SingleBook.js");
 /**
  * `components/index.js` exists simply as a 'central export' for our components.
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+
 
 
 
@@ -2289,7 +2351,7 @@ const Navbar = ({
 }, "Fiction"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
   to: "/nonfiction"
 }, "Non-Fiction"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-  to: "/cart"
+  to: "/mycart"
 }, "Shopping Cart (number)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
   href: "#",
   onClick: handleClick
@@ -2416,6 +2478,9 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/books/:id",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.SingleBook
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      path: "/mycart",
+      component: _components__WEBPACK_IMPORTED_MODULE_2__.Cart
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
       to: "/home"
     })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
@@ -2596,6 +2661,97 @@ function booksReducer(state = [], action) {
 
 /***/ }),
 
+/***/ "./client/store/cart.js":
+/*!******************************!*\
+  !*** ./client/store/cart.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "_getCart": () => /* binding */ _getCart,
+/* harmony export */   "_addToCart": () => /* binding */ _addToCart,
+/* harmony export */   "_removeFromCart": () => /* binding */ _removeFromCart,
+/* harmony export */   "getCart": () => /* binding */ getCart,
+/* harmony export */   "removeFromCart": () => /* binding */ removeFromCart,
+/* harmony export */   "addToCart": () => /* binding */ addToCart,
+/* harmony export */   "default": () => /* binding */ cartReducer
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+ //constants
+
+const GET_CART = 'GET_CART';
+const ADD_BOOK_TO_CART = 'ADD_BOOK_TO_CART';
+const REMOVE_BOOK_FROM_CART = 'REMOVE_BOOK_FROM_CART';
+const UPDATE_CART = 'UPDATE_CART'; //action creators
+
+const _getCart = cart => {
+  return {
+    type: GET_CART,
+    cart
+  };
+};
+const _addToCart = book => {
+  return {
+    type: ADD_BOOK_TO_CART,
+    book
+  };
+};
+const _removeFromCart = book => {
+  return {
+    type: REMOVE_BOOK_FROM_CART,
+    book
+  };
+}; //thunks
+
+const getCart = userId => {
+  return async dispatch => {
+    const cart = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`api/cart/${userId}/cart`)).data;
+    dispatch(_getCart(cart));
+  };
+};
+const removeFromCart = book => {
+  return async dispatch => {
+    const bookId = book.id;
+    await axios__WEBPACK_IMPORTED_MODULE_0___default().delete(`api/cart`, {
+      data: {
+        bookId
+      }
+    });
+    dispatch(_removeFromCart(book));
+    history.push('/mycart');
+  };
+};
+const addToCart = (userId, bookToCart) => {
+  return async dispatch => {
+    const book = (await axios__WEBPACK_IMPORTED_MODULE_0___default().post(`api/cart/${userId}/cart`, {
+      book: bookToCart.title,
+      quantity: 1
+    })).data;
+    dispatch(_addToCart(book));
+  };
+}; //reducer
+
+function cartReducer(state = [], action) {
+  if (action.type === GET_CART) {
+    return action.cart;
+  }
+
+  if (action.type === REMOVE_BOOK_FROM_CART) {
+    state = state.filter(book => book.id !== action.book.id);
+  }
+
+  if (action.type === ADD_BOOK_TO_CART) {
+    return [...state, action.book];
+  }
+
+  return state;
+}
+
+/***/ }),
+
 /***/ "./client/store/index.js":
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
@@ -2610,27 +2766,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "logout": () => /* reexport safe */ _auth__WEBPACK_IMPORTED_MODULE_3__.logout,
 /* harmony export */   "me": () => /* reexport safe */ _auth__WEBPACK_IMPORTED_MODULE_3__.me
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
 /* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-devtools-extension */ "./node_modules/redux-devtools-extension/index.js");
 /* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth */ "./client/store/auth.js");
 /* harmony import */ var _books__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./books */ "./client/store/books.js");
+/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cart */ "./client/store/cart.js");
 
 
 
 
 
 
-const reducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
+
+const reducer = (0,redux__WEBPACK_IMPORTED_MODULE_6__.combineReducers)({
   auth: _auth__WEBPACK_IMPORTED_MODULE_3__.default,
-  books: _books__WEBPACK_IMPORTED_MODULE_4__.default
+  books: _books__WEBPACK_IMPORTED_MODULE_4__.default,
+  cart: _cart__WEBPACK_IMPORTED_MODULE_5__.default
 });
-const middleware = (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default, (0,redux_logger__WEBPACK_IMPORTED_MODULE_0__.createLogger)({
+const middleware = (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_6__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default, (0,redux_logger__WEBPACK_IMPORTED_MODULE_0__.createLogger)({
   collapsed: true
 })));
-const store = (0,redux__WEBPACK_IMPORTED_MODULE_5__.createStore)(reducer, middleware);
+const store = (0,redux__WEBPACK_IMPORTED_MODULE_6__.createStore)(reducer, middleware);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
 

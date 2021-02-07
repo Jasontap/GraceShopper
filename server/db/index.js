@@ -29,7 +29,11 @@ const syncAndSeed =  async()=> {
         review: 3,
         img: faker.image.abstract()
       })
-  }
+    }
+    const cartBook = await Cart.create({book: 'book-title-in-cart-here', quantity: 2})
+    cartBook.userId = 2;
+    await cartBook.save();
+  
 }catch(ex){
     // next(ex)
   }
