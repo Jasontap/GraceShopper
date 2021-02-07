@@ -1,52 +1,51 @@
-import React from "react"
-import { connect } from "react-redux"
-import { fetchBooks} from '../store/books'
-import { Link } from 'react-router-dom'
-import { addToCart } from '../store/cart'
+import React from "react";
+import { connect } from "react-redux";
+import { fetchBooks } from "../store/books";
+import { Link } from "react-router-dom";
+import { addToCart } from "../store/cart";
 
-export class AllBooks extends React.Component{
-    componentDidMount(){
-        this.props.getBooks() 
-    }
-    render(){
-        const books = this.props.books.works;
-        return(
-            <div >
-                <div >
-                {
-                    books && books.map( book => {
-                    return (
-                        <div key={book.cover_id} >
-                            <Link to={`/books/${book.cover_id}`}><img src={`http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`}/></Link>
-                            <Link to={`/books/${book.cover_id}`}><h3>{ book.title }</h3></Link>
-                            Authors: {book.authors.map((author)=>{
-                                return(
-                                    <p>{author.name}</p>
-                                )
-                            })}
-                            <p>${book.edition_count / 10}</p>
-                            <button 
-                                onClick={()=>this.props.addToCart(2, book)}
-                            >Add to Cart</button>
-                        </div>
-                    );
-                    })
-                }
+export class AllBooks extends React.Component {
+  componentDidMount() {
+    this.props.getBooks();
+  }
+  render() {
+    const { books } = this.props;
+    return (
+      <div>
+        <div>
+          {books &&
+            books.map((book) => {
+              return (
+                <div key={book.coverId}>
+                  <Link to={`/books/${book.coverId}`}>
+                    <img src={book.img} />
+                  </Link>
+                  <Link to={`/books/${book.coverId}`}>
+                    <h3>{book.title}</h3>
+                  </Link>
+                  Author: {book.author}
+                  <p>${book.price}</p>
+                  <button onClick={() => this.props.addToCart(2, book)}>
+                    Add to Cart
+                  </button>
                 </div>
+              );
+            })}
         </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 
-const mapState = ({books}) => {
-    return {books};
+const mapState = ({ books }) => {
+  return { books };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    getBooks: () => dispatch(fetchBooks()),
+    addToCart: (userId, book) => dispatch(addToCart(userId, book)),
   };
-  
-  const mapDispatch = (dispatch) => {
-    return {
-      getBooks: ()=> dispatch(fetchBooks()),
-      addToCart: (userId,book)=>dispatch(addToCart(userId, book))
-    };
-  };
-  
-  export default connect(mapState, mapDispatch)(AllBooks);
+};
+
+export default connect(mapState, mapDispatch)(AllBooks);

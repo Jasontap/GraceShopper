@@ -16,6 +16,9 @@ const Book = db.define('book', {
     price: {
       type: Sequelize.FLOAT
     },
+    description: {
+      type: Sequelize.STRING
+    },
     stock: {
       type: Sequelize.INTEGER
     },
@@ -24,6 +27,9 @@ const Book = db.define('book', {
     },
     img: {
       type: Sequelize.STRING
+    },
+    coverId: {
+      type: Sequelize.INTEGER
     }
   })
   
