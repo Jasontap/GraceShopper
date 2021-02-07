@@ -9,20 +9,23 @@ export class AllBooks extends React.Component{
         this.props.getBooks() 
     }
     render(){
-        const books = this.props.books 
-        console.log('hey', this.props)
+        const books = this.props.books.works
+        console.log(books)
         return(
             <div >
                 <div >
                 {
-                    books.map( book => {
+                    books && books.map( book => {
                     return (
-                        <div key={book.id} >
-                            <Link to={`/books/${book.id}`}><img src={book.img}/></Link>
-                            <Link to={`/books/${book.id}`}><h3>{ book.title }</h3></Link>
-                            <p>{book.author}</p>
-                            <p>{book.price}</p>
-                            <img src={ book.imageUrl } />
+                        <div key={book.cover_id} >
+                            <Link to={`/books/${book.cover_id}`}><img src={`http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`}/></Link>
+                            <Link to={`/books/${book.cover_id}`}><h3>{ book.title }</h3></Link>
+                            Authors: {book.authors.map((author)=>{
+                                return(
+                                    <p>{author.name}</p>
+                                )
+                            })}
+                            <p>${book.edition_count / 10}</p>
                             <button 
                                 onClick={()=>this.props.addToCart(2, book)}
                             >Add to Cart</button>

@@ -20,7 +20,8 @@ export const setBooks = (books) => {
 
 export const fetchBooks = () => {
     return async (dispatch)=>{
-      const books = (await axios.get('/api/books')).data
+      const books = (await axios.get('http://openlibrary.org/subjects/love.json?subject=love')).data
+      console.log(books)
       dispatch(setBooks(books))
     }
   };

@@ -20,7 +20,7 @@ export class Cart extends React.Component{
               <div key={item.id}>
                 <h4>Title: {item.book}</h4>
                 <p>Quantity: {item.quantity}</p>
-                <button>Remove from Cart</button>
+                <button onClick={()=>this.props.removeFromCart(item)}>Remove from Cart</button>
               </div>
             )
           })

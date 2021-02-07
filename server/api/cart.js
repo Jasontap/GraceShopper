@@ -17,7 +17,6 @@ router.delete('/', async (req, res, next) => {
   try {
     console.log(req.body.bookId)
     const book = await Cart.findOne({where: {id: req.body.bookId}})
-    console.log(book)
     await book.destroy()
     res.sendStatus(200)
 
@@ -42,7 +41,6 @@ router.get('/:id/cart', async (req, res, next) => {
 
 router.post('/:id/cart', async (req, res, next) => {
   try {
-    console.log(req.body)
     const book = await Cart.create(req.body)
     book.userId = req.params.id;
     book.save();
