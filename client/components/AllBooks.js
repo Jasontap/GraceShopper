@@ -2,21 +2,15 @@ import React from "react"
 import { connect } from "react-redux"
 import { fetchBooks} from '../store/books'
 import { Link } from 'react-router-dom'
+import { addToCart } from '../store/cart'
 
 export class AllBooks extends React.Component{
     componentDidMount(){
         this.props.getBooks() 
     }
-    addToCart(productId,num=1){
-        
-    }
     render(){
-<<<<<<< HEAD
         const books = this.props.books.works
         console.log(books)
-=======
-        const books = this.props.books 
->>>>>>> main
         return(
             <div >
                 <div >
@@ -33,7 +27,7 @@ export class AllBooks extends React.Component{
                             })}
                             <p>${book.edition_count / 10}</p>
                             <button 
-                                // onClick={()=>{this.props.addToCart(productId)}
+                                onClick={()=>this.props.addToCart(2, book)}
                             >Add to Cart</button>
                         </div>
                     );
@@ -52,7 +46,7 @@ const mapState = ({books}) => {
   const mapDispatch = (dispatch) => {
     return {
       getBooks: ()=> dispatch(fetchBooks()),
-    //   addToCart: (book)=>dispatch(addToCart(book))
+      addToCart: (userId,book)=>dispatch(addToCart(userId, book))
     };
   };
   

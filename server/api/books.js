@@ -43,7 +43,6 @@ router.delete('/:id', async (req, res, next) => {
   try {
     const book = await Book.findByPk(req.params.id);
     await book.destroy();
-    req.send(book);
   }
   catch(ex) {
     next(ex);
