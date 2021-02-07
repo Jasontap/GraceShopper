@@ -9,8 +9,7 @@ export class AllBooks extends React.Component{
         this.props.getBooks() 
     }
     render(){
-        const books = this.props.books.works
-        console.log(books)
+        const books = this.props.books.works;
         return(
             <div >
                 <div >
@@ -34,7 +33,7 @@ export class AllBooks extends React.Component{
                     })
                 }
                 </div>
-      </div>
+        </div>
         )
     }
 }
