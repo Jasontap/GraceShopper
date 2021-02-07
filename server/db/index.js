@@ -27,10 +27,12 @@ const syncAndSeed =  async()=> {
         title: book.title,
         author: book.authors[0].name,
         genre: 'fiction',
-        price: Math.floor(Math.random() * 10),
+        price: Math.floor(Math.random() * 100),
+        description: faker.lorem.sentence(),
         stock: Math.floor(Math.random() * 10),
         review: Math.floor(Math.random() * 10),
-        img: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
+        img: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`,
+        coverId: book.cover_id
       });
     });
 

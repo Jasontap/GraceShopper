@@ -26,7 +26,7 @@ export class SingleBook extends React.Component{
         </div>
         <div>
           <div>
-            <p>Price: { book.price }</p>
+            <p>${ book.price }</p>
           </div>
           <button 
             // onClick={()=>{this.props.addToCart()}
@@ -39,7 +39,7 @@ export class SingleBook extends React.Component{
 }
 
 const mapState = (state, { match })=> {
-  const book = state.books.find( book => book.id === match.params.id * 1 ) || {};
+  const book = state.books.find( book => book.coverId === match.params.id * 1 ) || {};
   return {
     book
   };

@@ -2004,19 +2004,19 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
   }
 
   render() {
-    const books = this.props.books.works;
+    const {
+      books
+    } = this.props;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books && books.map(book => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        key: book.cover_id
+        key: book.coverId
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-        to: `/books/${book.cover_id}`
+        to: `/books/${book.coverId}`
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-        src: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
+        src: book.img
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-        to: `/books/${book.cover_id}`
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, book.title)), "Authors: ", book.authors.map(author => {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, author.name);
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.edition_count / 10), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        to: `/books/${book.coverId}`
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, book.title)), "Author: ", book.author, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         onClick: () => this.props.addToCart(2, book)
       }, "Add to Cart"));
     })));
@@ -2124,7 +2124,7 @@ class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component
     } = this.props;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: book.img
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Title: ", book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Author: ", book.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", book.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Reviews: ", book.review))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Price: ", book.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add to Cart")));
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Title: ", book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Author: ", book.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", book.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Reviews: ", book.review))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add to Cart")));
   }
 
 }
@@ -2132,7 +2132,7 @@ class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component
 const mapState = (state, {
   match
 }) => {
-  const book = state.books.find(book => book.id === match.params.id * 1) || {};
+  const book = state.books.find(book => book.coverId === match.params.id * 1) || {};
   return {
     book
   };
@@ -2644,8 +2644,7 @@ const setBooks = books => {
 
 const fetchBooks = () => {
   return async dispatch => {
-    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://openlibrary.org/subjects/love.json?subject=love')).data;
-    console.log(books);
+    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/books')).data;
     dispatch(setBooks(books));
   };
 }; //reducer
