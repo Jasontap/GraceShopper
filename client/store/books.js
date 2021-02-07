@@ -19,12 +19,12 @@ export const setBooks = (books) => {
 //thunks
 
 export const fetchBooks = () => {
-    return async (dispatch)=>{
-      const books = (await axios.get('http://openlibrary.org/subjects/love.json?subject=love')).data
-      console.log(books)
-      dispatch(setBooks(books))
-    }
-  };
+  return async (dispatch)=>{
+    const books = (await axios.get('http://openlibrary.org/subjects/love.json?subject=love')).data;
+    console.log(books)
+    dispatch(setBooks(books))
+  }
+};
 
 
 //reducer

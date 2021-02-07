@@ -2005,7 +2005,6 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
 
   render() {
     const books = this.props.books.works;
-    console.log(books);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books && books.map(book => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: book.cover_id
