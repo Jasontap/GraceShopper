@@ -11,6 +11,45 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/fiction', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'fiction'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/non-fiction', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'non-fiction'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/love', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'love'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
 router.get('/:id', async (req, res, next) => {
   try {
     res.send(await Book.findByPk(req.params.id));

@@ -8,6 +8,7 @@ export class AllBooks extends React.Component {
   componentDidMount() {
     this.props.getBooks();
   }
+  
   render() {
     const { books } = this.props;
     return (

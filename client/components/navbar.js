@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import {setBookGenre} from '../store/books'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>

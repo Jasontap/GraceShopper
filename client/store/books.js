@@ -20,18 +20,19 @@ export const setBooks = (books) => {
 
 export const fetchBooks = () => {
   return async (dispatch)=>{
-    const books = (await axios.get('/api/books')).data;
+    const books = (await axios.get('/api/books/')).data;
     dispatch(setBooks(books))
   }
 };
 
 
+
 //reducer
 
 export default function booksReducer(state=[], action) {
-    if(action.type === SET_BOOKS){
-      state = action.books
-    }
-  
-    return state;
+  if(action.type === SET_BOOKS){
+    state = action.books
   }
+
+  return state;
+}
