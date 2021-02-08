@@ -18,19 +18,12 @@ export const setBooks = (books) => {
 
 //thunks
 
-export const fetchBooks = (genre) => {
+export const fetchBooks = () => {
   return async (dispatch)=>{
-    const books = (await axios.get('/api/books')).data;
+    const books = (await axios.get('/api/books/')).data;
     dispatch(setBooks(books))
   }
 };
-
-export const setBookGenre = () => {
-  return async (dispatch)=>{
-    const books = (await axios.get(`/api/books/love`)).data;
-    dispatch(setBooks(books))
-  } 
-}
 
 
 

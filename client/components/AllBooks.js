@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchBooks } from "../store/books";
-import { Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart";
 
 export class AllBooks extends React.Component {
@@ -39,10 +39,7 @@ export class AllBooks extends React.Component {
 }
 
 const mapState = ({ books }) => {
-  return { 
-    books,
-    genre: window.location.pathname.slice(1)
-   };
+  return { books };
 };
 
 const mapDispatch = (dispatch) => {

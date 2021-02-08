@@ -75,15 +75,9 @@ const syncAndSeed =  async()=> {
     await cartBook.save();
   
 } catch(ex){
-    // next(ex)
+    console.log(ex);
   }
 
-  // return {
-  //   users: {
-  //     cody,
-  //     murphy
-  //   }
-  //}
 }
 
 module.exports = {
