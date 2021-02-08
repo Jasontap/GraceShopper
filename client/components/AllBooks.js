@@ -11,6 +11,7 @@ export class AllBooks extends React.Component {
   
   render() {
     const { books } = this.props;
+    const userId = this.props.auth.id;
     return (
       <div>
         <div>
@@ -26,7 +27,7 @@ export class AllBooks extends React.Component {
                   </Link>
                   Author: {book.author}
                   <p>${book.price}</p>
-                  <button onClick={() => this.props.addToCart(2, book)}>
+                  <button onClick={() => this.props.addToCart(userId, book)}>
                     Add to Cart
                   </button>
                 </div>
@@ -38,8 +39,8 @@ export class AllBooks extends React.Component {
   }
 }
 
-const mapState = ({ books }) => {
-  return { books };
+const mapState = ({ books, auth }) => {
+  return { books, auth };
 };
 
 const mapDispatch = (dispatch) => {
