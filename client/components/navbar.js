@@ -2,8 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import {setBookGenre} from '../store/books'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = ({handleClick, isLoggedIn, handleGenre}) => (
   <div>
     <nav>
       {isLoggedIn ? (
@@ -43,6 +44,9 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout())
+    },
+    handleGenre() {
+      dispatch(setBookGenre())
     }
   }
 }

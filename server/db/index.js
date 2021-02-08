@@ -20,13 +20,45 @@ const syncAndSeed =  async()=> {
     ])
     const [cody, murphy] = users;
     
-    const bookLibrary = (await axios.get('http://openlibrary.org/subjects/love.json?subject=love')).data;
+    const fictionBookLibrary = (await axios.get('https://openlibrary.org/subjects/fiction.json?subject=fiction')).data;
 
-    bookLibrary.works.map( async book => {
+    fictionBookLibrary.works.map( async book => {
       await Book.create({
         title: book.title,
         author: book.authors[0].name,
         genre: 'fiction',
+        price: Math.floor(Math.random() * 100),
+        description: faker.lorem.sentence(),
+        stock: Math.floor(Math.random() * 10),
+        review: Math.floor(Math.random() * 10),
+        img: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`,
+        coverId: book.cover_id
+      });
+    });
+    
+    const loveBookLibrary = (await axios.get('http://openlibrary.org/subjects/love.json?subject=love')).data;
+
+    loveBookLibrary.works.map( async book => {
+      await Book.create({
+        title: book.title,
+        author: book.authors[0].name,
+        genre: 'love',
+        price: Math.floor(Math.random() * 100),
+        description: faker.lorem.sentence(),
+        stock: Math.floor(Math.random() * 10),
+        review: Math.floor(Math.random() * 10),
+        img: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`,
+        coverId: book.cover_id
+      });
+    });
+
+    const nonFictionBookLibrary = (await axios.get('https://openlibrary.org/subjects/non-fiction.json?subject=non-fiction')).data;
+
+    nonFictionBookLibrary.works.map( async book => {
+      await Book.create({
+        title: book.title,
+        author: book.authors[0].name,
+        genre: 'non-fiction',
         price: Math.floor(Math.random() * 100),
         description: faker.lorem.sentence(),
         stock: Math.floor(Math.random() * 10),

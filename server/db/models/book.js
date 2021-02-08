@@ -4,14 +4,13 @@ const db = require('../db')
 const Book = db.define('book', {
     title: {
       type: Sequelize.STRING,
-      unique: true,
       allowNull: false
     },
     author: {
       type: Sequelize.STRING
     },
     genre: {
-        type: Sequelize.ENUM('fiction','nonfiction','fantasy')
+        type: Sequelize.ENUM('fiction','non-fiction','fantasy','love')
     },
     price: {
       type: Sequelize.FLOAT

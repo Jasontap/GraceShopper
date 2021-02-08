@@ -1,13 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchBooks } from "../store/books";
-import { Link } from "react-router-dom";
+import { Link, Switch } from "react-router-dom";
 import { addToCart } from "../store/cart";
 
 export class AllBooks extends React.Component {
   componentDidMount() {
     this.props.getBooks();
   }
+  
   render() {
     const { books } = this.props;
     return (
@@ -38,7 +39,10 @@ export class AllBooks extends React.Component {
 }
 
 const mapState = ({ books }) => {
-  return { books };
+  return { 
+    books,
+    genre: window.location.pathname.slice(1)
+   };
 };
 
 const mapDispatch = (dispatch) => {
