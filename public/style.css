@@ -22,3 +22,20 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-card{
+  width: 20%;
+  margin: 1rem;
+}
+
+.cover-art{
+  height: 230px;
+  width:50%;
+}

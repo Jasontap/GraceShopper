@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {setBookGenre} from '../store/books'
+import Drawer from '@material-ui/core/Drawer'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
@@ -22,8 +23,10 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
+          <Link to="/allbooks"><h1>JWT Books</h1></Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
+          <Link>Cart</Link>
         </div>
       )}
     </nav>
