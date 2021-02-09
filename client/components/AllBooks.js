@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchBooks } from "../store/books";
 import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart";
+import Button from '@material-ui/core/Button';
 
 export class AllBooks extends React.Component {
   componentDidMount() {
@@ -27,9 +28,9 @@ export class AllBooks extends React.Component {
                   </Link>
                   Author: {book.author}
                   <p>${book.price}</p>
-                  <button onClick={() => this.props.addToCart(userId, book)}>
+                  <Button onClick={() => this.props.addToCart(userId, book)}>
                     Add to Cart
-                  </button>
+                  </Button>
                 </div>
               );
             })}
