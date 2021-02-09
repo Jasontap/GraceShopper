@@ -2079,7 +2079,9 @@ class Cart extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Title: ", item.book), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Quantity: ", item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         onClick: () => this.props.removeFromCart(item)
       }, "Remove from Cart"));
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Check Out"));
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+      href: "/checkout"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Check Out")));
   }
 
 }
@@ -2105,6 +2107,323 @@ const mapDispatch = dispatch => {
 
 /***/ }),
 
+/***/ "./client/components/CheckoutForm.js":
+/*!*******************************************!*\
+  !*** ./client/components/CheckoutForm.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CheckoutForm": () => /* binding */ CheckoutForm,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  constructor() {
+    super();
+    this.state = {
+      shipFirst: '',
+      shipLast: '',
+      shipAddy: '',
+      shipCity: '',
+      shipState: '',
+      shipZip: '',
+      billFirst: '',
+      billLast: '',
+      billAddy: '',
+      billCity: '',
+      billState: '',
+      billZip: '',
+      cardFirst: '',
+      cardLast: '',
+      cardNum: '',
+      cardExp: '',
+      cardCode: '',
+      same: false,
+      continue: false
+    };
+  }
+
+  componentDidMount() {}
+
+  render() {
+    if (!this.state.continue) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "main"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "formbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "shippingInfo"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Shipping Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "name"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "shipFirst"
+      }, "First Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "shipFirst",
+        name: "shipFirst",
+        onChange: ev => {
+          this.setState({
+            shipFirst: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "shipLast"
+      }, "Last Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "shipLast",
+        name: "shipLast",
+        onChange: ev => {
+          this.setState({
+            shipLast: ev.target.value
+          });
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "shipAddy"
+      }, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "shipAddy",
+        name: "shipAddy",
+        onChange: ev => {
+          this.setState({
+            shipAddy: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "csz"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "shipCity"
+      }, "City:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "shipCity",
+        name: "shipCity",
+        onChange: ev => {
+          this.setState({
+            shipCity: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "shipState"
+      }, "State:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "shipState",
+        name: "shipState",
+        onChange: ev => {
+          this.setState({
+            shipState: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "shipZip"
+      }, "Zip Code:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "shipZip",
+        name: "shipZip",
+        onChange: ev => {
+          this.setState({
+            shipZip: ev.target.value
+          });
+        }
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "billingAddy"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Billing Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "checkbox",
+        id: "same",
+        name: "same",
+        onChange: () => {
+          const checked = !this.state.same;
+
+          if (checked) {
+            this.setState({
+              billFirst: shipFirst,
+              billLast: shipLast,
+              billAddy: shipAddy,
+              billCity: shipCity,
+              billState: shipState,
+              billZip: shipZip,
+              same: checked
+            });
+          } else {
+            this.setState({
+              billFirst: '',
+              billLast: '',
+              billAddy: '',
+              billCity: '',
+              billState: '',
+              billZip: '',
+              same: checked
+            });
+          }
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "same"
+      }, " Billing Address same as Shipping?"), this.state.same ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "name"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "billFirst"
+      }, "First Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "billFirst",
+        name: "billFirst",
+        onChange: ev => {
+          this.setState({
+            billFirst: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "billLast"
+      }, "Last Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "billLast",
+        name: "billLast",
+        onChange: ev => {
+          this.setState({
+            billLast: ev.target.value
+          });
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "billAddy"
+      }, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "billAddy",
+        name: "billAddy",
+        onChange: ev => {
+          this.setState({
+            billAddy: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "csz"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "billCity"
+      }, "City:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "billCity",
+        name: "billCity",
+        onChange: ev => {
+          this.setState({
+            billCity: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "billState"
+      }, "State:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "billState",
+        name: "billState",
+        onChange: ev => {
+          this.setState({
+            billState: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "billZip"
+      }, "Zip Code:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "billZip",
+        name: "billZip",
+        onChange: ev => {
+          this.setState({
+            billZip: ev.target.value
+          });
+        }
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "billingInfo"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "name"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "cardFirst"
+      }, "First Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "cardFirst",
+        name: "cardFirst",
+        onChange: ev => {
+          this.setState({
+            cardFirst: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "cardLast"
+      }, "Last Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "cardLast",
+        name: "cardLast",
+        onChange: ev => {
+          this.setState({
+            cardLast: ev.target.value
+          });
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "cardInfo"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "cardNum"
+      }, "Card Number:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "cardNum",
+        name: "cardNum",
+        onChange: ev => {
+          this.setState({
+            cardNum: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "cardExp"
+      }, "Expiration Date:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "cardExp",
+        name: "cardExp",
+        value: "MM/YY",
+        onChange: ev => {
+          this.setState({
+            cardExp: ev.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        hmtlFor: "cardCode"
+      }, "Security Code:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        id: "cardCode",
+        name: "cardCode",
+        onChange: ev => {
+          this.setState({
+            cardCode: ev.target.value
+          });
+          console.log(this.state);
+        }
+      })))));
+    } else {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "orderSumm"
+      });
+    }
+  }
+
+}
+
+const mapState = ({
+  auth
+}) => {
+  return {
+    auth
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    getCart: userId => dispatch(getCart(userId))
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(CheckoutForm));
+
+/***/ }),
+
 /***/ "./client/components/SingleBook.js":
 /*!*****************************************!*\
   !*** ./client/components/SingleBook.js ***!
@@ -2120,6 +2439,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/cart */ "./client/store/cart.js");
+
 
 
 class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
@@ -2144,7 +2465,8 @@ const mapState = (state, {
 };
 
 const mapDispatch = dispatch => {
-  return {//  addToCart: (userId, book) => dispatch(addToCart(userId, book)),
+  return {
+    addToCart: (userId, book) => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_2__.addToCart)(userId, book))
   };
 };
 
@@ -2300,7 +2622,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Signup": () => /* reexport safe */ _auth_form__WEBPACK_IMPORTED_MODULE_2__.Signup,
 /* harmony export */   "AllBooks": () => /* reexport safe */ _AllBooks__WEBPACK_IMPORTED_MODULE_3__.default,
 /* harmony export */   "Cart": () => /* reexport safe */ _Cart__WEBPACK_IMPORTED_MODULE_4__.default,
-/* harmony export */   "SingleBook": () => /* reexport safe */ _SingleBook__WEBPACK_IMPORTED_MODULE_5__.default
+/* harmony export */   "SingleBook": () => /* reexport safe */ _SingleBook__WEBPACK_IMPORTED_MODULE_5__.default,
+/* harmony export */   "CheckoutForm": () => /* reexport safe */ _CheckoutForm__WEBPACK_IMPORTED_MODULE_6__.default
 /* harmony export */ });
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navbar */ "./client/components/navbar.js");
 /* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./client/components/home.js");
@@ -2308,11 +2631,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AllBooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AllBooks */ "./client/components/AllBooks.js");
 /* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.js");
 /* harmony import */ var _SingleBook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SingleBook */ "./client/components/SingleBook.js");
+/* harmony import */ var _CheckoutForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CheckoutForm */ "./client/components/CheckoutForm.js");
 /**
  * `components/index.js` exists simply as a 'central export' for our components.
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+
 
 
 
@@ -2487,6 +2812,9 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/mycart",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.Cart
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      path: "/checkout",
+      component: _components__WEBPACK_IMPORTED_MODULE_2__.CheckoutForm
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
       to: "/home"
     })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
@@ -2561,10 +2889,12 @@ const SET_AUTH = 'SET_AUTH';
  * ACTION CREATORS
  */
 
-const setAuth = auth => ({
-  type: SET_AUTH,
-  auth
-});
+const setAuth = auth => {
+  return {
+    type: SET_AUTH,
+    auth
+  };
+};
 /**
  * THUNK CREATORS
  */
@@ -2639,8 +2969,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
  //constants
 
-const SET_BOOKS = 'SET_BOOKS'; // const ADD_CART = 'ADD_CART'
-//action creators
+const SET_BOOKS = 'SET_BOOKS'; //action creators
 
 const setBooks = books => {
   return {

@@ -3,7 +3,6 @@ import axios from 'axios'
 //constants
 
 const SET_BOOKS = 'SET_BOOKS'
-// const ADD_CART = 'ADD_CART'
 
 
 //action creators
