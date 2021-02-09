@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { fetchBooks } from "../store/books";
 import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart";
+import Button from '@material-ui/core/Button';
+import auth from "../store/auth";
 
 export class AllBooks extends React.Component {
   componentDidMount() {
@@ -14,22 +16,27 @@ export class AllBooks extends React.Component {
     const userId = this.props.auth.id;
     return (
       <div>
-        <div>
+        <div className="container">
           {books &&
             books.map((book) => {
               return (
-                <div key={book.coverId}>
+                <div className="book-card" key={book.coverId}>
                   <Link to={`/books/${book.coverId}`}>
-                    <img src={book.img} />
+                    <img className="cover-art" src={book.img} />
                   </Link>
                   <Link to={`/books/${book.coverId}`}>
                     <h3>{book.title}</h3>
                   </Link>
                   Author: {book.author}
                   <p>${book.price}</p>
-                  <button onClick={() => this.props.addToCart(userId, book)}>
+                  {
+                    userId ?
+                    <Button onClick={() => this.props.addToCart(userId, book)}>
                     Add to Cart
-                  </button>
+                    </Button>
+                  :
+                    <Button>Fake btn: Will link to guest cart</Button>
+                  }
                 </div>
               );
             })}

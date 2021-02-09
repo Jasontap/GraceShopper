@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { getCart, removeFromCart } from '../store/cart'
+import Button from '@material-ui/core/Button'
 
 export class Cart extends React.Component{
   componentDidMount(){
@@ -20,12 +21,12 @@ export class Cart extends React.Component{
               <div key={item.id}>
                 <h4>Title: {item.book}</h4>
                 <p>Quantity: {item.quantity}</p>
-                <button onClick={()=>this.props.removeFromCart(item)}>Remove from Cart</button>
+                <Button onClick={()=>this.props.removeFromCart(item)}>Remove from Cart</Button>
               </div>
             )
           })
         }
-        <button>Check Out</button>
+        <Button>Check Out</Button>
       </div>
     )
   }

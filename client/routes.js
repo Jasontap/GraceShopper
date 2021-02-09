@@ -27,9 +27,10 @@ class Routes extends Component {
           </Switch>
         ) : (
           <Switch>
+            <Route path='/allbooks' component={AllBooks} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Redirect to="/login" />
+            <Redirect to="/allBooks" />
           </Switch>
         )}
       </div>

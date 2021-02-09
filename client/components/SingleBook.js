@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import {addToCart} from '../store/cart'
+import Button from '@material-ui/core/Button';
 
 
 export class SingleBook extends React.Component{
@@ -32,10 +33,10 @@ export class SingleBook extends React.Component{
           <div>
             <p>${ book.price }</p>
           </div>
-          <button 
+          <Button 
             // onClick={()=>this.props.addToCart(userId, book)}
             >Add to Cart
-          </button>
+          </Button>
         </div>
     </div>
     )
