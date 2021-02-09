@@ -17,10 +17,10 @@ export const _getCart = (cart) => {
     }
   };
 
-  export const _addToCart = (book) => {
+  export const _addToCart = (books) => {
     return {
       type: ADD_BOOK_TO_CART,
-      book
+      books
     }
   };
 
@@ -50,10 +50,10 @@ export const getCart = (userId) => {
     }
   };
 
-  export const addToCart = (userId, bookToCart) => {
+  export const addToCart = (userId, bookToCart,qty=1) => {
     return async (dispatch)=>{
-      const book = (await axios.post(`api/cart/${userId}/cart`, {book: bookToCart.title , quantity: 1})).data
-      dispatch(_addToCart(book))
+      const books = (await axios.post(`api/cart/${userId}/cart`, {book: bookToCart.title , quantity: qty})).data
+      dispatch(_addToCart(books))
     }
 };
 
@@ -68,7 +68,7 @@ export default function cartReducer(state=[], action) {
       state = state.filter(book => book.id !== action.book.id)
     }
     if(action.type === ADD_BOOK_TO_CART){
-      return [...state, action.book]
+      return action.books
     }
   
     return state;

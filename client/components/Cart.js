@@ -4,11 +4,11 @@ import { getCart, removeFromCart } from '../store/cart'
 
 export class Cart extends React.Component{
   componentDidMount(){
-    this.props.getCart(2)
+    const userId = this.props.auth.id;
+    this.props.getCart(userId);
   }
   render(){
     const cart = this.props.cart
-    console.log(this.props.cart)
     return(
       <div>
         <h1>CART</h1>
@@ -31,8 +31,8 @@ export class Cart extends React.Component{
   }
 }
 
-const mapState = ({cart}) => {
-  return {cart};
+const mapState = ({cart,auth}) => {
+  return {cart, auth};
 };
 
 const mapDispatch = (dispatch) => {

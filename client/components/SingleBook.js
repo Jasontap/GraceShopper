@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
+import {addToCart} from '../store/cart'
 
 
 export class SingleBook extends React.Component{
@@ -32,7 +33,7 @@ export class SingleBook extends React.Component{
             <p>${ book.price }</p>
           </div>
           <button 
-            // onClick={()=>{this.props.addToCart()}
+            // onClick={()=>this.props.addToCart(userId, book)}
             >Add to Cart
           </button>
         </div>
@@ -44,13 +45,13 @@ export class SingleBook extends React.Component{
 const mapState = (state, { match })=> {
   const book = state.books.find( book => book.coverId === match.params.id * 1 ) || {};
   return {
-    book
+    book,
   };
 };
   
   const mapDispatch = (dispatch) => {
     return {
-    //   addToCart: (book)=>dispatch(addToCart(book))
+      addToCart: (userId, book) => dispatch(addToCart(userId, book)),
     };
   };
   

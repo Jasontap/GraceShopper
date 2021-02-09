@@ -2007,6 +2007,7 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     const {
       books
     } = this.props;
+    const userId = this.props.auth.id;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books && books.map(book => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: book.coverId
@@ -2017,7 +2018,7 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
         to: `/books/${book.coverId}`
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, book.title)), "Author: ", book.author, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-        onClick: () => this.props.addToCart(2, book)
+        onClick: () => this.props.addToCart(userId, book)
       }, "Add to Cart"));
     })));
   }
@@ -2025,11 +2026,12 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
 }
 
 const mapState = ({
-  books
+  books,
+  auth
 }) => {
   return {
     books,
-    genre: window.location.pathname.slice(1)
+    auth
   };
 };
 
@@ -2065,12 +2067,12 @@ __webpack_require__.r(__webpack_exports__);
 
 class Cart extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   componentDidMount() {
-    this.props.getCart(2);
+    const userId = this.props.auth.id;
+    this.props.getCart(userId);
   }
 
   render() {
     const cart = this.props.cart;
-    console.log(this.props.cart);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "CART"), cart.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Your cart is Empty. Shop?") : cart.map(item => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: item.id
@@ -2083,10 +2085,12 @@ class Cart extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
 }
 
 const mapState = ({
-  cart
+  cart,
+  auth
 }) => {
   return {
-    cart
+    cart,
+    auth
   };
 };
 
@@ -2140,7 +2144,7 @@ const mapState = (state, {
 };
 
 const mapDispatch = dispatch => {
-  return {//   addToCart: (book)=>dispatch(addToCart(book))
+  return {//  addToCart: (userId, book) => dispatch(addToCart(userId, book)),
   };
 };
 
@@ -2343,8 +2347,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const Navbar = ({
   handleClick,
-  isLoggedIn,
-  handleGenre
+  isLoggedIn
 }) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
   to: "/home"
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "JWT Books")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
@@ -2378,10 +2381,6 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.logout)());
-    },
-
-    handleGenre() {
-      dispatch((0,_store_books__WEBPACK_IMPORTED_MODULE_3__.setBookGenre)());
     }
 
   };
@@ -2634,7 +2633,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "setBooks": () => /* binding */ setBooks,
 /* harmony export */   "fetchBooks": () => /* binding */ fetchBooks,
-/* harmony export */   "setBookGenre": () => /* binding */ setBookGenre,
 /* harmony export */   "default": () => /* binding */ booksReducer
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -2651,15 +2649,9 @@ const setBooks = books => {
   };
 }; //thunks
 
-const fetchBooks = genre => {
+const fetchBooks = () => {
   return async dispatch => {
-    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/books')).data;
-    dispatch(setBooks(books));
-  };
-};
-const setBookGenre = () => {
-  return async dispatch => {
-    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`/api/books/love`)).data;
+    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/books/')).data;
     dispatch(setBooks(books));
   };
 }; //reducer
@@ -2706,10 +2698,10 @@ const _getCart = cart => {
     cart
   };
 };
-const _addToCart = book => {
+const _addToCart = books => {
   return {
     type: ADD_BOOK_TO_CART,
-    book
+    books
   };
 };
 const _removeFromCart = book => {
@@ -2737,13 +2729,13 @@ const removeFromCart = book => {
     history.push('/mycart');
   };
 };
-const addToCart = (userId, bookToCart) => {
+const addToCart = (userId, bookToCart, qty = 1) => {
   return async dispatch => {
-    const book = (await axios__WEBPACK_IMPORTED_MODULE_0___default().post(`api/cart/${userId}/cart`, {
+    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().post(`api/cart/${userId}/cart`, {
       book: bookToCart.title,
-      quantity: 1
+      quantity: qty
     })).data;
-    dispatch(_addToCart(book));
+    dispatch(_addToCart(books));
   };
 }; //reducer
 
@@ -2757,7 +2749,7 @@ function cartReducer(state = [], action) {
   }
 
   if (action.type === ADD_BOOK_TO_CART) {
-    return [...state, action.book];
+    return action.books;
   }
 
   return state;

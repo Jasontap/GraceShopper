@@ -15,7 +15,6 @@ router.get('/', async (req, res, next) => {
 //delete item in cart
 router.delete('/', async (req, res, next) => {
   try {
-    console.log(req.body.bookId)
     const book = await Cart.findOne({where: {id: req.body.bookId}})
     await book.destroy()
     res.sendStatus(200)
@@ -41,10 +40,22 @@ router.get('/:id/cart', async (req, res, next) => {
 
 router.post('/:id/cart', async (req, res, next) => {
   try {
-    const book = await Cart.create(req.body)
-    book.userId = req.params.id;
-    book.save();
-    res.status(201).send(book)
+    console.log(req.body);
+    const bookInCart = await Cart.findOne({
+      where: {
+        book: req.body.book,
+        userId: req.params.id
+      }
+    })
+    if(bookInCart){
+      bookInCart.quantity = bookInCart.quantity + req.body.quantity
+      await bookInCart.save()
+    }else{
+      const book = await Cart.create(req.body)
+      book.userId = req.params.id;
+      await book.save();
+    }
+    res.status(201).send(await Cart.findAll())
   }
   catch(ex) {
     next(ex)
