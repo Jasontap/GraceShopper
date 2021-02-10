@@ -7342,7 +7342,7 @@ const theme = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__.default)(
     MuiButton: {
       text: {
         borderRadius: 3,
-        color: '#556B2F',
+        color: '#5D00E1',
         border: 1,
         boxShadow: '0 3px 5px 2px rgba(85,107,47,.4)',
         size: 'medium'
@@ -7471,11 +7471,14 @@ class Cart extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
     const cart = this.props.cart;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "CART"), cart.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Your cart is Empty. Shop?") : cart.map(item => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        key: item.id
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Title: ", item.book), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Quantity: ", item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, {
+        key: item.id,
+        className: "cart-card"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, item.book), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Quantity: ", item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Cost: ", item.quantity * item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, {
         onClick: () => this.props.removeFromCart(item)
       }, "Remove from Cart"));
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, null, "Check Out"));
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Total: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, {
+      disabled: !cart.length
+    }, "Check Out"));
   }
 
 }
@@ -7527,20 +7530,26 @@ class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component
     const {
       book
     } = this.props;
+    const userId = this.props.auth.id;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: book.img
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Title: ", book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Author: ", book.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Genre: ", book.genre)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", book.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Reviews: ", book.review))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default // onClick={()=>this.props.addToCart(userId, book)}
-    , null, "Add to Cart")));
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Title: ", book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Author: ", book.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Genre: ", book.genre)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", book.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Reviews: ", book.review))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, {
+      onClick: () => this.props.addToCart(userId, book)
+    }, "Add to Cart")));
   }
 
 }
 
-const mapState = (state, {
+const mapState = ({
+  books,
+  auth
+}, {
   match
 }) => {
-  const book = state.books.find(book => book.coverId === match.params.id * 1) || {};
+  const book = books.find(book => book.coverId === match.params.id * 1) || {};
   return {
-    book
+    book,
+    auth
   };
 };
 
@@ -8123,14 +8132,14 @@ const _removeFromCart = book => {
 
 const getCart = userId => {
   return async dispatch => {
-    const cart = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`api/cart/${userId}/cart`)).data;
+    const cart = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`/api/cart/${userId}/cart`)).data;
     dispatch(_getCart(cart));
   };
 };
 const removeFromCart = book => {
   return async dispatch => {
     const bookId = book.id;
-    await axios__WEBPACK_IMPORTED_MODULE_0___default().delete(`api/cart`, {
+    await axios__WEBPACK_IMPORTED_MODULE_0___default().delete(`/api/cart`, {
       data: {
         bookId
       }
@@ -8141,9 +8150,10 @@ const removeFromCart = book => {
 };
 const addToCart = (userId, bookToCart, qty = 1) => {
   return async dispatch => {
-    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().post(`api/cart/${userId}/cart`, {
+    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().post(`/api/cart/${userId}/cart`, {
       book: bookToCart.title,
-      quantity: qty
+      quantity: qty,
+      price: bookToCart.price
     })).data;
     dispatch(_addToCart(books));
   };

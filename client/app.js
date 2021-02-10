@@ -10,7 +10,7 @@ const theme = createMuiTheme({
     MuiButton: {
       text: {
         borderRadius: 3,
-        color: '#556B2F',
+        color: '#5D00E1',
         border: 1,
         boxShadow: '0 3px 5px 2px rgba(85,107,47,.4)',
         size: 'medium'

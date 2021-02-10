@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 export class SingleBook extends React.Component{
   render(){
     const { book } = this.props;
+    const userId = this.props.auth.id;
     return(
       <div>
         <div>
@@ -34,7 +35,7 @@ export class SingleBook extends React.Component{
             <p>${ book.price }</p>
           </div>
           <Button 
-            // onClick={()=>this.props.addToCart(userId, book)}
+            onClick={()=>this.props.addToCart(userId, book)}
             >Add to Cart
           </Button>
         </div>
@@ -43,10 +44,11 @@ export class SingleBook extends React.Component{
   }
 }
 
-const mapState = (state, { match })=> {
-  const book = state.books.find( book => book.coverId === match.params.id * 1 ) || {};
+const mapState = ({books,auth}, { match })=> {
+  const book = books.find( book => book.coverId === match.params.id * 1 ) || {};
   return {
     book,
+    auth
   };
 };
   
