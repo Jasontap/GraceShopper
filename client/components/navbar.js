@@ -7,8 +7,12 @@ import {setBookGenre} from '../store/books'
 
 
 export class Navbar extends React.Component {
+  constructor(props){
+    super(props)
+  }
   
   render(){
+    const isLoggedIn = this.props.isLoggedIn
     return(
       <div>
         <nav>
@@ -30,7 +34,7 @@ export class Navbar extends React.Component {
               <Link to="/allbooks"><h1>JWT Books</h1></Link>
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
-              <Link>Cart</Link>
+              {/* <Link>Cart</Link> */}
             </div>
           )}
         </nav>
