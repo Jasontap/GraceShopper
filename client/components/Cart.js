@@ -27,8 +27,10 @@ export class Cart extends React.Component{
             )
           })
         }
+
         <h4>Total: </h4>
         <Button disabled={!cart.length}>Check Out</Button>
+
       </div>
     )
   }
