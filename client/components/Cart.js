@@ -18,15 +18,17 @@ export class Cart extends React.Component{
           <p>Your cart is Empty. Shop?</p> :
           cart.map(item => {
             return(
-              <div key={item.id}>
-                <h4>Title: {item.book}</h4>
+              <div key={item.id} className="cart-card">
+                <h4>{item.book}</h4>
                 <p>Quantity: {item.quantity}</p>
+                <p>Cost: {item.quantity * item.price}</p>
                 <Button onClick={()=>this.props.removeFromCart(item)}>Remove from Cart</Button>
               </div>
             )
           })
         }
-        <Button>Check Out</Button>
+        <h4>Total: </h4>
+        <Button disabled={!cart.length}>Check Out</Button>
       </div>
     )
   }

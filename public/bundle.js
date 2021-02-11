@@ -62,6 +62,25 @@ function _assertThisInitialized(self) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ _classCallCheck
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/createClass.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/createClass.js ***!
@@ -409,6 +428,126 @@ function _inheritsLoose(subClass, superClass) {
 }
 
 module.exports = _inheritsLoose;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Backdrop/Backdrop.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Backdrop/Backdrop.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "styles": () => /* binding */ styles,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/esm/styles/withStyles.js");
+/* harmony import */ var _Fade__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Fade */ "./node_modules/@material-ui/core/esm/Fade/Fade.js");
+
+
+
+
+
+
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    // Improve scrollable dialog support.
+    zIndex: -1,
+    position: 'fixed',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: 0,
+    bottom: 0,
+    top: 0,
+    left: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    WebkitTapHighlightColor: 'transparent'
+  },
+
+  /* Styles applied to the root element if `invisible={true}`. */
+  invisible: {
+    backgroundColor: 'transparent'
+  }
+};
+var Backdrop = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Backdrop(props, ref) {
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$invisible = props.invisible,
+      invisible = _props$invisible === void 0 ? false : _props$invisible,
+      open = props.open,
+      transitionDuration = props.transitionDuration,
+      _props$TransitionComp = props.TransitionComponent,
+      TransitionComponent = _props$TransitionComp === void 0 ? _Fade__WEBPACK_IMPORTED_MODULE_5__.default : _props$TransitionComp,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__.default)(props, ["children", "classes", "className", "invisible", "open", "transitionDuration", "TransitionComponent"]);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    in: open,
+    timeout: transitionDuration
+  }, other), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__.default)(classes.root, className, invisible && classes.invisible),
+    "aria-hidden": true,
+    ref: ref
+  }, children));
+});
+ true ? Backdrop.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * The content of the component.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().node),
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+
+  /**
+   * If `true`, the backdrop is invisible.
+   * It can be used when rendering a popover or a custom select component.
+   */
+  invisible: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
+
+  /**
+   * If `true`, the backdrop is open.
+   */
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool.isRequired),
+
+  /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   */
+  transitionDuration: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_3___default().number), prop_types__WEBPACK_IMPORTED_MODULE_3___default().shape({
+    appear: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number),
+    enter: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number),
+    exit: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number)
+  })])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_6__.default)(styles, {
+  name: 'MuiBackdrop'
+})(Backdrop));
 
 /***/ }),
 
@@ -1858,6 +1997,2120 @@ var TouchRipple = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(fun
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/esm/Drawer/Drawer.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Drawer/Drawer.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "styles": () => /* binding */ styles,
+/* harmony export */   "isHorizontal": () => /* binding */ isHorizontal,
+/* harmony export */   "getAnchor": () => /* binding */ getAnchor,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Modal */ "./node_modules/@material-ui/core/esm/Modal/Modal.js");
+/* harmony import */ var _Backdrop__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Backdrop */ "./node_modules/@material-ui/core/esm/Backdrop/Backdrop.js");
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/esm/styles/withStyles.js");
+/* harmony import */ var _Slide__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Slide */ "./node_modules/@material-ui/core/esm/Slide/Slide.js");
+/* harmony import */ var _Paper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Paper */ "./node_modules/@material-ui/core/esm/Paper/Paper.js");
+/* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/capitalize */ "./node_modules/@material-ui/core/esm/utils/capitalize.js");
+/* harmony import */ var _styles_transitions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../styles/transitions */ "./node_modules/@material-ui/core/esm/styles/transitions.js");
+/* harmony import */ var _styles_useTheme__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/useTheme */ "./node_modules/@material-ui/core/esm/styles/useTheme.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {},
+
+    /* Styles applied to the root element if `variant="permanent or persistent"`. */
+    docked: {
+      flex: '0 0 auto'
+    },
+
+    /* Styles applied to the `Paper` component. */
+    paper: {
+      overflowY: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      flex: '1 0 auto',
+      zIndex: theme.zIndex.drawer,
+      WebkitOverflowScrolling: 'touch',
+      // Add iOS momentum scrolling.
+      // temporary style
+      position: 'fixed',
+      top: 0,
+      // We disable the focus ring for mouse, touch and keyboard users.
+      // At some point, it would be better to keep it for keyboard users.
+      // :focus-ring CSS pseudo-class will help.
+      outline: 0
+    },
+
+    /* Styles applied to the `Paper` component if `anchor="left"`. */
+    paperAnchorLeft: {
+      left: 0,
+      right: 'auto'
+    },
+
+    /* Styles applied to the `Paper` component if `anchor="right"`. */
+    paperAnchorRight: {
+      left: 'auto',
+      right: 0
+    },
+
+    /* Styles applied to the `Paper` component if `anchor="top"`. */
+    paperAnchorTop: {
+      top: 0,
+      left: 0,
+      bottom: 'auto',
+      right: 0,
+      height: 'auto',
+      maxHeight: '100%'
+    },
+
+    /* Styles applied to the `Paper` component if `anchor="bottom"`. */
+    paperAnchorBottom: {
+      top: 'auto',
+      left: 0,
+      bottom: 0,
+      right: 0,
+      height: 'auto',
+      maxHeight: '100%'
+    },
+
+    /* Styles applied to the `Paper` component if `anchor="left"` and `variant` is not "temporary". */
+    paperAnchorDockedLeft: {
+      borderRight: "1px solid ".concat(theme.palette.divider)
+    },
+
+    /* Styles applied to the `Paper` component if `anchor="top"` and `variant` is not "temporary". */
+    paperAnchorDockedTop: {
+      borderBottom: "1px solid ".concat(theme.palette.divider)
+    },
+
+    /* Styles applied to the `Paper` component if `anchor="right"` and `variant` is not "temporary". */
+    paperAnchorDockedRight: {
+      borderLeft: "1px solid ".concat(theme.palette.divider)
+    },
+
+    /* Styles applied to the `Paper` component if `anchor="bottom"` and `variant` is not "temporary". */
+    paperAnchorDockedBottom: {
+      borderTop: "1px solid ".concat(theme.palette.divider)
+    },
+
+    /* Styles applied to the `Modal` component. */
+    modal: {}
+  };
+};
+var oppositeDirection = {
+  left: 'right',
+  right: 'left',
+  top: 'down',
+  bottom: 'up'
+};
+function isHorizontal(anchor) {
+  return ['left', 'right'].indexOf(anchor) !== -1;
+}
+function getAnchor(theme, anchor) {
+  return theme.direction === 'rtl' && isHorizontal(anchor) ? oppositeDirection[anchor] : anchor;
+}
+var defaultTransitionDuration = {
+  enter: _styles_transitions__WEBPACK_IMPORTED_MODULE_5__.duration.enteringScreen,
+  exit: _styles_transitions__WEBPACK_IMPORTED_MODULE_5__.duration.leavingScreen
+};
+/**
+ * The props of the [Modal](/api/modal/) component are available
+ * when `variant="temporary"` is set.
+ */
+
+var Drawer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Drawer(props, ref) {
+  var _props$anchor = props.anchor,
+      anchorProp = _props$anchor === void 0 ? 'left' : _props$anchor,
+      BackdropProps = props.BackdropProps,
+      children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$elevation = props.elevation,
+      elevation = _props$elevation === void 0 ? 16 : _props$elevation,
+      _props$ModalProps = props.ModalProps;
+  _props$ModalProps = _props$ModalProps === void 0 ? {} : _props$ModalProps;
+
+  var BackdropPropsProp = _props$ModalProps.BackdropProps,
+      ModalProps = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__.default)(_props$ModalProps, ["BackdropProps"]),
+      onClose = props.onClose,
+      _props$open = props.open,
+      open = _props$open === void 0 ? false : _props$open,
+      _props$PaperProps = props.PaperProps,
+      PaperProps = _props$PaperProps === void 0 ? {} : _props$PaperProps,
+      SlideProps = props.SlideProps,
+      _props$TransitionComp = props.TransitionComponent,
+      TransitionComponent = _props$TransitionComp === void 0 ? _Slide__WEBPACK_IMPORTED_MODULE_6__.default : _props$TransitionComp,
+      _props$transitionDura = props.transitionDuration,
+      transitionDuration = _props$transitionDura === void 0 ? defaultTransitionDuration : _props$transitionDura,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'temporary' : _props$variant,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__.default)(props, ["anchor", "BackdropProps", "children", "classes", "className", "elevation", "ModalProps", "onClose", "open", "PaperProps", "SlideProps", "TransitionComponent", "transitionDuration", "variant"]);
+
+  var theme = (0,_styles_useTheme__WEBPACK_IMPORTED_MODULE_7__.default)(); // Let's assume that the Drawer will always be rendered on user space.
+  // We use this state is order to skip the appear transition during the
+  // initial mount of the component.
+
+  var mounted = react__WEBPACK_IMPORTED_MODULE_2__.useRef(false);
+  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(function () {
+    mounted.current = true;
+  }, []);
+  var anchor = getAnchor(theme, anchorProp);
+  var drawer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_Paper__WEBPACK_IMPORTED_MODULE_8__.default, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    elevation: variant === 'temporary' ? elevation : 0,
+    square: true
+  }, PaperProps, {
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__.default)(classes.paper, classes["paperAnchor".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_9__.default)(anchor))], PaperProps.className, variant !== 'temporary' && classes["paperAnchorDocked".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_9__.default)(anchor))])
+  }), children);
+
+  if (variant === 'permanent') {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+      className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__.default)(classes.root, classes.docked, className),
+      ref: ref
+    }, other), drawer);
+  }
+
+  var slidingDrawer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    in: open,
+    direction: oppositeDirection[anchor],
+    timeout: transitionDuration,
+    appear: mounted.current
+  }, SlideProps), drawer);
+
+  if (variant === 'persistent') {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+      className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__.default)(classes.root, classes.docked, className),
+      ref: ref
+    }, other), slidingDrawer);
+  } // variant === temporary
+
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_Modal__WEBPACK_IMPORTED_MODULE_10__.default, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    BackdropProps: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, BackdropProps, BackdropPropsProp, {
+      transitionDuration: transitionDuration
+    }),
+    BackdropComponent: _Backdrop__WEBPACK_IMPORTED_MODULE_11__.default,
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__.default)(classes.root, classes.modal, className),
+    open: open,
+    onClose: onClose,
+    ref: ref
+  }, other, ModalProps), slidingDrawer);
+});
+ true ? Drawer.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * Side from which the drawer will appear.
+   */
+  anchor: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOf(['bottom', 'left', 'right', 'top']),
+
+  /**
+   * @ignore
+   */
+  BackdropProps: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+
+  /**
+   * The contents of the drawer.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().node),
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+
+  /**
+   * The elevation of the drawer.
+   */
+  elevation: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number),
+
+  /**
+   * Props applied to the [`Modal`](/api/modal/) element.
+   */
+  ModalProps: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+
+  /**
+   * Callback fired when the component requests to be closed.
+   *
+   * @param {object} event The event source of the callback.
+   */
+  onClose: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+
+  /**
+   * If `true`, the drawer is open.
+   */
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
+
+  /**
+   * Props applied to the [`Paper`](/api/paper/) element.
+   */
+  PaperProps: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+
+  /**
+   * Props applied to the [`Slide`](/api/slide/) element.
+   */
+  SlideProps: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+
+  /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   */
+  transitionDuration: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_3___default().number), prop_types__WEBPACK_IMPORTED_MODULE_3___default().shape({
+    appear: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number),
+    enter: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number),
+    exit: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number)
+  })]),
+
+  /**
+   * The variant to use.
+   */
+  variant: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOf(['permanent', 'persistent', 'temporary'])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_12__.default)(styles, {
+  name: 'MuiDrawer',
+  flip: false
+})(Drawer));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Fade/Fade.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Fade/Fade.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/Transition.js");
+/* harmony import */ var _styles_transitions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../styles/transitions */ "./node_modules/@material-ui/core/esm/styles/transitions.js");
+/* harmony import */ var _styles_useTheme__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/useTheme */ "./node_modules/@material-ui/core/esm/styles/useTheme.js");
+/* harmony import */ var _transitions_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../transitions/utils */ "./node_modules/@material-ui/core/esm/transitions/utils.js");
+/* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/useForkRef */ "./node_modules/@material-ui/core/esm/utils/useForkRef.js");
+
+
+
+
+
+
+
+
+
+
+var styles = {
+  entering: {
+    opacity: 1
+  },
+  entered: {
+    opacity: 1
+  }
+};
+var defaultTimeout = {
+  enter: _styles_transitions__WEBPACK_IMPORTED_MODULE_5__.duration.enteringScreen,
+  exit: _styles_transitions__WEBPACK_IMPORTED_MODULE_5__.duration.leavingScreen
+};
+/**
+ * The Fade transition is used by the [Modal](/components/modal/) component.
+ * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
+ */
+
+var Fade = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function Fade(props, ref) {
+  var children = props.children,
+      _props$disableStrictM = props.disableStrictModeCompat,
+      disableStrictModeCompat = _props$disableStrictM === void 0 ? false : _props$disableStrictM,
+      inProp = props.in,
+      onEnter = props.onEnter,
+      onEntered = props.onEntered,
+      onEntering = props.onEntering,
+      onExit = props.onExit,
+      onExited = props.onExited,
+      onExiting = props.onExiting,
+      style = props.style,
+      _props$TransitionComp = props.TransitionComponent,
+      TransitionComponent = _props$TransitionComp === void 0 ? react_transition_group__WEBPACK_IMPORTED_MODULE_6__.default : _props$TransitionComp,
+      _props$timeout = props.timeout,
+      timeout = _props$timeout === void 0 ? defaultTimeout : _props$timeout,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__.default)(props, ["children", "disableStrictModeCompat", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "TransitionComponent", "timeout"]);
+
+  var theme = (0,_styles_useTheme__WEBPACK_IMPORTED_MODULE_7__.default)();
+  var enableStrictModeCompat = theme.unstable_strictMode && !disableStrictModeCompat;
+  var nodeRef = react__WEBPACK_IMPORTED_MODULE_3__.useRef(null);
+  var foreignRef = (0,_utils_useForkRef__WEBPACK_IMPORTED_MODULE_8__.default)(children.ref, ref);
+  var handleRef = (0,_utils_useForkRef__WEBPACK_IMPORTED_MODULE_8__.default)(enableStrictModeCompat ? nodeRef : undefined, foreignRef);
+
+  var normalizedTransitionCallback = function normalizedTransitionCallback(callback) {
+    return function (nodeOrAppearing, maybeAppearing) {
+      if (callback) {
+        var _ref = enableStrictModeCompat ? [nodeRef.current, nodeOrAppearing] : [nodeOrAppearing, maybeAppearing],
+            _ref2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_ref, 2),
+            node = _ref2[0],
+            isAppearing = _ref2[1]; // onEnterXxx and onExitXxx callbacks have a different arguments.length value.
+
+
+        if (isAppearing === undefined) {
+          callback(node);
+        } else {
+          callback(node, isAppearing);
+        }
+      }
+    };
+  };
+
+  var handleEntering = normalizedTransitionCallback(onEntering);
+  var handleEnter = normalizedTransitionCallback(function (node, isAppearing) {
+    (0,_transitions_utils__WEBPACK_IMPORTED_MODULE_9__.reflow)(node); // So the animation always start from the start.
+
+    var transitionProps = (0,_transitions_utils__WEBPACK_IMPORTED_MODULE_9__.getTransitionProps)({
+      style: style,
+      timeout: timeout
+    }, {
+      mode: 'enter'
+    });
+    node.style.webkitTransition = theme.transitions.create('opacity', transitionProps);
+    node.style.transition = theme.transitions.create('opacity', transitionProps);
+
+    if (onEnter) {
+      onEnter(node, isAppearing);
+    }
+  });
+  var handleEntered = normalizedTransitionCallback(onEntered);
+  var handleExiting = normalizedTransitionCallback(onExiting);
+  var handleExit = normalizedTransitionCallback(function (node) {
+    var transitionProps = (0,_transitions_utils__WEBPACK_IMPORTED_MODULE_9__.getTransitionProps)({
+      style: style,
+      timeout: timeout
+    }, {
+      mode: 'exit'
+    });
+    node.style.webkitTransition = theme.transitions.create('opacity', transitionProps);
+    node.style.transition = theme.transitions.create('opacity', transitionProps);
+
+    if (onExit) {
+      onExit(node);
+    }
+  });
+  var handleExited = normalizedTransitionCallback(onExited);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    appear: true,
+    in: inProp,
+    nodeRef: enableStrictModeCompat ? nodeRef : undefined,
+    onEnter: handleEnter,
+    onEntered: handleEntered,
+    onEntering: handleEntering,
+    onExit: handleExit,
+    onExited: handleExited,
+    onExiting: handleExiting,
+    timeout: timeout
+  }, other), function (state, childProps) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.cloneElement(children, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+      style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+        opacity: 0,
+        visibility: state === 'exited' && !inProp ? 'hidden' : undefined
+      }, styles[state], style, children.props.style),
+      ref: handleRef
+    }, childProps));
+  });
+});
+ true ? Fade.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * A single child content element.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().element),
+
+  /**
+   * Enable this prop if you encounter 'Function components cannot be given refs',
+   * use `unstable_createStrictModeTheme`,
+   * and can't forward the ref in the child component.
+   */
+  disableStrictModeCompat: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, the component will transition in.
+   */
+  in: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * @ignore
+   */
+  onEnter: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * @ignore
+   */
+  onEntered: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * @ignore
+   */
+  onEntering: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * @ignore
+   */
+  onExit: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * @ignore
+   */
+  onExited: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * @ignore
+   */
+  onExiting: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * @ignore
+   */
+  style: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object),
+
+  /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   */
+  timeout: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_4___default().number), prop_types__WEBPACK_IMPORTED_MODULE_4___default().shape({
+    appear: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number),
+    enter: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number),
+    exit: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number)
+  })])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Fade);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Modal/Modal.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Modal/Modal.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "styles": () => /* binding */ styles,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/styles */ "./node_modules/@material-ui/styles/esm/useTheme/useTheme.js");
+/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/styles */ "./node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js");
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/esm/elementAcceptingRef.js");
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/esm/HTMLElementType.js");
+/* harmony import */ var _utils_ownerDocument__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/ownerDocument */ "./node_modules/@material-ui/core/esm/utils/ownerDocument.js");
+/* harmony import */ var _Portal__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Portal */ "./node_modules/@material-ui/core/esm/Portal/Portal.js");
+/* harmony import */ var _utils_createChainedFunction__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../utils/createChainedFunction */ "./node_modules/@material-ui/core/esm/utils/createChainedFunction.js");
+/* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/useForkRef */ "./node_modules/@material-ui/core/esm/utils/useForkRef.js");
+/* harmony import */ var _utils_useEventCallback__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/useEventCallback */ "./node_modules/@material-ui/core/esm/utils/useEventCallback.js");
+/* harmony import */ var _styles_zIndex__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../styles/zIndex */ "./node_modules/@material-ui/core/esm/styles/zIndex.js");
+/* harmony import */ var _ModalManager__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ModalManager */ "./node_modules/@material-ui/core/esm/Modal/ModalManager.js");
+/* harmony import */ var _Unstable_TrapFocus__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../Unstable_TrapFocus */ "./node_modules/@material-ui/core/esm/Unstable_TrapFocus/Unstable_TrapFocus.js");
+/* harmony import */ var _SimpleBackdrop__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SimpleBackdrop */ "./node_modules/@material-ui/core/esm/Modal/SimpleBackdrop.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getContainer(container) {
+  container = typeof container === 'function' ? container() : container;
+  return react_dom__WEBPACK_IMPORTED_MODULE_3__.findDOMNode(container);
+}
+
+function getHasTransition(props) {
+  return props.children ? props.children.props.hasOwnProperty('in') : false;
+} // A modal manager used to track and manage the state of open Modals.
+// Modals don't open on the server so this won't conflict with concurrent requests.
+
+
+var defaultManager = new _ModalManager__WEBPACK_IMPORTED_MODULE_5__.default();
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      position: 'fixed',
+      zIndex: theme.zIndex.modal,
+      right: 0,
+      bottom: 0,
+      top: 0,
+      left: 0
+    },
+
+    /* Styles applied to the root element if the `Modal` has exited. */
+    hidden: {
+      visibility: 'hidden'
+    }
+  };
+};
+/**
+ * Modal is a lower-level construct that is leveraged by the following components:
+ *
+ * - [Dialog](/api/dialog/)
+ * - [Drawer](/api/drawer/)
+ * - [Menu](/api/menu/)
+ * - [Popover](/api/popover/)
+ *
+ * If you are creating a modal dialog, you probably want to use the [Dialog](/api/dialog/) component
+ * rather than directly using Modal.
+ *
+ * This component shares many concepts with [react-overlays](https://react-bootstrap.github.io/react-overlays/#modals).
+ */
+
+var Modal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Modal(inProps, ref) {
+  var theme = (0,_material_ui_styles__WEBPACK_IMPORTED_MODULE_6__.default)();
+  var props = (0,_material_ui_styles__WEBPACK_IMPORTED_MODULE_7__.default)({
+    name: 'MuiModal',
+    props: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({}, inProps),
+    theme: theme
+  });
+
+  var _props$BackdropCompon = props.BackdropComponent,
+      BackdropComponent = _props$BackdropCompon === void 0 ? _SimpleBackdrop__WEBPACK_IMPORTED_MODULE_8__.default : _props$BackdropCompon,
+      BackdropProps = props.BackdropProps,
+      children = props.children,
+      _props$closeAfterTran = props.closeAfterTransition,
+      closeAfterTransition = _props$closeAfterTran === void 0 ? false : _props$closeAfterTran,
+      container = props.container,
+      _props$disableAutoFoc = props.disableAutoFocus,
+      disableAutoFocus = _props$disableAutoFoc === void 0 ? false : _props$disableAutoFoc,
+      _props$disableBackdro = props.disableBackdropClick,
+      disableBackdropClick = _props$disableBackdro === void 0 ? false : _props$disableBackdro,
+      _props$disableEnforce = props.disableEnforceFocus,
+      disableEnforceFocus = _props$disableEnforce === void 0 ? false : _props$disableEnforce,
+      _props$disableEscapeK = props.disableEscapeKeyDown,
+      disableEscapeKeyDown = _props$disableEscapeK === void 0 ? false : _props$disableEscapeK,
+      _props$disablePortal = props.disablePortal,
+      disablePortal = _props$disablePortal === void 0 ? false : _props$disablePortal,
+      _props$disableRestore = props.disableRestoreFocus,
+      disableRestoreFocus = _props$disableRestore === void 0 ? false : _props$disableRestore,
+      _props$disableScrollL = props.disableScrollLock,
+      disableScrollLock = _props$disableScrollL === void 0 ? false : _props$disableScrollL,
+      _props$hideBackdrop = props.hideBackdrop,
+      hideBackdrop = _props$hideBackdrop === void 0 ? false : _props$hideBackdrop,
+      _props$keepMounted = props.keepMounted,
+      keepMounted = _props$keepMounted === void 0 ? false : _props$keepMounted,
+      _props$manager = props.manager,
+      manager = _props$manager === void 0 ? defaultManager : _props$manager,
+      onBackdropClick = props.onBackdropClick,
+      onClose = props.onClose,
+      onEscapeKeyDown = props.onEscapeKeyDown,
+      onRendered = props.onRendered,
+      open = props.open,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__.default)(props, ["BackdropComponent", "BackdropProps", "children", "closeAfterTransition", "container", "disableAutoFocus", "disableBackdropClick", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "manager", "onBackdropClick", "onClose", "onEscapeKeyDown", "onRendered", "open"]);
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_2__.useState(true),
+      exited = _React$useState[0],
+      setExited = _React$useState[1];
+
+  var modal = react__WEBPACK_IMPORTED_MODULE_2__.useRef({});
+  var mountNodeRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef(null);
+  var modalRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef(null);
+  var handleRef = (0,_utils_useForkRef__WEBPACK_IMPORTED_MODULE_9__.default)(modalRef, ref);
+  var hasTransition = getHasTransition(props);
+
+  var getDoc = function getDoc() {
+    return (0,_utils_ownerDocument__WEBPACK_IMPORTED_MODULE_10__.default)(mountNodeRef.current);
+  };
+
+  var getModal = function getModal() {
+    modal.current.modalRef = modalRef.current;
+    modal.current.mountNode = mountNodeRef.current;
+    return modal.current;
+  };
+
+  var handleMounted = function handleMounted() {
+    manager.mount(getModal(), {
+      disableScrollLock: disableScrollLock
+    }); // Fix a bug on Chrome where the scroll isn't initially 0.
+
+    modalRef.current.scrollTop = 0;
+  };
+
+  var handleOpen = (0,_utils_useEventCallback__WEBPACK_IMPORTED_MODULE_11__.default)(function () {
+    var resolvedContainer = getContainer(container) || getDoc().body;
+    manager.add(getModal(), resolvedContainer); // The element was already mounted.
+
+    if (modalRef.current) {
+      handleMounted();
+    }
+  });
+  var isTopModal = react__WEBPACK_IMPORTED_MODULE_2__.useCallback(function () {
+    return manager.isTopModal(getModal());
+  }, [manager]);
+  var handlePortalRef = (0,_utils_useEventCallback__WEBPACK_IMPORTED_MODULE_11__.default)(function (node) {
+    mountNodeRef.current = node;
+
+    if (!node) {
+      return;
+    }
+
+    if (onRendered) {
+      onRendered();
+    }
+
+    if (open && isTopModal()) {
+      handleMounted();
+    } else {
+      (0,_ModalManager__WEBPACK_IMPORTED_MODULE_5__.ariaHidden)(modalRef.current, true);
+    }
+  });
+  var handleClose = react__WEBPACK_IMPORTED_MODULE_2__.useCallback(function () {
+    manager.remove(getModal());
+  }, [manager]);
+  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(function () {
+    return function () {
+      handleClose();
+    };
+  }, [handleClose]);
+  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(function () {
+    if (open) {
+      handleOpen();
+    } else if (!hasTransition || !closeAfterTransition) {
+      handleClose();
+    }
+  }, [open, handleClose, hasTransition, closeAfterTransition, handleOpen]);
+
+  if (!keepMounted && !open && (!hasTransition || exited)) {
+    return null;
+  }
+
+  var handleEnter = function handleEnter() {
+    setExited(false);
+  };
+
+  var handleExited = function handleExited() {
+    setExited(true);
+
+    if (closeAfterTransition) {
+      handleClose();
+    }
+  };
+
+  var handleBackdropClick = function handleBackdropClick(event) {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    if (onBackdropClick) {
+      onBackdropClick(event);
+    }
+
+    if (!disableBackdropClick && onClose) {
+      onClose(event, 'backdropClick');
+    }
+  };
+
+  var handleKeyDown = function handleKeyDown(event) {
+    // The handler doesn't take event.defaultPrevented into account:
+    //
+    // event.preventDefault() is meant to stop default behaviours like
+    // clicking a checkbox to check it, hitting a button to submit a form,
+    // and hitting left arrow to move the cursor in a text input etc.
+    // Only special HTML elements have these default behaviors.
+    if (event.key !== 'Escape' || !isTopModal()) {
+      return;
+    }
+
+    if (onEscapeKeyDown) {
+      onEscapeKeyDown(event);
+    }
+
+    if (!disableEscapeKeyDown) {
+      // Swallow the event, in case someone is listening for the escape key on the body.
+      event.stopPropagation();
+
+      if (onClose) {
+        onClose(event, 'escapeKeyDown');
+      }
+    }
+  };
+
+  var inlineStyle = styles(theme || {
+    zIndex: _styles_zIndex__WEBPACK_IMPORTED_MODULE_12__.default
+  });
+  var childProps = {};
+
+  if (children.props.tabIndex === undefined) {
+    childProps.tabIndex = children.props.tabIndex || '-1';
+  } // It's a Transition like component
+
+
+  if (hasTransition) {
+    childProps.onEnter = (0,_utils_createChainedFunction__WEBPACK_IMPORTED_MODULE_13__.default)(handleEnter, children.props.onEnter);
+    childProps.onExited = (0,_utils_createChainedFunction__WEBPACK_IMPORTED_MODULE_13__.default)(handleExited, children.props.onExited);
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_Portal__WEBPACK_IMPORTED_MODULE_14__.default, {
+    ref: handlePortalRef,
+    container: container,
+    disablePortal: disablePortal
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({
+    ref: handleRef,
+    onKeyDown: handleKeyDown,
+    role: "presentation"
+  }, other, {
+    style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({}, inlineStyle.root, !open && exited ? inlineStyle.hidden : {}, other.style)
+  }), hideBackdrop ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(BackdropComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({
+    open: open,
+    onClick: handleBackdropClick
+  }, BackdropProps)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_Unstable_TrapFocus__WEBPACK_IMPORTED_MODULE_15__.default, {
+    disableEnforceFocus: disableEnforceFocus,
+    disableAutoFocus: disableAutoFocus,
+    disableRestoreFocus: disableRestoreFocus,
+    getDoc: getDoc,
+    isEnabled: isTopModal,
+    open: open
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(children, childProps))));
+});
+ true ? Modal.propTypes = {
+  /**
+   * A backdrop component. This prop enables custom backdrop rendering.
+   */
+  BackdropComponent: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().elementType),
+
+  /**
+   * Props applied to the [`Backdrop`](/api/backdrop/) element.
+   */
+  BackdropProps: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object),
+
+  /**
+   * A single child content element.
+   */
+  children: _material_ui_utils__WEBPACK_IMPORTED_MODULE_16__.default.isRequired,
+
+  /**
+   * When set to true the Modal waits until a nested Transition is completed before closing.
+   */
+  closeAfterTransition: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * A HTML element, component instance, or function that returns either.
+   * The `container` will have the portal children appended to it.
+   *
+   * By default, it uses the body of the top-level document object,
+   * so it's simply `document.body` most of the time.
+   */
+  container: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([_material_ui_utils__WEBPACK_IMPORTED_MODULE_17__.default, prop_types__WEBPACK_IMPORTED_MODULE_4___default().instanceOf(react__WEBPACK_IMPORTED_MODULE_2__.Component), (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func)]),
+
+  /**
+   * If `true`, the modal will not automatically shift focus to itself when it opens, and
+   * replace it to the last focused element when it closes.
+   * This also works correctly with any modal children that have the `disableAutoFocus` prop.
+   *
+   * Generally this should never be set to `true` as it makes the modal less
+   * accessible to assistive technologies, like screen readers.
+   */
+  disableAutoFocus: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, clicking the backdrop will not fire `onClose`.
+   */
+  disableBackdropClick: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, the modal will not prevent focus from leaving the modal while open.
+   *
+   * Generally this should never be set to `true` as it makes the modal less
+   * accessible to assistive technologies, like screen readers.
+   */
+  disableEnforceFocus: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, hitting escape will not fire `onClose`.
+   */
+  disableEscapeKeyDown: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * Disable the portal behavior.
+   * The children stay within it's parent DOM hierarchy.
+   */
+  disablePortal: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, the modal will not restore focus to previously focused element once
+   * modal is hidden.
+   */
+  disableRestoreFocus: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * Disable the scroll lock behavior.
+   */
+  disableScrollLock: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, the backdrop is not rendered.
+   */
+  hideBackdrop: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * Always keep the children in the DOM.
+   * This prop can be useful in SEO situation or
+   * when you want to maximize the responsiveness of the Modal.
+   */
+  keepMounted: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * @ignore
+   */
+  manager: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object),
+
+  /**
+   * Callback fired when the backdrop is clicked.
+   */
+  onBackdropClick: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * Callback fired when the component requests to be closed.
+   * The `reason` parameter can optionally be used to control the response to `onClose`.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
+   */
+  onClose: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * Callback fired when the escape key is pressed,
+   * `disableEscapeKeyDown` is false and the modal is in focus.
+   */
+  onEscapeKeyDown: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * Callback fired once the children has been mounted into the `container`.
+   * It signals that the `open={true}` prop took effect.
+   *
+   * This prop will be deprecated and removed in v5, the ref can be used instead.
+   */
+  onRendered: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+
+  /**
+   * If `true`, the modal is open.
+   */
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool.isRequired)
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Modal/ModalManager.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Modal/ModalManager.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ariaHidden": () => /* binding */ ariaHidden,
+/* harmony export */   "default": () => /* binding */ ModalManager
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _utils_getScrollbarSize__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getScrollbarSize */ "./node_modules/@material-ui/core/esm/utils/getScrollbarSize.js");
+/* harmony import */ var _utils_ownerDocument__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/ownerDocument */ "./node_modules/@material-ui/core/esm/utils/ownerDocument.js");
+/* harmony import */ var _utils_ownerWindow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/ownerWindow */ "./node_modules/@material-ui/core/esm/utils/ownerWindow.js");
+
+
+
+
+
+ // Is a vertical scrollbar displayed?
+
+function isOverflowing(container) {
+  var doc = (0,_utils_ownerDocument__WEBPACK_IMPORTED_MODULE_3__.default)(container);
+
+  if (doc.body === container) {
+    return (0,_utils_ownerWindow__WEBPACK_IMPORTED_MODULE_4__.default)(doc).innerWidth > doc.documentElement.clientWidth;
+  }
+
+  return container.scrollHeight > container.clientHeight;
+}
+
+function ariaHidden(node, show) {
+  if (show) {
+    node.setAttribute('aria-hidden', 'true');
+  } else {
+    node.removeAttribute('aria-hidden');
+  }
+}
+
+function getPaddingRight(node) {
+  return parseInt(window.getComputedStyle(node)['padding-right'], 10) || 0;
+}
+
+function ariaHiddenSiblings(container, mountNode, currentNode) {
+  var nodesToExclude = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
+  var show = arguments.length > 4 ? arguments[4] : undefined;
+  var blacklist = [mountNode, currentNode].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__.default)(nodesToExclude));
+  var blacklistTagNames = ['TEMPLATE', 'SCRIPT', 'STYLE'];
+  [].forEach.call(container.children, function (node) {
+    if (node.nodeType === 1 && blacklist.indexOf(node) === -1 && blacklistTagNames.indexOf(node.tagName) === -1) {
+      ariaHidden(node, show);
+    }
+  });
+}
+
+function findIndexOf(containerInfo, callback) {
+  var idx = -1;
+  containerInfo.some(function (item, index) {
+    if (callback(item)) {
+      idx = index;
+      return true;
+    }
+
+    return false;
+  });
+  return idx;
+}
+
+function handleContainer(containerInfo, props) {
+  var restoreStyle = [];
+  var restorePaddings = [];
+  var container = containerInfo.container;
+  var fixedNodes;
+
+  if (!props.disableScrollLock) {
+    if (isOverflowing(container)) {
+      // Compute the size before applying overflow hidden to avoid any scroll jumps.
+      var scrollbarSize = (0,_utils_getScrollbarSize__WEBPACK_IMPORTED_MODULE_5__.default)();
+      restoreStyle.push({
+        value: container.style.paddingRight,
+        key: 'padding-right',
+        el: container
+      }); // Use computed style, here to get the real padding to add our scrollbar width.
+
+      container.style['padding-right'] = "".concat(getPaddingRight(container) + scrollbarSize, "px"); // .mui-fixed is a global helper.
+
+      fixedNodes = (0,_utils_ownerDocument__WEBPACK_IMPORTED_MODULE_3__.default)(container).querySelectorAll('.mui-fixed');
+      [].forEach.call(fixedNodes, function (node) {
+        restorePaddings.push(node.style.paddingRight);
+        node.style.paddingRight = "".concat(getPaddingRight(node) + scrollbarSize, "px");
+      });
+    } // Improve Gatsby support
+    // https://css-tricks.com/snippets/css/force-vertical-scrollbar/
+
+
+    var parent = container.parentElement;
+    var scrollContainer = parent.nodeName === 'HTML' && window.getComputedStyle(parent)['overflow-y'] === 'scroll' ? parent : container; // Block the scroll even if no scrollbar is visible to account for mobile keyboard
+    // screensize shrink.
+
+    restoreStyle.push({
+      value: scrollContainer.style.overflow,
+      key: 'overflow',
+      el: scrollContainer
+    });
+    scrollContainer.style.overflow = 'hidden';
+  }
+
+  var restore = function restore() {
+    if (fixedNodes) {
+      [].forEach.call(fixedNodes, function (node, i) {
+        if (restorePaddings[i]) {
+          node.style.paddingRight = restorePaddings[i];
+        } else {
+          node.style.removeProperty('padding-right');
+        }
+      });
+    }
+
+    restoreStyle.forEach(function (_ref) {
+      var value = _ref.value,
+          el = _ref.el,
+          key = _ref.key;
+
+      if (value) {
+        el.style.setProperty(key, value);
+      } else {
+        el.style.removeProperty(key);
+      }
+    });
+  };
+
+  return restore;
+}
+
+function getHiddenSiblings(container) {
+  var hiddenSiblings = [];
+  [].forEach.call(container.children, function (node) {
+    if (node.getAttribute && node.getAttribute('aria-hidden') === 'true') {
+      hiddenSiblings.push(node);
+    }
+  });
+  return hiddenSiblings;
+}
+/**
+ * @ignore - do not document.
+ *
+ * Proper state management for containers and the modals in those containers.
+ * Simplified, but inspired by react-overlay's ModalManager class.
+ * Used by the Modal to ensure proper styling of containers.
+ */
+
+
+var ModalManager = /*#__PURE__*/function () {
+  function ModalManager() {
+    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__.default)(this, ModalManager);
+
+    // this.modals[modalIndex] = modal
+    this.modals = []; // this.containers[containerIndex] = {
+    //   modals: [],
+    //   container,
+    //   restore: null,
+    // }
+
+    this.containers = [];
+  }
+
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__.default)(ModalManager, [{
+    key: "add",
+    value: function add(modal, container) {
+      var modalIndex = this.modals.indexOf(modal);
+
+      if (modalIndex !== -1) {
+        return modalIndex;
+      }
+
+      modalIndex = this.modals.length;
+      this.modals.push(modal); // If the modal we are adding is already in the DOM.
+
+      if (modal.modalRef) {
+        ariaHidden(modal.modalRef, false);
+      }
+
+      var hiddenSiblingNodes = getHiddenSiblings(container);
+      ariaHiddenSiblings(container, modal.mountNode, modal.modalRef, hiddenSiblingNodes, true);
+      var containerIndex = findIndexOf(this.containers, function (item) {
+        return item.container === container;
+      });
+
+      if (containerIndex !== -1) {
+        this.containers[containerIndex].modals.push(modal);
+        return modalIndex;
+      }
+
+      this.containers.push({
+        modals: [modal],
+        container: container,
+        restore: null,
+        hiddenSiblingNodes: hiddenSiblingNodes
+      });
+      return modalIndex;
+    }
+  }, {
+    key: "mount",
+    value: function mount(modal, props) {
+      var containerIndex = findIndexOf(this.containers, function (item) {
+        return item.modals.indexOf(modal) !== -1;
+      });
+      var containerInfo = this.containers[containerIndex];
+
+      if (!containerInfo.restore) {
+        containerInfo.restore = handleContainer(containerInfo, props);
+      }
+    }
+  }, {
+    key: "remove",
+    value: function remove(modal) {
+      var modalIndex = this.modals.indexOf(modal);
+
+      if (modalIndex === -1) {
+        return modalIndex;
+      }
+
+      var containerIndex = findIndexOf(this.containers, function (item) {
+        return item.modals.indexOf(modal) !== -1;
+      });
+      var containerInfo = this.containers[containerIndex];
+      containerInfo.modals.splice(containerInfo.modals.indexOf(modal), 1);
+      this.modals.splice(modalIndex, 1); // If that was the last modal in a container, clean up the container.
+
+      if (containerInfo.modals.length === 0) {
+        // The modal might be closed before it had the chance to be mounted in the DOM.
+        if (containerInfo.restore) {
+          containerInfo.restore();
+        }
+
+        if (modal.modalRef) {
+          // In case the modal wasn't in the DOM yet.
+          ariaHidden(modal.modalRef, true);
+        }
+
+        ariaHiddenSiblings(containerInfo.container, modal.mountNode, modal.modalRef, containerInfo.hiddenSiblingNodes, false);
+        this.containers.splice(containerIndex, 1);
+      } else {
+        // Otherwise make sure the next top modal is visible to a screen reader.
+        var nextTop = containerInfo.modals[containerInfo.modals.length - 1]; // as soon as a modal is adding its modalRef is undefined. it can't set
+        // aria-hidden because the dom element doesn't exist either
+        // when modal was unmounted before modalRef gets null
+
+        if (nextTop.modalRef) {
+          ariaHidden(nextTop.modalRef, false);
+        }
+      }
+
+      return modalIndex;
+    }
+  }, {
+    key: "isTopModal",
+    value: function isTopModal(modal) {
+      return this.modals.length > 0 && this.modals[this.modals.length - 1] === modal;
+    }
+  }]);
+
+  return ModalManager;
+}();
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Modal/SimpleBackdrop.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Modal/SimpleBackdrop.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "styles": () => /* binding */ styles,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    zIndex: -1,
+    position: 'fixed',
+    right: 0,
+    bottom: 0,
+    top: 0,
+    left: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    WebkitTapHighlightColor: 'transparent'
+  },
+
+  /* Styles applied to the root element if `invisible={true}`. */
+  invisible: {
+    backgroundColor: 'transparent'
+  }
+};
+/**
+ * @ignore - internal component.
+ */
+
+var SimpleBackdrop = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function SimpleBackdrop(props, ref) {
+  var _props$invisible = props.invisible,
+      invisible = _props$invisible === void 0 ? false : _props$invisible,
+      open = props.open,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__.default)(props, ["invisible", "open"]);
+
+  return open ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    "aria-hidden": true,
+    ref: ref
+  }, other, {
+    style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, styles.root, invisible ? styles.invisible : {}, other.style)
+  })) : null;
+});
+ true ? SimpleBackdrop.propTypes = {
+  /**
+   * If `true`, the backdrop is invisible.
+   * It can be used when rendering a popover or a custom select component.
+   */
+  invisible: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
+
+  /**
+   * If `true`, the backdrop is open.
+   */
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool.isRequired)
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SimpleBackdrop);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Paper/Paper.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Paper/Paper.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "styles": () => /* binding */ styles,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/esm/chainPropTypes.js");
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/esm/styles/withStyles.js");
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  var elevations = {};
+  theme.shadows.forEach(function (shadow, index) {
+    elevations["elevation".concat(index)] = {
+      boxShadow: shadow
+    };
+  });
+  return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({
+    /* Styles applied to the root element. */
+    root: {
+      backgroundColor: theme.palette.background.paper,
+      color: theme.palette.text.primary,
+      transition: theme.transitions.create('box-shadow')
+    },
+
+    /* Styles applied to the root element if `square={false}`. */
+    rounded: {
+      borderRadius: theme.shape.borderRadius
+    },
+
+    /* Styles applied to the root element if `variant="outlined"`. */
+    outlined: {
+      border: "1px solid ".concat(theme.palette.divider)
+    }
+  }, elevations);
+};
+var Paper = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Paper(props, ref) {
+  var classes = props.classes,
+      className = props.className,
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'div' : _props$component,
+      _props$square = props.square,
+      square = _props$square === void 0 ? false : _props$square,
+      _props$elevation = props.elevation,
+      elevation = _props$elevation === void 0 ? 1 : _props$elevation,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'elevation' : _props$variant,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__.default)(props, ["classes", "className", "component", "square", "elevation", "variant"]);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__.default)({
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__.default)(classes.root, className, variant === 'outlined' ? classes.outlined : classes["elevation".concat(elevation)], !square && classes.rounded),
+    ref: ref
+  }, other));
+});
+ true ? Paper.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * The content of the component.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().node),
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().elementType),
+
+  /**
+   * Shadow depth, corresponds to `dp` in the spec.
+   * It accepts values between 0 and 24 inclusive.
+   */
+  elevation: (0,_material_ui_utils__WEBPACK_IMPORTED_MODULE_5__.default)((prop_types__WEBPACK_IMPORTED_MODULE_3___default().number), function (props) {
+    var classes = props.classes,
+        elevation = props.elevation; // in case `withStyles` fails to inject we don't need this warning
+
+    if (classes === undefined) {
+      return null;
+    }
+
+    if (elevation != null && classes["elevation".concat(elevation)] === undefined) {
+      return new Error("Material-UI: This elevation `".concat(elevation, "` is not implemented."));
+    }
+
+    return null;
+  }),
+
+  /**
+   * If `true`, rounded corners are disabled.
+   */
+  square: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
+
+  /**
+   * The variant to use.
+   */
+  variant: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOf(['elevation', 'outlined'])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_6__.default)(styles, {
+  name: 'MuiPaper'
+})(Paper));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Portal/Portal.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Portal/Portal.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/esm/HTMLElementType.js");
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/esm/exactProp.js");
+/* harmony import */ var _utils_setRef__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/setRef */ "./node_modules/@material-ui/core/esm/utils/setRef.js");
+/* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/useForkRef */ "./node_modules/@material-ui/core/esm/utils/useForkRef.js");
+
+
+
+
+
+
+
+function getContainer(container) {
+  container = typeof container === 'function' ? container() : container; // #StrictMode ready
+
+  return react_dom__WEBPACK_IMPORTED_MODULE_1__.findDOMNode(container);
+}
+
+var useEnhancedEffect = typeof window !== 'undefined' ? react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect : react__WEBPACK_IMPORTED_MODULE_0__.useEffect;
+/**
+ * Portals provide a first-class way to render children into a DOM node
+ * that exists outside the DOM hierarchy of the parent component.
+ */
+
+var Portal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function Portal(props, ref) {
+  var children = props.children,
+      container = props.container,
+      _props$disablePortal = props.disablePortal,
+      disablePortal = _props$disablePortal === void 0 ? false : _props$disablePortal,
+      onRendered = props.onRendered;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      mountNode = _React$useState[0],
+      setMountNode = _React$useState[1];
+
+  var handleRef = (0,_utils_useForkRef__WEBPACK_IMPORTED_MODULE_3__.default)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.isValidElement(children) ? children.ref : null, ref);
+  useEnhancedEffect(function () {
+    if (!disablePortal) {
+      setMountNode(getContainer(container) || document.body);
+    }
+  }, [container, disablePortal]);
+  useEnhancedEffect(function () {
+    if (mountNode && !disablePortal) {
+      (0,_utils_setRef__WEBPACK_IMPORTED_MODULE_4__.default)(ref, mountNode);
+      return function () {
+        (0,_utils_setRef__WEBPACK_IMPORTED_MODULE_4__.default)(ref, null);
+      };
+    }
+
+    return undefined;
+  }, [ref, mountNode, disablePortal]);
+  useEnhancedEffect(function () {
+    if (onRendered && (mountNode || disablePortal)) {
+      onRendered();
+    }
+  }, [onRendered, mountNode, disablePortal]);
+
+  if (disablePortal) {
+    if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.isValidElement(children)) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(children, {
+        ref: handleRef
+      });
+    }
+
+    return children;
+  }
+
+  return mountNode ? /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal(children, mountNode) : mountNode;
+});
+ true ? Portal.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * The children to render into the `container`.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().node),
+
+  /**
+   * A HTML element, component instance, or function that returns either.
+   * The `container` will have the portal children appended to it.
+   *
+   * By default, it uses the body of the top-level document object,
+   * so it's simply `document.body` most of the time.
+   */
+  container: prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([_material_ui_utils__WEBPACK_IMPORTED_MODULE_5__.default, prop_types__WEBPACK_IMPORTED_MODULE_2___default().instanceOf(react__WEBPACK_IMPORTED_MODULE_0__.Component), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)]),
+
+  /**
+   * Disable the portal behavior.
+   * The children stay within it's parent DOM hierarchy.
+   */
+  disablePortal: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Callback fired once the children has been mounted into the `container`.
+   *
+   * This prop will be deprecated and removed in v5, the ref can be used instead.
+   */
+  onRendered: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)
+} : 0;
+
+if (true) {
+  // eslint-disable-next-line
+  Portal['propTypes' + ''] = (0,_material_ui_utils__WEBPACK_IMPORTED_MODULE_6__.default)(Portal.propTypes);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Portal);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Slide/Slide.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Slide/Slide.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "setTranslateValue": () => /* binding */ setTranslateValue,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_debounce__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/debounce */ "./node_modules/@material-ui/core/esm/utils/debounce.js");
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/Transition.js");
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/esm/elementAcceptingRef.js");
+/* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/useForkRef */ "./node_modules/@material-ui/core/esm/utils/useForkRef.js");
+/* harmony import */ var _styles_useTheme__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/useTheme */ "./node_modules/@material-ui/core/esm/styles/useTheme.js");
+/* harmony import */ var _styles_transitions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../styles/transitions */ "./node_modules/@material-ui/core/esm/styles/transitions.js");
+/* harmony import */ var _transitions_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../transitions/utils */ "./node_modules/@material-ui/core/esm/transitions/utils.js");
+
+
+
+
+
+
+
+
+
+
+
+ // Translate the node so he can't be seen on the screen.
+// Later, we gonna translate back the node to his original location
+// with `none`.`
+
+function getTranslateValue(direction, node) {
+  var rect = node.getBoundingClientRect();
+  var transform;
+
+  if (node.fakeTransform) {
+    transform = node.fakeTransform;
+  } else {
+    var computedStyle = window.getComputedStyle(node);
+    transform = computedStyle.getPropertyValue('-webkit-transform') || computedStyle.getPropertyValue('transform');
+  }
+
+  var offsetX = 0;
+  var offsetY = 0;
+
+  if (transform && transform !== 'none' && typeof transform === 'string') {
+    var transformValues = transform.split('(')[1].split(')')[0].split(',');
+    offsetX = parseInt(transformValues[4], 10);
+    offsetY = parseInt(transformValues[5], 10);
+  }
+
+  if (direction === 'left') {
+    return "translateX(".concat(window.innerWidth, "px) translateX(").concat(offsetX - rect.left, "px)");
+  }
+
+  if (direction === 'right') {
+    return "translateX(-".concat(rect.left + rect.width - offsetX, "px)");
+  }
+
+  if (direction === 'up') {
+    return "translateY(".concat(window.innerHeight, "px) translateY(").concat(offsetY - rect.top, "px)");
+  } // direction === 'down'
+
+
+  return "translateY(-".concat(rect.top + rect.height - offsetY, "px)");
+}
+
+function setTranslateValue(direction, node) {
+  var transform = getTranslateValue(direction, node);
+
+  if (transform) {
+    node.style.webkitTransform = transform;
+    node.style.transform = transform;
+  }
+}
+var defaultTimeout = {
+  enter: _styles_transitions__WEBPACK_IMPORTED_MODULE_5__.duration.enteringScreen,
+  exit: _styles_transitions__WEBPACK_IMPORTED_MODULE_5__.duration.leavingScreen
+};
+/**
+ * The Slide transition is used by the [Drawer](/components/drawers/) component.
+ * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
+ */
+
+var Slide = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Slide(props, ref) {
+  var children = props.children,
+      _props$direction = props.direction,
+      direction = _props$direction === void 0 ? 'down' : _props$direction,
+      inProp = props.in,
+      onEnter = props.onEnter,
+      onEntered = props.onEntered,
+      onEntering = props.onEntering,
+      onExit = props.onExit,
+      onExited = props.onExited,
+      onExiting = props.onExiting,
+      style = props.style,
+      _props$timeout = props.timeout,
+      timeout = _props$timeout === void 0 ? defaultTimeout : _props$timeout,
+      _props$TransitionComp = props.TransitionComponent,
+      TransitionComponent = _props$TransitionComp === void 0 ? react_transition_group__WEBPACK_IMPORTED_MODULE_6__.default : _props$TransitionComp,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__.default)(props, ["children", "direction", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"]);
+
+  var theme = (0,_styles_useTheme__WEBPACK_IMPORTED_MODULE_7__.default)();
+  var childrenRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef(null);
+  /**
+   * used in cloneElement(children, { ref: handleRef })
+   */
+
+  var handleOwnRef = react__WEBPACK_IMPORTED_MODULE_2__.useCallback(function (instance) {
+    // #StrictMode ready
+    childrenRef.current = react_dom__WEBPACK_IMPORTED_MODULE_4__.findDOMNode(instance);
+  }, []);
+  var handleRefIntermediary = (0,_utils_useForkRef__WEBPACK_IMPORTED_MODULE_8__.default)(children.ref, handleOwnRef);
+  var handleRef = (0,_utils_useForkRef__WEBPACK_IMPORTED_MODULE_8__.default)(handleRefIntermediary, ref);
+
+  var normalizedTransitionCallback = function normalizedTransitionCallback(callback) {
+    return function (isAppearing) {
+      if (callback) {
+        // onEnterXxx and onExitXxx callbacks have a different arguments.length value.
+        if (isAppearing === undefined) {
+          callback(childrenRef.current);
+        } else {
+          callback(childrenRef.current, isAppearing);
+        }
+      }
+    };
+  };
+
+  var handleEnter = normalizedTransitionCallback(function (node, isAppearing) {
+    setTranslateValue(direction, node);
+    (0,_transitions_utils__WEBPACK_IMPORTED_MODULE_9__.reflow)(node);
+
+    if (onEnter) {
+      onEnter(node, isAppearing);
+    }
+  });
+  var handleEntering = normalizedTransitionCallback(function (node, isAppearing) {
+    var transitionProps = (0,_transitions_utils__WEBPACK_IMPORTED_MODULE_9__.getTransitionProps)({
+      timeout: timeout,
+      style: style
+    }, {
+      mode: 'enter'
+    });
+    node.style.webkitTransition = theme.transitions.create('-webkit-transform', (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, transitionProps, {
+      easing: theme.transitions.easing.easeOut
+    }));
+    node.style.transition = theme.transitions.create('transform', (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, transitionProps, {
+      easing: theme.transitions.easing.easeOut
+    }));
+    node.style.webkitTransform = 'none';
+    node.style.transform = 'none';
+
+    if (onEntering) {
+      onEntering(node, isAppearing);
+    }
+  });
+  var handleEntered = normalizedTransitionCallback(onEntered);
+  var handleExiting = normalizedTransitionCallback(onExiting);
+  var handleExit = normalizedTransitionCallback(function (node) {
+    var transitionProps = (0,_transitions_utils__WEBPACK_IMPORTED_MODULE_9__.getTransitionProps)({
+      timeout: timeout,
+      style: style
+    }, {
+      mode: 'exit'
+    });
+    node.style.webkitTransition = theme.transitions.create('-webkit-transform', (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, transitionProps, {
+      easing: theme.transitions.easing.sharp
+    }));
+    node.style.transition = theme.transitions.create('transform', (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, transitionProps, {
+      easing: theme.transitions.easing.sharp
+    }));
+    setTranslateValue(direction, node);
+
+    if (onExit) {
+      onExit(node);
+    }
+  });
+  var handleExited = normalizedTransitionCallback(function (node) {
+    // No need for transitions when the component is hidden
+    node.style.webkitTransition = '';
+    node.style.transition = '';
+
+    if (onExited) {
+      onExited(node);
+    }
+  });
+  var updatePosition = react__WEBPACK_IMPORTED_MODULE_2__.useCallback(function () {
+    if (childrenRef.current) {
+      setTranslateValue(direction, childrenRef.current);
+    }
+  }, [direction]);
+  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(function () {
+    // Skip configuration where the position is screen size invariant.
+    if (inProp || direction === 'down' || direction === 'right') {
+      return undefined;
+    }
+
+    var handleResize = (0,_utils_debounce__WEBPACK_IMPORTED_MODULE_10__.default)(function () {
+      if (childrenRef.current) {
+        setTranslateValue(direction, childrenRef.current);
+      }
+    });
+    window.addEventListener('resize', handleResize);
+    return function () {
+      handleResize.clear();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [direction, inProp]);
+  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(function () {
+    if (!inProp) {
+      // We need to update the position of the drawer when the direction change and
+      // when it's hidden.
+      updatePosition();
+    }
+  }, [inProp, updatePosition]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(TransitionComponent, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    nodeRef: childrenRef,
+    onEnter: handleEnter,
+    onEntered: handleEntered,
+    onEntering: handleEntering,
+    onExit: handleExit,
+    onExited: handleExited,
+    onExiting: handleExiting,
+    appear: true,
+    in: inProp,
+    timeout: timeout
+  }, other), function (state, childProps) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(children, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+      ref: handleRef,
+      style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+        visibility: state === 'exited' && !inProp ? 'hidden' : undefined
+      }, style, children.props.style)
+    }, childProps));
+  });
+});
+ true ? Slide.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * A single child content element.
+   */
+  children: _material_ui_utils__WEBPACK_IMPORTED_MODULE_11__.default,
+
+  /**
+   * Direction the child node will enter from.
+   */
+  direction: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOf(['down', 'left', 'right', 'up']),
+
+  /**
+   * If `true`, show the component; triggers the enter or exit animation.
+   */
+  in: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
+
+  /**
+   * @ignore
+   */
+  onEnter: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+
+  /**
+   * @ignore
+   */
+  onEntered: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+
+  /**
+   * @ignore
+   */
+  onEntering: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+
+  /**
+   * @ignore
+   */
+  onExit: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+
+  /**
+   * @ignore
+   */
+  onExited: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+
+  /**
+   * @ignore
+   */
+  onExiting: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+
+  /**
+   * @ignore
+   */
+  style: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+
+  /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   */
+  timeout: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_3___default().number), prop_types__WEBPACK_IMPORTED_MODULE_3___default().shape({
+    appear: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number),
+    enter: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number),
+    exit: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number)
+  })])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Slide);
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Unstable_TrapFocus/Unstable_TrapFocus.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Unstable_TrapFocus/Unstable_TrapFocus.js ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_ownerDocument__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/ownerDocument */ "./node_modules/@material-ui/core/esm/utils/ownerDocument.js");
+/* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/useForkRef */ "./node_modules/@material-ui/core/esm/utils/useForkRef.js");
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/esm/exactProp.js");
+/* eslint-disable consistent-return, jsx-a11y/no-noninteractive-tabindex, camelcase */
+
+
+
+
+
+
+/**
+ * Utility component that locks focus inside the component.
+ */
+
+function Unstable_TrapFocus(props) {
+  var children = props.children,
+      _props$disableAutoFoc = props.disableAutoFocus,
+      disableAutoFocus = _props$disableAutoFoc === void 0 ? false : _props$disableAutoFoc,
+      _props$disableEnforce = props.disableEnforceFocus,
+      disableEnforceFocus = _props$disableEnforce === void 0 ? false : _props$disableEnforce,
+      _props$disableRestore = props.disableRestoreFocus,
+      disableRestoreFocus = _props$disableRestore === void 0 ? false : _props$disableRestore,
+      getDoc = props.getDoc,
+      isEnabled = props.isEnabled,
+      open = props.open;
+  var ignoreNextEnforceFocus = react__WEBPACK_IMPORTED_MODULE_0__.useRef();
+  var sentinelStart = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null);
+  var sentinelEnd = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null);
+  var nodeToRestore = react__WEBPACK_IMPORTED_MODULE_0__.useRef();
+  var rootRef = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null); // can be removed once we drop support for non ref forwarding class components
+
+  var handleOwnRef = react__WEBPACK_IMPORTED_MODULE_0__.useCallback(function (instance) {
+    // #StrictMode ready
+    rootRef.current = react_dom__WEBPACK_IMPORTED_MODULE_1__.findDOMNode(instance);
+  }, []);
+  var handleRef = (0,_utils_useForkRef__WEBPACK_IMPORTED_MODULE_3__.default)(children.ref, handleOwnRef);
+  var prevOpenRef = react__WEBPACK_IMPORTED_MODULE_0__.useRef();
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    prevOpenRef.current = open;
+  }, [open]);
+
+  if (!prevOpenRef.current && open && typeof window !== 'undefined') {
+    // WARNING: Potentially unsafe in concurrent mode.
+    // The way the read on `nodeToRestore` is setup could make this actually safe.
+    // Say we render `open={false}` -> `open={true}` but never commit.
+    // We have now written a state that wasn't committed. But no committed effect
+    // will read this wrong value. We only read from `nodeToRestore` in effects
+    // that were committed on `open={true}`
+    // WARNING: Prevents the instance from being garbage collected. Should only
+    // hold a weak ref.
+    nodeToRestore.current = getDoc().activeElement;
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    if (!open) {
+      return;
+    }
+
+    var doc = (0,_utils_ownerDocument__WEBPACK_IMPORTED_MODULE_4__.default)(rootRef.current); // We might render an empty child.
+
+    if (!disableAutoFocus && rootRef.current && !rootRef.current.contains(doc.activeElement)) {
+      if (!rootRef.current.hasAttribute('tabIndex')) {
+        if (true) {
+          console.error(['Material-UI: The modal content node does not accept focus.', 'For the benefit of assistive technologies, ' + 'the tabIndex of the node is being set to "-1".'].join('\n'));
+        }
+
+        rootRef.current.setAttribute('tabIndex', -1);
+      }
+
+      rootRef.current.focus();
+    }
+
+    var contain = function contain() {
+      var rootElement = rootRef.current; // Cleanup functions are executed lazily in React 17.
+      // Contain can be called between the component being unmounted and its cleanup function being run.
+
+      if (rootElement === null) {
+        return;
+      }
+
+      if (!doc.hasFocus() || disableEnforceFocus || !isEnabled() || ignoreNextEnforceFocus.current) {
+        ignoreNextEnforceFocus.current = false;
+        return;
+      }
+
+      if (rootRef.current && !rootRef.current.contains(doc.activeElement)) {
+        rootRef.current.focus();
+      }
+    };
+
+    var loopFocus = function loopFocus(event) {
+      // 9 = Tab
+      if (disableEnforceFocus || !isEnabled() || event.keyCode !== 9) {
+        return;
+      } // Make sure the next tab starts from the right place.
+
+
+      if (doc.activeElement === rootRef.current) {
+        // We need to ignore the next contain as
+        // it will try to move the focus back to the rootRef element.
+        ignoreNextEnforceFocus.current = true;
+
+        if (event.shiftKey) {
+          sentinelEnd.current.focus();
+        } else {
+          sentinelStart.current.focus();
+        }
+      }
+    };
+
+    doc.addEventListener('focus', contain, true);
+    doc.addEventListener('keydown', loopFocus, true); // With Edge, Safari and Firefox, no focus related events are fired when the focused area stops being a focused area
+    // e.g. https://bugzilla.mozilla.org/show_bug.cgi?id=559561.
+    //
+    // The whatwg spec defines how the browser should behave but does not explicitly mention any events:
+    // https://html.spec.whatwg.org/multipage/interaction.html#focus-fixup-rule.
+
+    var interval = setInterval(function () {
+      contain();
+    }, 50);
+    return function () {
+      clearInterval(interval);
+      doc.removeEventListener('focus', contain, true);
+      doc.removeEventListener('keydown', loopFocus, true); // restoreLastFocus()
+
+      if (!disableRestoreFocus) {
+        // In IE 11 it is possible for document.activeElement to be null resulting
+        // in nodeToRestore.current being null.
+        // Not all elements in IE 11 have a focus method.
+        // Once IE 11 support is dropped the focus() call can be unconditional.
+        if (nodeToRestore.current && nodeToRestore.current.focus) {
+          nodeToRestore.current.focus();
+        }
+
+        nodeToRestore.current = null;
+      }
+    };
+  }, [disableAutoFocus, disableEnforceFocus, disableRestoreFocus, isEnabled, open]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    tabIndex: 0,
+    ref: sentinelStart,
+    "data-test": "sentinelStart"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(children, {
+    ref: handleRef
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    tabIndex: 0,
+    ref: sentinelEnd,
+    "data-test": "sentinelEnd"
+  }));
+}
+
+ true ? Unstable_TrapFocus.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * A single child content element.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().node),
+
+  /**
+   * If `true`, the trap focus will not automatically shift focus to itself when it opens, and
+   * replace it to the last focused element when it closes.
+   * This also works correctly with any trap focus children that have the `disableAutoFocus` prop.
+   *
+   * Generally this should never be set to `true` as it makes the trap focus less
+   * accessible to assistive technologies, like screen readers.
+   */
+  disableAutoFocus: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * If `true`, the trap focus will not prevent focus from leaving the trap focus while open.
+   *
+   * Generally this should never be set to `true` as it makes the trap focus less
+   * accessible to assistive technologies, like screen readers.
+   */
+  disableEnforceFocus: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * If `true`, the trap focus will not restore focus to previously focused element once
+   * trap focus is hidden.
+   */
+  disableRestoreFocus: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Return the document to consider.
+   * We use it to implement the restore focus between different browser documents.
+   */
+  getDoc: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func.isRequired),
+
+  /**
+   * Do we still want to enforce the focus?
+   * This prop helps nesting TrapFocus elements.
+   */
+  isEnabled: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func.isRequired),
+
+  /**
+   * If `true`, focus will be locked.
+   */
+  open: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool.isRequired)
+} : 0;
+
+if (true) {
+  // eslint-disable-next-line
+  Unstable_TrapFocus['propTypes' + ''] = (0,_material_ui_utils__WEBPACK_IMPORTED_MODULE_5__.default)(Unstable_TrapFocus.propTypes);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Unstable_TrapFocus);
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/colors/blue.js":
 /*!***********************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/colors/blue.js ***!
@@ -3283,6 +5536,37 @@ function formatMs(milliseconds) {
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/esm/styles/useTheme.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/styles/useTheme.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ useTheme
+/* harmony export */ });
+/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/styles */ "./node_modules/@material-ui/styles/esm/useTheme/useTheme.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _defaultTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./defaultTheme */ "./node_modules/@material-ui/core/esm/styles/defaultTheme.js");
+
+
+
+function useTheme() {
+  var theme = (0,_material_ui_styles__WEBPACK_IMPORTED_MODULE_1__.default)() || _defaultTheme__WEBPACK_IMPORTED_MODULE_2__.default;
+
+  if (true) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    react__WEBPACK_IMPORTED_MODULE_0___default().useDebugValue(theme);
+  }
+
+  return theme;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/styles/withStyles.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/styles/withStyles.js ***!
@@ -3337,6 +5621,33 @@ var zIndex = {
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/esm/transitions/utils.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/transitions/utils.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "reflow": () => /* binding */ reflow,
+/* harmony export */   "getTransitionProps": () => /* binding */ getTransitionProps
+/* harmony export */ });
+var reflow = function reflow(node) {
+  return node.scrollTop;
+};
+function getTransitionProps(props, options) {
+  var timeout = props.timeout,
+      _props$style = props.style,
+      style = _props$style === void 0 ? {} : _props$style;
+  return {
+    duration: style.transitionDuration || typeof timeout === 'number' ? timeout : timeout[options.mode] || 0,
+    delay: style.transitionDelay
+  };
+}
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/utils/capitalize.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/utils/capitalize.js ***!
@@ -3359,6 +5670,162 @@ function capitalize(string) {
   }
 
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/utils/createChainedFunction.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/utils/createChainedFunction.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createChainedFunction
+/* harmony export */ });
+/**
+ * Safe chained function
+ *
+ * Will only create a new function if needed,
+ * otherwise will pass back existing functions or null.
+ *
+ * @param {function} functions to chain
+ * @returns {function|null}
+ */
+function createChainedFunction() {
+  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
+  }
+
+  return funcs.reduce(function (acc, func) {
+    if (func == null) {
+      return acc;
+    }
+
+    if (true) {
+      if (typeof func !== 'function') {
+        console.error('Material-UI: Invalid Argument Type, must only provide functions, undefined, or null.');
+      }
+    }
+
+    return function chainedFunction() {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      acc.apply(this, args);
+      func.apply(this, args);
+    };
+  }, function () {});
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/utils/debounce.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/utils/debounce.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ debounce
+/* harmony export */ });
+// Corresponds to 10 frames at 60 Hz.
+// A few bytes payload overhead when lodash/debounce is ~3 kB and debounce ~300 B.
+function debounce(func) {
+  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 166;
+  var timeout;
+
+  function debounced() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    // eslint-disable-next-line consistent-this
+    var that = this;
+
+    var later = function later() {
+      func.apply(that, args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  }
+
+  debounced.clear = function () {
+    clearTimeout(timeout);
+  };
+
+  return debounced;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/utils/getScrollbarSize.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/utils/getScrollbarSize.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ getScrollbarSize
+/* harmony export */ });
+// A change of the browser zoom change the scrollbar size.
+// Credit https://github.com/twbs/bootstrap/blob/3ffe3a5d82f6f561b82ff78d82b32a7d14aed558/js/src/modal.js#L512-L519
+function getScrollbarSize() {
+  var scrollDiv = document.createElement('div');
+  scrollDiv.style.width = '99px';
+  scrollDiv.style.height = '99px';
+  scrollDiv.style.position = 'absolute';
+  scrollDiv.style.top = '-9999px';
+  scrollDiv.style.overflow = 'scroll';
+  document.body.appendChild(scrollDiv);
+  var scrollbarSize = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  document.body.removeChild(scrollDiv);
+  return scrollbarSize;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/utils/ownerDocument.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/utils/ownerDocument.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ ownerDocument
+/* harmony export */ });
+function ownerDocument(node) {
+  return node && node.ownerDocument || document;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/utils/ownerWindow.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/utils/ownerWindow.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ ownerWindow
+/* harmony export */ });
+/* harmony import */ var _ownerDocument__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ownerDocument */ "./node_modules/@material-ui/core/esm/utils/ownerDocument.js");
+
+function ownerWindow(node) {
+  var doc = (0,_ownerDocument__WEBPACK_IMPORTED_MODULE_0__.default)(node);
+  return doc.defaultView || window;
 }
 
 /***/ }),
@@ -5219,6 +7686,36 @@ spacing.filterProps = spacingKeys;
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/utils/esm/HTMLElementType.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@material-ui/utils/esm/HTMLElementType.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ HTMLElementType
+/* harmony export */ });
+function HTMLElementType(props, propName, componentName, location, propFullName) {
+  if (false) {}
+
+  var propValue = props[propName];
+  var safePropName = propFullName || propName;
+
+  if (propValue == null) {
+    return null;
+  }
+
+  if (propValue && propValue.nodeType !== 1) {
+    return new Error("Invalid ".concat(location, " `").concat(safePropName, "` supplied to `").concat(componentName, "`. ") + "Expected an HTMLElement.");
+  }
+
+  return null;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/utils/esm/chainPropTypes.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@material-ui/utils/esm/chainPropTypes.js ***!
@@ -5282,6 +7779,67 @@ function deepmerge(target, source) {
 
   return output;
 }
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/utils/esm/elementAcceptingRef.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@material-ui/utils/esm/elementAcceptingRef.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _chainPropTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chainPropTypes */ "./node_modules/@material-ui/utils/esm/chainPropTypes.js");
+
+
+
+function isClassComponent(elementType) {
+  // elementType.prototype?.isReactComponent
+  var _elementType$prototyp = elementType.prototype,
+      prototype = _elementType$prototyp === void 0 ? {} : _elementType$prototyp;
+  return Boolean(prototype.isReactComponent);
+}
+
+function acceptingRef(props, propName, componentName, location, propFullName) {
+  var element = props[propName];
+  var safePropName = propFullName || propName;
+
+  if (element == null) {
+    return null;
+  }
+
+  var warningHint;
+  var elementType = element.type;
+  /**
+   * Blacklisting instead of whitelisting
+   *
+   * Blacklisting will miss some components, such as React.Fragment. Those will at least
+   * trigger a warning in React.
+   * We can't whitelist because there is no safe way to detect React.forwardRef
+   * or class components. "Safe" means there's no public API.
+   *
+   */
+
+  if (typeof elementType === 'function' && !isClassComponent(elementType)) {
+    warningHint = 'Did you accidentally use a plain function component for an element instead?';
+  }
+
+  if (warningHint !== undefined) {
+    return new Error("Invalid ".concat(location, " `").concat(safePropName, "` supplied to `").concat(componentName, "`. ") + "Expected an element that can hold a ref. ".concat(warningHint, " ") + 'For more information see https://material-ui.com/r/caveat-with-refs-guide');
+  }
+
+  return null;
+}
+
+var elementAcceptingRef = (0,_chainPropTypes__WEBPACK_IMPORTED_MODULE_1__.default)((prop_types__WEBPACK_IMPORTED_MODULE_0___default().element), acceptingRef);
+elementAcceptingRef.isRequired = (0,_chainPropTypes__WEBPACK_IMPORTED_MODULE_1__.default)((prop_types__WEBPACK_IMPORTED_MODULE_0___default().element.isRequired), acceptingRef);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (elementAcceptingRef);
 
 /***/ }),
 
@@ -7342,7 +9900,7 @@ const theme = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__.default)(
     MuiButton: {
       text: {
         borderRadius: 3,
-        color: '#556B2F',
+        color: '#5D00E1',
         border: 1,
         boxShadow: '0 3px 5px 2px rgba(85,107,47,.4)',
         size: 'medium'
@@ -7471,11 +10029,14 @@ class Cart extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
     const cart = this.props.cart;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "CART"), cart.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Your cart is Empty. Shop?") : cart.map(item => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        key: item.id
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Title: ", item.book), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Quantity: ", item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, {
+        key: item.id,
+        className: "cart-card"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, item.book), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Quantity: ", item.quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Cost: ", item.quantity * item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, {
         onClick: () => this.props.removeFromCart(item)
       }, "Remove from Cart"));
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, null, "Check Out"));
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Total: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, {
+      disabled: !cart.length
+    }, "Check Out"));
   }
 
 }
@@ -7527,20 +10088,26 @@ class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component
     const {
       book
     } = this.props;
+    const userId = this.props.auth.id;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: book.img
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Title: ", book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Author: ", book.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Genre: ", book.genre)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", book.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Reviews: ", book.review))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default // onClick={()=>this.props.addToCart(userId, book)}
-    , null, "Add to Cart")));
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Title: ", book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Author: ", book.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Genre: ", book.genre)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", book.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Reviews: ", book.review))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__.default, {
+      onClick: () => this.props.addToCart(userId, book)
+    }, "Add to Cart")));
   }
 
 }
 
-const mapState = (state, {
+const mapState = ({
+  books,
+  auth
+}, {
   match
 }) => {
-  const book = state.books.find(book => book.coverId === match.params.id * 1) || {};
+  const book = books.find(book => book.coverId === match.params.id * 1) || {};
   return {
-    book
+    book,
+    auth
   };
 };
 
@@ -7735,14 +10302,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Navbar": () => /* binding */ Navbar,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
 /* harmony import */ var _store_books__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/books */ "./client/store/books.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Drawer/Drawer.js");
+/* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.js");
 
 
 
@@ -7750,33 +10320,65 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Navbar = ({
-  handleClick,
-  isLoggedIn
-}) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-  to: "/home"
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "JWT Books")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-  to: "/allbooks"
-}, "All Books"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-  to: "/fiction"
-}, "Fiction"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-  to: "/nonfiction"
-}, "Non-Fiction"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-  to: "/mycart"
-}, "Shopping Cart (number)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-  href: "#",
-  onClick: handleClick
-}, "Logout")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-  to: "/allbooks"
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "JWT Books")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-  to: "/login"
-}, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-  to: "/signup"
-}, "Sign Up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, null, "Cart"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
+class Navbar extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDrawerOpened: false
+    };
+    this.toggleDrawerStatus = this.toggleDrawerStatus.bind(this);
+    this.closeDrawer = this.closeDrawer.bind(this);
+  }
+
+  toggleDrawerStatus() {
+    const isDrawerOpened = !this.state.isDrawerOpened;
+    this.setState({
+      isDrawerOpened
+    });
+  }
+
+  closeDrawer() {
+    this.setState({
+      isDrawerOpened: false
+    });
+  }
+
+  render() {
+    const isLoggedIn = this.props.isLoggedIn;
+    const isDrawerOpened = this.state.isDrawerOpened;
+    console.log(isDrawerOpened);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      to: "/home"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "JWT Books")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      to: "/allbooks"
+    }, "All Books"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      to: "/fiction"
+    }, "Fiction"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      to: "/nonfiction"
+    }, "Non-Fiction"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+      href: "#mycart",
+      onClick: this.toggleDrawerStatus
+    }, "Shopping Cart (number)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__.default, {
+      variant: "temporary",
+      anchor: "right",
+      open: isDrawerOpened,
+      onClose: this.closeDrawer
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Cart__WEBPACK_IMPORTED_MODULE_4__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+      href: "#",
+      onClick: this.props.handleClick
+    }, "Logout")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      to: "/allbooks"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "JWT Books")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      to: "/login"
+    }, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      to: "/signup"
+    }, "Sign Up"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
+  }
+
+}
 /**
  * CONTAINER
  */
-
 
 const mapState = state => {
   return {
@@ -8123,14 +10725,14 @@ const _removeFromCart = book => {
 
 const getCart = userId => {
   return async dispatch => {
-    const cart = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`api/cart/${userId}/cart`)).data;
+    const cart = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`/api/cart/${userId}/cart`)).data;
     dispatch(_getCart(cart));
   };
 };
 const removeFromCart = book => {
   return async dispatch => {
     const bookId = book.id;
-    await axios__WEBPACK_IMPORTED_MODULE_0___default().delete(`api/cart`, {
+    await axios__WEBPACK_IMPORTED_MODULE_0___default().delete(`/api/cart`, {
       data: {
         bookId
       }
@@ -8141,9 +10743,10 @@ const removeFromCart = book => {
 };
 const addToCart = (userId, bookToCart, qty = 1) => {
   return async dispatch => {
-    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().post(`api/cart/${userId}/cart`, {
+    const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().post(`/api/cart/${userId}/cart`, {
       book: bookToCart.title,
-      quantity: qty
+      quantity: qty,
+      price: bookToCart.price
     })).data;
     dispatch(_addToCart(books));
   };
@@ -39031,6 +41634,649 @@ function pathToRegexp (path, keys, options) {
 
 /***/ }),
 
+/***/ "./node_modules/react-transition-group/esm/Transition.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/Transition.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UNMOUNTED": () => /* binding */ UNMOUNTED,
+/* harmony export */   "EXITED": () => /* binding */ EXITED,
+/* harmony export */   "ENTERING": () => /* binding */ ENTERING,
+/* harmony export */   "ENTERED": () => /* binding */ ENTERED,
+/* harmony export */   "EXITING": () => /* binding */ EXITING,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config */ "./node_modules/react-transition-group/esm/config.js");
+/* harmony import */ var _utils_PropTypes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/esm/utils/PropTypes.js");
+/* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TransitionGroupContext */ "./node_modules/react-transition-group/esm/TransitionGroupContext.js");
+
+
+
+
+
+
+
+
+var UNMOUNTED = 'unmounted';
+var EXITED = 'exited';
+var ENTERING = 'entering';
+var ENTERED = 'entered';
+var EXITING = 'exiting';
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 1 },
+ *   entered:  { opacity: 1 },
+ *   exiting:  { opacity: 0 },
+ *   exited:  { opacity: 0 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */
+
+var Transition = /*#__PURE__*/function (_React$Component) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__.default)(Transition, _React$Component);
+
+  function Transition(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+    var parentGroup = context; // In the context of a TransitionGroup all enters are really appears
+
+    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+    var initialStatus;
+    _this.appearStatus = null;
+
+    if (props.in) {
+      if (appear) {
+        initialStatus = EXITED;
+        _this.appearStatus = ENTERING;
+      } else {
+        initialStatus = ENTERED;
+      }
+    } else {
+      if (props.unmountOnExit || props.mountOnEnter) {
+        initialStatus = UNMOUNTED;
+      } else {
+        initialStatus = EXITED;
+      }
+    }
+
+    _this.state = {
+      status: initialStatus
+    };
+    _this.nextCallback = null;
+    return _this;
+  }
+
+  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+    var nextIn = _ref.in;
+
+    if (nextIn && prevState.status === UNMOUNTED) {
+      return {
+        status: EXITED
+      };
+    }
+
+    return null;
+  } // getSnapshotBeforeUpdate(prevProps) {
+  //   let nextStatus = null
+  //   if (prevProps !== this.props) {
+  //     const { status } = this.state
+  //     if (this.props.in) {
+  //       if (status !== ENTERING && status !== ENTERED) {
+  //         nextStatus = ENTERING
+  //       }
+  //     } else {
+  //       if (status === ENTERING || status === ENTERED) {
+  //         nextStatus = EXITING
+  //       }
+  //     }
+  //   }
+  //   return { nextStatus }
+  // }
+  ;
+
+  var _proto = Transition.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.updateStatus(true, this.appearStatus);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var nextStatus = null;
+
+    if (prevProps !== this.props) {
+      var status = this.state.status;
+
+      if (this.props.in) {
+        if (status !== ENTERING && status !== ENTERED) {
+          nextStatus = ENTERING;
+        }
+      } else {
+        if (status === ENTERING || status === ENTERED) {
+          nextStatus = EXITING;
+        }
+      }
+    }
+
+    this.updateStatus(false, nextStatus);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.cancelNextCallback();
+  };
+
+  _proto.getTimeouts = function getTimeouts() {
+    var timeout = this.props.timeout;
+    var exit, enter, appear;
+    exit = enter = appear = timeout;
+
+    if (timeout != null && typeof timeout !== 'number') {
+      exit = timeout.exit;
+      enter = timeout.enter; // TODO: remove fallback for next major
+
+      appear = timeout.appear !== undefined ? timeout.appear : enter;
+    }
+
+    return {
+      exit: exit,
+      enter: enter,
+      appear: appear
+    };
+  };
+
+  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+    if (mounting === void 0) {
+      mounting = false;
+    }
+
+    if (nextStatus !== null) {
+      // nextStatus will always be ENTERING or EXITING.
+      this.cancelNextCallback();
+
+      if (nextStatus === ENTERING) {
+        this.performEnter(mounting);
+      } else {
+        this.performExit();
+      }
+    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+      this.setState({
+        status: UNMOUNTED
+      });
+    }
+  };
+
+  _proto.performEnter = function performEnter(mounting) {
+    var _this2 = this;
+
+    var enter = this.props.enter;
+    var appearing = this.context ? this.context.isMounting : mounting;
+
+    var _ref2 = this.props.nodeRef ? [appearing] : [react_dom__WEBPACK_IMPORTED_MODULE_4___default().findDOMNode(this), appearing],
+        maybeNode = _ref2[0],
+        maybeAppearing = _ref2[1];
+
+    var timeouts = this.getTimeouts();
+    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+    // if we are mounting and running this it means appear _must_ be set
+
+    if (!mounting && !enter || _config__WEBPACK_IMPORTED_MODULE_5__.default.disabled) {
+      this.safeSetState({
+        status: ENTERED
+      }, function () {
+        _this2.props.onEntered(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onEnter(maybeNode, maybeAppearing);
+    this.safeSetState({
+      status: ENTERING
+    }, function () {
+      _this2.props.onEntering(maybeNode, maybeAppearing);
+
+      _this2.onTransitionEnd(enterTimeout, function () {
+        _this2.safeSetState({
+          status: ENTERED
+        }, function () {
+          _this2.props.onEntered(maybeNode, maybeAppearing);
+        });
+      });
+    });
+  };
+
+  _proto.performExit = function performExit() {
+    var _this3 = this;
+
+    var exit = this.props.exit;
+    var timeouts = this.getTimeouts();
+    var maybeNode = this.props.nodeRef ? undefined : react_dom__WEBPACK_IMPORTED_MODULE_4___default().findDOMNode(this); // no exit animation skip right to EXITED
+
+    if (!exit || _config__WEBPACK_IMPORTED_MODULE_5__.default.disabled) {
+      this.safeSetState({
+        status: EXITED
+      }, function () {
+        _this3.props.onExited(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onExit(maybeNode);
+    this.safeSetState({
+      status: EXITING
+    }, function () {
+      _this3.props.onExiting(maybeNode);
+
+      _this3.onTransitionEnd(timeouts.exit, function () {
+        _this3.safeSetState({
+          status: EXITED
+        }, function () {
+          _this3.props.onExited(maybeNode);
+        });
+      });
+    });
+  };
+
+  _proto.cancelNextCallback = function cancelNextCallback() {
+    if (this.nextCallback !== null) {
+      this.nextCallback.cancel();
+      this.nextCallback = null;
+    }
+  };
+
+  _proto.safeSetState = function safeSetState(nextState, callback) {
+    // This shouldn't be necessary, but there are weird race conditions with
+    // setState callbacks and unmounting in testing, so always make sure that
+    // we can cancel any pending setState callbacks after we unmount.
+    callback = this.setNextCallback(callback);
+    this.setState(nextState, callback);
+  };
+
+  _proto.setNextCallback = function setNextCallback(callback) {
+    var _this4 = this;
+
+    var active = true;
+
+    this.nextCallback = function (event) {
+      if (active) {
+        active = false;
+        _this4.nextCallback = null;
+        callback(event);
+      }
+    };
+
+    this.nextCallback.cancel = function () {
+      active = false;
+    };
+
+    return this.nextCallback;
+  };
+
+  _proto.onTransitionEnd = function onTransitionEnd(timeout, handler) {
+    this.setNextCallback(handler);
+    var node = this.props.nodeRef ? this.props.nodeRef.current : react_dom__WEBPACK_IMPORTED_MODULE_4___default().findDOMNode(this);
+    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+
+    if (!node || doesNotHaveTimeoutOrListener) {
+      setTimeout(this.nextCallback, 0);
+      return;
+    }
+
+    if (this.props.addEndListener) {
+      var _ref3 = this.props.nodeRef ? [this.nextCallback] : [node, this.nextCallback],
+          maybeNode = _ref3[0],
+          maybeNextCallback = _ref3[1];
+
+      this.props.addEndListener(maybeNode, maybeNextCallback);
+    }
+
+    if (timeout != null) {
+      setTimeout(this.nextCallback, timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var status = this.state.status;
+
+    if (status === UNMOUNTED) {
+      return null;
+    }
+
+    var _this$props = this.props,
+        children = _this$props.children,
+        _in = _this$props.in,
+        _mountOnEnter = _this$props.mountOnEnter,
+        _unmountOnExit = _this$props.unmountOnExit,
+        _appear = _this$props.appear,
+        _enter = _this$props.enter,
+        _exit = _this$props.exit,
+        _timeout = _this$props.timeout,
+        _addEndListener = _this$props.addEndListener,
+        _onEnter = _this$props.onEnter,
+        _onEntering = _this$props.onEntering,
+        _onEntered = _this$props.onEntered,
+        _onExit = _this$props.onExit,
+        _onExiting = _this$props.onExiting,
+        _onExited = _this$props.onExited,
+        _nodeRef = _this$props.nodeRef,
+        childProps = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__.default)(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+
+    return (
+      /*#__PURE__*/
+      // allows for nested Transitions
+      react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__.default.Provider, {
+        value: null
+      }, typeof children === 'function' ? children(status, childProps) : react__WEBPACK_IMPORTED_MODULE_3___default().cloneElement(react__WEBPACK_IMPORTED_MODULE_3___default().Children.only(children), childProps))
+    );
+  };
+
+  return Transition;
+}((react__WEBPACK_IMPORTED_MODULE_3___default().Component));
+
+Transition.contextType = _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__.default;
+Transition.propTypes =  true ? {
+  /**
+   * A React reference to DOM element that need to transition:
+   * https://stackoverflow.com/a/51127130/4671932
+   *
+   *   - When `nodeRef` prop is used, `node` is not passed to callback functions
+   *      (e.g. `onEnter`) because user already has direct access to the node.
+   *   - When changing `key` prop of `Transition` in a `TransitionGroup` a new
+   *     `nodeRef` need to be provided to `Transition` with changed `key` prop
+   *     (see
+   *     [test/CSSTransition-test.js](https://github.com/reactjs/react-transition-group/blob/13435f897b3ab71f6e19d724f145596f5910581c/test/CSSTransition-test.js#L362-L437)).
+   */
+  nodeRef: prop_types__WEBPACK_IMPORTED_MODULE_2___default().shape({
+    current: typeof Element === 'undefined' ? (prop_types__WEBPACK_IMPORTED_MODULE_2___default().any) : prop_types__WEBPACK_IMPORTED_MODULE_2___default().instanceOf(Element)
+  }),
+
+  /**
+   * A `function` child can be used instead of a React element. This function is
+   * called with the current transition status (`'entering'`, `'entered'`,
+   * `'exiting'`, `'exited'`), which can be used to apply context
+   * specific props to a component.
+   *
+   * ```jsx
+   * <Transition in={this.state.in} timeout={150}>
+   *   {state => (
+   *     <MyComponent className={`fade fade-${state}`} />
+   *   )}
+   * </Transition>
+   * ```
+   */
+  children: prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().func.isRequired), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().element.isRequired)]).isRequired,
+
+  /**
+   * Show the component; triggers the enter or exit states
+   */
+  in: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * By default the child component is mounted immediately along with
+   * the parent `Transition` component. If you want to "lazy mount" the component on the
+   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
+   * mounted, even on "exited", unless you also specify `unmountOnExit`.
+   */
+  mountOnEnter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * By default the child component stays mounted after it reaches the `'exited'` state.
+   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
+   */
+  unmountOnExit: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * By default the child component does not perform the enter transition when
+   * it first mounts, regardless of the value of `in`. If you want this
+   * behavior, set both `appear` and `in` to `true`.
+   *
+   * > **Note**: there are no special appear states like `appearing`/`appeared`, this prop
+   * > only adds an additional enter transition. However, in the
+   * > `<CSSTransition>` component that first enter transition does result in
+   * > additional `.appear-*` classes, that way you can choose to style it
+   * > differently.
+   */
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Enable or disable enter transitions.
+   */
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * Enable or disable exit transitions.
+   */
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
+
+  /**
+   * The duration of the transition, in milliseconds.
+   * Required unless `addEndListener` is provided.
+   *
+   * You may specify a single timeout for all transitions:
+   *
+   * ```jsx
+   * timeout={500}
+   * ```
+   *
+   * or individually:
+   *
+   * ```jsx
+   * timeout={{
+   *  appear: 500,
+   *  enter: 300,
+   *  exit: 500,
+   * }}
+   * ```
+   *
+   * - `appear` defaults to the value of `enter`
+   * - `enter` defaults to `0`
+   * - `exit` defaults to `0`
+   *
+   * @type {number | { enter?: number, exit?: number, appear?: number }}
+   */
+  timeout: function timeout(props) {
+    var pt = _utils_PropTypes__WEBPACK_IMPORTED_MODULE_7__.timeoutsShape;
+    if (!props.addEndListener) pt = pt.isRequired;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return pt.apply(void 0, [props].concat(args));
+  },
+
+  /**
+   * Add a custom transition end trigger. Called with the transitioning
+   * DOM node and a `done` callback. Allows for more fine grained transition end
+   * logic. Timeouts are still used as a fallback if provided.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * ```jsx
+   * addEndListener={(node, done) => {
+   *   // use the css transitionend event to mark the finish of a transition
+   *   node.addEventListener('transitionend', done, false);
+   * }}
+   * ```
+   */
+  addEndListener: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired before the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEnter: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "entered" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEntered: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired before the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExit: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExiting: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
+
+  /**
+   * Callback fired after the "exited" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExited: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func)
+} : 0; // Name the function so it is clearer in the documentation
+
+function noop() {}
+
+Transition.defaultProps = {
+  in: false,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  enter: true,
+  exit: true,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+Transition.UNMOUNTED = UNMOUNTED;
+Transition.EXITED = EXITED;
+Transition.ENTERING = ENTERING;
+Transition.ENTERED = ENTERED;
+Transition.EXITING = EXITING;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Transition);
+
+/***/ }),
+
 /***/ "./node_modules/react-transition-group/esm/TransitionGroup.js":
 /*!********************************************************************!*\
   !*** ./node_modules/react-transition-group/esm/TransitionGroup.js ***!
@@ -39262,6 +42508,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/react-transition-group/esm/config.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/config.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  disabled: false
+});
+
+/***/ }),
+
 /***/ "./node_modules/react-transition-group/esm/utils/ChildMapping.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/react-transition-group/esm/utils/ChildMapping.js ***!
@@ -39418,6 +42681,41 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
   });
   return children;
 }
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/utils/PropTypes.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/utils/PropTypes.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "timeoutsShape": () => /* binding */ timeoutsShape,
+/* harmony export */   "classNamesShape": () => /* binding */ classNamesShape
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+
+var timeoutsShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().number), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number)
+}).isRequired]) : 0;
+var classNamesShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().string), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  active: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+}), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+})]) : 0;
 
 /***/ }),
 
