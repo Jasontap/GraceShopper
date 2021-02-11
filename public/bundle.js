@@ -2780,7 +2780,7 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       component: _components__WEBPACK_IMPORTED_MODULE_2__.Home
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/allbooks",
-      component: _components__WEBPACK_IMPORTED_MODULE_2__.CheckoutForm
+      component: _components__WEBPACK_IMPORTED_MODULE_2__.AllBooks
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/books/:id",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.SingleBook
