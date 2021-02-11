@@ -19,3 +19,28 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+}
+
+#name {
+  display: flex;
+  flex-direction: row;
+}
+
+#csz {
+  display: flex;
+  flex-direction: row;
+}
+
+#cardInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+#exp {
+  display: flex;
+  flex-direction: row;
+}

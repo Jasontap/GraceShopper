@@ -20,7 +20,7 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path='/allbooks' component={AllBooks} />
+            <Route path='/allbooks' component={CheckoutForm} />
             <Route path='/books/:id' component={SingleBook} />
             <Route path='/mycart' component={Cart} />
             <Route path='/checkout' component={CheckoutForm} />

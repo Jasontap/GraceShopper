@@ -2122,6 +2122,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/cart */ "./client/store/cart.js");
+
 
 
 class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
@@ -2148,9 +2150,32 @@ class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
       same: false,
       continue: false
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getCart(this.props.auth.id);
+    console.log(this.props);
+  }
+
+  handleChange(ev) {
+    const {
+      name,
+      value
+    } = ev.target;
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state);
+  }
+
+  handleSubmit(ev) {
+    ev.preventDefault();
+    this.setState({
+      continue: true
+    });
+  }
 
   render() {
     if (!this.state.continue) {
@@ -2160,7 +2185,9 @@ class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
         id: "formbox"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "shippingInfo"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Shipping Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Shipping Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+        className: "checkout"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "name"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "shipFirst"
@@ -2168,33 +2195,21 @@ class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
         type: "text",
         id: "shipFirst",
         name: "shipFirst",
-        onChange: ev => {
-          this.setState({
-            shipFirst: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "shipLast"
       }, "Last Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "shipLast",
         name: "shipLast",
-        onChange: ev => {
-          this.setState({
-            shipLast: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "shipAddy"
       }, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "shipAddy",
         name: "shipAddy",
-        onChange: ev => {
-          this.setState({
-            shipAddy: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "csz"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -2203,36 +2218,26 @@ class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
         type: "text",
         id: "shipCity",
         name: "shipCity",
-        onChange: ev => {
-          this.setState({
-            shipCity: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "shipState"
       }, "State:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "shipState",
         name: "shipState",
-        onChange: ev => {
-          this.setState({
-            shipState: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "shipZip"
       }, "Zip Code:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "shipZip",
         name: "shipZip",
-        onChange: ev => {
-          this.setState({
-            shipZip: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "billingAddy"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Billing Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Billing Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+        className: "checkout"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "checkbox",
         id: "same",
         name: "same",
@@ -2271,33 +2276,21 @@ class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
         type: "text",
         id: "billFirst",
         name: "billFirst",
-        onChange: ev => {
-          this.setState({
-            billFirst: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "billLast"
       }, "Last Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "billLast",
         name: "billLast",
-        onChange: ev => {
-          this.setState({
-            billLast: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "billAddy"
       }, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "billAddy",
         name: "billAddy",
-        onChange: ev => {
-          this.setState({
-            billAddy: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "csz"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -2306,36 +2299,24 @@ class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
         type: "text",
         id: "billCity",
         name: "billCity",
-        onChange: ev => {
-          this.setState({
-            billCity: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "billState"
       }, "State:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "billState",
         name: "billState",
-        onChange: ev => {
-          this.setState({
-            billState: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "billZip"
       }, "Zip Code:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "billZip",
         name: "billZip",
-        onChange: ev => {
-          this.setState({
-            billZip: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "billingInfo"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Credit Card Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "name"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "cardFirst"
@@ -2343,22 +2324,14 @@ class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
         type: "text",
         id: "cardFirst",
         name: "cardFirst",
-        onChange: ev => {
-          this.setState({
-            cardFirst: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "cardLast"
       }, "Last Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "cardLast",
         name: "cardLast",
-        onChange: ev => {
-          this.setState({
-            cardLast: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "cardInfo"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -2367,60 +2340,62 @@ class CheckoutForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
         type: "text",
         id: "cardNum",
         name: "cardNum",
-        onChange: ev => {
-          this.setState({
-            cardNum: ev.target.value
-          });
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        onChange: this.handleChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        id: "exp"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "cardExp"
       }, "Expiration Date:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "cardExp",
         name: "cardExp",
         value: "MM/YY",
-        onChange: ev => {
-          this.setState({
-            cardExp: ev.target.value
-          });
-        }
+        onChange: this.handleChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
         hmtlFor: "cardCode"
       }, "Security Code:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "text",
         id: "cardCode",
         name: "cardCode",
-        onChange: ev => {
-          this.setState({
-            cardCode: ev.target.value
-          });
-          console.log(this.state);
-        }
-      })))));
+        onChange: this.handleChange
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        onClick: this.handleSubmit
+      }, "Complete Checkout")));
     } else {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "orderSumm"
-      });
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Congratulations on Your Order ", this.state.shipFirst), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Your order of: (add cart items here)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Will be shipped to:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, this.state.shipAddy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, `${this.state.shipCity}, ${this.state.shipState} ${this.state.shipZip}`));
     }
   }
 
 }
 
 const mapState = ({
-  auth
+  auth,
+  cart
 }) => {
   return {
-    auth
+    auth,
+    cart
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    getCart: userId => dispatch(getCart(userId))
+    getCart: userId => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_2__.getCart)(userId))
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(CheckoutForm));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(CheckoutForm)); // Order model:
+// User info--- association
+//products bought--- association
+// address
+// city
+// state
+// zip
+// card#
+// cardExp
+// cardCode
 
 /***/ }),
 
@@ -2805,7 +2780,7 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       component: _components__WEBPACK_IMPORTED_MODULE_2__.Home
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/allbooks",
-      component: _components__WEBPACK_IMPORTED_MODULE_2__.AllBooks
+      component: _components__WEBPACK_IMPORTED_MODULE_2__.CheckoutForm
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/books/:id",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.SingleBook
