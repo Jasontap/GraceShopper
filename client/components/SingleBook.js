@@ -1,11 +1,13 @@
 import React from "react"
 import { connect } from "react-redux"
 import {addToCart} from '../store/cart'
+import Button from '@material-ui/core/Button';
 
 
 export class SingleBook extends React.Component{
   render(){
     const { book } = this.props;
+    const userId = this.props.auth.id;
     return(
       <div>
         <div>
@@ -32,20 +34,21 @@ export class SingleBook extends React.Component{
           <div>
             <p>${ book.price }</p>
           </div>
-          <button 
-            // onClick={()=>this.props.addToCart(userId, book)}
+          <Button 
+            onClick={()=>this.props.addToCart(userId, book)}
             >Add to Cart
-          </button>
+          </Button>
         </div>
     </div>
     )
   }
 }
 
-const mapState = (state, { match })=> {
-  const book = state.books.find( book => book.coverId === match.params.id * 1 ) || {};
+const mapState = ({books,auth}, { match })=> {
+  const book = books.find( book => book.coverId === match.params.id * 1 ) || {};
   return {
     book,
+    auth
   };
 };
   

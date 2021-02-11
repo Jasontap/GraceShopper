@@ -70,7 +70,7 @@ const syncAndSeed =  async()=> {
 
     
 
-    const cartBook = await Cart.create({book: 'book-title-in-cart-here', quantity: 2});
+    const cartBook = await Cart.create({book: 'book-title-in-cart-here', quantity: 2, price: 5});
     cartBook.userId = 2;
     await cartBook.save();
   
