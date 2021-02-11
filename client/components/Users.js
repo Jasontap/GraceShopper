@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../store/users";
 import { Link } from "react-router-dom";
-import { addToCart } from "../store/cart";
 
 export class Users extends React.Component {
   componentDidMount() {
@@ -10,22 +9,20 @@ export class Users extends React.Component {
   }
   
   render() {
-    console.log(this.props.users);
     const { users } = this.props;
     // const userId = this.props.auth.id;
     return (
       <div>
         <div>
+          <h3><Link to='/add-user'>Add a User</Link></h3>
           {
             users.map((user) => {
               return (
                 <div key={user.id}>
-                  {/* <Link to={`/users/${user.id}`}> */}
-                    <h3>User Name: { user.name }</h3>
-                    <h3>User Email: { user.email }</h3>
-                    <h3>User Github ID: { user.githubId }</h3>
-                    <h3>Admin? { user.adminAuth ? 'yes' : 'no' }</h3>
-                  {/* </Link> */}
+                    <p>User Name: {<Link to={`/users/${user.id}`}> { user.name }</Link>}</p>
+                    <p>User Email: { user.email }</p>
+                    <p>User Github ID: { user.githubId ? user.githubId : 'No linked Github account.'}</p>
+                    <p>Admin? { user.adminAuth ? 'Yes' : 'No' }</p>
                 </div>
               );
             })

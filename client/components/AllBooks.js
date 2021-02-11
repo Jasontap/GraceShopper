@@ -10,8 +10,9 @@ export class AllBooks extends React.Component {
   }
   
   render() {
-    const { books } = this.props;
+    const { books, addToCart } = this.props;
     const userId = this.props.auth.id;
+    const admin = this.props.auth.adminAuth;
     return (
       <div>
         <div>
@@ -27,9 +28,17 @@ export class AllBooks extends React.Component {
                   </Link>
                   Author: {book.author}
                   <p>${book.price}</p>
-                  <button onClick={() => this.props.addToCart(userId, book)}>
-                    Add to Cart
-                  </button>
+                  {admin ? (
+                    <div>
+                      <Link to={`/books/${book.coverId}`}><button>Edit Item</button></Link>
+                      <button>Delete item</button>
+                    </div>
+
+                  ) : (
+                    <button onClick={() => addToCart(userId, book)}>
+                      Add to Cart
+                    </button>
+                  )}
                 </div>
               );
             })}

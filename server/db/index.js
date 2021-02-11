@@ -17,9 +17,9 @@ const syncAndSeed =  async()=> {
     const users = await Promise.all([
       User.create({name: 'Cody', email: 'cody@email.com', password: '123'}),
       User.create({name: 'Murphy', email: 'murphy@email.com', password: '123'}),
-      User.create({name: 'Jason', email: 'jason@email.com', password: '123', adminAuth: true}),
-      User.create({name: 'Kayla', email: 'kayla@email.com', password: '123', adminAuth: true}),
-      User.create({name: 'Taylor', email: 'taylor@email.com', password: '123', adminAuth: true})
+      User.create({name: 'Jason Williams', email: 'jason@email.com', password: '123', adminAuth: true, githubId: 123456789}),
+      User.create({name: 'Kayla Frankum', email: 'kayla@email.com', password: '123', adminAuth: true}),
+      User.create({name: 'Taylor Mckeel', email: 'taylor@email.com', password: '123', adminAuth: true})
     ])
     const [cody, murphy] = users;
     
