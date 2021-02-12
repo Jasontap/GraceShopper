@@ -29,6 +29,8 @@ class Routes extends Component {
         ) : (
           <Switch>
             <Route path='/allbooks' component={AllBooks} />
+            <Route path='/books/:id' component={SingleBook} />
+            <Route path='/mycart' component={Cart} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Redirect to="/allBooks" />

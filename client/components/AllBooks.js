@@ -35,7 +35,7 @@ export class AllBooks extends React.Component {
                     Add to Cart
                     </Button>
                   :
-                    <Button>Fake btn: Will link to guest cart</Button>
+                    <Button>not yet hooked up: Add to guest cart</Button>
                   }
                 </div>
               );

@@ -35,17 +35,35 @@ export class Navbar extends React.Component {
   render(){
     const isLoggedIn = this.props.isLoggedIn
     const isDrawerOpened = this.state.isDrawerOpened
-    console.log(isDrawerOpened)
     return(
       <div>
         <nav>
+          <div id="nav-container">
           {isLoggedIn ? (
             <div>
-              {/* The navbar will show these links after you log in */}
-              <Link to="/home"><h1>JWT Books</h1></Link>
-              <Link to="/allbooks">All Books</Link>
-              <Link to="/fiction">Fiction</Link>
-              <Link to="/nonfiction">Non-Fiction</Link>
+                {/* The navbar will show these links after you log in */}
+                <Link to="/home"><h1>JWT Books</h1></Link>
+                <Link to="/allbooks">All Books</Link>
+                <Link to="/fiction">Fiction</Link>
+                <Link to="/nonfiction">Non-Fiction</Link>
+                <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
+                <Drawer 
+                  variant="temporary"
+                  anchor="right"
+                  open={isDrawerOpened}
+                  onClose={this.closeDrawer} 
+                >
+                  <Cart />
+
+                </Drawer>
+                <a href="#" onClick={this.props.handleClick}>
+                  Logout
+                </a>
+            </div>
+          ) : (
+            <div>
+              {/* The navbar will show these links before you log in */}
+              <Link to="/allbooks"><h1>JWT Books</h1></Link>
               <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
               <Drawer 
                 variant="temporary"
@@ -56,20 +74,12 @@ export class Navbar extends React.Component {
                 <Cart />
 
               </Drawer>
-              {/* console.log(this.state.isDrawerOpen) */}
-              <a href="#" onClick={this.props.handleClick}>
-                Logout
-              </a>
-            </div>
-          ) : (
-            <div>
-              {/* The navbar will show these links before you log in */}
-              <Link to="/allbooks"><h1>JWT Books</h1></Link>
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
-              {/* <Link>Cart</Link> */}
             </div>
           )}
+          </div>
+          <i class="fas fa-child fa-2x"></i>
         </nav>
         <hr />
       </div>
