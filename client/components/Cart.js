@@ -5,36 +5,51 @@ import Button from '@material-ui/core/Button'
 import { Link } from "react-router-dom";
 
 export class Cart extends React.Component{
-  componentDidMount(){
-    const userId = this.props.auth.id;
-    if(userId){
-      this.props.getCart(userId);
+  constructor(props){
+    super(props);
+    this.state={
+      cart: [],
+      total: 0
     }
   }
+  componentDidMount(){
+    const userId = this.props.auth.id;
+    let cart;
+    if(userId){
+      cart = this.props.usercart
+    }else{
+      cart = [];
+      const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+      for(let key in localcart){
+        cart.push({book: key, quantity: localcart[key]})
+      }
+    }
+    this.setState({cart})
+  }
   render(){
-    const cart = this.props.cart
+    const cart = this.state.cart
     const userId = this.props.auth.id
     return(
       <div>
         <h1>CART</h1>
         {
-          this.props.usercart.length === 0?
+          cart.length === 0?
           <div className="cart-card"><p>Your cart is Empty. <a href='/allbooks'>Shop?</a></p></div> :
-          this.props.usercart.map(item => {
+          cart.map(item => {
             return(
-              <div key={item.id} className="cart-card">
+              <div key={item.book} className="cart-card">
                 <h4>{item.book}</h4>
                 <p>Quantity: {item.quantity}</p>
-                <p>Cost: {item.quantity * item.price}</p>
+                {/* <p>Cost: {item.quantity * item.price}</p> */}
                 <Button onClick={()=>this.props.removeFromCart(item)}>Remove from Cart</Button>
               </div>
             )
           })
         }
-        <h4>Total: </h4>
+        <h4>Total: {this.state.total}</h4>
+        <Link to='/checkout'><Button disabled={!this.state.cart.length || !userId}>Check Out</Button></Link>
         {
-          userId?
-          <Link to='/checkout'><Button disabled={!this.props.usercart.length}>Check Out</Button></Link> :
+          userId? '' :
           <div id="guest-options">
             <p>You are not logged in.</p>
             <Link to='/checkout'><p>Check Out As Guest</p></Link>

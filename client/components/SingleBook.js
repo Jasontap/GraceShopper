@@ -5,6 +5,19 @@ import Button from '@material-ui/core/Button';
 
 
 export class SingleBook extends React.Component{
+  constructor(props){
+    super(props)
+    this.addToGuestCart = this.addToGuestCart.bind(this)
+  }
+  addToGuestCart(book){
+    let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+    let title = book.title;
+    cart[title] = (cart[title] ? cart[title]: 0);
+    let qty = cart[title] + 1;
+    cart[title] = qty
+    console.log(cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
   render(){
     const { book } = this.props;
     const userId = this.props.auth.id;
@@ -34,10 +47,19 @@ export class SingleBook extends React.Component{
           <div>
             <p>${ book.price }</p>
           </div>
+          {
+            userId?
           <Button 
             onClick={()=>this.props.addToCart(userId, book)}
             >Add to Cart
           </Button>
+          :
+          <Button 
+            onClick={()=>this.addToGuestCart(book)}
+            >Add to Guest Cart
+        </Button>
+
+          }
         </div>
     </div>
     )

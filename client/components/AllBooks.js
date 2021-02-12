@@ -44,7 +44,6 @@ export class AllBooks extends React.Component {
                   <Link to={`/books/${book.coverId}`}>
                     <h3>{book.title}</h3>
                   </Link>
-                  Author: {book.author}
                   <p>${book.price}</p>
                   {
                     userId ?
@@ -52,7 +51,7 @@ export class AllBooks extends React.Component {
                     Add to Cart
                     </Button>
                   :
-                    <Button onClick={()=>this.addToGuestCart(book)}>not yet hooked up: Add to guest cart</Button>
+                    <Button onClick={()=>this.addToGuestCart(book)}>Add to Guest Cart</Button>
                   }
                 </div>
               );
