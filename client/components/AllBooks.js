@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchBooks } from "../store/books";
 import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart";
+import { destroyBook } from "../store/books";
 
 export class AllBooks extends React.Component {
   componentDidMount() {
@@ -31,7 +32,7 @@ export class AllBooks extends React.Component {
                   {admin ? (
                     <div>
                       <Link to={`/books/${book.coverId}`}><button>Edit Item</button></Link>
-                      <button>Delete item</button>
+                      <button onClick={ ()=> {this.props.destroyBook(book)}}>Delete Item From Database</button>
                     </div>
 
                   ) : (
@@ -56,6 +57,7 @@ const mapDispatch = (dispatch) => {
   return {
     getBooks: () => dispatch(fetchBooks()),
     addToCart: (userId, book) => dispatch(addToCart(userId, book)),
+    destroyBook: (book) => dispatch(destroyBook(book))
   };
 };
 
