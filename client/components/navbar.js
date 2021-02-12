@@ -12,9 +12,12 @@ const Navbar = ({handleClick, isLoggedIn, admin}) => (
           {/* The navbar will show these links after you log in */}
           <Link to="/home"><h1>JWT Books</h1></Link>
           {admin ? (
-            <Link to='/users'>View Users</Link>
+            <div>
+              <Link to='/users'>View Users</Link>
+              <Link to='/add-book'>Add a Book</Link>
+            </div>
           ) : (
-            <span></span>
+            ''
           )}
           <Link to="/allbooks">All Books</Link>
           <Link to="/fiction">Fiction</Link>

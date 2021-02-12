@@ -4,8 +4,9 @@ import axios from 'axios'
 
 const SET_BOOKS = 'SET_BOOKS'
 // const ADD_CART = 'ADD_CART'
-const UPDATE_BOOK = 'UPDATE_BOOK'
+const ADD_BOOK = 'ADD_BOOK'
 const DELETE_BOOK = 'DELETE_BOOK'
+const UPDATE_BOOK = 'UPDATE_BOOK'
 
 
 //action creators
@@ -14,6 +15,13 @@ export const setBooks = (books) => {
   return {
     type: SET_BOOKS,
     books
+  }
+};
+
+export const _addBook = (book) => {
+  return {
+    type: ADD_BOOK,
+    book
   }
 };
 
@@ -41,6 +49,12 @@ export const fetchBooks = () => {
   }
 };
 
+export const addBook = (book) => {
+  return async (dispatch) => {
+    const newBook = (await axios.post('/api/books', book)).data;
+    dispatch(_addBook(newBook));
+  }
+}
 export const destroyBook = (book) => {
   return async (dispatch)=>{
     await axios.delete(`/api/books/${book.id}`, book);
@@ -62,6 +76,9 @@ export const updateBook = (book) => {
 export default function booksReducer(state=[], action) {
   if(action.type === SET_BOOKS){
     state = action.books
+  }
+  if(action.type === ADD_BOOK){
+    return [...state, action.book];
   }
   if(action.type === DELETE_BOOK){
     return state.filter(book => book.id !== action.book.id)
