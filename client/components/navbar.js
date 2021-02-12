@@ -79,7 +79,7 @@ export class Navbar extends React.Component {
             </div>
           )}
           </div>
-          <i class="fas fa-child fa-2x"></i>
+          <i className="fas fa-child fa-2x"></i>
         </nav>
         <hr />
       </div>
