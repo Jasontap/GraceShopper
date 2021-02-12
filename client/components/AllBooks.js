@@ -22,7 +22,6 @@ export class AllBooks extends React.Component {
     cart[title] = (cart[title] ? cart[title]: 0);
     let qty = cart[title] + 1;
     cart[title] = qty
-    console.log(cart);
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 

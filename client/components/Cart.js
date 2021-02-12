@@ -11,6 +11,7 @@ export class Cart extends React.Component{
       cart: [],
       total: 0
     }
+    this.removeFromGuestCart = this.removeFromGuestCart.bind(this)
   }
   componentDidMount(){
     const userId = this.props.auth.id;
@@ -26,6 +27,22 @@ export class Cart extends React.Component{
     }
     this.setState({cart})
   }
+
+  removeFromGuestCart(book){
+    console.log(book)
+    console.log(this.state.cart)
+    let items = this.state.cart.filter((item) => item.book !== book.book);
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    delete cart[book.title];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    this.setState({cart: items})
+  }
+
+  clearCart(){
+    localStorage.removeItem('cart');
+    this.setState({cart: []});
+  }
+
   render(){
     const cart = this.state.cart
     const userId = this.props.auth.id
@@ -41,7 +58,12 @@ export class Cart extends React.Component{
                 <h4>{item.book}</h4>
                 <p>Quantity: {item.quantity}</p>
                 {/* <p>Cost: {item.quantity * item.price}</p> */}
-                <Button onClick={()=>this.props.removeFromCart(item)}>Remove from Cart</Button>
+                {
+                  userId? 
+                  <Button onClick={()=>this.props.removeFromCart(item)}>Remove from Cart</Button>
+                  :
+                  <Button onClick={()=>this.removeFromGuestCart(item)}>Remove from Cart</Button>
+                }
               </div>
             )
           })
