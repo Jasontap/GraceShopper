@@ -44,24 +44,29 @@ export class SingleBook extends React.Component{
                 <img src={ img } />
               </div>
               <div>
-                <label htmlFor='title'>Title:</label>
-                <input name='title' onChange={ handleChange } defaultValue={ title } size='50'/>
+                <label htmlFor='title'>Title:
+                  <input name='title' onChange={ handleChange } value={ title } size={ title.length }/>
+                </label>
               </div>
               <div>
-                <label htmlFor='author'>Author:</label>
-                <input name='author' onChange={ handleChange } defaultValue={ author } size='50'/>
+                <label htmlFor='author'>Author:
+                  <input name='author' onChange={ handleChange } value={ author } size={ author.length }/>
+                </label>
               </div>
               <div>
-                <label htmlFor='genre'>Genre:</label>
-                <input name='genre' onChange={ handleChange } defaultValue={ genre } size='50'/>
+                <label htmlFor='genre'>Genre:
+                  <input name='genre' onChange={ handleChange } value={ genre } size={ genre.length }/>
+                </label>
               </div>
               <div>
-                <label htmlFor='description'>Desctription:</label>
-                <input name='description' onChange={ handleChange } defaultValue={ description } size='50'/>
+                <label htmlFor='description'>Desctription:
+                  <input name='description' onChange={ handleChange } value={ description } size={ description.length }/>
+                </label>
               </div>
               <div>
-                <label htmlFor='price'>$:</label>
-                <input name='price' onChange={ handleChange } value={ price } />
+                <label htmlFor='price'>$:
+                  <input name='price' onChange={ handleChange } value={ price } size={ (price + '').length }/>
+                </label>
               </div>
               <div>
                 <button type="submit">SUBMIT</button>
@@ -107,6 +112,7 @@ export class SingleBook extends React.Component{
 }
 
 const mapState = (state, { match })=> {
+  console.log(state)
   const book = state.books.find( book => book.coverId === match.params.id * 1 ) || {};
   return {
     book,

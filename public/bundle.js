@@ -2129,9 +2129,7 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     } = this.props;
     const userId = this.props.auth.id;
     const admin = this.props.auth.adminAuth;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-      to: `/add_book`
-    }, "ADD A BOOK") : '', books && books.map(book => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books && books.map(book => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: book.coverId
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
@@ -2305,39 +2303,40 @@ class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component
       src: img
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
       htmlFor: "title"
-    }, "Title:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    }, "Title:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       name: "title",
       onChange: handleChange,
-      defaultValue: title,
-      size: "50"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      value: title,
+      size: title.length
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
       htmlFor: "author"
-    }, "Author:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    }, "Author:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       name: "author",
       onChange: handleChange,
-      defaultValue: author,
-      size: "50"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      value: author,
+      size: author.length
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
       htmlFor: "genre"
-    }, "Genre:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    }, "Genre:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       name: "genre",
       onChange: handleChange,
-      defaultValue: genre,
-      size: "50"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      value: genre,
+      size: genre.length
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
       htmlFor: "description"
-    }, "Desctription:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    }, "Desctription:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       name: "description",
       onChange: handleChange,
-      defaultValue: description,
-      size: "50"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      value: description,
+      size: description.length
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
       htmlFor: "price"
-    }, "$:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    }, "$:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       name: "price",
       onChange: handleChange,
-      value: price
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      value: price,
+      size: (price + '').length
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       type: "submit"
     }, "SUBMIT")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: book.img
@@ -2349,6 +2348,7 @@ class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component
 const mapState = (state, {
   match
 }) => {
+  console.log(state);
   const book = state.books.find(book => book.coverId === match.params.id * 1) || {};
   return {
     book,
@@ -2364,6 +2364,60 @@ const mapDispatch = dispatch => {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(SingleBook));
+
+/***/ }),
+
+/***/ "./client/components/SingleUser.js":
+/*!*****************************************!*\
+  !*** ./client/components/SingleUser.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SingleUser": () => /* binding */ SingleUser,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_users__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/users */ "./client/store/users.js");
+
+
+
+
+class SingleUser extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  componentDidMount() {
+    this.props.getUsers();
+  }
+
+  render() {
+    const {
+      user
+    } = this.props; // const userId = this.props.auth.id;
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "User Name: ", user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "User Email: ", user.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "User Github ID: ", user.githubId ? user.githubId : 'No linked Github account.'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Admin? ", user.adminAuth ? 'Yes' : 'No'))));
+  }
+
+}
+
+const mapState = (state, {
+  match
+}) => {
+  const user = state.users.find(user => user.id === match.params.id * 1) || {};
+  return {
+    user
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    getUsers: () => dispatch((0,_store_users__WEBPACK_IMPORTED_MODULE_2__.fetchUsers)())
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(SingleUser));
 
 /***/ }),
 
@@ -2398,9 +2452,7 @@ class Users extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
       users
     } = this.props; // const userId = this.props.auth.id;
 
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-      to: "/add-user"
-    }, "Add a User")), users.map(user => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, users.map(user => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: user.id
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "User Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
@@ -2579,7 +2631,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Cart": () => /* reexport safe */ _Cart__WEBPACK_IMPORTED_MODULE_4__.default,
 /* harmony export */   "SingleBook": () => /* reexport safe */ _SingleBook__WEBPACK_IMPORTED_MODULE_5__.default,
 /* harmony export */   "Users": () => /* reexport safe */ _Users__WEBPACK_IMPORTED_MODULE_6__.default,
-/* harmony export */   "AddBook": () => /* reexport safe */ _AddBook__WEBPACK_IMPORTED_MODULE_7__.default
+/* harmony export */   "AddBook": () => /* reexport safe */ _AddBook__WEBPACK_IMPORTED_MODULE_7__.default,
+/* harmony export */   "SingleUser": () => /* reexport safe */ _SingleUser__WEBPACK_IMPORTED_MODULE_8__.default
 /* harmony export */ });
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navbar */ "./client/components/navbar.js");
 /* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./client/components/home.js");
@@ -2589,11 +2642,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SingleBook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SingleBook */ "./client/components/SingleBook.js");
 /* harmony import */ var _Users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Users */ "./client/components/Users.js");
 /* harmony import */ var _AddBook__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AddBook */ "./client/components/AddBook.js");
+/* harmony import */ var _SingleUser__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SingleUser */ "./client/components/SingleUser.js");
 /**
  * `components/index.js` exists simply as a 'central export' for our components.
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+
 
 
 
@@ -2624,7 +2679,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import {setBookGenre} from '../store/books'
+
 
 const Navbar = ({
   handleClick,
@@ -2767,6 +2822,7 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       path: "/home",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.Home
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      exact: true,
       path: "/allbooks",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.AllBooks
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
@@ -2779,9 +2835,17 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       path: "/mycart",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.Cart
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      exact: true,
       path: "/users",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.Users
-    }), admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      path: "/users/:id",
+      component: _components__WEBPACK_IMPORTED_MODULE_2__.SingleUser
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      exact: true,
+      path: "/fiction",
+      component: _components__WEBPACK_IMPORTED_MODULE_2__.AllBooks
+    }), !admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
       to: "/mycart"
     }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
       to: "/home"

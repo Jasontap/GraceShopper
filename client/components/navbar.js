@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-// import {setBookGenre} from '../store/books'
+
 
 const Navbar = ({handleClick, isLoggedIn, admin}) => (
   <div>
@@ -20,7 +20,7 @@ const Navbar = ({handleClick, isLoggedIn, admin}) => (
             ''
           )}
           <Link to="/allbooks">All Books</Link>
-          <Link to="/fiction">Fiction</Link>
+          <Link to='/fiction'>Fiction</Link>
           <Link to="/nonfiction">Non-Fiction</Link>
           <Link to="/mycart">Shopping Cart (number)</Link>
           <a href="#" onClick={handleClick}>
