@@ -7,9 +7,25 @@ import Button from '@material-ui/core/Button';
 import auth from "../store/auth";
 
 export class AllBooks extends React.Component {
+  constructor(props){
+    super(props)
+    this.addToGuestCart = this.addToGuestCart.bind(this)
+  }
   componentDidMount() {
     this.props.getBooks();
+    localStorage.clear();
   }
+
+  addToGuestCart(book){
+    let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+    let title = book.title;
+    cart[title] = (cart[title] ? cart[title]: 0);
+    let qty = cart[title] + 1;
+    cart[title] = qty
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+
   
   render() {
     const { books } = this.props;
@@ -27,7 +43,6 @@ export class AllBooks extends React.Component {
                   <Link to={`/books/${book.coverId}`}>
                     <h3>{book.title}</h3>
                   </Link>
-                  Author: {book.author}
                   <p>${book.price}</p>
                   {
                     userId ?
@@ -35,7 +50,7 @@ export class AllBooks extends React.Component {
                     Add to Cart
                     </Button>
                   :
-                    <Button>Fake btn: Will link to guest cart</Button>
+                    <Button onClick={()=>this.addToGuestCart(book)}>Add to Guest Cart</Button>
                   }
                 </div>
               );
@@ -47,7 +62,8 @@ export class AllBooks extends React.Component {
 }
 
 const mapState = ({ books, auth }) => {
-  return { books, auth };
+
+  return { books, auth};
 };
 
 const mapDispatch = (dispatch) => {

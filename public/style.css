@@ -17,6 +17,11 @@ nav a {
   display: inline-block;
   margin: 1em;
 }
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 form div {
   margin: 1em;
@@ -53,7 +58,7 @@ form div {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .book-card{
