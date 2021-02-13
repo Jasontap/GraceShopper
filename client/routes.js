@@ -39,6 +39,7 @@ class Routes extends Component {
             <Route path='/mycart' component={Cart} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path='/checkout' component={CheckoutForm} />
             <Redirect to="/allBooks" />
           </Switch>
         )}
