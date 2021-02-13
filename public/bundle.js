@@ -1998,6 +1998,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   componentDidMount() {
     this.props.getBooks();
@@ -2021,7 +2022,11 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
         to: `/books/${book.coverId}`
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, book.title)), "Author: ", book.author, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price), admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
         to: `/books/${book.coverId}`
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Edit Item")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Delete item")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Edit Item")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        onClick: () => {
+          this.props.destroyBook(book);
+        }
+      }, "Delete Item From Database")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         onClick: () => addToCart(userId, book)
       }, "Add to Cart"));
     })));
@@ -2042,7 +2047,8 @@ const mapState = ({
 const mapDispatch = dispatch => {
   return {
     getBooks: () => dispatch((0,_store_books__WEBPACK_IMPORTED_MODULE_2__.fetchBooks)()),
-    addToCart: (userId, book) => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_3__.addToCart)(userId, book))
+    addToCart: (userId, book) => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_3__.addToCart)(userId, book)),
+    destroyBook: book => dispatch((0,_store_books__WEBPACK_IMPORTED_MODULE_2__.destroyBook)(book))
   };
 };
 
@@ -2795,8 +2801,10 @@ const logout = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "setBooks": () => /* binding */ setBooks,
+/* harmony export */   "_deleteBook": () => /* binding */ _deleteBook,
 /* harmony export */   "_updateBook": () => /* binding */ _updateBook,
 /* harmony export */   "fetchBooks": () => /* binding */ fetchBooks,
+/* harmony export */   "destroyBook": () => /* binding */ destroyBook,
 /* harmony export */   "updateBook": () => /* binding */ updateBook,
 /* harmony export */   "default": () => /* binding */ booksReducer
 /* harmony export */ });
@@ -2806,12 +2814,19 @@ __webpack_require__.r(__webpack_exports__);
 
 const SET_BOOKS = 'SET_BOOKS'; // const ADD_CART = 'ADD_CART'
 
-const UPDATE_BOOK = 'UPDATE_BOOK'; //action creators
+const UPDATE_BOOK = 'UPDATE_BOOK';
+const DELETE_BOOK = 'DELETE_BOOK'; //action creators
 
 const setBooks = books => {
   return {
     type: SET_BOOKS,
     books
+  };
+};
+const _deleteBook = book => {
+  return {
+    type: DELETE_BOOK,
+    book
   };
 };
 const _updateBook = book => {
@@ -2827,6 +2842,12 @@ const fetchBooks = () => {
     dispatch(setBooks(books));
   };
 };
+const destroyBook = book => {
+  return async dispatch => {
+    await axios__WEBPACK_IMPORTED_MODULE_0___default().delete(`/api/books/${book.id}`, book);
+    dispatch(_deleteBook(book));
+  };
+};
 const updateBook = book => {
   return async dispatch => {
     const updated = (await axios__WEBPACK_IMPORTED_MODULE_0___default().put(`/api/books/${book.id}`, book)).data;
@@ -2837,6 +2858,10 @@ const updateBook = book => {
 function booksReducer(state = [], action) {
   if (action.type === SET_BOOKS) {
     state = action.books;
+  }
+
+  if (action.type === DELETE_BOOK) {
+    return state.filter(book => book.id !== action.book.id);
   }
 
   if (action.type === UPDATE_BOOK) {
