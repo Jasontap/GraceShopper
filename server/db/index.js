@@ -18,6 +18,7 @@ const syncAndSeed =  async()=> {
       User.create({name: 'Cody', email: 'cody@email.com', password: '123'}),
       User.create({name: 'Murphy', email: 'murphy@email.com', password: '123'}),
 <<<<<<< HEAD
+<<<<<<< HEAD
       User.create({name: 'Jason Williams', email: 'jason@email.com', password: '123', adminAuth: true, githubId: 123456789}),
       User.create({name: 'Kayla Frankum', email: 'kayla@email.com', password: '123', adminAuth: true}),
       User.create({name: 'Taylor Mckeel', email: 'taylor@email.com', password: '123', adminAuth: true})
@@ -26,6 +27,11 @@ const syncAndSeed =  async()=> {
       User.create({name: 'Kayla', email: 'kayla@email.com', password: '123', adminAuth: true}),
       User.create({name: 'Taylor', email: 'taylor@email.com', password: '123', adminAuth: true})
 >>>>>>> cba9f27... Added admin users to seed function. Added admin/standard-user filter for nav bar.
+=======
+      User.create({name: 'Jason Williams', email: 'jason@email.com', password: '123', adminAuth: true, githubId: 123456789}),
+      User.create({name: 'Kayla Frankum', email: 'kayla@email.com', password: '123', adminAuth: true}),
+      User.create({name: 'Taylor Mckeel', email: 'taylor@email.com', password: '123', adminAuth: true})
+>>>>>>> 3c168ec... Setup view/option switch per admin authorization
     ])
     const [cody, murphy] = users;
     

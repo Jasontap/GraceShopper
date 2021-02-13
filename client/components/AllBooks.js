@@ -32,7 +32,11 @@ export class AllBooks extends React.Component {
                   {admin ? (
                     <div>
                       <Link to={`/books/${book.coverId}`}><button>Edit Item</button></Link>
+<<<<<<< HEAD
                       <button onClick={ ()=> {this.props.destroyBook(book)}}>Delete Item From Database</button>
+=======
+                      <button>Delete item</button>
+>>>>>>> 3c168ec... Setup view/option switch per admin authorization
                     </div>
 
                   ) : (

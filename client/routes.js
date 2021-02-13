@@ -35,8 +35,12 @@ class Routes extends Component {
             { !admin ? <Redirect to='/mycart'/> : <Redirect to="/home" /> }
 =======
             <Route path='/users' component={Users} />
+<<<<<<< HEAD
             <Redirect to="/home" />
 >>>>>>> 50f90de... Created Users component to display all users at /users, accessible by admin only
+=======
+            { admin ? <Redirect to='/mycart'/> : <Redirect to="/home" /> }
+>>>>>>> 3c168ec... Setup view/option switch per admin authorization
           </Switch>
         ) : (
           <Switch>
