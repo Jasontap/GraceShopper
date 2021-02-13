@@ -2125,17 +2125,97 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/cart */ "./client/store/cart.js");
+/* harmony import */ var _store_books__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/books */ "./client/store/books.js");
+
 
 
 
 class SingleBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: this.props.book.title,
+      img: this.props.book.img,
+      author: this.props.book.author,
+      genre: this.props.book.genre,
+      description: this.props.book.genre,
+      price: this.props.book.price,
+      id: this.props.book.id,
+      admin: this.props
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
+  }
+
+  handleSubmit(evt) {
+    evt.preventDefault();
+    this.props.updateBook({ ...this.state
+    });
+  }
+
   render() {
     const {
-      book
-    } = this.props;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      title,
+      img,
+      author,
+      genre,
+      description,
+      price,
+      admin
+    } = this.state;
+    const {
+      handleChange,
+      handleSubmit
+    } = this;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+      onSubmit: handleSubmit
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: img
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "title"
+    }, "Title:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "title",
+      onChange: handleChange,
+      defaultValue: title,
+      size: "50"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "author"
+    }, "Author:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "author",
+      onChange: handleChange,
+      defaultValue: author,
+      size: "50"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "genre"
+    }, "Genre:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "genre",
+      onChange: handleChange,
+      defaultValue: genre,
+      size: "50"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "description"
+    }, "Desctription:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "description",
+      onChange: handleChange,
+      defaultValue: description,
+      size: "50"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "price"
+    }, "$:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "price",
+      onChange: handleChange,
+      value: price
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      type: "submit"
+    }, "SUBMIT")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: book.img
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Title: ", book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Author: ", book.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Genre: ", book.genre)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", book.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Reviews: ", book.review))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add to Cart")));
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Title: ", book.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Author: ", book.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Genre: ", book.genre)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Description: ", book.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Reviews: ", book.review))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", book.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Add to Cart"))));
   }
 
 }
@@ -2145,13 +2225,15 @@ const mapState = (state, {
 }) => {
   const book = state.books.find(book => book.coverId === match.params.id * 1) || {};
   return {
-    book
+    book,
+    admin: state.auth.adminAuth
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    addToCart: (userId, book) => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_2__.addToCart)(userId, book))
+    addToCart: (userId, book) => dispatch((0,_store_cart__WEBPACK_IMPORTED_MODULE_2__.addToCart)(userId, book)),
+    updateBook: book => dispatch((0,_store_books__WEBPACK_IMPORTED_MODULE_3__.updateBook)(book))
   };
 };
 
@@ -2249,8 +2331,7 @@ const AuthForm = props => {
     name,
     displayName,
     handleSubmit,
-    error,
-    admin
+    error
   } = props;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handleSubmit,
@@ -2672,11 +2753,7 @@ const authenticate = (email, password, method) => async dispatch => {
       email,
       password
     });
-
-    if (method !== 'addUser') {
-      storage().setItem(TOKEN, res.data.token);
-    }
-
+    storage().setItem(TOKEN, res.data.token);
     dispatch(me());
   } catch (authError) {
     return dispatch(setAuth({
@@ -2718,7 +2795,9 @@ const logout = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "setBooks": () => /* binding */ setBooks,
+/* harmony export */   "_updateBook": () => /* binding */ _updateBook,
 /* harmony export */   "fetchBooks": () => /* binding */ fetchBooks,
+/* harmony export */   "updateBook": () => /* binding */ updateBook,
 /* harmony export */   "default": () => /* binding */ booksReducer
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -2726,12 +2805,19 @@ __webpack_require__.r(__webpack_exports__);
  //constants
 
 const SET_BOOKS = 'SET_BOOKS'; // const ADD_CART = 'ADD_CART'
-//action creators
+
+const UPDATE_BOOK = 'UPDATE_BOOK'; //action creators
 
 const setBooks = books => {
   return {
     type: SET_BOOKS,
     books
+  };
+};
+const _updateBook = book => {
+  return {
+    type: UPDATE_BOOK,
+    book
   };
 }; //thunks
 
@@ -2740,11 +2826,21 @@ const fetchBooks = () => {
     const books = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/books/')).data;
     dispatch(setBooks(books));
   };
+};
+const updateBook = book => {
+  return async dispatch => {
+    const updated = (await axios__WEBPACK_IMPORTED_MODULE_0___default().put(`/api/books/${book.id}`, book)).data;
+    dispatch(_updateBook(updated));
+  };
 }; //reducer
 
 function booksReducer(state = [], action) {
   if (action.type === SET_BOOKS) {
     state = action.books;
+  }
+
+  if (action.type === UPDATE_BOOK) {
+    return state.map(book => action.book.id === book.id ? action.book : book);
   }
 
   return state;

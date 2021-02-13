@@ -33,9 +33,7 @@ export const authenticate = (email, password, method) => async dispatch => {
   let res
   try {
     res = await axios.post(`/auth/${method}`, {email, password})
-    if(method !== 'addUser'){
-      storage().setItem(TOKEN, res.data.token)
-    }
+    storage().setItem(TOKEN, res.data.token)
     dispatch(me())
   } catch (authError) {
     return dispatch(setAuth({error: authError}))

@@ -4,8 +4,11 @@ import axios from 'axios'
 
 const SET_BOOKS = 'SET_BOOKS'
 // const ADD_CART = 'ADD_CART'
+<<<<<<< HEAD
 const ADD_BOOK = 'ADD_BOOK'
 const DELETE_BOOK = 'DELETE_BOOK'
+=======
+>>>>>>> 4e57765... Setup UPDATE_BOOK for admin only
 const UPDATE_BOOK = 'UPDATE_BOOK'
 
 
@@ -18,6 +21,7 @@ export const setBooks = (books) => {
   }
 };
 
+<<<<<<< HEAD
 export const _addBook = (book) => {
   return {
     type: ADD_BOOK,
@@ -32,6 +36,8 @@ export const _deleteBook = (book) => {
   }
 };
 
+=======
+>>>>>>> 4e57765... Setup UPDATE_BOOK for admin only
 export const _updateBook = (book) => {
   return {
     type: UPDATE_BOOK,
@@ -49,6 +55,7 @@ export const fetchBooks = () => {
   }
 };
 
+<<<<<<< HEAD
 export const addBook = (book) => {
   return async (dispatch) => {
     const newBook = (await axios.post('/api/books', book)).data;
@@ -62,6 +69,8 @@ export const destroyBook = (book) => {
   }
 };
 
+=======
+>>>>>>> 4e57765... Setup UPDATE_BOOK for admin only
 export const updateBook = (book) => {
   return async (dispatch)=>{
     const updated = (await axios.put(`/api/books/${book.id}`, book)).data;
@@ -77,12 +86,15 @@ export default function booksReducer(state=[], action) {
   if(action.type === SET_BOOKS){
     state = action.books
   }
+<<<<<<< HEAD
   if(action.type === ADD_BOOK){
     return [...state, action.book];
   }
   if(action.type === DELETE_BOOK){
     return state.filter(book => book.id !== action.book.id)
   }
+=======
+>>>>>>> 4e57765... Setup UPDATE_BOOK for admin only
   if(action.type === UPDATE_BOOK){
     return state.map(book => action.book.id === book.id ? action.book : book)
   }

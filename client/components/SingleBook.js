@@ -44,6 +44,7 @@ export class SingleBook extends React.Component{
                 <img src={ img } />
               </div>
               <div>
+<<<<<<< HEAD
                 <label htmlFor='title'>Title:
                   <input name='title' onChange={ handleChange } value={ title } size={ title.length }/>
                 </label>
@@ -67,6 +68,26 @@ export class SingleBook extends React.Component{
                 <label htmlFor='price'>$:
                   <input name='price' onChange={ handleChange } value={ price } size={ (price + '').length }/>
                 </label>
+=======
+                <label htmlFor='title'>Title:</label>
+                <input name='title' onChange={ handleChange } defaultValue={ title } size='50'/>
+              </div>
+              <div>
+                <label htmlFor='author'>Author:</label>
+                <input name='author' onChange={ handleChange } defaultValue={ author } size='50'/>
+              </div>
+              <div>
+                <label htmlFor='genre'>Genre:</label>
+                <input name='genre' onChange={ handleChange } defaultValue={ genre } size='50'/>
+              </div>
+              <div>
+                <label htmlFor='description'>Desctription:</label>
+                <input name='description' onChange={ handleChange } defaultValue={ description } size='50'/>
+              </div>
+              <div>
+                <label htmlFor='price'>$:</label>
+                <input name='price' onChange={ handleChange } value={ price } />
+>>>>>>> 4e57765... Setup UPDATE_BOOK for admin only
               </div>
               <div>
                 <button type="submit">SUBMIT</button>
