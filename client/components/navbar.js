@@ -84,10 +84,17 @@ export class Navbar extends React.Component {
               <Link to="/signup">Sign Up</Link>
             </div>
           )}
+          <div className="icon">
+            <i className="fas fa-child fa-2x"></i>
           </div>
-          <i className="fas fa-child fa-2x"></i>
+          
+          {/* <div>
+          <hr />
+          </div> */}
+
+          </div>
+
         </nav>
-        <hr />
       </div>
     )
   }

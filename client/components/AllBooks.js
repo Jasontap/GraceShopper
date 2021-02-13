@@ -43,7 +43,7 @@ export class AllBooks extends React.Component {
                     <img className="cover-art" src={book.img} />
                   </Link>
                   <Link to={`/books/${book.coverId}`}>
-                    <h3>{book.title}</h3>
+                    <h3 className="book-title-div">{book.title}</h3>
                   </Link>
                   <p>${book.price}</p>
                   {admin ? (
@@ -52,11 +52,7 @@ export class AllBooks extends React.Component {
                       <button onClick={ ()=> {this.props.destroyBook(book)}}>Delete Item From Database</button>
                     </div>
                   ) : (
-                    <button onClick={() => addToCart(userId, book)}>
-                      Add to Cart
-                    </button>
-                  )}
-
+                  <div>
                   {
                     userId ?
                     <Button onClick={() => this.props.addToCart(userId, book)}>
@@ -65,6 +61,9 @@ export class AllBooks extends React.Component {
                   :
                     <Button onClick={()=>this.addToGuestCart(book)}>Add to Guest Cart</Button>
                   }
+                  </div>
+
+                  )}
                 </div>
               );
             })}
