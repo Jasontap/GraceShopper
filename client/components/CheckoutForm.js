@@ -167,14 +167,4 @@ const mapDispatch = (dispatch) => {
   
 export default connect(mapState, mapDispatch)(CheckoutForm);
 
-// Order model:
 
-// User info--- association
-//products bought--- association
-// address
-// city
-// state
-// zip
-// card#
-// cardExp
-// cardCode
