@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import {Login, Signup, Home, AllBooks, SingleBook, Cart, CheckoutForm} from './components'
+import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook, CheckoutForm, SingleUser} from './components'
 import {me} from './store'
 
 /**
@@ -13,24 +13,34 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const {isLoggedIn, admin} = this.props
 
     return (
       <div>
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path='/allbooks' component={AllBooks} />
+            <Route exact path='/allbooks' component={AllBooks} />
             <Route path='/books/:id' component={SingleBook} />
+            <Route path='/add-book' component={AddBook} />
             <Route path='/mycart' component={Cart} />
-            <Route exact path='/checkout' component={CheckoutForm} />
+
+            <Route exact path='/users' component={Users} />
+            <Route path='/users/:id' component={SingleUser} />
+            <Route exact path='/fiction' component={AllBooks} />
+            { !admin ? <Redirect to='/mycart'/> : <Redirect to="/home" /> }
+            <Route path='/checkout' component={CheckoutForm} />
+
             <Redirect to="/home" />
           </Switch>
         ) : (
           <Switch>
+            <Route path='/allbooks' component={AllBooks} />
+            <Route path='/books/:id' component={SingleBook} />
+            <Route path='/mycart' component={Cart} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Redirect to="/login" />
+            <Redirect to="/allBooks" />
           </Switch>
         )}
       </div>
@@ -45,7 +55,8 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined as having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
-    isLoggedIn: !!state.auth.id
+    isLoggedIn: !!state.auth.id,
+    admin: state.auth.adminAuth
   }
 }
 

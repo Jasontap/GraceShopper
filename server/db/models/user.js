@@ -19,7 +19,7 @@ const User = db.define('user', {
     type: Sequelize.STRING,
   },
   githubId: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
   },
   adminAuth: {
     type: Sequelize.BOOLEAN,

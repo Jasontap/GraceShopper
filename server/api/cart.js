@@ -40,7 +40,6 @@ router.get('/:id/cart', async (req, res, next) => {
 
 router.post('/:id/cart', async (req, res, next) => {
   try {
-    console.log(req.body);
     const bookInCart = await Cart.findOne({
       where: {
         book: req.body.book,

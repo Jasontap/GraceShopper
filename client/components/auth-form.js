@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {authenticate} from '../store'
+import Button from '@material-ui/core/Button'
 
 /**
  * COMPONENT
@@ -24,7 +25,7 @@ const AuthForm = props => {
           <input name="password" type="password" />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <Button type="submit">{displayName}</Button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
@@ -34,6 +35,7 @@ const AuthForm = props => {
     </div>
   )
 }
+
 
 /**
  * CONTAINER
@@ -57,6 +59,7 @@ const mapSignup = state => {
     error: state.auth.error
   }
 }
+
 
 const mapDispatch = dispatch => {
   return {

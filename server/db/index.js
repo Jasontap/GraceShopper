@@ -19,7 +19,10 @@ const syncAndSeed =  async()=> {
     await db.sync({force: true});
     const users = await Promise.all([
       User.create({name: 'Cody', email: 'cody@email.com', password: '123'}),
-      User.create({name: 'Murphy', email: 'murphy@email.com', password: '123'})
+      User.create({name: 'Murphy', email: 'murphy@email.com', password: '123'}),
+      User.create({name: 'Jason Williams', email: 'jason@email.com', password: '123', adminAuth: true, githubId: 123456789}),
+      User.create({name: 'Kayla Frankum', email: 'kayla@email.com', password: '123', adminAuth: true}),
+      User.create({name: 'Taylor Mckeel', email: 'taylor@email.com', password: '123', adminAuth: true})
     ])
     const [cody, murphy] = users;
     
@@ -73,7 +76,7 @@ const syncAndSeed =  async()=> {
 
     
 
-    const cartBook = await Cart.create({book: 'book-title-in-cart-here', quantity: 2});
+    const cartBook = await Cart.create({book: 'book-title-in-cart-here', quantity: 2, price: 5});
     cartBook.userId = 2;
     await cartBook.save();
   
