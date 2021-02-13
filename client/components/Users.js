@@ -18,22 +18,27 @@ export class Users extends React.Component {
     return (
       <div>
         <div>
-          <h3><Link to='/add-user'>Add a User</Link></h3>
           {
             users.map((user) => {
               return (
                 <div key={user.id}>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
                   <p>User Name: {<Link to={`/users/${user.id}`}> { user.name }</Link>}</p>
                   <p>User Email: { user.email }</p>
                   <p>User Github ID: { user.githubId ? user.githubId : 'No linked Github account.'}</p>
                   <p>Admin? { user.adminAuth ? 'Yes' : 'No' }</p>
+<<<<<<< HEAD
 =======
                     <p>User Name: {<Link to={`/users/${user.id}`}> { user.name }</Link>}</p>
                     <p>User Email: { user.email }</p>
                     <p>User Github ID: { user.githubId ? user.githubId : 'No linked Github account.'}</p>
                     <p>Admin? { user.adminAuth ? 'Yes' : 'No' }</p>
 >>>>>>> 3c168ec... Setup view/option switch per admin authorization
+=======
+>>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
                 </div>
               );
             })

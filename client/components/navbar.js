@@ -3,10 +3,14 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 // import {setBookGenre} from '../store/books'
+=======
+
+>>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
 
 >>>>>>> cba9f27... Added admin users to seed function. Added admin/standard-user filter for nav bar.
 const Navbar = ({handleClick, isLoggedIn, admin}) => (

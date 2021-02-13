@@ -17,7 +17,6 @@ export class AllBooks extends React.Component {
     return (
       <div>
         <div>
-          {admin ? ( <Link to={`/add_book`}>ADD A BOOK</Link> ) : ( '' )}
           {books &&
             books.map((book) => {
               return (

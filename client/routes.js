@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook, SingleUser} from './components'
 =======
 import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users} from './components'
@@ -10,6 +11,9 @@ import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users} from './componen
 =======
 import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook} from './components'
 >>>>>>> d26341b... Admin can add New Books to database
+=======
+import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook, SingleUser} from './components'
+>>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
 import {me} from './store'
 
 /**
@@ -33,10 +37,14 @@ class Routes extends Component {
             <Route path='/add-book' component={AddBook} />
             <Route path='/mycart' component={Cart} />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
             <Route exact path='/users' component={Users} />
             <Route path='/users/:id' component={SingleUser} />
             <Route exact path='/fiction' component={AllBooks} />
             { !admin ? <Redirect to='/mycart'/> : <Redirect to="/home" /> }
+<<<<<<< HEAD
 =======
             <Route path='/users' component={Users} />
 <<<<<<< HEAD
@@ -45,6 +53,8 @@ class Routes extends Component {
 =======
             { admin ? <Redirect to='/mycart'/> : <Redirect to="/home" /> }
 >>>>>>> 3c168ec... Setup view/option switch per admin authorization
+=======
+>>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
           </Switch>
         ) : (
           <Switch>
