@@ -88,6 +88,7 @@ module.exports = {
   syncAndSeed,
   models: {
     User,
-    Book
+    Book,
+    Order
   }
 }

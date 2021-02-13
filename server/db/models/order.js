@@ -35,14 +35,3 @@ const Order = db.define('order', {
 
 module.exports = Order
 
-// Order model:
-
-// User info--- association
-//products bought--- association
-// address
-// city
-// state
-// zip
-// card#
-// cardExp
-// cardCode

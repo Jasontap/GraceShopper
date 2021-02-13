@@ -25,7 +25,7 @@ export class Cart extends React.Component{
             )
           })
         }
-        <a href='/checkout'><button>Check Out</button></a>
+        <Link to='/checkout'><button>Check Out</button></Link>
       </div>
     )
   }

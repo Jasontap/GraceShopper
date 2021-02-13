@@ -23,7 +23,7 @@ class Routes extends Component {
             <Route path='/allbooks' component={AllBooks} />
             <Route path='/books/:id' component={SingleBook} />
             <Route path='/mycart' component={Cart} />
-            <Route path='/checkout' component={CheckoutForm} />
+            <Route exact path='/checkout' component={CheckoutForm} />
             <Redirect to="/home" />
           </Switch>
         ) : (
