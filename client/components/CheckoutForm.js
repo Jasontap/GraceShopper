@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { getCart } from '../store/cart'
+import {createOrder} from '../store/checkout'
 
 
 export class CheckoutForm extends React.Component{
@@ -31,16 +32,26 @@ export class CheckoutForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     componentDidMount(){
-        this.props.getCart(this.props.auth.id)
+        const userId = this.props.auth.id
+        this.props.getCart(userId)
         console.log(this.props)
     }
     handleChange(ev){
         const {name, value} = ev.target
         this.setState({[name] : value})
-        console.log(this.state)
     }
     handleSubmit(ev){
         ev.preventDefault()
+        const order = {
+            address: this.state.shipAddy,
+            city: this.state.shipCity,
+            state: this.state.shipState,
+            zip: this.state.shipZip,
+            cardNum: this.state.cardNum,
+            cardExp: this.state.cardExp,
+            cardCode: this.state.cardCode
+        }
+        this.props.createOrder(order, this.props.auth.id)
         this.setState({continue: true})
     }
     render(){
@@ -145,7 +156,14 @@ export class CheckoutForm extends React.Component{
             return (
                 <div id='orderSumm'>
                     <h3>Congratulations on Your Order {this.state.shipFirst}</h3>
-                    <h5>Your order of: (add cart items here)</h5>
+                    <h5>Your order of: </h5>
+                    <ul>
+                        {this.props.cart.map(item=>{
+                            return (
+                                <li key={item.id}>Title:{item.book}, Quantity:{item.quantity}</li>
+                            )
+                        })}
+                    </ul>
                     <h5>Will be shipped to:</h5>
                     <p>{this.state.shipAddy}</p>
                     <p>{`${this.state.shipCity}, ${this.state.shipState} ${this.state.shipZip}`}</p>
@@ -161,20 +179,11 @@ const mapState = ({auth, cart}) => {
   
 const mapDispatch = (dispatch) => {
     return {
+        createOrder: (userId, order)=> dispatch(createOrder(userId, order)),
         getCart: (userId)=> dispatch(getCart(userId)),
     };
 };
   
 export default connect(mapState, mapDispatch)(CheckoutForm);
 
-// Order model:
 
-// User info--- association
-//products bought--- association
-// address
-// city
-// state
-// zip
-// card#
-// cardExp
-// cardCode
