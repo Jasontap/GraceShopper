@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchBooks } from "../store/books";
 import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart";
+import { destroyBook } from "../store/books";
 import Button from '@material-ui/core/Button';
 import auth from "../store/auth";
 
@@ -28,8 +29,9 @@ export class AllBooks extends React.Component {
 
   
   render() {
-    const { books } = this.props;
+    const { books, addToCart } = this.props;
     const userId = this.props.auth.id;
+    const admin = this.props.auth.adminAuth;
     return (
       <div>
         <div className="container">
@@ -44,6 +46,17 @@ export class AllBooks extends React.Component {
                     <h3>{book.title}</h3>
                   </Link>
                   <p>${book.price}</p>
+                  {admin ? (
+                    <div>
+                      <Link to={`/books/${book.coverId}`}><button>Edit Item</button></Link>
+                      <button onClick={ ()=> {this.props.destroyBook(book)}}>Delete Item From Database</button>
+                    </div>
+                  ) : (
+                    <button onClick={() => addToCart(userId, book)}>
+                      Add to Cart
+                    </button>
+                  )}
+
                   {
                     userId ?
                     <Button onClick={() => this.props.addToCart(userId, book)}>
@@ -70,6 +83,7 @@ const mapDispatch = (dispatch) => {
   return {
     getBooks: () => dispatch(fetchBooks()),
     addToCart: (userId, book) => dispatch(addToCart(userId, book)),
+    destroyBook: (book) => dispatch(destroyBook(book))
   };
 };
 

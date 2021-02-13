@@ -2,10 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import {setBookGenre} from '../store/books'
 import {Drawer} from '@material-ui/core'
 import Cart from './Cart'
-
 
 
 export class Navbar extends React.Component {
@@ -31,22 +29,30 @@ export class Navbar extends React.Component {
       isDrawerOpened: false, 
     }) 
   } 
-  
   render(){
-    const isLoggedIn = this.props.isLoggedIn
     const isDrawerOpened = this.state.isDrawerOpened
+    const {handleClick, isLoggedIn, admin} = this.props
     return(
       <div>
         <nav>
           <div id="nav-container">
           {isLoggedIn ? (
             <div>
-                {/* The navbar will show these links after you log in */}
-                <Link to="/home"><h1>JWT Books</h1></Link>
-                <Link to="/allbooks">All Books</Link>
-                <Link to="/fiction">Fiction</Link>
-                <Link to="/nonfiction">Non-Fiction</Link>
-                <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
+              {/* The navbar will show these links after you log in */}
+              <Link to="/home"><h1>JWT Books</h1></Link>
+              {admin ? (
+                <div>
+                  <Link to='/users'>View Users</Link>
+                  <Link to='/add-book'>Add a Book</Link>
+                </div>
+
+              ) : (
+                ''
+              )}
+              <Link to="/allbooks">All Books</Link>
+              <Link to='/fiction'>Fiction</Link>
+              <Link to="/nonfiction">Non-Fiction</Link>
+              <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
                 <Drawer 
                   variant="temporary"
                   anchor="right"
@@ -56,9 +62,9 @@ export class Navbar extends React.Component {
                   <Cart />
 
                 </Drawer>
-                <a href="#" onClick={this.props.handleClick}>
-                  Logout
-                </a>
+              <a href="#" onClick={handleClick}>
+                Logout
+              </a>
             </div>
           ) : (
             <div>
@@ -87,12 +93,10 @@ export class Navbar extends React.Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.auth.id
+    isLoggedIn: !!state.auth.id,
+    admin: state.auth.adminAuth
   }
 }
 

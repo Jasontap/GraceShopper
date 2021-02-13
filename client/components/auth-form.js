@@ -36,6 +36,7 @@ const AuthForm = props => {
   )
 }
 
+
 /**
  * CONTAINER
  *   Note that we have two different sets of 'mapStateToProps' functions -
@@ -58,6 +59,7 @@ const mapSignup = state => {
     error: state.auth.error
   }
 }
+
 
 const mapDispatch = dispatch => {
   return {

@@ -9,4 +9,8 @@ export {Login, Signup} from './auth-form'
 export {default as AllBooks} from './AllBooks'
 export {default as Cart} from './Cart'
 export {default as SingleBook} from './SingleBook'
+export {default as Users} from './Users'
+export {default as AddBook} from './AddBook'
+export {default as SingleUser} from './SingleUser'
 export {default as CheckoutForm} from './CheckoutForm'
+
