@@ -10,15 +10,7 @@ export {default as AllBooks} from './AllBooks'
 export {default as Cart} from './Cart'
 export {default as SingleBook} from './SingleBook'
 export {default as Users} from './Users'
-<<<<<<< HEAD
-<<<<<<< HEAD
 export {default as AddBook} from './AddBook'
 export {default as SingleUser} from './SingleUser'
-<<<<<<< HEAD
-=======
->>>>>>> 50f90de... Created Users component to display all users at /users, accessible by admin only
-=======
-export {default as AddBook} from './AddBook'
->>>>>>> d26341b... Admin can add New Books to database
-=======
->>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
+export {default as CheckoutForm} from './CheckoutForm'
+

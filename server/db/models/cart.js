@@ -9,6 +9,10 @@ const Cart = db.define('cart', {
   quantity: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  price: {
+    type: Sequelize.FLOAT,
+    allowNull: false
   }
 })
 

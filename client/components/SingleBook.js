@@ -1,7 +1,8 @@
-import React from "react"
-import { connect } from "react-redux"
-import {addToCart} from '../store/cart'
-import {updateBook} from '../store/books'
+import React from "react";
+import { connect } from "react-redux";
+import {addToCart} from '../store/cart';
+import {updateBook} from '../store/books';
+import Button from '@material-ui/core/Button';
 
 
 export class SingleBook extends React.Component{
@@ -17,6 +18,7 @@ export class SingleBook extends React.Component{
       id: this.props.book.id,
       admin: this.props
     }
+    this.addToGuestCart = this.addToGuestCart.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -31,10 +33,22 @@ export class SingleBook extends React.Component{
     evt.preventDefault();
     this.props.updateBook({...this.state})
   }
+  
+  addToGuestCart(book){
+    let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+    let title = book.title;
+    cart[title] = (cart[title] ? cart[title]: 0);
+    let qty = cart[title] + 1;
+    cart[title] = qty
+    console.log(cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
 
   render(){
     const { title, img, author, genre, description, price, admin } = this.state;
     const { handleChange, handleSubmit } = this;
+    const userId = this.props.auth.id;
+
     return(
       <div>
         {admin ? (
@@ -44,8 +58,6 @@ export class SingleBook extends React.Component{
                 <img src={ img } />
               </div>
               <div>
-<<<<<<< HEAD
-<<<<<<< HEAD
                 <label htmlFor='title'>Title:
                   <input name='title' onChange={ handleChange } value={ title } size={ title.length }/>
                 </label>
@@ -69,40 +81,6 @@ export class SingleBook extends React.Component{
                 <label htmlFor='price'>$:
                   <input name='price' onChange={ handleChange } value={ price } size={ (price + '').length }/>
                 </label>
-=======
-                <label htmlFor='title'>Title:</label>
-                <input name='title' onChange={ handleChange } defaultValue={ title } size='50'/>
-=======
-                <label htmlFor='title'>Title:
-                  <input name='title' onChange={ handleChange } value={ title } size={ title.length }/>
-                </label>
->>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
-              </div>
-              <div>
-                <label htmlFor='author'>Author:
-                  <input name='author' onChange={ handleChange } value={ author } size={ author.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='genre'>Genre:
-                  <input name='genre' onChange={ handleChange } value={ genre } size={ genre.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='description'>Desctription:
-                  <input name='description' onChange={ handleChange } value={ description } size={ description.length }/>
-                </label>
-              </div>
-              <div>
-<<<<<<< HEAD
-                <label htmlFor='price'>$:</label>
-                <input name='price' onChange={ handleChange } value={ price } />
->>>>>>> 4e57765... Setup UPDATE_BOOK for admin only
-=======
-                <label htmlFor='price'>$:
-                  <input name='price' onChange={ handleChange } value={ price } size={ (price + '').length }/>
-                </label>
->>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
               </div>
               <div>
                 <button type="submit">SUBMIT</button>
@@ -113,32 +91,40 @@ export class SingleBook extends React.Component{
           <div>
             <div>
               <div>
-                <img src={ book.img } />
+                <img src={ img } />
               </div>
               <div>
-                <p>Title: { book.title }</p>
+                <p>Title: { title }</p>
               </div>
               <div>
-                <p>Author: { book.author }</p>
+                <p>Author: { author }</p>
               </div>
               <div>
-                <p>Genre: { book.genre }</p>
+                <p>Genre: { genre }</p>
               </div>
               <div>
-                <p>Description: { book.description }</p>
+                <p>Description: { description }</p>
               </div>
               <div>
-                <p>Reviews: { book.review }</p>
+                <p>Reviews: { review }</p>
               </div>
             </div>
             <div>
               <div>
-                <p>${ book.price }</p>
+                <p>${ price }</p>
               </div>
-              <button 
-                // onClick={()=>this.props.addToCart(userId, book)}
-                >Add to Cart
-              </button>
+              {
+                userId ?
+                  <Button 
+                    onClick={()=>this.props.addToCart(userId, book)}
+                    >Add to Cart
+                  </Button>
+                :
+                  <Button 
+                    onClick={()=>this.addToGuestCart(book)}
+                    >Add to Guest Cart
+                </Button>
+              }
             </div>
           </div>
         )}
@@ -147,12 +133,13 @@ export class SingleBook extends React.Component{
   }
 }
 
-const mapState = (state, { match })=> {
-  console.log(state)
-  const book = state.books.find( book => book.coverId === match.params.id * 1 ) || {};
+
+const mapState = ({books,auth}, { match })=> {
+  const book = books.find( book => book.coverId === match.params.id * 1 ) || {};
   return {
     book,
-    admin: state.auth.adminAuth
+    auth,
+    admin: auth.adminAuth
   };
 };
   

@@ -36,7 +36,7 @@ export const _getCart = (cart) => {
 
 export const getCart = (userId) => {
     return async (dispatch)=>{
-      const cart = (await axios.get(`api/cart/${userId}/cart`)).data
+      const cart = (await axios.get(`/api/cart/${userId}/cart`)).data
       dispatch(_getCart(cart))
     }
 };
@@ -44,7 +44,7 @@ export const getCart = (userId) => {
   export const removeFromCart = (book) => {
     return async (dispatch)=>{
       const bookId=book.id;
-      await axios.delete(`api/cart`,{data: {bookId}})
+      await axios.delete(`/api/cart`,{data: {bookId}})
       dispatch(_removeFromCart(book))
       history.push('/mycart');
     }
@@ -52,7 +52,7 @@ export const getCart = (userId) => {
 
   export const addToCart = (userId, bookToCart,qty=1) => {
     return async (dispatch)=>{
-      const books = (await axios.post(`api/cart/${userId}/cart`, {book: bookToCart.title , quantity: qty})).data
+      const books = (await axios.post(`/api/cart/${userId}/cart`, {book: bookToCart.title , quantity: qty, price: bookToCart.price})).data
       dispatch(_addToCart(books))
     }
 };

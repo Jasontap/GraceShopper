@@ -1,19 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook, SingleUser} from './components'
-=======
-import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users} from './components'
->>>>>>> 50f90de... Created Users component to display all users at /users, accessible by admin only
-=======
-import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook} from './components'
->>>>>>> d26341b... Admin can add New Books to database
-=======
-import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook, SingleUser} from './components'
->>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
+import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook, CheckoutForm, SingleUser} from './components'
 import {me} from './store'
 
 /**
@@ -36,31 +24,21 @@ class Routes extends Component {
             <Route path='/books/:id' component={SingleBook} />
             <Route path='/add-book' component={AddBook} />
             <Route path='/mycart' component={Cart} />
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
             <Route exact path='/users' component={Users} />
             <Route path='/users/:id' component={SingleUser} />
             <Route exact path='/fiction' component={AllBooks} />
             { !admin ? <Redirect to='/mycart'/> : <Redirect to="/home" /> }
-<<<<<<< HEAD
-=======
-            <Route path='/users' component={Users} />
-<<<<<<< HEAD
+            <Route path='/checkout' component={CheckoutForm} />
             <Redirect to="/home" />
->>>>>>> 50f90de... Created Users component to display all users at /users, accessible by admin only
-=======
-            { admin ? <Redirect to='/mycart'/> : <Redirect to="/home" /> }
->>>>>>> 3c168ec... Setup view/option switch per admin authorization
-=======
->>>>>>> 7609e2e... Added SingleUser component for admin to view individual user
           </Switch>
         ) : (
           <Switch>
+            <Route path='/allbooks' component={AllBooks} />
+            <Route path='/books/:id' component={SingleBook} />
+            <Route path='/mycart' component={Cart} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Redirect to="/login" />
+            <Redirect to="/allBooks" />
           </Switch>
         )}
       </div>
