@@ -60,17 +60,43 @@ form div {
   justify-content: center;
   align-items: flex-end;
 }
+#nav-container{
+  width: 100%;
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+}
 
 .book-card{
   padding: 0;
   margin: 0;
-  width: 20%;
+  width: 15%;
   margin: 1rem;
+
+}
+
+nav{
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 95%; /* Full width */
+  background: white;
+}
+.icon{
+  padding: 1.5rem;
+}
+#route-container{
+  margin-top: 7rem;
+}
+
+.book-title-div{
+  height: 2rem;
 }
 
 .cover-art{
+  width: 130px;
   height: 200px;
-  width:70%;
+  border-radius: 3px;
+  aspect-ratio: auto 130 / 200;
 }
 
 .cart-card{
