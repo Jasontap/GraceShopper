@@ -18,10 +18,14 @@ const Navbar = ({handleClick, isLoggedIn, admin}) => (
           <Link to="/home"><h1>JWT Books</h1></Link>
           {admin ? (
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d26341b... Admin can add New Books to database
             <div>
               <Link to='/users'>View Users</Link>
               <Link to='/add-book'>Add a Book</Link>
             </div>
+<<<<<<< HEAD
           ) : (
             ''
 =======
@@ -29,6 +33,10 @@ const Navbar = ({handleClick, isLoggedIn, admin}) => (
           ) : (
             <span></span>
 >>>>>>> cba9f27... Added admin users to seed function. Added admin/standard-user filter for nav bar.
+=======
+          ) : (
+            ''
+>>>>>>> d26341b... Admin can add New Books to database
           )}
           <Link to="/allbooks">All Books</Link>
           <Link to='/fiction'>Fiction</Link>

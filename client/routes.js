@@ -2,10 +2,14 @@ import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook, SingleUser} from './components'
 =======
 import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users} from './components'
 >>>>>>> 50f90de... Created Users component to display all users at /users, accessible by admin only
+=======
+import {Login, Signup, Home, AllBooks, SingleBook, Cart, Users, AddBook} from './components'
+>>>>>>> d26341b... Admin can add New Books to database
 import {me} from './store'
 
 /**

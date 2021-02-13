@@ -5,12 +5,17 @@ import axios from 'axios'
 const SET_BOOKS = 'SET_BOOKS'
 // const ADD_CART = 'ADD_CART'
 <<<<<<< HEAD
+<<<<<<< HEAD
 const ADD_BOOK = 'ADD_BOOK'
 const DELETE_BOOK = 'DELETE_BOOK'
 =======
 >>>>>>> 4e57765... Setup UPDATE_BOOK for admin only
 const UPDATE_BOOK = 'UPDATE_BOOK'
+=======
+const ADD_BOOK = 'ADD_BOOK'
+>>>>>>> d26341b... Admin can add New Books to database
 const DELETE_BOOK = 'DELETE_BOOK'
+const UPDATE_BOOK = 'UPDATE_BOOK'
 
 
 //action creators
@@ -24,6 +29,9 @@ export const setBooks = (books) => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d26341b... Admin can add New Books to database
 export const _addBook = (book) => {
   return {
     type: ADD_BOOK,
@@ -31,8 +39,11 @@ export const _addBook = (book) => {
   }
 };
 
+<<<<<<< HEAD
 =======
 >>>>>>> 379f552... Admin can Delete books from database
+=======
+>>>>>>> d26341b... Admin can add New Books to database
 export const _deleteBook = (book) => {
   return {
     type: DELETE_BOOK,
@@ -64,14 +75,20 @@ export const fetchBooks = () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d26341b... Admin can add New Books to database
 export const addBook = (book) => {
   return async (dispatch) => {
     const newBook = (await axios.post('/api/books', book)).data;
     dispatch(_addBook(newBook));
   }
 }
+<<<<<<< HEAD
 =======
 >>>>>>> 379f552... Admin can Delete books from database
+=======
+>>>>>>> d26341b... Admin can add New Books to database
 export const destroyBook = (book) => {
   return async (dispatch)=>{
     await axios.delete(`/api/books/${book.id}`, book);
@@ -101,6 +118,7 @@ export default function booksReducer(state=[], action) {
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   if(action.type === ADD_BOOK){
     return [...state, action.book];
   }
@@ -110,6 +128,11 @@ export default function booksReducer(state=[], action) {
 =======
 >>>>>>> 4e57765... Setup UPDATE_BOOK for admin only
 =======
+=======
+  if(action.type === ADD_BOOK){
+    return [...state, action.book];
+  }
+>>>>>>> d26341b... Admin can add New Books to database
   if(action.type === DELETE_BOOK){
     return state.filter(book => book.id !== action.book.id)
   }

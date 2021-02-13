@@ -1975,6 +1975,124 @@ const App = () => {
 
 /***/ }),
 
+/***/ "./client/components/AddBook.js":
+/*!**************************************!*\
+  !*** ./client/components/AddBook.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AddBook": () => /* binding */ AddBook,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_books__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/books */ "./client/store/books.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+
+
+
+
+class AddBook extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  constructor() {
+    super();
+    this.state = {
+      title: '',
+      author: '',
+      genre: '',
+      description: '',
+      price: 0,
+      coverId: 0
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
+  }
+
+  handleSubmit(evt) {
+    evt.preventDefault();
+    this.props.addBook({ ...this.state
+    });
+  }
+
+  render() {
+    const {
+      title,
+      img,
+      author,
+      genre,
+      description,
+      price,
+      coverId
+    } = this.state;
+    const {
+      admin
+    } = this.props;
+    const {
+      handleChange,
+      handleSubmit
+    } = this;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, !admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
+      to: "/home"
+    }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+      onSubmit: handleSubmit
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: img
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Title:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "title",
+      onChange: handleChange,
+      value: title
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Author:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "author",
+      onChange: handleChange,
+      value: author
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Genre:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "genre",
+      onChange: handleChange,
+      value: genre
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Desctription:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "description",
+      onChange: handleChange,
+      value: description
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "$:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "price",
+      onChange: handleChange,
+      value: price
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Cover ID:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      name: "coverId",
+      onChange: handleChange,
+      value: coverId
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      type: "submit"
+    }, "SUBMIT"))));
+  }
+
+}
+
+const mapState = state => {
+  return {
+    admin: state.auth.adminAuth
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    addBook: book => dispatch((0,_store_books__WEBPACK_IMPORTED_MODULE_2__.addBook)(book))
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(AddBook));
+
+/***/ }),
+
 /***/ "./client/components/AllBooks.js":
 /*!***************************************!*\
   !*** ./client/components/AllBooks.js ***!
@@ -2011,7 +2129,9 @@ class AllBooks extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     } = this.props;
     const userId = this.props.auth.id;
     const admin = this.props.auth.adminAuth;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, books && books.map(book => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      to: `/add_book`
+    }, "ADD A BOOK") : '', books && books.map(book => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: book.coverId
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
@@ -2458,7 +2578,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AllBooks": () => /* reexport safe */ _AllBooks__WEBPACK_IMPORTED_MODULE_3__.default,
 /* harmony export */   "Cart": () => /* reexport safe */ _Cart__WEBPACK_IMPORTED_MODULE_4__.default,
 /* harmony export */   "SingleBook": () => /* reexport safe */ _SingleBook__WEBPACK_IMPORTED_MODULE_5__.default,
-/* harmony export */   "Users": () => /* reexport safe */ _Users__WEBPACK_IMPORTED_MODULE_6__.default
+/* harmony export */   "Users": () => /* reexport safe */ _Users__WEBPACK_IMPORTED_MODULE_6__.default,
+/* harmony export */   "AddBook": () => /* reexport safe */ _AddBook__WEBPACK_IMPORTED_MODULE_7__.default
 /* harmony export */ });
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navbar */ "./client/components/navbar.js");
 /* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./client/components/home.js");
@@ -2467,11 +2588,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.js");
 /* harmony import */ var _SingleBook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SingleBook */ "./client/components/SingleBook.js");
 /* harmony import */ var _Users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Users */ "./client/components/Users.js");
+/* harmony import */ var _AddBook__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AddBook */ "./client/components/AddBook.js");
 /**
  * `components/index.js` exists simply as a 'central export' for our components.
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+
 
 
 
@@ -2509,9 +2632,11 @@ const Navbar = ({
   admin
 }) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
   to: "/home"
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "JWT Books")), admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "JWT Books")), admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
   to: "/users"
-}, "View Users") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+}, "View Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  to: "/add-book"
+}, "Add a Book")) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
   to: "/allbooks"
 }, "All Books"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
   to: "/fiction"
@@ -2647,6 +2772,9 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/books/:id",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.SingleBook
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      path: "/add-book",
+      component: _components__WEBPACK_IMPORTED_MODULE_2__.AddBook
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
       path: "/mycart",
       component: _components__WEBPACK_IMPORTED_MODULE_2__.Cart
@@ -2801,9 +2929,11 @@ const logout = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "setBooks": () => /* binding */ setBooks,
+/* harmony export */   "_addBook": () => /* binding */ _addBook,
 /* harmony export */   "_deleteBook": () => /* binding */ _deleteBook,
 /* harmony export */   "_updateBook": () => /* binding */ _updateBook,
 /* harmony export */   "fetchBooks": () => /* binding */ fetchBooks,
+/* harmony export */   "addBook": () => /* binding */ addBook,
 /* harmony export */   "destroyBook": () => /* binding */ destroyBook,
 /* harmony export */   "updateBook": () => /* binding */ updateBook,
 /* harmony export */   "default": () => /* binding */ booksReducer
@@ -2814,13 +2944,20 @@ __webpack_require__.r(__webpack_exports__);
 
 const SET_BOOKS = 'SET_BOOKS'; // const ADD_CART = 'ADD_CART'
 
-const UPDATE_BOOK = 'UPDATE_BOOK';
-const DELETE_BOOK = 'DELETE_BOOK'; //action creators
+const ADD_BOOK = 'ADD_BOOK';
+const DELETE_BOOK = 'DELETE_BOOK';
+const UPDATE_BOOK = 'UPDATE_BOOK'; //action creators
 
 const setBooks = books => {
   return {
     type: SET_BOOKS,
     books
+  };
+};
+const _addBook = book => {
+  return {
+    type: ADD_BOOK,
+    book
   };
 };
 const _deleteBook = book => {
@@ -2842,6 +2979,12 @@ const fetchBooks = () => {
     dispatch(setBooks(books));
   };
 };
+const addBook = book => {
+  return async dispatch => {
+    const newBook = (await axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/books', book)).data;
+    dispatch(_addBook(newBook));
+  };
+};
 const destroyBook = book => {
   return async dispatch => {
     await axios__WEBPACK_IMPORTED_MODULE_0___default().delete(`/api/books/${book.id}`, book);
@@ -2858,6 +3001,10 @@ const updateBook = book => {
 function booksReducer(state = [], action) {
   if (action.type === SET_BOOKS) {
     state = action.books;
+  }
+
+  if (action.type === ADD_BOOK) {
+    return [...state, action.book];
   }
 
   if (action.type === DELETE_BOOK) {
