@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchUsers } from "../store/users";
 import { Link } from "react-router-dom";
 
+
 export class Users extends React.Component {
   componentDidMount() {
     this.props.getUsers();
