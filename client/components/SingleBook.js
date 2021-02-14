@@ -39,13 +39,12 @@ export class SingleBook extends React.Component{
     cart[title] = (cart[title] ? cart[title]: 0);
     let qty = cart[title] + 1;
     cart[title] = qty
-    console.log(cart);
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 
   render(){
     const { title, img, author, genre, description, price } = this.state;
-    const { admin } = this.props;
+    const { admin, book } = this.props;
     const { handleChange, handleSubmit } = this;
     const userId = this.props.auth.id;
 

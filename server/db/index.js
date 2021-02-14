@@ -30,9 +30,42 @@ const syncAndSeed =  async()=> {
     const dogs = (await axios.get('https://openlibrary.org/subjects/dogs.json?subject=dogs')).data.works;
     const architecture = (await axios.get('https://openlibrary.org/subjects/architecture.json?subject=architecture')).data.works;
     const artInstruction = (await axios.get('https://openlibrary.org/subjects/art_instruction.json?subject=art_instruction')).data.works;
+    const dance = (await axios.get('https://openlibrary.org/subjects/dance.json?subject=dance')).data.works;
+    const design = (await axios.get('https://openlibrary.org/subjects/design.json?subject=design')).data.works;
+    const music = (await axios.get('https://openlibrary.org/subjects/music.json?subject=music')).data.works;
+    const musicTheory = (await axios.get('https://openlibrary.org/subjects/music_theory.json?subject=music_theory')).data.works;
+    const kittens = (await axios.get('https://openlibrary.org/subjects/kittens.json?subject=kittens')).data.works;
+    const puppies = (await axios.get('https://openlibrary.org/subjects/puppies.json?subject=puppies')).data.works;
+    const fantasy = (await axios.get('https://openlibrary.org/subjects/fantasy.json?subject=fantasy')).data.works;
+    const horror = (await axios.get('https://openlibrary.org/subjects/horror.json?subject=horror')).data.works;
+    const scienceFiction = (await axios.get('https://openlibrary.org/subjects/science_fiction.json?subject=science_fiction')).data.works;
+    const poetry = (await axios.get('https://openlibrary.org/subjects/poetry.json?subject=poetry')).data.works;
+    const mathematics = (await axios.get('https://openlibrary.org/subjects/mathematics.json?subject=mathematics')).data.works;
+    const programming = (await axios.get('https://openlibrary.org/subjects/programming.json?subject=programming')).data.works;
     
-    const allBooks = [...fiction, ...love, ...nonFiction, ...cats, ...dogs, ...architecture, ...artInstruction]
-    
+    const allBooks = [
+      ...fiction,
+      ...love, 
+      ...nonFiction, 
+      ...cats, 
+      ...dogs, 
+      ...architecture, 
+      ...artInstruction, 
+      ...dance, 
+      ...design, 
+      ...music, 
+      ...musicTheory, 
+      ...kittens, 
+      ...puppies, 
+      ...fantasy, 
+      ...horror, 
+      ...scienceFiction, 
+      ...poetry, 
+      ...mathematics, 
+      ...programming
+    ]
+
+
     const createBook = (book) => {
       return {
         title: book.title,
@@ -46,7 +79,7 @@ const syncAndSeed =  async()=> {
         coverId: book.cover_id
       }
     }
-    
+
     await Promise.all(
       allBooks.map( book => {
         if(book.title && book.cover_id){

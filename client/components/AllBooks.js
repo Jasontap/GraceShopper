@@ -38,7 +38,7 @@ export class AllBooks extends React.Component {
           {books &&
             books.map((book) => {
               return (
-                <div className="book-card" key={book.coverId}>
+                <div className="book-card" key={book.id}>
                   <Link to={`/books/${book.coverId}`}>
                     <img className="cover-art" src={book.img} />
                   </Link>
