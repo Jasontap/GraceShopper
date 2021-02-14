@@ -66,17 +66,23 @@ export class Cart extends React.Component{
             )
           })
         }
+
+
         <h4>Total: {this.state.total}</h4>
         <Link to='/checkout'><Button disabled={!this.state.cart.length || !userId}>Check Out</Button></Link>
         {
           userId? '' :
           <div id="guest-options">
             <p>You are not logged in.</p>
-            <Link to='/checkout'><p>Check Out As Guest</p></Link>
+            {
+              this.state.cart.length?
+              <Link to='/checkout'><p>Check Out As Guest</p></Link> : ''
+            }
             <Link to='/login'><p>Login</p></Link>
             <Link to='/signup'><p>Sign-Up</p></Link>
           </div>
           }
+
 
       </div>
     )

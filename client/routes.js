@@ -16,7 +16,8 @@ class Routes extends Component {
     const {isLoggedIn, admin} = this.props
 
     return (
-      <div>
+      <div id="route-container">
+        <hr />
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
@@ -24,12 +25,13 @@ class Routes extends Component {
             <Route path='/books/:id' component={SingleBook} />
             <Route path='/add-book' component={AddBook} />
             <Route path='/mycart' component={Cart} />
+
             <Route exact path='/users' component={Users} />
             <Route path='/users/:id' component={SingleUser} />
             <Route exact path='/fiction' component={AllBooks} />
-            { !admin ? <Redirect to='/mycart'/> : <Redirect to="/home" /> }
+            {/* { !admin ? <Redirect to='/allbooks'/> : <Redirect to="/home" /> } */}
             <Route path='/checkout' component={CheckoutForm} />
-            <Redirect to="/home" />
+            <Redirect to="/allbooks" />
           </Switch>
         ) : (
           <Switch>
@@ -38,6 +40,7 @@ class Routes extends Component {
             <Route path='/mycart' component={Cart} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path='/checkout' component={CheckoutForm} />
             <Redirect to="/allBooks" />
           </Switch>
         )}

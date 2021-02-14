@@ -15,7 +15,8 @@ export class SingleBook extends React.Component{
       genre: this.props.book.genre,
       description: this.props.book.genre,
       price: this.props.book.price,
-      id: this.props.book.id
+      id: this.props.book.id,
+      admin: this.props.admin
     }
     this.addToGuestCart = this.addToGuestCart.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -104,6 +105,9 @@ export class SingleBook extends React.Component{
               <div>
                 <p>Description: { description }</p>
               </div>
+              {/* <div>
+                <p>Reviews: { review }</p>
+              </div> */}
             </div>
             <div>
               <div>

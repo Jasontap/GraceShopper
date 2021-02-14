@@ -1,7 +1,7 @@
 //this is the access point for all things database related!
 
 const db = require('./db')
-
+const Order = require('./models/order')
 const User = require('./models/user');
 const Book = require('./models/book');
 const Cart = require('./models/cart');
@@ -10,6 +10,9 @@ const axios = require('axios');
 
 //associations could go here!
 Cart.belongsTo(User)
+Order.belongsTo(User)
+Cart.belongsTo(Order)
+Order.hasMany(Cart)
 
 const syncAndSeed =  async()=> {
   try{
@@ -105,6 +108,6 @@ module.exports = {
   models: {
     User,
     Book,
-    Cart
+    Order
   }
 }
