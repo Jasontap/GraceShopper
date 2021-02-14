@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { Book }} = require('../db')
+const { db, models: { Book }} = require('../db')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -42,6 +42,32 @@ router.get('/love', async (req, res, next) => {
     res.send(await Book.findAll({ 
       where: {
         genre: 'love'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/cats', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'cats'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/dogs', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'cats'
       }
     }));
   } 

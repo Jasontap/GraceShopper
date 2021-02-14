@@ -29,8 +29,6 @@ export class Cart extends React.Component{
   }
 
   removeFromGuestCart(book){
-    console.log(book)
-    console.log(this.state.cart)
     let items = this.state.cart.filter((item) => item.book !== book.book);
     let cart = JSON.parse(localStorage.getItem('cart'));
     delete cart[book.title];
