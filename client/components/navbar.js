@@ -41,10 +41,10 @@ export class Navbar extends React.Component {
               {/* The navbar will show these links after you log in */}
               <Link to="/home"><h1>JWT Books</h1></Link>
               {admin ? (
-                <div>
+                <span>
                   <Link to='/users'>View Users</Link>
                   <Link to='/add-book'>Add a Book</Link>
-                </div>
+                </span>
 
               ) : (
                 ''
