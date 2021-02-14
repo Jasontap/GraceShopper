@@ -23,12 +23,20 @@ const syncAndSeed =  async()=> {
     ])
     const [cody, murphy] = users;
     
-    const fictionBookLibrary = (await axios.get('https://openlibrary.org/subjects/fiction.json?subject=fiction')).data;
-
-    fictionBookLibrary.works.map( async book => {
-      await Book.create({
+    const fiction = (await axios.get('https://openlibrary.org/subjects/fiction.json?subject=fiction')).data.works;
+    const nonFiction = (await axios.get('https://openlibrary.org/subjects/non-fiction.json?subject=non-fiction')).data.works;
+    const love = (await axios.get('http://openlibrary.org/subjects/love.json?subject=love')).data.works;
+    const cats = (await axios.get('https://openlibrary.org/subjects/cats.json?subject=cats')).data.works;
+    const dogs = (await axios.get('https://openlibrary.org/subjects/dogs.json?subject=dogs')).data.works;
+    const architecture = (await axios.get('https://openlibrary.org/subjects/architecture.json?subject=architecture')).data.works;
+    const artInstruction = (await axios.get('https://openlibrary.org/subjects/art_instruction.json?subject=art_instruction')).data.works;
+    
+    const allBooks = [...fiction, ...love, ...nonFiction, ...cats, ...dogs, ...architecture, ...artInstruction]
+    
+    const createBook = (book) => {
+      return {
         title: book.title,
-        author: book.authors[0].name,
+        author: book.authors.reduce((acc, i) => acc += ', ' + i.name, ''),
         genre: 'fiction',
         price: Math.floor(Math.random() * 100),
         description: faker.lorem.sentence(),
@@ -36,42 +44,17 @@ const syncAndSeed =  async()=> {
         review: Math.floor(Math.random() * 10),
         img: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`,
         coverId: book.cover_id
-      });
-    });
+      }
+    }
     
-    const loveBookLibrary = (await axios.get('http://openlibrary.org/subjects/love.json?subject=love')).data;
+    await Promise.all(
+      allBooks.map( book => {
+        if(book.title && book.cover_id){
+          Book.create(createBook(book));
+          }
+        })
+    );
 
-    loveBookLibrary.works.map( async book => {
-      await Book.create({
-        title: book.title,
-        author: book.authors[0].name,
-        genre: 'love',
-        price: Math.floor(Math.random() * 100),
-        description: faker.lorem.sentence(),
-        stock: Math.floor(Math.random() * 10),
-        review: Math.floor(Math.random() * 10),
-        img: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`,
-        coverId: book.cover_id
-      });
-    });
-
-    const nonFictionBookLibrary = (await axios.get('https://openlibrary.org/subjects/non-fiction.json?subject=non-fiction')).data;
-
-    nonFictionBookLibrary.works.map( async book => {
-      await Book.create({
-        title: book.title,
-        author: book.authors[0].name,
-        genre: 'non-fiction',
-        price: Math.floor(Math.random() * 100),
-        description: faker.lorem.sentence(),
-        stock: Math.floor(Math.random() * 10),
-        review: Math.floor(Math.random() * 10),
-        img: `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`,
-        coverId: book.cover_id
-      });
-    });
-
-    
 
     const cartBook = await Cart.create({book: 'book-title-in-cart-here', quantity: 2, price: 5});
     cartBook.userId = 2;
@@ -88,6 +71,7 @@ module.exports = {
   syncAndSeed,
   models: {
     User,
-    Book
+    Book,
+    Cart
   }
 }
