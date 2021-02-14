@@ -3,10 +3,14 @@
 }
 body {
   font-family: sans-serif;
+  color:#5D00E1;
 }
-
+h1{
+  text-align: center;
+}
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 label {
@@ -105,4 +109,12 @@ nav{
   width: 90%;
   padding: 1rem;
   margin: 1rem;
+}
+
+.qty-adjust{
+  display: flex;
+  align-items:space-between;
+}
+.qty-input{
+  width: 90px;
 }
