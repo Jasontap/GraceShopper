@@ -146,7 +146,7 @@ const mapState = ({books,auth}, { match })=> {
   
   const mapDispatch = (dispatch) => {
     return {
-      addToCart: (userId, book) => dispatch(addToCart(userId, book)),
+      addToCart: (userId, book, qty) => dispatch(addToCart(userId, book, qty=1)),
       updateBook: (book) => dispatch(updateBook(book))
     };
   };

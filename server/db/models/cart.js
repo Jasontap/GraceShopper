@@ -12,7 +12,6 @@ const Cart = db.define('cart', {
   },
   price: {
     type: Sequelize.FLOAT,
-    allowNull: false
   }
 })
 

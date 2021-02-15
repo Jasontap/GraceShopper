@@ -59,7 +59,7 @@ export const getCart = (userId) => {
 
   export const addToCart = (userId, bookToCart,qty=1) => {
     return async (dispatch)=>{
-      const books = (await axios.post(`/api/cart/${userId}/cart`, {book: bookToCart.title , quantity: qty, price: bookToCart.price})).data
+      const books = (await axios.post(`/api/cart/${userId}/cart`, {book: bookToCart , quantity: qty})).data
       dispatch(_addToCart(books))
     }
 };

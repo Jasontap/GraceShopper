@@ -4,13 +4,15 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Drawer} from '@material-ui/core'
 import Cart from './Cart'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 
 export class Navbar extends React.Component {
   constructor(props){
     super(props)
     this.state = { 
-      isDrawerOpened: false, 
+      isDrawerOpened: false,
+      showMenu: false
     }
 
     this.toggleDrawerStatus = this.toggleDrawerStatus.bind(this)
@@ -52,7 +54,7 @@ export class Navbar extends React.Component {
               <Link to="/allbooks">All Books</Link>
               <Link to='/fiction'>Fiction</Link>
               <Link to="/nonfiction">Non-Fiction</Link>
-              <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
+              <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a>
                 <Drawer 
                   variant="temporary"
                   anchor="right"
@@ -62,15 +64,15 @@ export class Navbar extends React.Component {
                   <Cart />
 
                 </Drawer>
-              <a href="#" onClick={handleClick}>
+              {/* <a href="#" onClick={handleClick}>
                 Logout
-              </a>
+              </a> */}
             </div>
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
               <Link to="/allbooks"><h1>JWT Books</h1></Link>
-              <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
+              <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a>
               <Drawer 
                 variant="temporary"
                 anchor="right"
@@ -80,13 +82,41 @@ export class Navbar extends React.Component {
                 <Cart />
 
               </Drawer>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
+              {/* <Link to="/login">Login</Link>
+              <Link to="/signup">Sign Up</Link> */}
             </div>
           )}
-          <div className="icon">
-            <i className="fas fa-child fa-2x"></i>
-          </div>
+
+          <Dropdown>
+            <Dropdown.Toggle id="dropdown">
+              <div className="icon">
+                <i className="fas fa-child fa-2x"></i>
+              </div>
+          </Dropdown.Toggle>
+        {
+          isLoggedIn?(
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                Order History
+              </Dropdown.Item>
+              <Dropdown.Item href="#" onClick={handleClick}>
+                Logout
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          )
+          :
+          (
+            <Dropdown.Menu>
+              <Dropdown.Item href="/login">
+                Login
+              </Dropdown.Item>
+              <Dropdown.Item href="/signup">
+                Sign Up
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          )
+        }
+      </Dropdown>
           
           {/* <div>
           <hr />

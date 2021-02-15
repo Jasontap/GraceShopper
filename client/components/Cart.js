@@ -31,7 +31,6 @@ export class Cart extends React.Component{
     this.setState({cart})
   }
 
-  //doesnt work
   removeFromGuestCart(book){
     const title=book.book;
     let localcart = JSON.parse(localStorage.getItem('cart'));
