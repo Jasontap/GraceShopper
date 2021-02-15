@@ -26,54 +26,56 @@ const syncAndSeed =  async()=> {
     ])
     const [cody, murphy] = users;
     
-    const fiction = (await axios.get('https://openlibrary.org/subjects/fiction.json?subject=fiction')).data.works;
-    const nonFiction = (await axios.get('https://openlibrary.org/subjects/non-fiction.json?subject=non-fiction')).data.works;
-    const love = (await axios.get('http://openlibrary.org/subjects/love.json?subject=love')).data.works;
-    const cats = (await axios.get('https://openlibrary.org/subjects/cats.json?subject=cats')).data.works;
-    const dogs = (await axios.get('https://openlibrary.org/subjects/dogs.json?subject=dogs')).data.works;
-    const architecture = (await axios.get('https://openlibrary.org/subjects/architecture.json?subject=architecture')).data.works;
-    const artInstruction = (await axios.get('https://openlibrary.org/subjects/art_instruction.json?subject=art_instruction')).data.works;
-    const dance = (await axios.get('https://openlibrary.org/subjects/dance.json?subject=dance')).data.works;
-    const design = (await axios.get('https://openlibrary.org/subjects/design.json?subject=design')).data.works;
-    const music = (await axios.get('https://openlibrary.org/subjects/music.json?subject=music')).data.works;
-    const musicTheory = (await axios.get('https://openlibrary.org/subjects/music_theory.json?subject=music_theory')).data.works;
-    const kittens = (await axios.get('https://openlibrary.org/subjects/kittens.json?subject=kittens')).data.works;
-    const puppies = (await axios.get('https://openlibrary.org/subjects/puppies.json?subject=puppies')).data.works;
-    const fantasy = (await axios.get('https://openlibrary.org/subjects/fantasy.json?subject=fantasy')).data.works;
-    const horror = (await axios.get('https://openlibrary.org/subjects/horror.json?subject=horror')).data.works;
-    const scienceFiction = (await axios.get('https://openlibrary.org/subjects/science_fiction.json?subject=science_fiction')).data.works;
-    const poetry = (await axios.get('https://openlibrary.org/subjects/poetry.json?subject=poetry')).data.works;
-    const mathematics = (await axios.get('https://openlibrary.org/subjects/mathematics.json?subject=mathematics')).data.works;
-    const programming = (await axios.get('https://openlibrary.org/subjects/programming.json?subject=programming')).data.works;
+    const fiction = (await axios.get('https://openlibrary.org/subjects/fiction.json?subject=fiction')).data;
+    const nonFiction = (await axios.get('https://openlibrary.org/subjects/non-fiction.json?subject=non-fiction')).data;
+    const love = (await axios.get('http://openlibrary.org/subjects/love.json?subject=love')).data;
+    const cats = (await axios.get('https://openlibrary.org/subjects/cats.json?subject=cats')).data;
+    const dogs = (await axios.get('https://openlibrary.org/subjects/dogs.json?subject=dogs')).data;
+    const architecture = (await axios.get('https://openlibrary.org/subjects/architecture.json?subject=architecture')).data;
+    const artInstruction = (await axios.get('https://openlibrary.org/subjects/art_instruction.json?subject=art_instruction')).data;
+    const dance = (await axios.get('https://openlibrary.org/subjects/dance.json?subject=dance')).data;
+    const design = (await axios.get('https://openlibrary.org/subjects/design.json?subject=design')).data;
+    const music = (await axios.get('https://openlibrary.org/subjects/music.json?subject=music')).data;
+    const musicTheory = (await axios.get('https://openlibrary.org/subjects/music_theory.json?subject=music_theory')).data;
+    const kittens = (await axios.get('https://openlibrary.org/subjects/kittens.json?subject=kittens')).data;
+    const puppies = (await axios.get('https://openlibrary.org/subjects/puppies.json?subject=puppies')).data;
+    const fantasy = (await axios.get('https://openlibrary.org/subjects/fantasy.json?subject=fantasy')).data;
+    const horror = (await axios.get('https://openlibrary.org/subjects/horror.json?subject=horror')).data;
+    const scienceFiction = (await axios.get('https://openlibrary.org/subjects/science_fiction.json?subject=science_fiction')).data;
+    const poetry = (await axios.get('https://openlibrary.org/subjects/poetry.json?subject=poetry')).data;
+    const mathematics = (await axios.get('https://openlibrary.org/subjects/mathematics.json?subject=mathematics')).data;
+    const programming = (await axios.get('https://openlibrary.org/subjects/programming.json?subject=programming')).data;
     
     const allBooks = [
-      ...fiction,
-      ...love, 
-      ...nonFiction, 
-      ...cats, 
-      ...dogs, 
-      ...architecture, 
-      ...artInstruction, 
-      ...dance, 
-      ...design, 
-      ...music, 
-      ...musicTheory, 
-      ...kittens, 
-      ...puppies, 
-      ...fantasy, 
-      ...horror, 
-      ...scienceFiction, 
-      ...poetry, 
-      ...mathematics, 
-      ...programming
+      fiction,
+      love, 
+      nonFiction, 
+      cats, 
+      dogs, 
+      architecture, 
+      artInstruction, 
+      dance, 
+      design, 
+      music, 
+      musicTheory, 
+      kittens, 
+      puppies, 
+      fantasy, 
+      horror, 
+      scienceFiction, 
+      poetry, 
+      mathematics, 
+      programming
     ]
 
 
-    const createBook = (book) => {
+    const createBook = (book, genre) => {
+      // const book = bookObj.works;
+      // const genre = bookObj.name;
       return {
         title: book.title,
         author: book.authors.reduce((acc, i) => acc += ', ' + i.name, ''),
-        genre: 'fiction',
+        genre: genre,
         price: Math.floor(Math.random() * 100),
         description: faker.lorem.sentence(),
         stock: Math.floor(Math.random() * 10),
@@ -83,12 +85,17 @@ const syncAndSeed =  async()=> {
       }
     }
 
+    
     await Promise.all(
-      allBooks.map( book => {
-        if(book.title && book.cover_id){
-          Book.create(createBook(book));
+      allBooks.map( bookObj => {
+        const books = bookObj.works;
+        
+        books.forEach(book => {
+          if(book.title && book.cover_id){
+            Book.create(createBook(book, bookObj.name));
           }
         })
+      })
     );
 
 

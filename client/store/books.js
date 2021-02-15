@@ -41,10 +41,19 @@ export const _updateBook = (book) => {
 
 //thunks
 
-export const fetchBooks = () => {
-  return async (dispatch)=>{
-    const books = (await axios.get('/api/books')).data;
-    dispatch(setBooks(books))
+export const fetchBooks = (genre) => {
+  if(genre){
+    console.log(genre)
+    return async (dispatch)=>{
+      const books = (await axios.get(`/api/books/${genre}`)).data;
+      dispatch(setBooks(books))
+    } 
+  } else {
+    console.log('this shouldnt be called')
+    return async (dispatch)=>{
+      const books = (await axios.get('/api/books')).data;
+      dispatch(setBooks(books))
+    }
   }
 };
 

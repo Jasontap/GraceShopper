@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart";
 import { destroyBook } from "../store/books";
 import Button from '@material-ui/core/Button';
-import auth from "../store/auth";
 
 export class AllBooks extends React.Component {
   constructor(props){
@@ -13,7 +12,7 @@ export class AllBooks extends React.Component {
     this.addToGuestCart = this.addToGuestCart.bind(this)
   }
   componentDidMount() {
-    this.props.getBooks();
+    this.props.getBooks('love');
     localStorage.clear();
   }
 
@@ -74,13 +73,15 @@ export class AllBooks extends React.Component {
 }
 
 const mapState = ({ books, auth }) => {
-
-  return { books, auth};
+  return { 
+    books, 
+    auth 
+  };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    getBooks: () => dispatch(fetchBooks()),
+    getBooks: (genre) => dispatch(fetchBooks(genre)),
     addToCart: (userId, book) => dispatch(addToCart(userId, book)),
     destroyBook: (book) => dispatch(destroyBook(book))
   };
