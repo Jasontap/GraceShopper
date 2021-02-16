@@ -142,7 +142,7 @@ export class CheckoutForm extends React.Component{
                             <input type='text' id='cardNum' name='cardNum' onChange= {this.handleChange}/>
                             <div id="exp">
                                 <label hmtlFor='cardExp'>Expiration Date:</label>
-                                <input type='text' id='cardExp' name='cardExp' value='MM/YY' onChange= {this.handleChange}/>
+                                <input type='text' id='cardExp' name='cardExp' placeholder='MM/YY' onChange= {this.handleChange}/>
                                 <label hmtlFor='cardCode'>Security Code:</label>
                                 <input type='text' id='cardCode' name='cardCode' onChange= {this.handleChange}/>
                             </div>

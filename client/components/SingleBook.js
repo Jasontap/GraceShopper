@@ -44,7 +44,7 @@ export class SingleBook extends React.Component{
   }
 
   render(){
-    const { title, img, author, genre, description, price } = this.state;
+    const { title, img, author, genre, description, price, admin, review } = this.state;
     const { admin, book } = this.props;
     const { handleChange, handleSubmit } = this;
     const userId = this.props.auth.id;
