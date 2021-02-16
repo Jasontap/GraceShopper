@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Drawer} from '@material-ui/core'
 import Cart from './Cart'
+import { fetchBooks } from "../store/books";
+
 
 
 export class Navbar extends React.Component {
@@ -15,6 +17,13 @@ export class Navbar extends React.Component {
 
     this.toggleDrawerStatus = this.toggleDrawerStatus.bind(this)
     this.closeDrawer = this.closeDrawer.bind(this)
+    this.filterBooks = this.filterBooks.bind(this)
+  }
+
+  componentDidMount(){
+    window.addEventListener('hashchange', (evt)=> {
+      this.props.setBooks(evt.target.location.hash.slice(1))
+    })
   }
 
   toggleDrawerStatus(){ 
@@ -29,9 +38,15 @@ export class Navbar extends React.Component {
       isDrawerOpened: false, 
     }) 
   } 
+
+  filterBooks(){
+    this.props.setBooks();
+  }
+
   render(){
     const isDrawerOpened = this.state.isDrawerOpened
-    const {handleClick, isLoggedIn, admin} = this.props
+    const {handleClick, isLoggedIn, admin, books} = this.props
+
     return(
       <div>
         <nav>
@@ -49,9 +64,9 @@ export class Navbar extends React.Component {
               ) : (
                 ''
               )}
-              <Link to="/allbooks">All Books</Link>
-              <Link to='/fiction'>Fiction</Link>
-              <Link to="/nonfiction">Non-Fiction</Link>
+              <Link to="/allbooks" onClick={this.filterBooks}>All Books</Link>
+              <a href='#fiction'>Fiction</a>
+              <a href="#non-fiction">Non-Fiction</a>
               <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
                 <Drawer 
                   variant="temporary"
@@ -100,15 +115,17 @@ export class Navbar extends React.Component {
   }
 }
 
-const mapState = state => {
+const mapState = ({ books, auth }) => {
   return {
-    isLoggedIn: !!state.auth.id,
-    admin: state.auth.adminAuth
+    isLoggedIn: !!auth.id,
+    admin: auth.adminAuth,
+    books: books.books
   }
 }
 
 const mapDispatch = dispatch => {
   return {
+    setBooks: (genre) => dispatch(fetchBooks(genre)),
     handleClick() {
       dispatch(logout())
     }

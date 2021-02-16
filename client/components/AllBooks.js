@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchBooks } from "../store/books";
 import { Link } from "react-router-dom";
+import { fetchBooks, destroyBook } from "../store/books";
 import { addToCart } from "../store/cart";
-import { destroyBook } from "../store/books";
 import Button from '@material-ui/core/Button';
 
 export class AllBooks extends React.Component {
@@ -12,7 +11,7 @@ export class AllBooks extends React.Component {
     this.addToGuestCart = this.addToGuestCart.bind(this)
   }
   componentDidMount() {
-    this.props.getBooks('love');
+    this.props.getBooks();
     localStorage.clear();
   }
 
@@ -28,9 +27,10 @@ export class AllBooks extends React.Component {
 
   
   render() {
-    const { books, addToCart } = this.props;
+    const { books, view, addToCart, destroyBook } = this.props;
     const userId = this.props.auth.id;
     const admin = this.props.auth.adminAuth;
+    
     return (
       <div>
         <div className="container">
@@ -38,23 +38,23 @@ export class AllBooks extends React.Component {
             books.map((book) => {
               return (
                 <div className="book-card" key={book.id}>
-                  <Link to={`/books/${book.coverId}`}>
+                  <Link to={`/allbooks/${book.coverId}`}>
                     <img className="cover-art" src={book.img} />
                   </Link>
-                  <Link to={`/books/${book.coverId}`}>
+                  <Link to={`/allbooks/${book.coverId}`}>
                     <h3 className="book-title-div">{book.title}</h3>
                   </Link>
                   <p>${book.price}</p>
                   {admin ? (
                     <div>
-                      <Link to={`/books/${book.coverId}`}><button>Edit Item</button></Link>
-                      <button onClick={ ()=> {this.props.destroyBook(book)}}>Delete Item From Database</button>
+                      <Link to={`/allbooks/${book.coverId}`}><button>Edit Item</button></Link>
+                      <button onClick={ ()=> {destroyBook(book)}}>Delete Item From Database</button>
                     </div>
                   ) : (
                   <div>
                   {
                     userId ?
-                    <Button onClick={() => this.props.addToCart(userId, book)}>
+                    <Button onClick={() => addToCart(userId, book)}>
                     Add to Cart
                     </Button>
                   :
@@ -74,14 +74,15 @@ export class AllBooks extends React.Component {
 
 const mapState = ({ books, auth }) => {
   return { 
-    books, 
+    books: books.books,
+    view: books.view,
     auth 
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    getBooks: (genre) => dispatch(fetchBooks(genre)),
+    getBooks: () => dispatch(fetchBooks()),
     addToCart: (userId, book) => dispatch(addToCart(userId, book)),
     destroyBook: (book) => dispatch(destroyBook(book))
   };

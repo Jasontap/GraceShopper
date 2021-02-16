@@ -70,8 +70,6 @@ const syncAndSeed =  async()=> {
 
 
     const createBook = (book, genre) => {
-      // const book = bookObj.works;
-      // const genre = bookObj.name;
       return {
         title: book.title,
         author: book.authors.reduce((acc, i) => acc += ', ' + i.name, ''),
@@ -89,10 +87,11 @@ const syncAndSeed =  async()=> {
     await Promise.all(
       allBooks.map( bookObj => {
         const books = bookObj.works;
+        const genre = bookObj.name;
         
         books.forEach(book => {
           if(book.title && book.cover_id){
-            Book.create(createBook(book, bookObj.name));
+            Book.create(createBook(book, genre));
           }
         })
       })
@@ -104,7 +103,7 @@ const syncAndSeed =  async()=> {
     await cartBook.save();
   
 } catch(ex){
-    console.log(ex);
+    throw(ex);
   }
 
 }
