@@ -7,10 +7,11 @@ const Book = db.define('book', {
       allowNull: false
     },
     author: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING(1000),
+      defaultValue: 'No Name Available'
     },
     genre: {
-        type: Sequelize.ENUM('fiction','non-fiction','fantasy','love')
+        type: Sequelize.STRING
     },
     price: {
       type: Sequelize.FLOAT
