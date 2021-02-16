@@ -64,7 +64,7 @@ export class AllBooks extends React.Component {
                   <div>
                   {
                     userId ?
-                    <Button onClick={() => this.props.addToCart(userId, book)}>
+                    <Button onClick={() => this.props.addToCart(userId, book.title)}>
                     Add to Cart
                     </Button>
                   :

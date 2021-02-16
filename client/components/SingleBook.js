@@ -117,7 +117,7 @@ export class SingleBook extends React.Component{
               {
                 userId ?
                   <Button 
-                    onClick={()=>this.props.addToCart(userId, book)}
+                    onClick={()=>this.props.addToCart(userId, title)}
                     >Add to Cart
                   </Button>
                 :
