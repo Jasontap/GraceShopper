@@ -3,6 +3,7 @@ import axios from 'axios'
 //constants
 
 const SET_BOOKS = 'SET_BOOKS';
+const SET_GENRES = 'SET_GENRES';
 const ADD_BOOK = 'ADD_BOOK';
 const DELETE_BOOK = 'DELETE_BOOK';
 const UPDATE_BOOK = 'UPDATE_BOOK';
@@ -10,6 +11,7 @@ const SET_VIEW = 'SET_VIEW';
 
 const initialState = {
   books: [],
+  genres: [],
   view: ''
 };
 
@@ -22,6 +24,13 @@ export const setBooks = (books) => {
     books
   }
 };
+
+export const setGenres = (genres) => {
+  return {
+    type: SET_GENRES,
+    genres
+  }
+}
 
 export const _addBook = (book) => {
   return {
@@ -61,6 +70,15 @@ export const fetchBooks = (genre) => {
   }
 };
 
+export const fetchGenres = () => {
+  return async (dispatch) =>{
+    const books = (await axios.get('/api/books')).data;
+    const genres = books.map(book => book.genre);
+    const uniqueGenres = [...new Set(genres)];
+    dispatch(setGenres(uniqueGenres));
+  }
+}
+
 export const addBook = (book) => {
   return async (dispatch) => {
     const newBook = (await axios.post('/api/books', book)).data;
@@ -89,6 +107,9 @@ export const updateBook = (book) => {
 export default function booksReducer(state=initialState, action) {
   if(action.type === SET_BOOKS){
     state = {...state, books: action.books }
+  }
+  if(action.type === SET_GENRES){
+    state = {...state, genres: action.genres }
   }
   if(action.type === ADD_BOOK){
     state = {...state, books: [...state.books, action.book]};

@@ -30,7 +30,7 @@ export class AllBooks extends React.Component {
     const { books, view, addToCart, destroyBook } = this.props;
     const userId = this.props.auth.id;
     const admin = this.props.auth.adminAuth;
-    
+
     return (
       <div>
         <div className="container">

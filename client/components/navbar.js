@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Drawer} from '@material-ui/core'
 import Cart from './Cart'
-import { fetchBooks } from "../store/books";
+import { fetchBooks, fetchGenres } from "../store/books";
 
 
 
@@ -21,11 +21,16 @@ export class Navbar extends React.Component {
   }
 
   componentDidMount(){
+    this.props.setGenres();
     window.addEventListener('hashchange', (evt)=> {
-      this.props.setBooks(evt.target.location.hash.slice(1))
+      this.props.setBooks(window.location.hash.slice(1))
     })
+    this.props.setBooks(window.location.hash.slice(1))
   }
 
+  // componentDidUpdate(prevProps){
+  //   this.props.genres = prevProps.genres;
+  // }
   toggleDrawerStatus(){ 
     const isDrawerOpened = !this.state.isDrawerOpened;
     this.setState({ 
@@ -45,7 +50,7 @@ export class Navbar extends React.Component {
 
   render(){
     const isDrawerOpened = this.state.isDrawerOpened
-    const {handleClick, isLoggedIn, admin, books} = this.props
+    const {handleClick, isLoggedIn, admin, genres} = this.props
 
     return(
       <div>
@@ -65,8 +70,14 @@ export class Navbar extends React.Component {
                 ''
               )}
               <Link to="/allbooks" onClick={this.filterBooks}>All Books</Link>
-              <a href='#fiction'>Fiction</a>
-              <a href="#non-fiction">Non-Fiction</a>
+              {
+                genres.map(genre => {
+                  const genreTag = genre.split(' ').join('');
+                  return ( 
+                    <a href={`#${genreTag}`} key={genre}>{genre}</a>
+                  )
+                })
+              }
               <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
                 <Drawer 
                   variant="temporary"
@@ -84,7 +95,16 @@ export class Navbar extends React.Component {
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <Link to="/allbooks"><h1>JWT Books</h1></Link>
+              <Link to="/allbooks" onClick={this.filterBooks}><h1>JWT Books</h1></Link>
+              <Link to="/allbooks" onClick={this.filterBooks}>All Books</Link>
+              {
+                genres.map(genre => {
+                  const genreTag = genre.split(' ').join('');
+                  return ( 
+                    <a href={`#${genreTag}`} key={genre}>{genre}</a>
+                  )
+                })
+              }
               <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
               <Drawer 
                 variant="temporary"
@@ -116,16 +136,19 @@ export class Navbar extends React.Component {
 }
 
 const mapState = ({ books, auth }) => {
+  // const genres = books.books.map(book => book.genre);
+  // const uniqueGenres = [...new Set(genres)];
   return {
     isLoggedIn: !!auth.id,
     admin: auth.adminAuth,
-    books: books.books
+    genres: books.genres
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     setBooks: (genre) => dispatch(fetchBooks(genre)),
+    setGenres: () => dispatch(fetchGenres()),
     handleClick() {
       dispatch(logout())
     }

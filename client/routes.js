@@ -20,17 +20,13 @@ class Routes extends Component {
         <hr />
         {isLoggedIn ? (
           <Switch>
-            <Route exact path="/home" component={Home} />
+            <Route path="/home" component={Home} />
             <Route exact path='/allbooks' component={AllBooks} />
             <Route path='/allbooks/:id' component={SingleBook} />
             <Route path='/add-book' component={AddBook} />
             <Route path='/mycart' component={Cart} />
-
             <Route exact path='/users' component={Users} />
             <Route path='/users/:id' component={SingleUser} />
-            {/* <Route path='/fiction' component={AllBooks} /> */}
-            {/* <Route path='/non-fiction' component={AllBooks} /> */}
-            {/* { !admin ? <Redirect to='/allbooks'/> : <Redirect to="/home" /> } */}
             <Route path='/checkout' component={CheckoutForm} />
             <Redirect to="/allbooks" />
           </Switch>
