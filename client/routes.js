@@ -26,7 +26,6 @@ class Routes extends Component {
             <Route path='/books/:id' component={SingleBook} />
             <Route path='/add-book' component={AddBook} />
             <Route path='/mycart' component={Cart} />
-
             <Route exact path='/users' component={Users} />
             <Route path='/users/:id' component={SingleUser} />
             <Route exact path='/fiction' component={AllBooks} />

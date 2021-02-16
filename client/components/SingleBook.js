@@ -44,10 +44,11 @@ export class SingleBook extends React.Component{
   }
 
   render(){
-    const { title, img, author, genre, description, price } = this.state;
-    const { admin, book } = this.props;
+    const { title, img, author, genre, description, price, review } = this.state;
+    const { admin } = this.props;
     const { handleChange, handleSubmit } = this;
     const userId = this.props.auth.id;
+    const book = this.props.book;
 
     return(
       <div>
@@ -116,7 +117,7 @@ export class SingleBook extends React.Component{
               {
                 userId ?
                   <Button 
-                    onClick={()=>this.props.addToCart(userId, book)}
+                    onClick={()=>this.props.addToCart(userId, title)}
                     >Add to Cart
                   </Button>
                 :
@@ -145,7 +146,7 @@ const mapState = ({books,auth}, { match })=> {
   
   const mapDispatch = (dispatch) => {
     return {
-      addToCart: (userId, book) => dispatch(addToCart(userId, book)),
+      addToCart: (userId, book, qty) => dispatch(addToCart(userId, book, qty=1)),
       updateBook: (book) => dispatch(updateBook(book))
     };
   };
