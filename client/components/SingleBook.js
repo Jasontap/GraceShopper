@@ -40,14 +40,15 @@ export class SingleBook extends React.Component{
     cart[title] = (cart[title] ? cart[title]: 0);
     let qty = cart[title] + 1;
     cart[title] = qty
-    console.log(cart);
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 
   render(){
     const { title, img, author, genre, description, price, admin, review } = this.state;
+    const { admin, book } = this.props;
     const { handleChange, handleSubmit } = this;
     const userId = this.props.auth.id;
+    const book = this.props.book;
 
     return(
       <div>
@@ -105,9 +106,9 @@ export class SingleBook extends React.Component{
               <div>
                 <p>Description: { description }</p>
               </div>
-              <div>
+              {/* <div>
                 <p>Reviews: { review }</p>
-              </div>
+              </div> */}
             </div>
             <div>
               <div>
@@ -116,7 +117,7 @@ export class SingleBook extends React.Component{
               {
                 userId ?
                   <Button 
-                    onClick={()=>this.props.addToCart(userId, book)}
+                    onClick={()=>this.props.addToCart(userId, title)}
                     >Add to Cart
                   </Button>
                 :
@@ -145,7 +146,7 @@ const mapState = ({books,auth}, { match })=> {
   
   const mapDispatch = (dispatch) => {
     return {
-      addToCart: (userId, book) => dispatch(addToCart(userId, book)),
+      addToCart: (userId, book, qty) => dispatch(addToCart(userId, book, qty=1)),
       updateBook: (book) => dispatch(updateBook(book))
     };
   };

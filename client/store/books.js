@@ -43,7 +43,7 @@ export const _updateBook = (book) => {
 
 export const fetchBooks = () => {
   return async (dispatch)=>{
-    const books = (await axios.get('/api/books/')).data;
+    const books = (await axios.get('/api/books')).data;
     dispatch(setBooks(books))
   }
 };

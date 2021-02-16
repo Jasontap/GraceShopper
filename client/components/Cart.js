@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { getCart, removeFromCart } from '../store/cart'
+import { getCart, removeFromCart, updateCart } from '../store/cart'
 import Button from '@material-ui/core/Button'
 import { Link } from "react-router-dom";
 
@@ -9,9 +9,11 @@ export class Cart extends React.Component{
     super(props);
     this.state={
       cart: [],
-      total: 0
+      total: 0,
+      tempQty: 0
     }
     this.removeFromGuestCart = this.removeFromGuestCart.bind(this)
+    this.updateGuestCart = this.updateGuestCart.bind(this)
   }
   componentDidMount(){
     const userId = this.props.auth.id;
@@ -25,17 +27,36 @@ export class Cart extends React.Component{
         cart.push({book: key, quantity: localcart[key]})
       }
     }
+    //console.log(cart);
     this.setState({cart})
   }
 
   removeFromGuestCart(book){
-    console.log(book)
-    console.log(this.state.cart)
-    let items = this.state.cart.filter((item) => item.book !== book.book);
-    let cart = JSON.parse(localStorage.getItem('cart'));
-    delete cart[book.title];
-    localStorage.setItem('cart', JSON.stringify(cart));
-    this.setState({cart: items})
+    const title=book.book;
+    let localcart = JSON.parse(localStorage.getItem('cart'));
+    delete localcart[title]
+    localStorage.setItem('cart', JSON.stringify(localcart));
+    let cart = [];
+    for(let key in localcart){
+      cart.push({book: key, quantity: localcart[key]})
+    }
+    this.setState({cart})
+  }
+
+  updateGuestCart(book,qty){
+    if(qty===0){
+      this.removeFromGuestCart(book)
+      return
+    }
+    let localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+    let title = book.book;
+    localcart[title] = qty
+    localStorage.setItem('cart', JSON.stringify(localcart));
+    let cart = [];
+    for(let key in localcart){
+      cart.push({book: key, quantity: localcart[key]})
+    }
+    this.setState({cart})
   }
 
   clearCart(){
@@ -45,24 +66,36 @@ export class Cart extends React.Component{
 
   render(){
     const cart = this.state.cart
+    console.log(cart)
     const userId = this.props.auth.id
     return(
       <div>
         <h1>CART</h1>
         {
           cart.length === 0?
-          <div className="cart-card"><p>Your cart is Empty. <a href='/allbooks'>Shop?</a></p></div> :
+          <div className="cart-card"><p>Your cart is Empty. <a href='/allbooks'>Shop?</a></p></div>
+          :
           cart.map(item => {
             return(
               <div key={item.book} className="cart-card">
                 <h4>{item.book}</h4>
-                <p>Quantity: {item.quantity}</p>
-                {/* <p>Cost: {item.quantity * item.price}</p> */}
                 {
-                  userId? 
-                  <Button onClick={()=>this.props.removeFromCart(item)}>Remove from Cart</Button>
+                  userId?
+                  <div>
+                    <form className="qty-adjust">
+                      <input className="qty-input" type="number" min="0" step="1" defaultValue={item.quantity} id="qty-input-user"></input>
+                      <Button onClick={()=>this.props.updateCart(userId,item,document.getElementById("qty-input-user").value*1)}>Update</Button>
+                    </form>
+                    <Button onClick={()=>this.props.removeFromCart(userId,item)}>Remove from Cart</Button>
+                  </div>
                   :
-                  <Button onClick={()=>this.removeFromGuestCart(item)}>Remove from Cart</Button>
+                  <div>
+                    <form className="qty-adjust">
+                      <input className="qty-input" type="number" min="0" step="1" defaultValue={item.quantity} id="qty-input-nonuser"></input>
+                      <Button onClick={()=>this.updateGuestCart(item, document.getElementById("qty-input-nonuser").value*1)}>Update</Button>
+                    </form>
+                    <Button onClick={()=>this.removeFromGuestCart(item)}>Remove from Cart</Button>
+                  </div>
                 }
               </div>
             )
@@ -78,10 +111,10 @@ export class Cart extends React.Component{
             <p>You are not logged in.</p>
             {
               this.state.cart.length?
-              <Link to='/checkout'><p>Check Out As Guest</p></Link> : ''
+              <Link to='/checkout'><Button>Check Out As Guest</Button></Link> : ''
             }
-            <Link to='/login'><p>Login</p></Link>
-            <Link to='/signup'><p>Sign-Up</p></Link>
+            <Link to='/login'><Button>Login</Button></Link>
+            <Link to='/signup'><Button>Sign-Up</Button></Link>
           </div>
           }
 
@@ -96,10 +129,12 @@ const mapState = ({cart,auth}) => {
   return {usercart, auth};
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, otherProps) => {
+  console.log('*****' , otherProps)
   return {
     getCart: (userId)=> dispatch(getCart(userId)),
-    removeFromCart: (book)=>dispatch(removeFromCart(book,history))
+    removeFromCart: (userId, book)=>dispatch(removeFromCart(userId,book, history)),
+    updateCart: (userId, book, qty)=>dispatch(updateCart(userId, book, qty, history))
   };
 };
 
