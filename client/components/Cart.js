@@ -129,7 +129,8 @@ const mapState = ({cart,auth}) => {
   return {usercart, auth};
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, otherProps) => {
+  console.log('*****' , otherProps)
   return {
     getCart: (userId)=> dispatch(getCart(userId)),
     removeFromCart: (userId, book)=>dispatch(removeFromCart(userId,book, history)),
