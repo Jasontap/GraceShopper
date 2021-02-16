@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart";
 import { destroyBook } from "../store/books";
 import Button from '@material-ui/core/Button';
-import auth from "../store/auth";
+import {auth} from "../store/auth";
 
 export class AllBooks extends React.Component {
   constructor(props){
@@ -13,7 +13,16 @@ export class AllBooks extends React.Component {
     this.addToGuestCart = this.addToGuestCart.bind(this)
   }
   componentDidMount() {
+    const userId = this.props.auth.id;
     this.props.getBooks();
+    const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+    console.log(localcart)
+    if(localcart){
+      for(let key in localcart){
+        // cart.push({book: key, quantity: localcart[key]})
+        this.props.addToCart(userId, key, localcart[key])
+      }
+    }
     localStorage.clear();
   }
 
@@ -55,7 +64,7 @@ export class AllBooks extends React.Component {
                   <div>
                   {
                     userId ?
-                    <Button onClick={() => this.props.addToCart(userId, book)}>
+                    <Button onClick={() => this.props.addToCart(userId, book.title)}>
                     Add to Cart
                     </Button>
                   :
@@ -81,7 +90,7 @@ const mapState = ({ books, auth }) => {
 const mapDispatch = (dispatch) => {
   return {
     getBooks: () => dispatch(fetchBooks()),
-    addToCart: (userId, book) => dispatch(addToCart(userId, book)),
+    addToCart: (userId, book, qty) => dispatch(addToCart(userId, book, qty=1)),
     destroyBook: (book) => dispatch(destroyBook(book))
   };
 };
