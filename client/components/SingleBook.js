@@ -16,7 +16,7 @@ export class SingleBook extends React.Component{
       description: this.props.book.genre,
       price: this.props.book.price,
       id: this.props.book.id,
-      admin: this.props
+      admin: this.props.admin
     }
     this.addToGuestCart = this.addToGuestCart.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -45,7 +45,7 @@ export class SingleBook extends React.Component{
   }
 
   render(){
-    const { title, img, author, genre, description, price, admin } = this.state;
+    const { title, img, author, genre, description, price, admin, review } = this.state;
     const { handleChange, handleSubmit } = this;
     const userId = this.props.auth.id;
 

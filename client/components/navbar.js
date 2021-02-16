@@ -52,6 +52,7 @@ export class Navbar extends React.Component {
               <Link to="/allbooks">All Books</Link>
               <Link to='/fiction'>Fiction</Link>
               <Link to="/nonfiction">Non-Fiction</Link>
+              <Link to="/user">My page</Link>
               <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
                 <Drawer 
                   variant="temporary"
