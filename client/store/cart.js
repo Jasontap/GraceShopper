@@ -31,6 +31,13 @@ export const _getCart = (cart) => {
     }
   };
 
+  export const _updateCart = (cart) => {
+    return {
+      type: UPDATE_CART,
+      cart
+    }
+  };
+
 
 //thunks
 
@@ -41,10 +48,10 @@ export const getCart = (userId) => {
     }
 };
 
-  export const removeFromCart = (book) => {
+  export const removeFromCart = (userId,book, history) => {
     return async (dispatch)=>{
       const bookId=book.id;
-      await axios.delete(`/api/cart`,{data: {bookId}})
+      await axios.delete(`/api/cart/${userId}/cart`,{data: {bookId}})
       dispatch(_removeFromCart(book))
       history.push('/mycart');
     }
@@ -52,9 +59,18 @@ export const getCart = (userId) => {
 
   export const addToCart = (userId, bookToCart,qty=1) => {
     return async (dispatch)=>{
-      const books = (await axios.post(`/api/cart/${userId}/cart`, {book: bookToCart.title , quantity: qty, price: bookToCart.price})).data
+      const books = (await axios.post(`/api/cart/${userId}/cart`, {book: bookToCart , quantity: qty})).data
       dispatch(_addToCart(books))
     }
+};
+
+export const updateCart = (userId, book, qty, history) => {
+  return async (dispatch)=>{
+    const cart = (await axios.put(`/api/cart/${userId}/cart`,{book: book.book , quantity: qty})).data
+    console.log(cart);
+    dispatch(_updateCart(cart))
+    history.push('/mycart');
+  }
 };
 
 
@@ -65,10 +81,13 @@ export default function cartReducer(state=[], action) {
       return action.cart
     }
     if(action.type === REMOVE_BOOK_FROM_CART){
-      state = state.filter(book => book.id !== action.book.id)
+      return state.filter(book => book.id !== action.book.id)
     }
     if(action.type === ADD_BOOK_TO_CART){
       return action.books
+    }
+    if(action.type === UPDATE_CART){
+      return action.cart
     }
   
     return state;

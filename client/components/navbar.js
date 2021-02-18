@@ -8,7 +8,7 @@ import { fetchBooks, fetchGenres } from "../store/books";
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import Dropdown from 'react-bootstrap/Dropdown'
 
 
 export class Navbar extends React.Component {
@@ -16,7 +16,8 @@ export class Navbar extends React.Component {
     super(props)
     this.state = { 
       isDrawerOpened: false,
-      anchorEl: false
+      anchorEl: false,
+      showMenu: false
     }
 
     this.toggleDrawerStatus = this.toggleDrawerStatus.bind(this)
@@ -72,42 +73,82 @@ export class Navbar extends React.Component {
       <div>
         <nav>
           <div id="nav-container">
-          {isLoggedIn ? (
-            <div>
-              {/* The navbar will show these links after you log in */}
-              <Link to="/home"><h1>JWT Books</h1></Link>
-              {admin ? (
-                <span>
-                  <Link to='/users'>View Users</Link>
-                  <Link to='/add-book'>Add a Book</Link>
-                </span>
+            {isLoggedIn ? (
+              <div>
+                {/* The navbar will show these links after you log in */}
+                <Link to="/home"><h1>JWT Books</h1></Link>
+                {admin ? (
+                  <span>
+                    <Link to='/users'>View Users</Link>
+                    <Link to='/add-book'>Add a Book</Link>
+                  </span>
 
-              ) : (
-                ''
-              )}
-              <Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link>
-              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
-                Select A Genre
-              </Button>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={this.handleClose}
-              >
-                {
-                  genres.map(genre => {
-                    const genreTag = genre.split(' ').join('');
-                    return (
-                      <MenuItem onClick={this.handleClose} key={genre}>
-                      <a href={`#${genreTag}`}>{genre}</a>
-                      </MenuItem> 
-                    )
-                  })
-                }
-              </Menu>
-              <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
+                ) : (
+                  ''
+                )}
+                <Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
+                  Select A Genre
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={this.handleClose}
+                >
+                  {
+                    genres.map(genre => {
+                      const genreTag = genre.split(' ').join('');
+                      return (
+                        <MenuItem onClick={this.handleClose} key={genre}>
+                        <a href={`#${genreTag}`}>{genre}</a>
+                        </MenuItem> 
+                      )
+                    })
+                  }
+                </Menu>
+                <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a>
+                  <Drawer 
+                    variant="temporary"
+                    anchor="right"
+                    open={isDrawerOpened}
+                    onClose={this.closeDrawer} 
+                  >
+                    <Cart />
+
+                  </Drawer>
+                {/* <a href="#" onClick={handleClick}>
+                  Logout
+                </a> */}
+              </div>
+            ) : (
+              <div>
+                {/* The navbar will show these links before you log in */}
+                <Link to="/allbooks" onClick={this.resetAllBooks}><h1>JWT Books</h1></Link>
+                <Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
+                  Select A Genre
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={this.handleClose}
+                >
+                  {
+                    genres.map(genre => {
+                      const genreTag = genre.split(' ').join('');
+                      return (
+                        <MenuItem onClick={this.handleClose} key={genre}>
+                        <a href={`#${genreTag}`}>{genre}</a>
+                        </MenuItem> 
+                      )
+                    })
+                  }
+                </Menu>
+                <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a>
                 <Drawer 
                   variant="temporary"
                   anchor="right"
@@ -117,60 +158,42 @@ export class Navbar extends React.Component {
                   <Cart />
 
                 </Drawer>
-              <a href="#" onClick={handleClick}>
-                Logout
-              </a>
-            </div>
-          ) : (
-            <div>
-              {/* The navbar will show these links before you log in */}
-              <Link to="/allbooks" onClick={this.resetAllBooks}><h1>JWT Books</h1></Link>
-              <Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link>
-              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
-                Select A Genre
-              </Button>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={this.handleClose}
-              >
-                {
-                  genres.map(genre => {
-                    const genreTag = genre.split(' ').join('');
-                    return (
-                      <MenuItem onClick={this.handleClose} key={genre}>
-                      <a href={`#${genreTag}`}>{genre}</a>
-                      </MenuItem> 
-                    )
-                  })
-                }
-              </Menu>
-              <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart (number)</a>
-              <Drawer 
-                variant="temporary"
-                anchor="right"
-                open={isDrawerOpened}
-                onClose={this.closeDrawer} 
-              >
-                <Cart />
+                {/* <Link to="/login">Login</Link>
+                <Link to="/signup">Sign Up</Link> */}
+              </div>
+            )}
 
-              </Drawer>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
-            </div>
-          )}
-          <div className="icon">
-            <i className="fas fa-child fa-2x"></i>
+            <Dropdown>
+              <Dropdown.Toggle id="dropdown">
+                <div className="icon">
+                  <i className="fas fa-child fa-2x"></i>
+                </div>
+              </Dropdown.Toggle>
+              {
+                isLoggedIn?(
+                  <Dropdown.Menu>
+                    <Dropdown.Item>
+                      Order History
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#" onClick={handleClick}>
+                      Logout
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                )
+                :
+                (
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/login">
+                      Login
+                    </Dropdown.Item>
+                    <Dropdown.Item href="/signup">
+                      Sign Up
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                )
+              }
+            </Dropdown>
           </div>
-          
-          {/* <div>
-          <hr />
-          </div> */}
-
-          </div>
-
         </nav>
       </div>
     )
@@ -178,8 +201,6 @@ export class Navbar extends React.Component {
 }
 
 const mapState = ({ books, auth }) => {
-  // const genres = books.books.map(book => book.genre);
-  // const uniqueGenres = [...new Set(genres)];
   return {
     isLoggedIn: !!auth.id,
     admin: auth.adminAuth,

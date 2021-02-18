@@ -13,9 +13,14 @@ router.get('/', async (req, res, next) => {
 });
 
 //delete item in cart
-router.delete('/', async (req, res, next) => {
+router.delete('/:id/cart', async (req, res, next) => {
   try {
-    const book = await Cart.findOne({where: {id: req.body.bookId}})
+    const book = await Cart.findOne({
+      where: {
+        id: req.body.bookId,
+        userId: req.params.id
+      }
+    })
     await book.destroy()
     res.sendStatus(200)
 
@@ -55,6 +60,27 @@ router.post('/:id/cart', async (req, res, next) => {
       await book.save();
     }
     res.status(201).send(await Cart.findAll())
+  }
+  catch(ex) {
+    next(ex)
+  }
+});
+
+router.put('/:id/cart', async (req, res, next) => {
+  try {
+    const bookInCart = await Cart.findOne({
+      where: {
+        book: req.body.book,
+        userId: req.params.id
+      }
+    })
+      if(req.body.quantity === 0){
+        await bookInCart.destroy()
+      }else{
+        bookInCart.quantity = req.body.quantity
+        await bookInCart.save()
+      }
+      res.status(201).send(await Cart.findAll())
   }
   catch(ex) {
     next(ex)

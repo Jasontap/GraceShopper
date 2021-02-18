@@ -13,4 +13,6 @@ export {default as Users} from './Users'
 export {default as AddBook} from './AddBook'
 export {default as SingleUser} from './SingleUser'
 export {default as CheckoutForm} from './CheckoutForm'
+export {default as OrderHistory} from './OrderHistory'
+
 
