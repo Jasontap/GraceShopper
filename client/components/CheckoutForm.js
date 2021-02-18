@@ -1,32 +1,26 @@
 import React from "react"
 import { connect } from "react-redux"
-import { getCart } from '../store/cart'
-import {createOrder} from '../store/checkout'
+import { getCart} from '../store/cart'
+import {createOrder, fetchOrders} from '../store/checkout'
+import { makeStyles } from '@material-ui/core/styles';
+import FilledInput from '@material-ui/core/FilledInput';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import Button from '@material-ui/core/Button';
+import { Checkbox } from '@material-ui/core';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 
 
 export class CheckoutForm extends React.Component{
     constructor(){
         super()
         this.state = {
-            shipFirst: '',
-            shipLast:'',
-            shipAddy: '',
-            shipCity: '',
-            shipState: '',
-            shipZip: '',
-            billFirst: '',
-            billLast:'',
-            billAddy:'',
-            billCity: '',
-            billState: '',
-            billZip: '',
-            cardFirst:'',
-            cardLast:'',
-            cardNum:'',
-            cardExp: '',
-            cardCode: '',
-            same: false,
-            continue: false
+            shipFirst: '', shipLast:'', shipAddy: '', shipCity: '', shipState: '', shipZip: '', billFirst: '', billLast:'', billAddy:'',
+            billCity: '', billState: '', billZip: '', cardFirst:'', cardLast:'', cardNum:'', cardExp: '', cardCode: '', same: false, continue: false,
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -34,14 +28,14 @@ export class CheckoutForm extends React.Component{
     componentDidMount(){
         const userId = this.props.auth.id
         this.props.getCart(userId)
-        console.log(this.props)
     }
     handleChange(ev){
         const {name, value} = ev.target
         this.setState({[name] : value})
     }
-    handleSubmit(ev){
+    handleSubmit (ev){
         ev.preventDefault()
+        const userId = this.props.auth.id
         const order = {
             address: this.state.shipAddy,
             city: this.state.shipCity,
@@ -51,8 +45,25 @@ export class CheckoutForm extends React.Component{
             cardExp: this.state.cardExp,
             cardCode: this.state.cardCode
         }
-        this.props.createOrder(order, this.props.auth.id)
-        this.setState({continue: true})
+        const alerts = []
+        for(const [key,val] of Object.entries(order)){
+            if(val === ''){
+                alerts.push(key)
+            }
+        }
+        if(alerts.length > 0){
+            console.log(alerts)
+            const string = alerts.reduce((acc,item)=>{
+                acc += `${item}\n`
+                return acc
+            },'Please fill out the following:\n')
+            alert(string)
+        }
+        if(alerts.length === 0){
+            this.props.createOrder(order, userId)
+            this.setState({continue: true})
+        }
+
     }
     render(){
         if(!this.state.continue){
@@ -60,70 +71,97 @@ export class CheckoutForm extends React.Component{
                 <div id='formbox'>
                     <div id='shippingInfo'>
                         <h3>Shipping Address</h3>
-                        <form className='checkout'>
+                        <form className='checkout'  noValidate autoComplete="off">
                             <div id='name'>
-                                <label hmtlFor='shipFirst'>First Name:</label>
-                                <input type='text' id='shipFirst' name='shipFirst' onChange= {this.handleChange}/>
-                                <label hmtlFor='shipLast'>Last Name:</label>
-                                <input type='text' id='shipLast' name='shipLast' onChange= {this.handleChange}/>
+                                <FormControl variant="outlined">
+                                    <InputLabel htmlFor="component-outlined">First Name</InputLabel>
+                                    <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='shipFirst'  />
+                                </FormControl>
+                                <FormControl variant="outlined">
+                                    <InputLabel htmlFor="component-outlined">Last Name</InputLabel>
+                                    <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='shipLast'  />
+                                </FormControl>
                             </div>
-                            <label hmtlFor='shipAddy'>Address:</label>
-                            <input type='text' id='shipAddy' name='shipAddy' onChange= {this.handleChange}/>
+                            <FormControl variant="outlined">
+                                <InputLabel htmlFor="component-outlined">Address</InputLabel>
+                                <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='shipAddy'  />
+                            </FormControl>
                             <div id='csz'>
-                                <label hmtlFor='shipCity'>City:</label>
-                                <input type='text' id='shipCity' name='shipCity' onChange= {this.handleChange}/>
-                                <label hmtlFor='shipState'>State:</label>
-                                <input type='text' id='shipState' name='shipState' onChange= {this.handleChange}/>
-                                <label hmtlFor='shipZip'>Zip Code:</label>
-                                <input type='text' id='shipZip' name='shipZip' onChange= {this.handleChange}/>
+                                <FormControl variant="outlined">
+                                    <InputLabel htmlFor="component-outlined">City</InputLabel>
+                                    <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='shipCity'  />
+                                </FormControl>
+                                <FormControl variant="outlined">
+                                    <InputLabel htmlFor="component-outlined">State</InputLabel>
+                                    <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='shipState'  />
+                                </FormControl>
+                                <FormControl variant="outlined">
+                                    <InputLabel htmlFor="component-outlined">Zip Code</InputLabel>
+                                    <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='shipZip'  />
+                                </FormControl>
                             </div>
                         </form>
                     </div>
                     <div id='billingAddy'>
                         <h3>Billing Address</h3>
                         <form className='checkout'>
-                            <input type="checkbox" id="same" name="same"  onChange={()=>{
-                                const checked = !this.state.same
-                                if(checked){
-                                    this.setState({
-                                        billFirst: shipFirst,
-                                        billLast: shipLast,
-                                        billAddy: shipAddy,
-                                        billCity: shipCity,
-                                        billState: shipState,
-                                        billZip: shipZip,
-                                        same: checked
-                                    })
-                                }else{
-                                    this.setState({
-                                        billFirst: '',
-                                        billLast:'',
-                                        billAddy:'',
-                                        billCity: '',
-                                        billState: '',
-                                        billZip: '',
-                                        same: checked
-                                    })
-                               }
-                            }}/>
-                            <label hmtlFor="same"> Billing Address same as Shipping?</label>
+                            <FormControlLabel
+                                control={<Checkbox checked={this.state.same} onChange={()=>{
+                                    const checked = !this.state.same
+                                    if(checked){
+                                        this.setState({
+                                            billFirst: this.state.shipFirst,
+                                            billLast: this.state.shipLast,
+                                            billAddy: this.state.shipAddy,
+                                            billCity: this.state.shipCity,
+                                            billState: this.state.shipState,
+                                            billZip: this.state.shipZip,
+                                            same: checked
+                                        })
+                                    }else{
+                                        this.setState({
+                                            billFirst: '',
+                                            billLast:'',
+                                            billAddy:'',
+                                            billCity: '',
+                                            billState: '',
+                                            billZip: '',
+                                            same: checked
+                                        })
+                                   }
+                                }} name="same" />}
+                                label="Billing address same as shipping?"
+                            />
+                            
                             {this.state.same ? '' : (
                                 <div>
                                     <div id='name'>
-                                        <label hmtlFor='billFirst'>First Name:</label>
-                                        <input type='text' id='billFirst' name='billFirst' onChange= {this.handleChange}/>
-                                        <label hmtlFor='billLast'>Last Name:</label>
-                                        <input type='text' id='billLast' name='billLast' onChange= {this.handleChange}/>
+                                        <FormControl variant="outlined">
+                                            <InputLabel htmlFor="component-simple">First name</InputLabel>
+                                            <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='billFirst' label='First Name'  />
+                                        </FormControl>
+                                        <FormControl variant="outlined">
+                                            <InputLabel htmlFor="component-outlined">Last Name</InputLabel>
+                                            <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='billLast'  />
+                                        </FormControl>
                                     </div>
-                                    <label hmtlFor='billAddy'>Address:</label>
-                                    <input type='text' id='billAddy' name='billAddy' onChange= {this.handleChange}/>
+                                    <FormControl variant="outlined">
+                                            <InputLabel htmlFor="component-outlined">Address</InputLabel>
+                                            <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='billAddy'  />
+                                    </FormControl>
                                     <div id='csz'>
-                                        <label hmtlFor='billCity'>City:</label>
-                                        <input type='text' id='billCity' name='billCity' onChange= {this.handleChange}/>
-                                        <label hmtlFor='billState'>State:</label>
-                                        <input type='text' id='billState' name='billState' onChange= {this.handleChange}/>
-                                        <label hmtlFor='billZip'>Zip Code:</label>
-                                        <input type='text' id='billZip' name='billZip' onChange= {this.handleChange}/>
+                                        <FormControl variant="outlined">
+                                            <InputLabel htmlFor="component-outlined">City</InputLabel>
+                                            <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='billCity'  />
+                                        </FormControl>
+                                        <FormControl variant="outlined">
+                                            <InputLabel htmlFor="component-outlined">State</InputLabel>
+                                            <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='billState'  />
+                                        </FormControl>
+                                        <FormControl variant="outlined">
+                                            <InputLabel htmlFor="component-outlined">Zip Code</InputLabel>
+                                            <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='billZip'  />
+                                        </FormControl>
                                     </div>
                                 </div>
                             )}   
@@ -132,23 +170,33 @@ export class CheckoutForm extends React.Component{
                     <div id='billingInfo'>
                         <h3>Credit Card Information</h3>
                         <div id='name'>
-                            <label hmtlFor='cardFirst'>First Name:</label>
-                            <input type='text' id='cardFirst' name='cardFirst' onChange= {this.handleChange}/>
-                            <label hmtlFor='cardLast'>Last Name:</label>
-                            <input type='text' id='cardLast' name='cardLast' onChange= {this.handleChange}/>
+                            <FormControl variant="outlined">
+                                <InputLabel htmlFor="component-outlined">First Name</InputLabel>
+                                <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='cardFirst'  />
+                            </FormControl>
+                            <FormControl variant="outlined">
+                                <InputLabel htmlFor="component-outlined">Last Name</InputLabel>
+                                <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='cardLast'  />
+                            </FormControl>
                         </div>
                         <div id='cardInfo'>
-                            <label hmtlFor='cardNum'>Card Number:</label>
-                            <input type='text' id='cardNum' name='cardNum' onChange= {this.handleChange}/>
+                            <FormControl variant="outlined">
+                                <InputLabel htmlFor="component-outlined">Card Number</InputLabel>
+                                <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='cardNum'  />
+                            </FormControl>
                             <div id="exp">
-                                <label hmtlFor='cardExp'>Expiration Date:</label>
-                                <input type='text' id='cardExp' name='cardExp' placeholder='MM/YY' onChange= {this.handleChange}/>
-                                <label hmtlFor='cardCode'>Security Code:</label>
-                                <input type='text' id='cardCode' name='cardCode' onChange= {this.handleChange}/>
+                                <FormControl variant="outlined">
+                                    <InputLabel htmlFor="component-outlined">Expiration Date</InputLabel>
+                                    <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='cardExp' placeholder='MM/YY'  />
+                                </FormControl>
+                                <FormControl variant="outlined">
+                                    <InputLabel htmlFor="component-outlined">Security Code</InputLabel>
+                                    <OutlinedInput id="component-outlined"  onChange={this.handleChange} name='cardCode'   />
+                                </FormControl>
                             </div>
                         </div>
                     </div>
-                    <button onClick={this.handleSubmit}>Complete Checkout</button>
+                    <Button onClick={this.handleSubmit}>Complete Checkout</Button>
                 </div>
                 
             </div>
@@ -181,6 +229,7 @@ const mapDispatch = (dispatch) => {
     return {
         createOrder: (userId, order)=> dispatch(createOrder(userId, order)),
         getCart: (userId)=> dispatch(getCart(userId)),
+        fetchOrders: (userId)=> dispatch(fetchOrders(userId))
     };
 };
   

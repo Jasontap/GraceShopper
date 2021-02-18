@@ -16,11 +16,11 @@ const Order = db.define('order', {
         allowNull: false
     },
     zip: {
-        type: INTEGER,
+        type: STRING,
         allowNull: false
     },
     cardNum: {
-        type: INTEGER,
+        type: STRING,
         allowNull: false
     },
     cardExp: {
@@ -28,7 +28,7 @@ const Order = db.define('order', {
         allowNull: false
     },
     cardCode: {
-        type: INTEGER,
+        type: STRING,
         allowNull: false
     }
 })

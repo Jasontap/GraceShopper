@@ -35,7 +35,9 @@ export class Navbar extends React.Component {
         this.props.setBooks(window.location.hash.slice(1))
       }
     })
-    this.props.setBooks(window.location.hash.slice(1))
+    if(window.location.hash.slice(1) !== 'mycart'){
+      this.props.setBooks(window.location.hash.slice(1))
+    }
   }
 
   toggleDrawerStatus(){ 
@@ -175,8 +177,8 @@ export class Navbar extends React.Component {
               {
                 isLoggedIn?(
                   <Dropdown.Menu>
-                    <Dropdown.Item>
-                      Order History
+                    <Dropdown.Item >
+                      <Link to='/orders'>Order History</Link>
                     </Dropdown.Item>
                     <Dropdown.Item href="#" onClick={handleClick}>
                       Logout

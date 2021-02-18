@@ -39,6 +39,8 @@ export const _getCart = (cart) => {
   };
 
 
+
+
 //thunks
 
 export const getCart = (userId) => {
@@ -72,6 +74,7 @@ export const updateCart = (userId, book, qty, history) => {
     //history.push('/allbooks#mycart');
   }
 };
+
 
 
 //reducer
