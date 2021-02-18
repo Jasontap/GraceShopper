@@ -13,16 +13,17 @@ export class Cart extends React.Component{
     }
     this.removeFromGuestCart = this.removeFromGuestCart.bind(this)
     this.updateGuestCart = this.updateGuestCart.bind(this)
+    // this.stackCart = this.stackCart.bind(this)
   }
-  stackCart(localcart){
-    let cart = []
-    let total = 0
-    for(let key in localcart){
-      cart.push({book: key, quantity: localcart[key].quantity, price: localcart[key].price})
-      total += localcart[key].quantity * localcart[key].price;
-    }
-    return {cart,total}
-  }
+  // stackCart(localcart){
+  //   let cart = []
+  //   let total = 0
+  //   for(let key in localcart){
+  //     cart.push({book: key, quantity: localcart[key].quantity, price: localcart[key].price})
+  //     total += localcart[key].quantity * localcart[key].price;
+  //   }
+  //   return {cart,total}
+  // }
   componentDidMount(){
     const userId = this.props.auth.id;
     let cart;
