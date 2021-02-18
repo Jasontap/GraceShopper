@@ -6,7 +6,6 @@ const GET_CART = 'GET_CART'
 const ADD_BOOK_TO_CART = 'ADD_BOOK_TO_CART'
 const REMOVE_BOOK_FROM_CART = 'REMOVE_BOOK_FROM_CART'
 const UPDATE_CART = 'UPDATE_CART'
-const CART_ORDER = 'CART_ORDER'
 
 
 //action creators
@@ -39,12 +38,7 @@ export const _getCart = (cart) => {
     }
   };
 
-  export const _cartOrder = (cart)=>{
-    return {
-      type: CART_ORDER,
-      cart
-    }
-  }
+
 
 
 //thunks
@@ -61,13 +55,13 @@ export const getCart = (userId) => {
       const bookId=book.id;
       await axios.delete(`/api/cart/${userId}/cart`,{data: {bookId}})
       dispatch(_removeFromCart(book))
-      history.push('/mycart');
+      // history.push('/mycart');
     }
   };
 
-  export const addToCart = (userId, bookToCart,qty=1) => {
+  export const addToCart = (userId, bookToCart, price, qty=1) => {
     return async (dispatch)=>{
-      const books = (await axios.post(`/api/cart/${userId}/cart`, {book: bookToCart , quantity: qty})).data
+      const books = (await axios.post(`/api/cart/${userId}/cart`, {book: bookToCart , price: price, quantity: qty})).data
       dispatch(_addToCart(books))
     }
 };
@@ -77,16 +71,11 @@ export const updateCart = (userId, book, qty, history) => {
     const cart = (await axios.put(`/api/cart/${userId}/cart`,{book: book.book , quantity: qty})).data
     console.log(cart);
     dispatch(_updateCart(cart))
-    history.push('/mycart');
+    //history.push('/allbooks#mycart');
   }
 };
 
-export const cartOrder = (userId, book, orderId) =>{
-  return async (dispatch)=>{
-    const cart = (await axios.put(`/api/cart/${userId}/cart`, {book: book.book, orderId: orderId}))
-    dispatch(_cartOrder(cart))
-  }
-}
+
 
 //reducer
 
@@ -95,15 +84,14 @@ export default function cartReducer(state=[], action) {
       return action.cart
     }
     if(action.type === REMOVE_BOOK_FROM_CART){
-      return state.filter(book => book.id !== action.book.id)
+      console.log(action.book)
+      state = state.filter(book => book.id !== action.book.id)
+      return state
     }
     if(action.type === ADD_BOOK_TO_CART){
       return action.books
     }
     if(action.type === UPDATE_CART){
-      return action.cart
-    }
-    if(action.type === CART_ORDER){
       return action.cart
     }
   

@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { getCart, cartOrder } from '../store/cart'
+import { getCart} from '../store/cart'
 import {createOrder, fetchOrders} from '../store/checkout'
 import { makeStyles } from '@material-ui/core/styles';
 import FilledInput from '@material-ui/core/FilledInput';

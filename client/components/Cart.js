@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import { getCart, removeFromCart, updateCart } from '../store/cart'
 import Button from '@material-ui/core/Button'
 import { Link } from "react-router-dom";
-
 export class Cart extends React.Component{
   constructor(props){
     super(props);
@@ -18,8 +17,13 @@ export class Cart extends React.Component{
   componentDidMount(){
     const userId = this.props.auth.id;
     let cart;
+    let total;
     if(userId){
       cart = this.props.usercart
+      total = cart.reduce((accum,item)=>{
+        accum+=(item.price * item.quantity)
+        return accum;
+      },0)
     }else{
       cart = [];
       const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
@@ -27,10 +31,8 @@ export class Cart extends React.Component{
         cart.push({book: key, quantity: localcart[key]})
       }
     }
-    //console.log(cart);
-    this.setState({cart})
+    this.setState({cart, total})
   }
-
   removeFromGuestCart(book){
     const title=book.book;
     let localcart = JSON.parse(localStorage.getItem('cart'));
@@ -42,7 +44,6 @@ export class Cart extends React.Component{
     }
     this.setState({cart})
   }
-
   updateGuestCart(book,qty){
     if(qty===0){
       this.removeFromGuestCart(book)
@@ -58,15 +59,12 @@ export class Cart extends React.Component{
     }
     this.setState({cart})
   }
-
   clearCart(){
     localStorage.removeItem('cart');
     this.setState({cart: []});
   }
-
   render(){
     const cart = this.state.cart
-    console.log(cart)
     const userId = this.props.auth.id
     return(
       <div>
@@ -101,9 +99,7 @@ export class Cart extends React.Component{
             )
           })
         }
-
-
-        <h4>Total: {this.state.total}</h4>
+        <h4>Total: ${this.state.total}</h4>
         <Link to='/checkout'><Button disabled={!this.state.cart.length || !userId}>Check Out</Button></Link>
         {
           userId? '' :
@@ -117,18 +113,14 @@ export class Cart extends React.Component{
             <Link to='/signup'><Button>Sign-Up</Button></Link>
           </div>
           }
-
-
       </div>
     )
   }
 }
-
 const mapState = ({cart,auth}) => {
-  const usercart = cart.filter(line=>line.userId === auth.id)
+  const usercart = cart.filter(line=>line.userId === auth.id && line.orderId === null)
   return {usercart, auth};
 };
-
 const mapDispatch = (dispatch, otherProps) => {
   console.log('*****' , otherProps)
   return {
@@ -137,5 +129,4 @@ const mapDispatch = (dispatch, otherProps) => {
     updateCart: (userId, book, qty)=>dispatch(updateCart(userId, book, qty, history))
   };
 };
-
 export default connect(mapState, mapDispatch)(Cart);

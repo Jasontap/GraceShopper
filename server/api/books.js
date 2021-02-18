@@ -11,6 +11,29 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+
+
+// const books = [await Book.findAll();]
+// const genres = books.map(book => book.genre);
+// const uniqueGenres = [...new Set(genres)];
+// uniqueGenres.forEach(genre => {
+//   return (
+//     router.get(`/${genre}`, async (req, res, next) => {
+//       try {
+//         res.send(await Book.findAll({
+//           where: {
+//             genre: genre
+//           }
+//         }));
+//       }
+//       catch(ex){
+//         next(ex);
+//       }
+//     })
+//   )
+// })
+
+
 router.get('/fiction', async (req, res, next) => {
   try {
     res.send(await Book.findAll({ 
@@ -67,7 +90,189 @@ router.get('/dogs', async (req, res, next) => {
   try {
     res.send(await Book.findAll({ 
       where: {
-        genre: 'cats'
+        genre: 'dogs'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/architecture', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'architecture'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/artInstruction', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'art instruction'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/dance', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'dance'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/design', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'design'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/music', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'music'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/musictheory', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'music theory'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/kittens', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'kittens'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/puppies', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'puppies'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/fantasy', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'fantasy'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/horror', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'horror'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/sciencefiction', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'science fiction'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/poetry', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'poetry'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/mathematics', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'mathematics'
+      }
+    }));
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
+
+router.get('/programming', async (req, res, next) => {
+  try {
+    res.send(await Book.findAll({ 
+      where: {
+        genre: 'programming'
       }
     }));
   } 
