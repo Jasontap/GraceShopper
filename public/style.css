@@ -26,15 +26,29 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
-
+.bookNPic {
+  display: flex;
+  flex-direction: row;
+}
 .qty-adjust {
   display: flex;
-  align-items: space-between;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+  align-self: center;
+  padding-bottom: 1em;
 }
 .qty-input {
-  width: 90px;
+  width: 40px;
+  margin-right: 15px;
 }
 
+.cartOptions {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-bottom: 21.28px;
+}
 #dropdown.dropdown-toggle.btn.btn-primary {
   background: white;
   color: #5d00e1;
@@ -59,13 +73,24 @@ nav {
 .book-title-div {
   height: 2rem;
 }
-
+#cartBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30rem;
+}
+.bookName {
+  text-align: center;
+}
 .cart-card {
   border: 1px solid #5d00e1;
   border-radius: 25px;
-  width: 90%;
+  width: 75%;
   padding: 1rem;
   margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cover-art {
@@ -104,12 +129,82 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid #5d00e1;
   border-radius: 30px;
   width: 50%;
   margin: auto;
-  padding-bottom: 20px;
-  padding-top: 10px;
+  padding: 10px 10px 20px 10px;
+}
+
+.orderItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #5d00e1;
+  border-radius: 30px;
+  width: 45%;
+  margin: 1em;
+}
+.orderBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#allOrders {
+  display: flex;
+  flex-direction: column;
+}
+#orderHist {
+  text-align: center;
+}
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+.orderP {
+  margin: 1px;
+}
+.shipped {
+  align-self: flex-start;
+}
+.bookBox {
+  display: flex;
+  flex-direction: column;
+}
+.orderTitle {
+  margin: 1px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.orderList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.bookPrice {
+  margin-left: 2em;
+}
+.bookInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 200px;
+}
+.orderTitle::before {
+  content: "";
+  display: inline-block;
+  height: 25px;
+  width: 2em;
+  background-image: url("https://www.flaticon.com/svg/vstatic/svg/167/167755.svg?token=exp=1613664679~hmac=977988c5cfbedf5b30d25b2610156904");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #orderSumm > h3 {
@@ -160,10 +255,6 @@ nav {
   flex-direction: row;
   align-items: center;
 }
-/* #bookList {
-  list-style: none;
-  list-style-image: url("https://www.flaticon.com/svg/vstatic/svg/167/167755.svg?token=exp=1613664679~hmac=977988c5cfbedf5b30d25b2610156904");
-} */
 
 li.bookList::before {
   content: "";
@@ -195,4 +286,32 @@ li.bookList::before {
 }
 .orderAddy {
   margin: 5px;
+}
+.cartBottom {
+  margin-top: 25px;
+  text-align: center;
+}
+
+#guest-options {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+#guestButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+#orderTotal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.checkButt {
+  margin-bottom: 31px;
+}
+.removeButt {
+  margin-top: 15px;
 }

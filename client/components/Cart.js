@@ -104,50 +104,55 @@ export class Cart extends React.Component{
     const cart = this.state.cart
     const userId = this.props.auth.id
     return(
-      <div>
+      <div id='cartBox'>
         <h1>CART</h1>
         {
           cart.length === 0?
           <div className="cart-card"><p>Your cart is Empty. <a href='/allbooks'>Shop?</a></p></div>
           :
           cart.map(item => {
+            console.log(item)
             return(
               <div key={item.book} className="cart-card">
-                <h4>{item.book}</h4>
+                <h4 className='bookName'>{item.book}</h4>
                 {
                   userId?
-                  <div>
+                  <div className='cartOptions'>
                     <form className="qty-adjust">
                       <input className="qty-input" type="number" min="0" step="1" defaultValue={item.quantity} id="qty-input-user"></input>
                       <Button onClick={()=>this.props.updateCart(userId,item,document.getElementById("qty-input-user").value*1)}>Update</Button>
                     </form>
-                    <Button onClick={()=>this.props.removeFromCart(userId,item)}>Remove from Cart</Button>
+                    <Button className='removeButt' onClick={()=>this.props.removeFromCart(userId,item)}>Remove from Cart</Button>
                   </div>
                   :
-                  <div>
+                  <div className='cartOptions'>
                     <form className="qty-adjust">
                       <input className="qty-input" type="number" min="0" step="1" defaultValue={item.quantity} id="qty-input-nonuser"></input>
                       <Button onClick={()=>this.updateGuestCart(item, document.getElementById("qty-input-nonuser").value*1)}>Update</Button>
                     </form>
-                    <Button onClick={()=>this.removeFromGuestCart(item)}>Remove from Cart</Button>
+                    <Button className='removeButt' onClick={()=>this.removeFromGuestCart(item)}>Remove from Cart</Button>
                   </div>
                 }
               </div>
             )
           })
         }
-        <h4>Total: ${this.state.total}</h4>
-        <Link to='/checkout'><Button disabled={!this.state.cart.length || !userId}>Check Out</Button></Link>
+        <div id='orderTotal'>
+          <h4 className='cartBottom checkButt'>Total: ${this.state.total}</h4>
+          <Link to='/checkout'><Button  disabled={!this.state.cart.length || !userId}>Check Out</Button></Link>
+        </div>
         {
           userId? '' :
           <div id="guest-options">
-            <p>You are not logged in.</p>
+            <p className='cartBottom'>You are not logged in.</p>
             {
               this.state.cart.length?
               <Link to='/checkout'><Button>Check Out As Guest</Button></Link> : ''
             }
-            <Link to='/login'><Button>Login</Button></Link>
-            <Link to='/signup'><Button>Sign-Up</Button></Link>
+            <div id='guestButtons'>
+              <Link to='/login'><Button className='cartBottom'>Login</Button></Link>
+              <Link to='/signup'><Button className='cartBottom'>Sign-Up</Button></Link>
+            </div>
           </div>
           }
       </div>
