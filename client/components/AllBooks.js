@@ -17,12 +17,12 @@ export class AllBooks extends React.Component {
     const userId = this.props.auth.id;
     this.props.pagingBooks(0);
     const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
-    if(localcart){
+    if(userId && localcart){
       for(let key in localcart){
-        this.props.addToCart(userId, key, localcart[key])
+        this.props.addToCart(userId, key, localcart[key].price, localcart[key].quantity)
       }
+      localStorage.clear();
     }
-    localStorage.clear();
   }
 
   componentDidUpdate(prevProps) {
@@ -35,9 +35,11 @@ export class AllBooks extends React.Component {
   addToGuestCart(book){
     let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
     let title = book.title;
-    cart[title] = (cart[title] ? cart[title]: 0);
-    let qty = cart[title] + 1;
-    cart[title] = qty
+    let price = book.price;
+    cart[title] = (cart[title] ? cart[title]: {quantity: 0, price: 0});
+    let qty = cart[title].quantity + 1;
+    cart[title].quantity = qty
+    cart[title].price = price
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 

@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Dropdown from 'react-bootstrap/Dropdown'
+import history from '../history'
 
 
 export class Navbar extends React.Component {
@@ -159,7 +160,7 @@ export class Navbar extends React.Component {
                   open={isDrawerOpened}
                   onClose={this.closeDrawer} 
                 >
-                  <Cart />
+                  <Cart history={history}/>
 
                 </Drawer>
                 {/* <Link to="/login">Login</Link>
@@ -176,8 +177,8 @@ export class Navbar extends React.Component {
               {
                 isLoggedIn?(
                   <Dropdown.Menu>
-                    <Dropdown.Item>
-                      Order History
+                    <Dropdown.Item >
+                      <Link to='/orders'>Order History</Link>
                     </Dropdown.Item>
                     <Dropdown.Item href="#" onClick={handleClick}>
                       Logout

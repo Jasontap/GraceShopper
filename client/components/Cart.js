@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import { getCart, removeFromCart, updateCart } from '../store/cart'
 import Button from '@material-ui/core/Button'
 import { Link } from "react-router-dom";
-
 export class Cart extends React.Component{
   constructor(props){
     super(props);
@@ -14,11 +13,21 @@ export class Cart extends React.Component{
     }
     this.removeFromGuestCart = this.removeFromGuestCart.bind(this)
     this.updateGuestCart = this.updateGuestCart.bind(this)
+    // this.stackCart = this.stackCart.bind(this)
   }
+  // stackCart(localcart){
+  //   let cart = []
+  //   let total = 0
+  //   for(let key in localcart){
+  //     cart.push({book: key, quantity: localcart[key].quantity, price: localcart[key].price})
+  //     total += localcart[key].quantity * localcart[key].price;
+  //   }
+  //   return {cart,total}
+  // }
   componentDidMount(){
     const userId = this.props.auth.id;
     let cart;
-    let total;
+    let total=0;
     if(userId){
       cart = this.props.usercart
       total = cart.reduce((accum,item)=>{
@@ -29,12 +38,34 @@ export class Cart extends React.Component{
       cart = [];
       const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
       for(let key in localcart){
-        cart.push({book: key, quantity: localcart[key]})
+        cart.push({book: key, quantity: localcart[key].quantity, price: localcart[key].price})
+        total += localcart[key].quantity * localcart[key].price;
       }
     }
     this.setState({cart, total})
   }
-
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.usercart.length !== this.props.usercart.length || prevState.total !== this.state.total){
+      const userId = this.props.auth.id;
+      let cart;
+      let total=0;
+      if(userId){
+        cart = this.props.usercart
+        total = cart.reduce((accum,item)=>{
+          accum+=(item.price * item.quantity)
+          return accum;
+        },0)
+      }else{
+        cart = [];
+        const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+        for(let key in localcart){
+          cart.push({book: key, quantity: localcart[key].quantity, price: localcart[key].price})
+          total += localcart[key].quantity * localcart[key].price;
+        }
+      }
+      this.setState({cart, total})
+    }
+  }
   removeFromGuestCart(book){
     const title=book.book;
     let localcart = JSON.parse(localStorage.getItem('cart'));
@@ -42,35 +73,35 @@ export class Cart extends React.Component{
     localStorage.setItem('cart', JSON.stringify(localcart));
     let cart = [];
     for(let key in localcart){
-      cart.push({book: key, quantity: localcart[key]})
+      cart.push({book: key, quantity: localcart[key].quantity, price: localcart[key].price})
     }
-    this.setState({cart})
+    const total = this.state.total - book.price
+    this.setState({cart, total})
   }
-
   updateGuestCart(book,qty){
+    console.log(`quantity: ` + qty)
     if(qty===0){
       this.removeFromGuestCart(book)
       return
     }
     let localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
     let title = book.book;
-    localcart[title] = qty
+    localcart[title].quantity = qty
     localStorage.setItem('cart', JSON.stringify(localcart));
     let cart = [];
+    let total = 0;
     for(let key in localcart){
-      cart.push({book: key, quantity: localcart[key]})
+      cart.push({book: key, quantity: localcart[key].quantity, price: localcart[key].price})
+      total += localcart[key].quantity * localcart[key].price;
     }
-    this.setState({cart})
+    this.setState({cart,total})
   }
-
   clearCart(){
     localStorage.removeItem('cart');
-    this.setState({cart: []});
+    this.setState({cart: [], total: 0});
   }
-
   render(){
     const cart = this.state.cart
-
     const userId = this.props.auth.id
     return(
       <div>
@@ -105,8 +136,6 @@ export class Cart extends React.Component{
             )
           })
         }
-
-
         <h4>Total: ${this.state.total}</h4>
         <Link to='/checkout'><Button disabled={!this.state.cart.length || !userId}>Check Out</Button></Link>
         {
@@ -121,25 +150,19 @@ export class Cart extends React.Component{
             <Link to='/signup'><Button>Sign-Up</Button></Link>
           </div>
           }
-
-
       </div>
     )
   }
 }
-
 const mapState = ({cart,auth}) => {
-  const usercart = cart.filter(line=>line.userId === auth.id)
+  const usercart = cart.filter(line=>line.userId === auth.id && line.orderId === null)
   return {usercart, auth};
 };
-
-const mapDispatch = (dispatch, otherProps) => {
-  console.log('*****' , otherProps)
+const mapDispatch = (dispatch, {history}) => {
   return {
     getCart: (userId)=> dispatch(getCart(userId)),
     removeFromCart: (userId, book)=>dispatch(removeFromCart(userId,book, history)),
     updateCart: (userId, book, qty)=>dispatch(updateCart(userId, book, qty, history))
   };
 };
-
 export default connect(mapState, mapDispatch)(Cart);

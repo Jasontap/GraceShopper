@@ -25,7 +25,7 @@ export class OrderHistory extends React.Component{
                     const books = cart.filter(book=> book.orderId === order.id)
                     console.log(books)
                     return(
-                        <li>
+                        <li key={order.id}>
                             <h4>Order {order.id}</h4>
                             <p>Shipped to:</p>
                             <p>{order.address}</p>
@@ -34,7 +34,7 @@ export class OrderHistory extends React.Component{
                             <ul>
                                 {books.map(book=>{
                                     return(
-                                        <li>
+                                        <li key={book.id}>
                                             <h5>{book.book}</h5>
                                             <p>Price: {book.price}</p>
                                             <p>Quantity: {book.quantity}</p>
