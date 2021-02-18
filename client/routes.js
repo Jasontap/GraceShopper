@@ -23,7 +23,8 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Route exact path='/allbooks' component={AllBooks} />
-            <Route path='/allbooks/:id' component={SingleBook} />
+            <Route exact path='/allbooks/:id' component={SingleBook} />
+            <Route path='/allbooks/page/:idx?' component={AllBooks} />
             <Route path='/add-book' component={AddBook} />
             {/* <Route path='/mycart' component={Cart} /> */}
             <Route exact path='/users' component={Users} />
@@ -36,7 +37,9 @@ class Routes extends Component {
         ) : (
           <Switch>
             <Route exact path='/allbooks' component={AllBooks} />
-            <Route path='/allbooks/:id' component={SingleBook} />
+            <Route exact path='/allbooks/:id' component={SingleBook} />
+            <Route path='/allbooks/page/:idx?' component={AllBooks} />
+            <Route path='/mycart' component={Cart} />
             {/* <Route path='/mycart' component={Cart} /> */}
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
