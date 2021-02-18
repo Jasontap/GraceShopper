@@ -27,6 +27,7 @@ export class AllBooks extends React.Component {
   addToGuestCart(book){
     let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
     let title = book.title;
+    let price = book.price;
     cart[title] = (cart[title] ? cart[title]: 0);
     let qty = cart[title] + 1;
     cart[title] = qty

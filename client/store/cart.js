@@ -53,7 +53,7 @@ export const getCart = (userId) => {
       const bookId=book.id;
       await axios.delete(`/api/cart/${userId}/cart`,{data: {bookId}})
       dispatch(_removeFromCart(book))
-      history.push('/mycart');
+      // history.push('/mycart');
     }
   };
 
@@ -69,7 +69,7 @@ export const updateCart = (userId, book, qty, history) => {
     const cart = (await axios.put(`/api/cart/${userId}/cart`,{book: book.book , quantity: qty})).data
     console.log(cart);
     dispatch(_updateCart(cart))
-    history.push('/mycart');
+    //history.push('/allbooks#mycart');
   }
 };
 
@@ -81,7 +81,9 @@ export default function cartReducer(state=[], action) {
       return action.cart
     }
     if(action.type === REMOVE_BOOK_FROM_CART){
-      return state.filter(book => book.id !== action.book.id)
+      console.log(action.book)
+      state = state.filter(book => book.id !== action.book.id)
+      return state
     }
     if(action.type === ADD_BOOK_TO_CART){
       return action.books
