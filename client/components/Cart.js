@@ -69,7 +69,8 @@ export class Cart extends React.Component{
   }
 
   render(){
-    const cart = this.state.cart
+    const cart = this.state.cart || []
+    // console.log(cart);
 
     const userId = this.props.auth.id
     return(
