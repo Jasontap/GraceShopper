@@ -33,7 +33,7 @@ export class CheckoutForm extends React.Component{
         const {name, value} = ev.target
         this.setState({[name] : value})
     }
-    async handleSubmit (ev){
+    handleSubmit (ev){
         ev.preventDefault()
         const userId = this.props.auth.id
         const order = {

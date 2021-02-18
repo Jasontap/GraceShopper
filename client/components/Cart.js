@@ -33,6 +33,27 @@ export class Cart extends React.Component{
     }
     this.setState({cart, total})
   }
+  componentDidUpdate(prevProps){
+    if(prevProps.usercart.length !== this.props.usercart.length){
+      const userId = this.props.auth.id;
+      let cart;
+      let total;
+      if(userId){
+        cart = this.props.usercart
+        total = cart.reduce((accum,item)=>{
+          accum+=(item.price * item.quantity)
+          return accum;
+        },0)
+      }else{
+        cart = [];
+        const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+        for(let key in localcart){
+          cart.push({book: key, quantity: localcart[key]})
+        }
+      }
+      this.setState({cart, total})
+    }
+  }
   removeFromGuestCart(book){
     const title=book.book;
     let localcart = JSON.parse(localStorage.getItem('cart'));
@@ -121,8 +142,7 @@ const mapState = ({cart,auth}) => {
   const usercart = cart.filter(line=>line.userId === auth.id && line.orderId === null)
   return {usercart, auth};
 };
-const mapDispatch = (dispatch, otherProps) => {
-  console.log('*****' , otherProps)
+const mapDispatch = (dispatch, {history}) => {
   return {
     getCart: (userId)=> dispatch(getCart(userId)),
     removeFromCart: (userId, book)=>dispatch(removeFromCart(userId,book, history)),
