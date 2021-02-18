@@ -136,7 +136,7 @@ export class SingleBook extends React.Component{
 
 
 const mapState = ({books,auth}, { match })=> {
-  const book = books.find( book => book.coverId === match.params.id * 1 ) || {};
+  const book = books.books.find( book => book.coverId === match.params.id * 1 ) || {};
   return {
     book,
     auth,
