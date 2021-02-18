@@ -117,7 +117,7 @@ export class SingleBook extends React.Component{
               {
                 userId ?
                   <Button 
-                    onClick={()=>this.props.addToCart(userId, title)}
+                    onClick={()=>this.props.addToCart(userId, title, price)}
                     >Add to Cart
                   </Button>
                 :
@@ -146,7 +146,7 @@ const mapState = ({books,auth}, { match })=> {
   
   const mapDispatch = (dispatch) => {
     return {
-      addToCart: (userId, book, qty) => dispatch(addToCart(userId, book, qty=1)),
+      addToCart: (userId, book, price, qty) => dispatch(addToCart(userId, book, price, qty=1)),
       updateBook: (book) => dispatch(updateBook(book))
     };
   };

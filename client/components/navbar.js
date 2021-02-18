@@ -29,8 +29,10 @@ export class Navbar extends React.Component {
 
   componentDidMount(){
     this.props.setGenres();
-    window.addEventListener('hashchange', (evt)=> {
-      this.props.setBooks(window.location.hash.slice(1))
+    window.addEventListener('hashchange', ()=> {
+      if(window.location.hash.slice(1) !== 'mycart'){
+        this.props.setBooks(window.location.hash.slice(1))
+      }
     })
     this.props.setBooks(window.location.hash.slice(1))
   }

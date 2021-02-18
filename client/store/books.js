@@ -57,7 +57,7 @@ export const _updateBook = (book) => {
 //thunks
 
 export const fetchBooks = (genre) => {
-  if(genre && genre !== 'mycart'){
+  if(genre){
       return async (dispatch)=>{
         const books = (await axios.get(`/api/books/${genre}`)).data;
         dispatch(setBooks(books))

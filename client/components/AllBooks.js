@@ -5,6 +5,7 @@ import { fetchBooks, destroyBook } from "../store/books";
 import { addToCart } from "../store/cart";
 import Button from '@material-ui/core/Button';
 import {auth} from "../store/auth";
+import Alert from 'react-bootstrap/Alert'
 
 export class AllBooks extends React.Component {
   constructor(props){
@@ -17,7 +18,6 @@ export class AllBooks extends React.Component {
     const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
     if(localcart){
       for(let key in localcart){
-        // cart.push({book: key, quantity: localcart[key]})
         this.props.addToCart(userId, key, localcart[key])
       }
     }
@@ -62,12 +62,19 @@ export class AllBooks extends React.Component {
                   ) : (
                   <div>
                   {
-                    userId ?
-                    <Button onClick={() => this.props.addToCart(userId, book.title)}>
+                    userId ? (
+                      <div>
+                    {/* <Alert variant="success" dismissable="true" fade="true">
+                      <strong>Holy guacamole!</strong>
+                    </Alert> */}
+                    <Button type="button" className="btn-close" data-bs-dismiss="alert" onClick={() => this.props.addToCart(userId, book.title, book.price)}>
                     Add to Cart
                     </Button>
-                  :
+                    </div>
+                    )
+                  : (
                     <Button onClick={()=>this.addToGuestCart(book)}>Add to Guest Cart</Button>
+                  )
                   }
                   </div>
 
@@ -92,7 +99,7 @@ const mapState = ({ books, auth }) => {
 const mapDispatch = (dispatch) => {
   return {
     getBooks: () => dispatch(fetchBooks()),
-    addToCart: (userId, book, qty) => dispatch(addToCart(userId, book, qty=1)),
+    addToCart: (userId, book, price, qty) => dispatch(addToCart(userId, book, price, qty=1)),
     destroyBook: (book) => dispatch(destroyBook(book))
   };
 };
