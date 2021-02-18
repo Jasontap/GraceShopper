@@ -5,6 +5,7 @@ import {logout} from '../store'
 import {Drawer} from '@material-ui/core'
 import Cart from './Cart'
 import Dropdown from 'react-bootstrap/Dropdown'
+import history from '../history'
 
 
 export class Navbar extends React.Component {
@@ -61,7 +62,7 @@ export class Navbar extends React.Component {
                   open={isDrawerOpened}
                   onClose={this.closeDrawer} 
                 >
-                  <Cart />
+                  <Cart history={history}/>
 
                 </Drawer>
               {/* <a href="#" onClick={handleClick}>
