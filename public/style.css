@@ -27,44 +27,6 @@ nav {
   align-items: center;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
-.checkout {
-  display: flex;
-  flex-direction: column;
-}
-
-#name {
-  display: flex;
-  flex-direction: row;
-}
-
-#csz {
-  display: flex;
-  flex-direction: row;
-}
-
-#cardInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-#exp {
-  display: flex;
-  flex-direction: row;
-}
-
-.cart-card {
-  border: 1px solid #5d00e1;
-  border-radius: 25px;
-  width: 90%;
-  padding: 1rem;
-  margin: 1rem;
-}
-
 .qty-adjust {
   display: flex;
   align-items: space-between;
@@ -96,6 +58,14 @@ nav {
 
 .book-title-div {
   height: 2rem;
+}
+
+.cart-card {
+  border: 1px solid #5d00e1;
+  border-radius: 25px;
+  width: 90%;
+  padding: 1rem;
+  margin: 1rem;
 }
 
 .cover-art {
@@ -136,10 +106,93 @@ nav {
   justify-content: center;
   border: 1px solid black;
   border-radius: 30px;
-  width: 30%;
+  width: 50%;
   margin: auto;
+  padding-bottom: 20px;
+  padding-top: 10px;
 }
 
 #orderSumm > h3 {
   text-align: center;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+}
+.checkout > * {
+  margin-right: 5px;
+}
+
+.inputForm {
+  display: flex;
+  flex-direction: row;
+  margin: 1px;
+  padding: 5px;
+}
+
+.cardForm {
+  display: flex;
+  flex-direction: column;
+  margin: 1px;
+  padding: 5px;
+}
+
+#formbox {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding-left: 50px;
+}
+
+#formbutton {
+  padding: 20px;
+  padding-left: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.bookList {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+/* #bookList {
+  list-style: none;
+  list-style-image: url("https://www.flaticon.com/svg/vstatic/svg/167/167755.svg?token=exp=1613664679~hmac=977988c5cfbedf5b30d25b2610156904");
+} */
+
+li.bookList::before {
+  content: "";
+  display: inline-block;
+  height: 25px;
+  width: 2em;
+  background-image: url("https://www.flaticon.com/svg/vstatic/svg/167/167755.svg?token=exp=1613664679~hmac=977988c5cfbedf5b30d25b2610156904");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.inputBox {
+  margin-right: 8px;
+}
+
+.inputAddy {
+  width: 398px;
+}
+.inputCard {
+  width: 398px;
+  padding-bottom: 5px;
+  margin-bottom: 1px;
+}
+.inputState {
+  width: 65px;
+}
+.inputZip {
+  width: 122px;
+}
+.orderAddy {
+  margin: 5px;
 }
