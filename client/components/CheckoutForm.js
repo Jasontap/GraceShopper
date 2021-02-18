@@ -208,7 +208,7 @@ export class CheckoutForm extends React.Component{
                     <ul>
                         {this.props.cart.map(item=>{
                             return (
-                                <li key={item.id}>Title:{item.book}, Quantity:{item.quantity}</li>
+                                <li key={item.id}>{item.book}, Quantity:{item.quantity}</li>
                             )
                         })}
                     </ul>

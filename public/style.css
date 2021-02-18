@@ -128,3 +128,18 @@ nav {
 #component-outlined {
   margin: 1px;
 }
+
+#orderSumm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 30px;
+  width: 30%;
+  margin: auto;
+}
+
+#orderSumm > h3 {
+  text-align: center;
+}
