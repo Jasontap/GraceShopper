@@ -13,7 +13,7 @@ export class SingleUser extends React.Component {
     // const userId = this.props.auth.id;
     return (
       <div>
-        <div>
+        <div className='container' >
           <div>
             <p>User Name: { user.name }</p>
             <p>User Email: { user.email }</p>

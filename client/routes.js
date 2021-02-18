@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import {Login, Signup, Home, AllBooks, SingleBook, Users, AddBook, CheckoutForm, SingleUser, OrderHistory} from './components'
+import {Login, Signup, Home, AllBooks, SingleBook, Users, AddBook, CheckoutForm, SingleUser, OrderHistory, EditUser} from './components'
 import {me} from './store'
 import Cart from './components/Cart'
 
@@ -26,11 +26,10 @@ class Routes extends Component {
             <Route exact path='/allbooks/:id' component={SingleBook} />
             <Route path='/allbooks/page/:idx?' component={AllBooks} />
             <Route path='/add-book' component={AddBook} />
-            {/* <Route path='/mycart' component={Cart} /> */}
             <Route exact path='/users' component={Users} />
-            <Route path='/users/:id' component={SingleUser} />
+            <Route exact path='/users/:id' component={SingleUser} />
+            <Route path = '/users/edit/:id' component={EditUser} />
             <Route path="/orders" component={OrderHistory}/>
-            {/* { !admin ? <Redirect to='/allbooks'/> : <Redirect to="/home" /> } */}
             <Route path='/checkout' component={CheckoutForm} />
             <Redirect to="/allbooks" />
           </Switch>
@@ -40,7 +39,6 @@ class Routes extends Component {
             <Route exact path='/allbooks/:id' component={SingleBook} />
             <Route path='/allbooks/page/:idx?' component={AllBooks} />
             <Route path='/mycart' component={Cart} />
-            {/* <Route path='/mycart' component={Cart} /> */}
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path='/checkout' component={CheckoutForm} />

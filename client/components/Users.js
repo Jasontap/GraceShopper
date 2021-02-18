@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../store/users";
 import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
 
 
 export class Users extends React.Component {
@@ -14,7 +15,7 @@ export class Users extends React.Component {
     // const userId = this.props.auth.id;
     return (
       <div>
-        <div>
+        <div className='container' >
           {
             users.map((user) => {
               return (
@@ -23,6 +24,11 @@ export class Users extends React.Component {
                   <p>User Email: { user.email }</p>
                   <p>User Github ID: { user.githubId ? user.githubId : 'No linked Github account.'}</p>
                   <p>Admin? { user.adminAuth ? 'Yes' : 'No' }</p>
+                  <div>
+                    <Button>
+                      <Link to={`/users/edit/${user.id}`}>Edit This User</Link>
+                    </Button>
+                  </div>
                 </div>
               );
             })
