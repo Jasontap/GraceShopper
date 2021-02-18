@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Drawer} from '@material-ui/core'
 import Cart from './Cart'
-import { fetchBooks, fetchGenres } from "../store/books";
+import { fetchBooks, fetchGenres, pagingBooks } from "../store/books";
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -29,12 +29,15 @@ export class Navbar extends React.Component {
 
   componentDidMount(){
     this.props.setGenres();
+    this.props.pagingBooks(0);
     window.addEventListener('hashchange', ()=> {
       if(window.location.hash.slice(1) !== 'mycart'){
         this.props.setBooks(window.location.hash.slice(1))
       }
     })
-    this.props.setBooks(window.location.hash.slice(1))
+    if(window.location.hash.slice(1) && window.location.hash.slice(1) !== 'mycart'){
+      this.props.setBooks(window.location.hash.slice(1))
+    }
   }
 
   toggleDrawerStatus(){ 
@@ -51,7 +54,7 @@ export class Navbar extends React.Component {
   } 
   
   resetAllBooks(){
-    this.props.setBooks();
+    this.props.pagingBooks(0);
   }
 
   handleMenuClick(event) {
@@ -69,7 +72,6 @@ export class Navbar extends React.Component {
   render(){
     const { isDrawerOpened, anchorEl } = this.state
     const {handleClick, isLoggedIn, admin, genres } = this.props
-
 
     return(
       <div>
@@ -214,6 +216,7 @@ const mapDispatch = dispatch => {
   return {
     setBooks: (genre) => dispatch(fetchBooks(genre)),
     setGenres: () => dispatch(fetchGenres()),
+    pagingBooks: (idx) => dispatch(pagingBooks(idx)),
     handleClick() {
       dispatch(logout())
     }
