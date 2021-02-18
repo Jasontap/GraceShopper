@@ -6,6 +6,7 @@ const GET_CART = 'GET_CART'
 const ADD_BOOK_TO_CART = 'ADD_BOOK_TO_CART'
 const REMOVE_BOOK_FROM_CART = 'REMOVE_BOOK_FROM_CART'
 const UPDATE_CART = 'UPDATE_CART'
+const CART_ORDER = 'CART_ORDER'
 
 
 //action creators
@@ -37,6 +38,13 @@ export const _getCart = (cart) => {
       cart
     }
   };
+
+  export const _cartOrder = (cart)=>{
+    return {
+      type: CART_ORDER,
+      cart
+    }
+  }
 
 
 //thunks
@@ -73,6 +81,12 @@ export const updateCart = (userId, book, qty, history) => {
   }
 };
 
+export const cartOrder = (userId, book, orderId) =>{
+  return async (dispatch)=>{
+    const cart = (await axios.put(`/api/cart/${userId}/cart`, {book: book.book, orderId: orderId}))
+    dispatch(_cartOrder(cart))
+  }
+}
 
 //reducer
 
@@ -87,6 +101,9 @@ export default function cartReducer(state=[], action) {
       return action.books
     }
     if(action.type === UPDATE_CART){
+      return action.cart
+    }
+    if(action.type === CART_ORDER){
       return action.cart
     }
   

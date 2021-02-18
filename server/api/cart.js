@@ -34,7 +34,8 @@ router.get('/:id/cart', async (req, res, next) => {
   try {
     res.status(200).send(await Cart.findAll({
       where: {
-        userId: req.params.id
+        userId: req.params.id,
+        // orderId: null
       }
     }));
   }

@@ -96,7 +96,7 @@ export class Navbar extends React.Component {
         {
           isLoggedIn?(
             <Dropdown.Menu>
-              <Dropdown.Item>
+              <Dropdown.Item href="/orders">
                 Order History
               </Dropdown.Item>
               <Dropdown.Item href="#" onClick={handleClick}>

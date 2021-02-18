@@ -108,6 +108,7 @@ module.exports = {
   models: {
     User,
     Book,
+    Cart,
     Order
   }
 }

@@ -1,11 +1,11 @@
-*{
+* {
   box-sizing: border-box;
 }
 body {
   font-family: sans-serif;
-  color:#5D00E1;
+  color: #5d00e1;
 }
-h1{
+h1 {
   text-align: center;
 }
 a {
@@ -21,13 +21,13 @@ nav a {
   display: inline-block;
   margin: 1em;
 }
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-form div {
+/* form div {
   margin: 1em;
   display: inline-block;
 }
@@ -58,50 +58,8 @@ form div {
   flex-direction: row;
 }
 
-.container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-end;
-}
-#nav-container{
-  width: 100%;
-  display: flex;
-  align-items: space-between;
-  justify-content: space-between;
-}
 
-.book-card{
-  padding: 0;
-  margin: 0;
-  width: 15%;
-  margin: 1rem;
 
-}
-
-nav{
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 95%; /* Full width */
-  background: white;
-}
-.icon{
-  padding: 1.5rem;
-}
-#route-container{
-  margin-top: 7rem;
-}
-
-.book-title-div{
-  height: 2rem;
-}
-
-.cover-art{
-  width: 130px;
-  height: 200px;
-  border-radius: 3px;
-  aspect-ratio: auto 130 / 200;
-}
 
 .cart-card{
   border: 1px solid #5D00E1;
@@ -109,20 +67,68 @@ nav{
   width: 90%;
   padding: 1rem;
   margin: 1rem;
-}
+} */
 
-.qty-adjust{
+.qty-adjust {
   display: flex;
-  align-items:space-between;
+  align-items: space-between;
 }
-.qty-input{
+.qty-input {
   width: 90px;
 }
 
-#dropdown.dropdown-toggle.btn.btn-primary{
+#dropdown.dropdown-toggle.btn.btn-primary {
   background: white;
-  color: #5D00E1;
+  color: #5d00e1;
   border: none;
   outline: none;
   outline: 0;
+}
+
+nav {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 95%; /* Full width */
+  background: white;
+}
+.icon {
+  padding: 1.5rem;
+}
+#route-container {
+  margin-top: 7rem;
+}
+
+.book-title-div {
+  height: 2rem;
+}
+
+.cover-art {
+  width: 130px;
+  height: 200px;
+  border-radius: 3px;
+  aspect-ratio: auto 130 / 200;
+}
+
+#nav-container {
+  width: 100%;
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.book-card {
+  padding: 0;
+  margin: 0;
+  width: 15%;
+  margin: 1rem;
+}
+
+#component-outlined {
+  margin: 1px;
 }
