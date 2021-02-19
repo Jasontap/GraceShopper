@@ -20,12 +20,20 @@ export class CheckoutForm extends React.Component{
         super()
         this.state = {
             shipFirst: '', shipLast:'', shipAddy: '', shipCity: '', shipState: '', shipZip: '', billFirst: '', billLast:'', billAddy:'',
-            billCity: '', billState: '', billZip: '', cardFirst:'', cardLast:'', cardNum:'', cardExp: '', cardCode: '', same: false, continue: false,
+            billCity: '', billState: '', billZip: '', cardFirst:'', cardLast:'', cardNum:'', cardExp: '', cardCode: '', same: false, continue: false, localcart: []
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     componentDidMount(){
+        let localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : null;
+        if(localcart){
+            const cart = []
+            for(let key in localcart){
+                cart.push({book: key, quantity: localcart[key].quantity, price: localcart[key].price})
+            }
+            this.setState({localcart: cart})
+        }
         const userId = this.props.auth.id
         this.props.getCart(userId)
     }
@@ -66,6 +74,7 @@ export class CheckoutForm extends React.Component{
 
     }
     render(){
+        console.log(this.state.localcart)
         if(!this.state.continue){
             return (<div id='main'>
                 <div id='formbox'>
@@ -217,13 +226,36 @@ export class CheckoutForm extends React.Component{
                 <div id='orderSumm'>
                     <h1>Congratulations on Your Order {this.state.shipFirst}</h1>
                     <h3>Your order of: </h3>
-                    <ul id='bookList'>
-                        {this.props.cart.map(item=>{
-                            return (
-                                <li key={item.id} className='bookList'>{item.book}, Quantity:{item.quantity}</li>
-                            )
-                        })}
-                    </ul>
+                    {this.props.cart.length > 0 ? (
+                    <div>
+                        <ul id='bookList'>
+                            {this.props.cart.map(item=>{
+                                return (
+                                    <li key={item.id} className='bookList'>{item.book}, Quantity:{item.quantity}</li>
+                                )
+                            })}
+                        </ul>
+                        <h4 className='orderTot'>Total: ${this.props.cart.reduce((acc, item)=>{
+                            acc += (item.price * item.quantity)
+                            return acc
+                        }, 0)}</h4>
+                    </div>
+                    ) : (
+                    <div>
+                        <ul id='bookList'>
+                            {this.state.localcart.map(item=>{
+                                return (
+                                    <li key={item.id} className='bookList'>{item.book}, Quantity:{item.quantity}</li>
+                                )
+                            })}
+                        </ul>
+                        <h4 className='orderTot'>Total: ${this.state.localcart.reduce((acc, item)=>{
+                            acc += (item.price * item.quantity)
+                            return acc
+                        }, 0)}</h4>
+                    </div>
+                    )}
+                    
                     <h3>Will be shipped to:</h3>
                     <p className='orderAddy'>{this.state.shipAddy}</p>
                     <p className='orderAddy'>{`${this.state.shipCity}, ${this.state.shipState} ${this.state.shipZip}`}</p>
