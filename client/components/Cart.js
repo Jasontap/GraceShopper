@@ -79,7 +79,6 @@ export class Cart extends React.Component{
     this.setState({cart, total})
   }
   updateGuestCart(book,qty){
-    console.log(`quantity: ` + qty)
     if(qty===0){
       this.removeFromGuestCart(book)
       return
