@@ -2,6 +2,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {authenticate} from '../store'
 import Button from '@material-ui/core/Button'
+import GoogleLogin from 'react-google-login'
+
+const handleLogin = (res)=>{
+  alert("Login Successful")
+}
+const handleLoginFail = (res)=>{
+  alert("Login Failed")
+}
 
 /**
  * COMPONENT
@@ -26,6 +34,21 @@ const AuthForm = props => {
         </div>
         <div>
           <Button type="submit">{displayName}</Button>
+          {/* {
+            name==='login'? (
+          <GoogleLogin
+            clientId={"1082203464140-aj577c1s7hd66eop9ggbim5ib7dpe2kt.apps.googleusercontent.com"}
+            buttonText="Login"
+            onSuccess={handleLogin('success')}
+            onFailure={handleLoginFail('fail')}
+            cookiePolicy={'single_host_origin'}
+            style={{height: '1rem'}}
+            isSignedIn={true}
+        />
+        )
+        :
+        ''
+        } */}
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
@@ -68,7 +91,11 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
+      console.log(email);
       dispatch(authenticate(email, password, formName))
+    },
+    GoogleLogin() {
+
     }
   }
 }

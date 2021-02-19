@@ -16,14 +16,14 @@ export class OrderHistory extends React.Component{
     render(){
         const orders = this.props.checkout
         const cart = this.props.cart
-        console.log(cart, orders)
+
         return(
             <div id='allOrders'>
                 <h1 id='orderHist'>Order History</h1>
                 {orders.length > 0 ? <ol className='orderBox'>
                 {orders.map(order=>{
                     const books = cart.filter(book=> book.orderId === order.id)
-                    console.log(books)
+                    
                     return(
                         <li key={order.id} className='orderItem'>
                             <h2>Order {order.id}</h2>
