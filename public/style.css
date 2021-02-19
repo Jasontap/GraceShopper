@@ -242,14 +242,12 @@ nav {
   display: flex;
   flex-direction: column;
   margin: auto;
-  padding-left: 50px;
 }
 
 #formbutton {
-  padding: 20px;
-  padding-left: 200px;
   display: flex;
   align-items: center;
+  align-self: center;
 }
 
 .bookList {
@@ -346,4 +344,8 @@ li.bookList::before {
 }
 .imageBox > img {
   margin: 90px 50px 0px 0px;
+}
+#orderMain {
+  display: flex;
+  flex-direction: row-reverse;
 }

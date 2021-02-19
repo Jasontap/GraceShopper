@@ -2,16 +2,13 @@ import React from "react"
 import { connect } from "react-redux"
 import { getCart} from '../store/cart'
 import {createOrder, fetchOrders} from '../store/checkout'
-import { makeStyles } from '@material-ui/core/styles';
-import FilledInput from '@material-ui/core/FilledInput';
 import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Button from '@material-ui/core/Button';
 import { Checkbox } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import {CheckoutCart} from './CheckoutCart'
 
 
 
@@ -67,7 +64,11 @@ export class CheckoutForm extends React.Component{
     }
     render(){
         if(!this.state.continue){
-            return (<div id='main'>
+            return (
+            <div id='orderMain'>
+                <div id='checkoutCart'>
+                    <CheckoutCart />
+                </div>
                 <div id='formbox'>
                     <div id='shippingInfo'>
                         <h3>Shipping Address</h3>
