@@ -77,8 +77,8 @@ export class AllBooks extends React.Component {
                   {
                     admin ? (
                       <div>
-                        <Link to={`/allbooks/${book.coverId}`}><button>Edit Item</button></Link>
-                        <button onClick={ ()=> {destroyBook(book)}}>Delete Item From Database</button>
+                        <Link to={`/allbooks/${book.coverId}`}><Button>Edit Item</Button></Link>
+                        <Button onClick={ ()=> {destroyBook(book)}}>Delete Item</Button>
                       </div>
                     ) : (
                       <div>
