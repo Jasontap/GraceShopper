@@ -45,6 +45,19 @@ router.get('/:id/cart', async (req, res, next) => {
   }
 });
 
+router.get('/:id/order', async (req, res, next) => {
+  try {
+    res.status(200).send(await Cart.findAll({
+      where: {
+        userId: req.params.id
+      }
+    }));
+  }
+  catch(ex) {
+    next(ex)
+  }
+});
+
 router.post('/:id/cart', async (req, res, next) => {
   try {
     const bookInCart = await Cart.findOne({
