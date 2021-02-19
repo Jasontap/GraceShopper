@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {addToCart} from '../store/cart';
 import {updateBook} from '../store/books';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 
 export class SingleBook extends React.Component{
@@ -51,10 +52,10 @@ export class SingleBook extends React.Component{
     const book = this.props.book;
 
     return(
-      <div>
+      <div  className='single-item-container'>
         {admin ? (
           <div>
-            <form onSubmit={ handleSubmit }>
+            <form onSubmit={ handleSubmit }  className='single-item-container'>
               <div>
                 <img src={ img } />
               </div>
@@ -84,7 +85,12 @@ export class SingleBook extends React.Component{
                 </label>
               </div>
               <div>
-                <Button type="submit">SUBMIT</Button>
+                <div>
+                  <Button type="submit">Save</Button>
+                </div>
+                <div>
+                  <Button><Link to='/allbooks'>Return to Books</Link></Button>
+                </div>
               </div>
             </form>
           </div>

@@ -15,14 +15,14 @@ export class Users extends React.Component {
 
     return (
       <div>
-        <div className='container' >
+        <div className='multi-item-container' >
           {
             users.map((user) => {
               return (
-                <div key={user.id}>
+                <div key={user.id} className='single-item-container'>
                   <p>User Name: {<Link to={`/users/${user.id}`}> { user.name }</Link>}</p>
                   <p>User Email: { user.email }</p>
-                  <p>User Github ID: { user.githubId ? user.githubId : 'No linked Github account.'}</p>
+                  <p>User Github ID: { user.githubId ? user.githubId : 'No Github account.'}</p>
                   <p>Admin? { user.adminAuth ? 'Yes' : 'No' }</p>
                   <div>
                     <Button>

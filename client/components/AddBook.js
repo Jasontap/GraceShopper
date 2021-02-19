@@ -2,6 +2,8 @@ import React from "react"
 import { connect } from "react-redux"
 import { addBook } from '../store/books'
 import { Redirect } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 
 export class AddBook extends React.Component{
@@ -37,7 +39,7 @@ export class AddBook extends React.Component{
     return(
       <div>
         {!admin ? ( <Redirect to="/home" /> ) : (
-          <form onSubmit={ handleSubmit }>
+          <form onSubmit={ handleSubmit } className='single-item-container'>
             <div>
               <img src={ img } />
             </div>
@@ -66,7 +68,12 @@ export class AddBook extends React.Component{
               <input name='coverId' onChange={ handleChange } value={ coverId } />
             </div>
             <div>
-              <button type="submit">SUBMIT</button>
+              <div>
+                <Button type="submit">Save</Button>
+              </div>
+              <div>
+                <Button><Link to='/allbooks'>Return to Books</Link></Button>
+              </div>
             </div>
           </form>
         )}

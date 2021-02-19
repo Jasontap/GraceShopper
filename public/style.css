@@ -1,13 +1,16 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   font-family: sans-serif;
   color: #5d00e1;
 }
+
 h1 {
   text-align: center;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -21,6 +24,7 @@ nav a {
   display: inline-block;
   margin: 1em;
 }
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -69,6 +73,7 @@ form div {
   display: flex;
   align-items: space-between;
 }
+
 .qty-input {
   width: 90px;
 }
@@ -87,9 +92,11 @@ nav {
   width: 95%; /* Full width */
   background: white;
 }
+
 .icon {
   padding: 1.5rem;
 }
+
 #route-container {
   margin-top: 7rem;
 }
@@ -111,11 +118,34 @@ nav {
   align-items: space-between;
   justify-content: space-between;
 }
+
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
+}
+
+.multi-item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 3rem;
+  border: 2rem;
+}
+
+.single-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+
+.close-buttons{
+  margin: 10px;
+  border: 10px;
 }
 
 .book-card {

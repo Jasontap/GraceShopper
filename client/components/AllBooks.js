@@ -93,7 +93,7 @@ export class AllBooks extends React.Component {
                             </Button>
                             </div>
                           ) : (
-                            <Button onClick={()=>this.addToGuestCart(book)}>Add to Guest Cart</Button>
+                            <Button onClick={()=>this.addToGuestCart(book)}>Add to Cart</Button>
                           )
                         }
                       </div>

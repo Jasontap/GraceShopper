@@ -35,35 +35,37 @@ export class EditUser extends React.Component {
 
     return (
       <div>
-        <div className='container' >
-          <div>
-            <form onSubmit={ handleSubmit }>
+        <div>
+          <form onSubmit={ handleSubmit } className='single-item-container'>
+            <div>
+              <label htmlFor='name' >Name: 
+              <input name='name' onChange={ handleChange } value={ name ? name : '' }/>
+              </label>
+            </div>
+            <div>
+              <label htmlFor='email' >Email: 
+              <input name='email' onChange={ handleChange } value={ email ? email : '' }/>
+              </label>
+            </div>
+            <div>
+              <label htmlFor='githubIde' >Github ID: 
+              <input name='githubId' onChange={ handleChange } value={ githubId ? githubId : '' }/>
+              </label>
+            </div>
+            <div>
+              <label htmlFor='adminAuth' >Admin: 
+              <input name='adminAuth' onChange={ handleChange } value={ adminAuth } size='7'/>
+              </label>
+            </div>
+            <div>
               <div>
-                <label htmlFor='name' >Name:
-                <input name='name' onChange={ handleChange } value={ name ? name : '' }/>
-                </label>
+                <Button type="submit">Save</Button>
               </div>
               <div>
-                <label htmlFor='email' >Email:
-                <input name='email' onChange={ handleChange } value={ email ? email : '' }/>
-                </label>
+                <Button><Link to='/users'>Return to Users</Link></Button>
               </div>
-              <div>
-                <label htmlFor='githubIde' >Github ID:
-                <input name='githubId' onChange={ handleChange } value={ githubId ? githubId : '' }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='adminAuth' >Admin:
-                <input name='adminAuth' onChange={ handleChange } value={ adminAuth } size='7'/>
-                </label>
-              </div>
-              <div>
-                  <Button type="submit">Save</Button>
-                  <Button><Link to='/users'>Return to Users</Link></Button>
-              </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     );
