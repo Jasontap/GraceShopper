@@ -84,7 +84,7 @@ export class SingleBook extends React.Component{
                 </label>
               </div>
               <div>
-                <button type="submit">SUBMIT</button>
+                <Button type="submit">SUBMIT</Button>
               </div>
             </form>
           </div>

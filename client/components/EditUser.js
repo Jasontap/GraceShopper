@@ -1,16 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../store/users";
-import { Link } from "react-router-dom";
+import { fetchUsers, updateUser } from "../store/users";
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 export class EditUser extends React.Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
     this.state = {
-      name: '',
-      email: '',
-      githubId: 0,
-      adminAuth: false
+      name: this.props.user.name,
+      email: this.props.user.email,
+      githubId: this.props.user.githubId,
+      adminAuth: this.props.user.adminAuth,
+      id: this.props.user.id
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,16 +26,11 @@ export class EditUser extends React.Component {
 
   handleSubmit (evt) {
     evt.preventDefault();
-    this.props.addBook({...this.state})
-  }
-
-  componentDidMount() {
-    this.props.getUsers();
+    this.props.editUser({...this.state})
   }
   
   render() {
     const { name, email, githubId, adminAuth } = this.state;
-    const { user } = this.props;
     const { handleChange, handleSubmit } = this;
 
     return (
@@ -41,22 +38,30 @@ export class EditUser extends React.Component {
         <div className='container' >
           <div>
             <form onSubmit={ handleSubmit }>
-            <div>
-              <label>Name:</label>
-              <input name='name' onChange={ handleChange } value={ user.name } />
-            </div>
-            <div>
-              <label>Email:</label>
-              <input name='email' onChange={ handleChange } value={ user.email } />
-            </div>
-            <div>
-              <label>Github ID:</label>
-              <input name='githubId' onChange={ handleChange } value={ user.githubId ? user.githubId : 'No linked Github account.' } />
-            </div>
-            <div>
-              <label>Admin:</label>
-              <input name='adminAuth' onChange={ handleChange } value={ user.adminAuth } />
-            </div>
+              <div>
+                <label htmlFor='name' >Name:
+                <input name='name' onChange={ handleChange } value={ name }/>
+                </label>
+              </div>
+              <div>
+                <label htmlFor='email' >Email:
+                <input name='email' onChange={ handleChange } value={ email }/>
+                </label>
+              </div>
+              <div>
+                <label htmlFor='githubIde' >Github ID:
+                <input name='githubId' onChange={ handleChange } value={ githubId ? githubId : '' }/>
+                </label>
+              </div>
+              <div>
+                <label htmlFor='adminAuth' >Admin:
+                <input name='adminAuth' onChange={ handleChange } value={ adminAuth } size='7'/>
+                </label>
+              </div>
+              <div>
+                  <Button type="submit">Submit Changes</Button>
+                  <Button><Link to='/users'>Return to Users</Link></Button>
+              </div>
             </form>
           </div>
         </div>
@@ -72,7 +77,8 @@ const mapState = (state, { match }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getUsers: () => dispatch(fetchUsers())
+    getUsers: () => dispatch(fetchUsers()),
+    editUser: (user) => dispatch(updateUser(user))
   };
 };
 
