@@ -15,7 +15,6 @@ router.get('/', async (req, res, next) => {
 //delete item in cart
 router.delete('/:id/cart', async (req, res, next) => {
   try {
-    console.log(req.body)
     const book = await Cart.findOne({
       where: {
         id: req.body.bookId,
