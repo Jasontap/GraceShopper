@@ -349,3 +349,6 @@ li.bookList::before {
   flex-direction: row-reverse;
   justify-content: space-evenly;
 }
+.orderTot {
+  text-align: center;
+}
