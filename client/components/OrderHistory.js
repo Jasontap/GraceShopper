@@ -20,7 +20,7 @@ export class OrderHistory extends React.Component{
         return(
             <div id='allOrders'>
                 <h1 id='orderHist'>Order History</h1>
-                {orders ? <ol className='orderBox'>
+                {orders.length > 0 ? <ol className='orderBox'>
                 {orders.map(order=>{
                     const books = cart.filter(book=> book.orderId === order.id)
                     console.log(books)
