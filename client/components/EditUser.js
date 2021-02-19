@@ -40,12 +40,12 @@ export class EditUser extends React.Component {
             <form onSubmit={ handleSubmit }>
               <div>
                 <label htmlFor='name' >Name:
-                <input name='name' onChange={ handleChange } value={ name }/>
+                <input name='name' onChange={ handleChange } value={ name ? name : '' }/>
                 </label>
               </div>
               <div>
                 <label htmlFor='email' >Email:
-                <input name='email' onChange={ handleChange } value={ email }/>
+                <input name='email' onChange={ handleChange } value={ email ? email : '' }/>
                 </label>
               </div>
               <div>
@@ -59,7 +59,7 @@ export class EditUser extends React.Component {
                 </label>
               </div>
               <div>
-                  <Button type="submit">Submit Changes</Button>
+                  <Button type="submit">Save</Button>
                   <Button><Link to='/users'>Return to Users</Link></Button>
               </div>
             </form>

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../store/users";
-import { Link } from "react-router-dom";
+
 
 export class SingleUser extends React.Component {
   componentDidMount() {
@@ -10,7 +10,7 @@ export class SingleUser extends React.Component {
   
   render() {
     const { user } = this.props;
-    // const userId = this.props.auth.id;
+
     return (
       <div>
         <div className='container' >

@@ -12,7 +12,7 @@ export class Users extends React.Component {
   
   render() {
     const { users } = this.props;
-    // const userId = this.props.auth.id;
+
     return (
       <div>
         <div className='container' >

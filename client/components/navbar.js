@@ -107,7 +107,7 @@ export class Navbar extends React.Component {
                       const genreTag = genre.split(' ').join('');
                       return (
                         <MenuItem onClick={this.handleClose} key={genre}>
-                        <a href={`#${genreTag}`}>{genre}</a>
+                          <a href={`#${genreTag}`}>{genre}</a>
                         </MenuItem> 
                       )
                     })
