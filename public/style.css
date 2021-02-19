@@ -241,7 +241,6 @@ nav {
 #formbox {
   display: flex;
   flex-direction: column;
-  margin: auto;
 }
 
 #formbutton {
@@ -348,4 +347,5 @@ li.bookList::before {
 #orderMain {
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-evenly;
 }
