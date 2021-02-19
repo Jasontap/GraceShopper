@@ -43,6 +43,7 @@ export class CheckoutForm extends React.Component{
     }
     handleSubmit (ev){
         ev.preventDefault()
+        console.log(localStorage)
         const userId = this.props.auth.id
         const order = {
             address: this.state.shipAddy,
@@ -70,11 +71,12 @@ export class CheckoutForm extends React.Component{
         if(alerts.length === 0){
             this.props.createOrder(order, userId)
             this.setState({continue: true})
+            localStorage.clear()
+            console.log(localStorage)
         }
 
     }
     render(){
-        console.log(this.state.localcart)
         if(!this.state.continue){
             return (<div id='main'>
                 <div id='formbox'>
@@ -243,9 +245,9 @@ export class CheckoutForm extends React.Component{
                     ) : (
                     <div>
                         <ul id='bookList'>
-                            {this.state.localcart.map(item=>{
+                            {this.state.localcart.map((item,idx)=>{
                                 return (
-                                    <li key={item.id} className='bookList'>{item.book}, Quantity:{item.quantity}</li>
+                                    <li key={idx} className='bookList'>{item.book}, Quantity:{item.quantity}</li>
                                 )
                             })}
                         </ul>
