@@ -12,16 +12,18 @@ const SET_VIEW = 'SET_VIEW';
 const initialState = {
   books: [],
   genres: [],
-  view: ''
+  view: '',
+  count: 0
 };
 
 
 //action creators
 
-export const setBooks = (books) => {
+export const setBooks = ({books, count = 0}) => {
   return {
     type: SET_BOOKS,
-    books
+    books,
+    count
   }
 };
 
@@ -58,15 +60,22 @@ export const _updateBook = (book) => {
 
 export const fetchBooks = (genre) => {
   if(genre){
-      return async (dispatch)=>{
-        const books = (await axios.get(`/api/books/${genre}`)).data;
-        dispatch(setBooks(books))
+    return async (dispatch)=>{
+      const books = (await axios.get(`/api/books/${genre}`)).data;
+      dispatch(setBooks({books}))
     } 
   } else {
     return async (dispatch)=>{
       const books = (await axios.get('/api/books')).data;
-      dispatch(setBooks(books))
+      dispatch(setBooks({books}))
     }
+  }
+};
+
+export const pagingBooks = (idx) => {
+  return async (dispatch)=>{
+    const { books, count } = (await axios.get(`/api/books/page?idx=${idx}`)).data;
+    dispatch(setBooks({books, count}))
   }
 };
 
@@ -106,19 +115,19 @@ export const updateBook = (book) => {
 
 export default function booksReducer(state=initialState, action) {
   if(action.type === SET_BOOKS){
-    state = {...state, books: action.books }
+    state = {...state, books: action.books, count: action.count }
   }
   if(action.type === SET_GENRES){
     state = {...state, genres: action.genres }
   }
   if(action.type === ADD_BOOK){
-    state = {...state, books: [...state.books, action.book]};
+    state = {...state, books: [...state.books, action.book] };
   }
   if(action.type === DELETE_BOOK){
-    state = {...state, books: state.books.filter(book => book.id !== action.book.id)};
+    state = {...state, books: state.books.filter(book => book.id !== action.book.id) };
   }
   if(action.type === UPDATE_BOOK){
-    state = {...state, books: state.books.map(book => action.book.id === book.id ? action.book : book)};
+    state = {...state, books: state.books.map(book => action.book.id === book.id ? action.book : book) };
   }
   if(action.type === SET_VIEW){
     state = {...state, view: action.view };

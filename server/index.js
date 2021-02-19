@@ -8,8 +8,6 @@
  */
 try {
   const secrets = require('../secrets')
-  process.env.CLIENT_ID = secrets.CLIENT_ID
-  process.env.SECRET = secrets.SECRET
 }
 catch(ex){
   console.log(ex.message);
@@ -22,7 +20,6 @@ const app = require('./app')
 
 const init = async () => {
   try {
-    console.log(process.env.CLIENT_ID)
     // this commented code is from the boiler plate and i removed it at least for now in order to successfully seed database:
     //if(process.env.SEED){
       await syncAndSeed();

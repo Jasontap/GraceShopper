@@ -11,6 +11,23 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/page', async (req, res, next) => {
+  try {
+    const idx = req.query.idx ? req.query.idx * 1 : 0;
+    const [books, count] = await Promise.all([
+      Book.findAll({
+        limit: 10,
+        offset: idx * 10,
+        order: [['title']]
+      }),
+      Book.count()
+    ]);
+    res.send({ count, books });
+  } 
+  catch (ex) {
+    next(ex);
+  }
+});
 
 
 // const books = [await Book.findAll();]

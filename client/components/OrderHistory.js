@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchOrders } from "../store/checkout";
-import { getCart } from '../store/cart'
+import { orderCart } from '../store/cart'
 
 
 
@@ -11,41 +11,48 @@ export class OrderHistory extends React.Component{
     componentDidMount(){
         const userId = this.props.auth.id
         this.props.getOrders(userId)
-        this.props.getCart(userId)
+        this.props.orderCart(userId)
     }
     render(){
         const orders = this.props.checkout
         const cart = this.props.cart
-        console.log(cart)
+
         return(
-            <div>
-                <h3>Order History</h3>
-                <ul>
+            <div id='allOrders'>
+                <h1 id='orderHist'>Order History</h1>
+                {orders.length > 0 ? <ol className='orderBox'>
                 {orders.map(order=>{
                     const books = cart.filter(book=> book.orderId === order.id)
-                    console.log(books)
+                    
                     return(
-                        <li key={order.id}>
-                            <h4>Order {order.id}</h4>
-                            <p>Shipped to:</p>
-                            <p>{order.address}</p>
-                            <p>{order.city}, {order.state} {order.zip}</p>
-                            <p>Books Purchased:</p>
-                            <ul>
-                                {books.map(book=>{
-                                    return(
-                                        <li key={book.id}>
-                                            <h5>{book.book}</h5>
-                                            <p>Price: {book.price}</p>
-                                            <p>Quantity: {book.quantity}</p>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
+                        <li key={order.id} className='orderItem'>
+                            <h2>Order {order.id}</h2>
+                            <div className='orderInfo'>
+                                <h3 className='shipped'>Shipped to:</h3>
+                                <p className='orderP'>{order.address}</p>
+                                <p className='orderP'>{order.city}, {order.state} {order.zip}</p>
+                            </div>
+                            <div className='orderInfo'>
+                                <h3 className='shipped'>Books Purchased:</h3>
+                                <ul className='bookBox'>
+                                    {books.map(book=>{
+                                        return(
+                                            <li key={book.id} className='orderList'>
+                                                <h4 className='orderTitle'>{book.book}</h4>
+                                                <div className='bookInfo'>
+                                                    <p className='bookPrice'>Price: {book.price} </p>
+                                                    <p>Quantity: {book.quantity}</p>
+                                                </div>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
                         </li>
                     )
                 })}
-            </ul>
+            </ol> : <h4>You do not currently have any orders</h4>}
+                
             </div>
             
         )
@@ -60,7 +67,7 @@ const mapState = ({auth, checkout, cart}) => {
 const mapDispatch = (dispatch) => {
     return {
         getOrders: (userId) => dispatch(fetchOrders(userId)),
-        getCart: (userId) => dispatch(getCart(userId))
+        orderCart: (userId) => dispatch(orderCart(userId))
     };
 };
 
