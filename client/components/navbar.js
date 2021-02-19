@@ -91,7 +91,7 @@ export class Navbar extends React.Component {
                 ) : (
                   ''
                 )}
-                <Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link>
+                <Button><Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link></Button>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
                   Select A Genre
                 </Button>
@@ -113,7 +113,7 @@ export class Navbar extends React.Component {
                     })
                   }
                 </Menu>
-                <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a>
+                <Button><a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a></Button>
                   <Drawer 
                     variant="temporary"
                     anchor="right"
@@ -131,7 +131,7 @@ export class Navbar extends React.Component {
               <div>
                 {/* The navbar will show these links before you log in */}
                 <Link to="/allbooks" onClick={this.resetAllBooks}><h1>JWT Books</h1></Link>
-                <Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link>
+                <Button><Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link></Button>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
                   Select A Genre
                 </Button>
@@ -153,7 +153,7 @@ export class Navbar extends React.Component {
                     })
                   }
                 </Menu>
-                <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a>
+                <Button><a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a></Button>
                 <Drawer 
                   variant="temporary"
                   anchor="right"

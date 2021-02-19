@@ -49,7 +49,7 @@ export class SingleBook extends React.Component{
     const { handleChange, handleSubmit } = this;
     const userId = this.props.auth.id;
     const book = this.props.book;
-
+    console.log(book.author.split(''))
     return(
       <div>
         {admin ? (
@@ -89,31 +89,36 @@ export class SingleBook extends React.Component{
             </form>
           </div>
         ) : (
-          <div>
-            <div>
-              <div>
+          <div className='singleBookBox'>
+            <div className='singleInfoBox'>
+              <div className='imageBox'>
                 <img src={ img } />
               </div>
               <div>
-                <p>Title: { title }</p>
+                <h1>{ title }</h1>
+                <div className='singleInfo'>
+                  <div className='bookStuff'>
+                    <h3>Author: </h3>
+                    <p>{ author ? author.split('').splice(1,author.length).join('') : ''}</p>
+                  </div>
+                  <div className='bookStuff'>
+                   <h3>Genre: </h3>
+                   <p>{ genre }</p>
+                  </div>
+                  <div className='bookStuff'>
+                    <h3>Description: </h3>
+                    <p>{ description }</p>
+                  </div>
+                  <div className='bookStuff'>
+                    <h3>Price:</h3> 
+                    <p>${ price }</p>
+                  </div>
+
+                </div>
               </div>
-              <div>
-                <p>Author: { author }</p>
-              </div>
-              <div>
-                <p>Genre: { genre }</p>
-              </div>
-              <div>
-                <p>Description: { description }</p>
-              </div>
-              {/* <div>
-                <p>Reviews: { review }</p>
-              </div> */}
             </div>
             <div>
-              <div>
-                <p>${ price }</p>
-              </div>
+              
               {
                 userId ?
                   <Button 
