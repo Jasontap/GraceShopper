@@ -15,7 +15,6 @@ router.get('/', async (req, res, next) => {
 //delete item in cart
 router.delete('/:id/cart', async (req, res, next) => {
   try {
-    console.log(req.body)
     const book = await Cart.findOne({
       where: {
         id: req.body.bookId,
@@ -37,6 +36,19 @@ router.get('/:id/cart', async (req, res, next) => {
       where: {
         userId: req.params.id,
         orderId: null
+      }
+    }));
+  }
+  catch(ex) {
+    next(ex)
+  }
+});
+
+router.get('/:id/order', async (req, res, next) => {
+  try {
+    res.status(200).send(await Cart.findAll({
+      where: {
+        userId: req.params.id
       }
     }));
   }

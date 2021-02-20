@@ -33,7 +33,7 @@ export class SingleUser extends React.Component {
         <div className='container'>
           <div className='close-buttons'>
             <Button>
-              <Link to={`/users/edit/${id}`}>Update Your Info</Link>
+              <Link to={`/users/edit/${id}`}>Update Info</Link>
             </Button>
           </div>
           {

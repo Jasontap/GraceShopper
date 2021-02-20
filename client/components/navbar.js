@@ -85,17 +85,17 @@ export class Navbar extends React.Component {
                 <Link to="/home"><h1>JWT Books</h1></Link>
                 {admin ? (
                   <span>
-                    <Link to='/users'>View Users</Link>
-                    <Link to='/add-book'>Add a Book</Link>
+                    <Button><Link to='/users'>View Users</Link></Button>
+                    <Button><Link to='/add-book'>Add a Book</Link></Button>
                   </span>
 
                 ) : (
                   ''
                 )}
-                <Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link>
-                <Link to='/allbooks' aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
-                    Genres
-                </Link>
+                <Button><Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link></Button>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
+                  <Link to='/allbooks'>Genres</Link>
+                </Button>
                 <Menu
                   id="simple-menu"
                   anchorEl={anchorEl}
@@ -114,7 +114,7 @@ export class Navbar extends React.Component {
                     })
                   }
                 </Menu>
-                <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a>
+                <Button><a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a></Button>
                   <Drawer 
                     variant="temporary"
                     anchor="right"
@@ -129,10 +129,10 @@ export class Navbar extends React.Component {
               <div>
                 {/* The navbar will show these links before you log in */}
                 <Link to="/allbooks" onClick={this.resetAllBooks}><h1>JWT Books</h1></Link>
-                <Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link>
-                <Link to='/allbooks' aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
-                    Genres
-                </Link>
+                <Button><Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link></Button>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
+                  <Link to='/allbooks'>Genres</Link>
+                </Button>
                 <Menu
                   id="simple-menu"
                   anchorEl={anchorEl}
@@ -151,7 +151,7 @@ export class Navbar extends React.Component {
                     })
                   }
                 </Menu>
-                <a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a>
+                <Button><a href="#mycart" onClick={this.toggleDrawerStatus}>Shopping Cart</a></Button>
                 <Drawer 
                   variant="temporary"
                   anchor="right"
@@ -173,13 +173,13 @@ export class Navbar extends React.Component {
               {
                 isLoggedIn?(
                   <Dropdown.Menu>
-                    <Dropdown.Item >
+                    <Dropdown.Item className='close-buttons'>
                       <Link to={`/users/${ user.id }`}>{ user.name }'s Account</Link>
                     </Dropdown.Item>
-                    <Dropdown.Item >
+                    <Dropdown.Item className='close-buttons'>
                       <Link to='/orders'>Order History</Link>
                     </Dropdown.Item>
-                    <Dropdown.Item href="#" onClick={handleClick}>
+                    <Dropdown.Item href="#" onClick={handleClick} className='close-buttons'>
                       Logout
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -187,10 +187,10 @@ export class Navbar extends React.Component {
                 :
                 (
                   <Dropdown.Menu>
-                    <Dropdown.Item href="/login">
+                    <Dropdown.Item href="/login" className='close-buttons'>
                       Login
                     </Dropdown.Item>
-                    <Dropdown.Item href="/signup">
+                    <Dropdown.Item href="/signup" className='close-buttons'>
                       Sign Up
                     </Dropdown.Item>
                   </Dropdown.Menu>

@@ -3,6 +3,14 @@ import {connect} from 'react-redux'
 import {authenticate} from '../store'
 import Button from '@material-ui/core/Button'
 import { setSingleUser } from '../store/singleUser'
+import GoogleLogin from 'react-google-login'
+
+const handleLogin = (res)=>{
+  alert("Login Successful")
+}
+const handleLoginFail = (res)=>{
+  alert("Login Failed")
+}
 
 /**
  * COMPONENT
@@ -14,7 +22,7 @@ const AuthForm = props => {
     <div>
       <form onSubmit={handleSubmit} name={name} className='container'>
         {name === 'signup' ? (
-          <div>
+          <div className='close-buttons'>
             <label htmlFor="userName">
               <small>Name</small>
             </label>
@@ -23,20 +31,35 @@ const AuthForm = props => {
         ) : (
           ''
         )}
-        <div>
+        <div className='close-buttons'>
           <label htmlFor="email">
             <small>Email</small>
           </label>
           <input name="email" type="text" />
         </div>
-        <div>
+        <div className='close-buttons'>
           <label htmlFor="password">
             <small>Password</small>
           </label>
           <input name="password" type="password" />
         </div>
-        <div>
+        <div className='close-buttons'>
           <Button type="submit">{displayName}</Button>
+          {/* {
+            name==='login'? (
+          <GoogleLogin
+            clientId={"1082203464140-aj577c1s7hd66eop9ggbim5ib7dpe2kt.apps.googleusercontent.com"}
+            buttonText="Login"
+            onSuccess={handleLogin('success')}
+            onFailure={handleLoginFail('fail')}
+            cookiePolicy={'single_host_origin'}
+            style={{height: '1rem'}}
+            isSignedIn={true}
+        />
+        )
+        :
+        ''
+        } */}
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
@@ -82,6 +105,9 @@ const mapDispatch = dispatch => {
       const name = evt.target.userName ? evt.target.userName.value : '';
       dispatch(authenticate(name, email, password, formName));
       dispatch(setSingleUser(email));
+    },
+    GoogleLogin() {
+
     }
   }
 }

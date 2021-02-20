@@ -35,42 +35,38 @@ export class EditUser extends React.Component {
     const { handleChange, handleSubmit } = this;
 
     return (
-      <div>
+      <div className='single-item-container'>
         <div>
           <form onSubmit={ handleSubmit } className='single-item-container'>
             <div>
-              <label htmlFor='name' >Name: 
+              <label htmlFor='name' ><h1>Name:</h1></label>
               <input name='name' onChange={ handleChange } value={ name ? name : '' }/>
-              </label>
             </div>
             <div>
-              <label htmlFor='email' >Email: 
+              <label htmlFor='email' ><h3>Email: </h3></label>
               <input name='email' onChange={ handleChange } value={ email ? email : '' }/>
-              </label>
             </div>
             <div>
-              <label htmlFor='githubIde' >Github ID: 
+              <label htmlFor='githubIde' ><h3>Github ID: </h3></label>
               <input name='githubId' onChange={ handleChange } value={ githubId ? githubId : '' }/>
-              </label>
             </div>
             {
               admin ? (
                 <div>
-                  <label htmlFor='adminAuth' >Admin: 
+                  <label htmlFor='adminAuth' ><h3>Admin: </h3></label>
                   <input name='adminAuth' onChange={ handleChange } value={ adminAuth } size='7'/>
-                  </label>
                 </div>
               ) : (
                 ''
               )
             }
-            <div>
-              <div>
+            <div className='container'>
+              <div className='close-buttons'>
                 <Button type="submit">Save</Button>
               </div>
               {
                 admin ? (
-                  <div>
+                  <div className='close-buttons'>
                     <Button>
                       <Link to='/users'>View all Users</Link>
                     </Button>
@@ -79,7 +75,7 @@ export class EditUser extends React.Component {
                   ''
                 )
               }
-              <div>
+              <div className='close-buttons'>
                 <Button>
                   <Link to={`/users/${ user.id }`}>View Account</Link>
                 </Button>

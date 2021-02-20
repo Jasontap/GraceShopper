@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import {auth} from "../store/auth";
 import Alert from 'react-bootstrap/Alert'
 
+
+//dont clear localstorage, get the localstorage, get the data, change what i need to change and set local storage
 export class AllBooks extends React.Component {
   constructor(props){
     super(props);
@@ -16,12 +18,13 @@ export class AllBooks extends React.Component {
   componentDidMount() {
     const userId = this.props.auth.id;
     this.props.pagingBooks(0);
-    const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+    let localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
     if(userId && localcart){
       for(let key in localcart){
         this.props.addToCart(userId, key, localcart[key].price, localcart[key].quantity)
       }
-      localStorage.clear();
+      localcart = {}
+      localStorage.setItem('cart', JSON.stringify(localcart));
     }
   }
 

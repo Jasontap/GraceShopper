@@ -52,74 +52,76 @@ export class SingleBook extends React.Component{
     const book = this.props.book;
 
     return(
-      <div  className='single-item-container'>
+      <div className='single-item-container'>
         {admin ? (
           <div>
-            <form onSubmit={ handleSubmit }  className='single-item-container'>
-              <div>
+            <form onSubmit={ handleSubmit } className='singleInfoBox'>
+              <div className='imageBox'>
                 <img src={ img } />
               </div>
-              <div>
-                <label htmlFor='title'>Title:
-                  <input name='title' onChange={ handleChange } value={ title } size={ title.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='author'>Author:
-                  <input name='author' onChange={ handleChange } value={ author } size={ author.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='genre'>Genre:
-                  <input name='genre' onChange={ handleChange } value={ genre } size={ genre.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='description'>Desctription:
-                  <input name='description' onChange={ handleChange } value={ description } size={ description.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='price'>$:
-                  <input name='price' onChange={ handleChange } value={ price } size={ (price + '').length }/>
-                </label>
-              </div>
-              <div>
-                <div>
-                  <Button type="submit">Save</Button>
+              <div className='singleInfo'>
+                <div className='bookStuff'>
+                  <label htmlFor='title'><h1>Title:</h1></label>
+                    <input name='title' onChange={ handleChange } value={ title } size={ title.length }/>
                 </div>
-                <div>
-                  <Button><Link to='/allbooks'>Return to Books</Link></Button>
+                <div className='bookStuff'>
+                  <label htmlFor='author'><h3>Author:</h3></label>
+                    <input name='author' onChange={ handleChange } value={ author } size={ author.length }/>
+                </div>
+                <div className='bookStuff'>
+                  <label htmlFor='genre'><h3>Genre:</h3></label>
+                    <input name='genre' onChange={ handleChange } value={ genre } size={ genre.length }/>
+                </div>
+                <div className='bookStuff'>
+                  <label htmlFor='description'><h3>Desctription:</h3></label>
+                    <input name='description' onChange={ handleChange } value={ description } size={ description.length }/>
+                </div>
+                <div className='bookStuff'>
+                  <label htmlFor='price'><h3>Price:</h3></label>
+                    <input name='price' onChange={ handleChange } value={ price } size={ (price + '').length }/>
+                </div>
+                <div className='container'>
+                  <div className='close-buttons'>
+                    <Button type="submit">Save</Button>
+                  </div>
+                  <div className='close-buttons'>
+                    <Button><Link to='/allbooks'>Return to Books</Link></Button>
+                  </div>
                 </div>
               </div>
             </form>
           </div>
         ) : (
-          <div>
-            <div>
-              <div>
+          <div className='singleBookBox'>
+            <div className='singleInfoBox'>
+              <div className='imageBox'>
                 <img src={ img } />
               </div>
               <div>
-                <p>Title: { title }</p>
+                <h1>{ title }</h1>
+                <div className='singleInfo'>
+                  <div className='bookStuff'>
+                    <h3>Author: </h3>
+                    <p>{ author ? author.split('').splice(1,author.length).join('') : ''}</p>
+                  </div>
+                  <div className='bookStuff'>
+                   <h3>Genre: </h3>
+                   <p>{ genre }</p>
+                  </div>
+                  <div className='bookStuff'>
+                    <h3>Description: </h3>
+                    <p>{ description }</p>
+                  </div>
+                  <div className='bookStuff'>
+                    <h3>Price:</h3> 
+                    <p>${ price }</p>
+                  </div>
+
+                </div>
               </div>
-              <div>
-                <p>Author: { author }</p>
-              </div>
-              <div>
-                <p>Genre: { genre }</p>
-              </div>
-              <div>
-                <p>Description: { description }</p>
-              </div>
-              {/* <div>
-                <p>Reviews: { review }</p>
-              </div> */}
             </div>
             <div>
-              <div>
-                <p>${ price }</p>
-              </div>
+              
               {
                 userId ?
                   <Button 
