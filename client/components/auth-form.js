@@ -103,6 +103,7 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       const name = evt.target.userName ? evt.target.userName.value : '';
+      window.localStorage.setItem('userEmail', email)
       dispatch(authenticate(name, email, password, formName));
       dispatch(setSingleUser(email));
     },
