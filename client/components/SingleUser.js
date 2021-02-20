@@ -9,16 +9,16 @@ export class SingleUser extends React.Component {
   }
   
   render() {
-    const { user } = this.props;
+    const { name, email, githubId, adminAuth } = this.props.user;
 
     return (
       <div>
         <div className='container' >
           <div>
-            <p>User Name: { user.name }</p>
-            <p>User Email: { user.email }</p>
-            <p>User Github ID: { user.githubId ? user.githubId : 'No linked Github account.'}</p>
-            <p>Admin? { user.adminAuth ? 'Yes' : 'No' }</p>
+            <p>User Name: { name }</p>
+            <p>User Email: { email }</p>
+            <p>User Github ID: { githubId ? githubId : 'No linked Github account.'}</p>
+            <p>Admin? { adminAuth ? 'Yes' : 'No' }</p>
           </div>
         </div>
       </div>
@@ -28,7 +28,10 @@ export class SingleUser extends React.Component {
 
 const mapState = (state, { match }) => {
   const user = state.users.find( user => user.id === match.params.id * 1 ) || {};
-  return { user };
+  return { 
+    user,
+    isLoggedIn: !!state.auth.id
+  };
 };
 
 const mapDispatch = (dispatch) => {

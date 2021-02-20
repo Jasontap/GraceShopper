@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {authenticate} from '../store'
 import Button from '@material-ui/core/Button'
+import { setSingleUser } from '../store/singleUser'
 
 /**
  * COMPONENT
@@ -79,7 +80,8 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       const name = evt.target.userName ? evt.target.userName.value : '';
-      dispatch(authenticate(name, email, password, formName))
+      dispatch(authenticate(name, email, password, formName));
+      dispatch(setSingleUser(email));
     }
   }
 }

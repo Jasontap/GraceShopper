@@ -10,6 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Dropdown from 'react-bootstrap/Dropdown'
 import history from '../history'
+import { setSingleUser } from '../store/singleUser'
 
 
 export class Navbar extends React.Component {
@@ -40,6 +41,7 @@ export class Navbar extends React.Component {
       this.props.setBooks(window.location.hash.slice(1))
     }
   }
+
 
   toggleDrawerStatus(){ 
     const isDrawerOpened = !this.state.isDrawerOpened;
@@ -72,7 +74,7 @@ export class Navbar extends React.Component {
 
   render(){
     const { isDrawerOpened, anchorEl } = this.state
-    const {handleClick, isLoggedIn, admin, genres } = this.props
+    const {handleClick, isLoggedIn, admin, genres, email, user } = this.props
 
     return(
       <div>
@@ -178,6 +180,9 @@ export class Navbar extends React.Component {
                 isLoggedIn?(
                   <Dropdown.Menu>
                     <Dropdown.Item >
+                      <Link to={`/users/${ user.id }`}>{ user.name }</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item >
                       <Link to='/orders'>Order History</Link>
                     </Dropdown.Item>
                     <Dropdown.Item href="#" onClick={handleClick}>
@@ -205,11 +210,13 @@ export class Navbar extends React.Component {
   }
 }
 
-const mapState = ({ books, auth }) => {
+const mapState = ({ books, auth, singleUser }) => {
   return {
     isLoggedIn: !!auth.id,
     admin: auth.adminAuth,
-    genres: books.genres
+    genres: books.genres,
+    email: auth.email,
+    user: singleUser
   }
 }
 
