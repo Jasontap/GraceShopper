@@ -20,7 +20,7 @@ export class OrderHistory extends React.Component{
         return(
             <div id='allOrders'>
                 <h1 id='orderHist'>Order History</h1>
-                <div id='orderHistBox'>
+                {/* <div id='orderHistBox'> */}
                     {orders.length > 0 ? (
                         <ol className='orderBox'>
                             {orders.map(order=>{
@@ -57,7 +57,7 @@ export class OrderHistory extends React.Component{
                     ) : (
                         <h4>You do not currently have any orders</h4>
                     )}
-                </div>
+                {/* </div> */}
             </div>
         )
     }

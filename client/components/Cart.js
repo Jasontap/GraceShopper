@@ -34,13 +34,17 @@ export class Cart extends React.Component{
         accum+=(item.price * item.quantity)
         return accum;
       },0)
+      console.log(cart)
     }else{
       cart = [];
       const localcart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
       for(let key in localcart){
         cart.push({book: key, quantity: localcart[key].quantity, price: localcart[key].price})
         total += localcart[key].quantity * localcart[key].price;
+        
       }
+      console.log(cart)
+
     }
     this.setState({cart, total})
   }

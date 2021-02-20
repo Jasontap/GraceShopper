@@ -140,7 +140,7 @@ nav {
   margin: 2rem;
 }
 
-.close-buttons{
+.close-buttons {
   margin: 10px;
   border: 10px;
 }
@@ -194,6 +194,7 @@ nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 #allOrders {
   display: flex;
