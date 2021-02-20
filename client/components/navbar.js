@@ -1,16 +1,15 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
-import {Drawer} from '@material-ui/core'
-import Cart from './Cart'
+import React from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {logout} from '../store';
+import {Drawer} from '@material-ui/core';
+import Cart from './Cart';
 import { fetchBooks, fetchGenres, pagingBooks } from "../store/books";
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Dropdown from 'react-bootstrap/Dropdown'
-import history from '../history'
-import { setSingleUser } from '../store/singleUser'
+import Dropdown from 'react-bootstrap/Dropdown';
+import history from '../history';
 
 
 export class Navbar extends React.Component {
@@ -125,9 +124,6 @@ export class Navbar extends React.Component {
                     <Cart />
 
                   </Drawer>
-                {/* <a href="#" onClick={handleClick}>
-                  Logout
-                </a> */}
               </div>
             ) : (
               <div>
@@ -165,8 +161,6 @@ export class Navbar extends React.Component {
                   <Cart history={history}/>
 
                 </Drawer>
-                {/* <Link to="/login">Login</Link>
-                <Link to="/signup">Sign Up</Link> */}
               </div>
             )}
 
@@ -180,7 +174,7 @@ export class Navbar extends React.Component {
                 isLoggedIn?(
                   <Dropdown.Menu>
                     <Dropdown.Item >
-                      <Link to={`/users/${ user.id }`}>{ user.name }'s Account Info</Link>
+                      <Link to={`/users/${ user.id }`}>{ user.name }'s Account</Link>
                     </Dropdown.Item>
                     <Dropdown.Item >
                       <Link to='/orders'>Order History</Link>

@@ -16,38 +16,43 @@ export class SingleUser extends React.Component {
 
     return (
       <div>
-        {
-          admin ? (
-            <div className='single-item-container' >
-              <div>
-                <p>User Name: { name }</p>
-                <p>User Email: { email }</p>
-                <p>User Github ID: { githubId ? githubId : 'No linked Github account.'}</p>
-                <p>Admin? { adminAuth ? 'Yes' : 'No' }</p>
+        <div className='single-item-container' >
+          <div>
+            <p>User Name: { name }</p>
+            <p>User Email: { email }</p>
+            <p>User Github ID: { githubId ? githubId : 'No linked Github account.'}</p>
+            {
+              admin ? (
+                <p>Admin User? { adminAuth ? 'Yes' : 'No' }</p>
+              ) : (
+                ''
+              )
+            }
+          </div>
+        </div>
+        <div className='container'>
+          <div className='close-buttons'>
+            <Button>
+              <Link to={`/users/edit/${id}`}>Update Your Info</Link>
+            </Button>
+          </div>
+          {
+            admin ? (
+              <div className='close-buttons'>
+                <Button>
+                  <Link to='/users'>View All Users</Link>
+                </Button>
               </div>
-            </div>
-          ) : (
-            <div className='single-item-container' >
-              <div>
-                <p>User Name: { name }</p>
-                <p>User Email: { email }</p>
-                <p>User Github ID: { githubId ? githubId : 'No linked Github account.'}</p>
-              </div>
-              <div className='container'>
-                <div className='close-buttons'>
-                  <Button>
-                    <Link to={`/users/edit/${id}`}>Update Your Info</Link>
-                  </Button>
-                </div>
-                <div className='close-buttons'>
-                  <Button>
-                    <Link to='/allbooks'>Return to shopping</Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          )
-        }
+            ) : (
+              ''
+            )
+          }
+          <div className='close-buttons'>
+            <Button>
+              <Link to='/allbooks'>Return to shopping</Link>
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }

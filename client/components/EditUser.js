@@ -56,34 +56,35 @@ export class EditUser extends React.Component {
             {
               admin ? (
                 <div>
-                  <div>
-                    <label htmlFor='adminAuth' >Admin: 
-                    <input name='adminAuth' onChange={ handleChange } value={ adminAuth } size='7'/>
-                    </label>
-                  </div>
-                  <div>
-                    <Button type="submit">Save</Button>
-                  </div>
-                  <div>
-                    <Button>
-                      <Link to='/users'>Return to Users</Link>
-                    </Button>
-                  </div>
+                  <label htmlFor='adminAuth' >Admin: 
+                  <input name='adminAuth' onChange={ handleChange } value={ adminAuth } size='7'/>
+                  </label>
                 </div>
               ) : (
-                <div>
-                  <div>
-                    <Button type="submit">Save</Button>
-                  </div>
-                  <div>
-                    <Button>
-                      <Link to={`/users/${ user.id }`}>Return to Account</Link>
-                    </Button>
-                  </div>
-                </div>
+                ''
               )
             }
-            
+            <div>
+              <div>
+                <Button type="submit">Save</Button>
+              </div>
+              {
+                admin ? (
+                  <div>
+                    <Button>
+                      <Link to='/users'>View all Users</Link>
+                    </Button>
+                  </div>
+                ) : (
+                  ''
+                )
+              }
+              <div>
+                <Button>
+                  <Link to={`/users/${ user.id }`}>View Account</Link>
+                </Button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
