@@ -9,8 +9,6 @@ import Button from '@material-ui/core/Button';
 import { Checkbox } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {CheckoutCart} from './CheckoutCart'
-import {Elements,CardElement,} from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 
 
 export class CheckoutForm extends React.Component{
