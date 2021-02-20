@@ -67,7 +67,8 @@ export class CheckoutForm extends React.Component{
         if(alerts.length === 0){
             this.props.createOrder(order, userId)
             this.setState({continue: true})
-            localStorage.clear()
+            const localcart = {}
+            localStorage.setItem('cart', JSON.stringify(localcart));
         }
 
     }
@@ -76,7 +77,7 @@ export class CheckoutForm extends React.Component{
             return (
             <div id='orderMain'>
                 <div id='checkoutCart'>
-                    <CheckoutCart />
+                    <CheckoutCart auth={this.props.auth} cart={this.props.cart}/>
                 </div>
                 <div id='formbox'>
                     <div id='shippingInfo'>

@@ -19,8 +19,8 @@ export class CheckoutCart extends React.Component{
   componentDidMount(){
     let cart;
     let total=0;
-    if(this.props.auth){
-      cart = this.props.usercart
+    if(this.props.cart){
+      cart = this.props.cart
       total = cart.reduce((accum,item)=>{
         accum+=(item.price * item.quantity)
         return accum;
@@ -65,6 +65,7 @@ export class CheckoutCart extends React.Component{
 }
 const mapState = ({cart,auth}) => {
   const usercart = cart.filter(line=>line.userId === auth.id && line.orderId === null)
+  console.log(cart, auth)
   return {usercart, auth};
 };
 const mapDispatch = (dispatch, {history}) => {

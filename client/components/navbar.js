@@ -10,7 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Dropdown from 'react-bootstrap/Dropdown';
 import history from '../history';
-
+import {setSingleUser} from '../store/singleUser'
 
 export class Navbar extends React.Component {
   constructor(props){
@@ -31,6 +31,9 @@ export class Navbar extends React.Component {
   componentDidMount(){
     this.props.setGenres();
     this.props.pagingBooks(0);
+    if(window.localStorage.userEmail){
+      this.props.singleUser(window.localStorage.userEmail)
+    }
     window.addEventListener('hashchange', ()=> {
       if(window.location.hash.slice(1) !== 'mycart'){
         this.props.setBooks(window.location.hash.slice(1))
@@ -210,7 +213,8 @@ const mapState = ({ books, auth, singleUser }) => {
     admin: auth.adminAuth,
     genres: books.genres,
     email: auth.email,
-    user: singleUser
+    user: singleUser,
+    auth
   }
 }
 
@@ -219,6 +223,7 @@ const mapDispatch = dispatch => {
     setBooks: (genre) => dispatch(fetchBooks(genre)),
     setGenres: () => dispatch(fetchGenres()),
     pagingBooks: (idx) => dispatch(pagingBooks(idx)),
+    singleUser: (email)=> dispatch(setSingleUser(email)),
     handleClick() {
       dispatch(logout())
     }
