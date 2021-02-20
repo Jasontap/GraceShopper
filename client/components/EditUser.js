@@ -31,6 +31,7 @@ export class EditUser extends React.Component {
   
   render() {
     const { name, email, githubId, adminAuth } = this.state;
+    const { admin, user } = this.props;
     const { handleChange, handleSubmit } = this;
 
     return (
@@ -52,19 +53,37 @@ export class EditUser extends React.Component {
               <input name='githubId' onChange={ handleChange } value={ githubId ? githubId : '' }/>
               </label>
             </div>
-            <div>
-              <label htmlFor='adminAuth' >Admin: 
-              <input name='adminAuth' onChange={ handleChange } value={ adminAuth } size='7'/>
-              </label>
-            </div>
-            <div>
-              <div>
-                <Button type="submit">Save</Button>
-              </div>
-              <div>
-                <Button><Link to='/users'>Return to Users</Link></Button>
-              </div>
-            </div>
+            {
+              admin ? (
+                <div>
+                  <div>
+                    <label htmlFor='adminAuth' >Admin: 
+                    <input name='adminAuth' onChange={ handleChange } value={ adminAuth } size='7'/>
+                    </label>
+                  </div>
+                  <div>
+                    <Button type="submit">Save</Button>
+                  </div>
+                  <div>
+                    <Button>
+                      <Link to='/users'>Return to Users</Link>
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div>
+                    <Button type="submit">Save</Button>
+                  </div>
+                  <div>
+                    <Button>
+                      <Link to={`/users/${ user.id }`}>Return to Account</Link>
+                    </Button>
+                  </div>
+                </div>
+              )
+            }
+            
           </form>
         </div>
       </div>
@@ -74,7 +93,10 @@ export class EditUser extends React.Component {
 
 const mapState = (state, { match }) => {
   const user = state.users.find( user => user.id === match.params.id * 1 ) || {};
-  return { user };
+  return { 
+    user,
+    admin: state.auth.adminAuth
+  };
 };
 
 const mapDispatch = (dispatch) => {

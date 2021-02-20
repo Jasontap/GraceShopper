@@ -5,11 +5,6 @@ import axios from 'axios'
 const SET_USER = 'SET_USER';
 const UPDATE_USER = 'UPDATE_USER';
 
-// const initialState = {
-//   users: []
-// }
-
-
 //action creators
 
 
@@ -34,7 +29,6 @@ export const setSingleUser = (email) => {
   return async (dispatch)=>{
     const users = (await axios.get('/api/users')).data;
     const user = users.find( user => user.email === email)
-    console.log(user)
     dispatch(_setSingleUser(user))
   }
 }

@@ -6,8 +6,6 @@ const SET_USERS = 'SET_USERS';
 const UPDATE_USER = 'UPDATE_USER';
 
 
-
-
 //action creators
 
 export const setUsers = (users) => {

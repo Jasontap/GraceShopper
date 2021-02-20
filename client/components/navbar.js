@@ -180,7 +180,7 @@ export class Navbar extends React.Component {
                 isLoggedIn?(
                   <Dropdown.Menu>
                     <Dropdown.Item >
-                      <Link to={`/users/${ user.id }`}>{ user.name }</Link>
+                      <Link to={`/users/${ user.id }`}>{ user.name }'s Account Info</Link>
                     </Dropdown.Item>
                     <Dropdown.Item >
                       <Link to='/orders'>Order History</Link>
