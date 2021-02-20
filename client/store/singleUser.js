@@ -2,16 +2,16 @@ import axios from 'axios'
 
 //constants
 
-const SET_USERS = 'SET_USERS';
+const SET_USER = 'SET_USER';
 const UPDATE_USER = 'UPDATE_USER';
-
 
 //action creators
 
-export const setUsers = (users) => {
+
+export const _setSingleUser = (user) => {
   return {
-    type: SET_USERS,
-    users
+    type: SET_USER,
+    user
   }
 };
 
@@ -25,12 +25,13 @@ export const _updateUser = (user) => {
 
 //thunks
 
-export const fetchUsers = () => {
+export const setSingleUser = (email) => {
   return async (dispatch)=>{
     const users = (await axios.get('/api/users')).data;
-    dispatch(setUsers(users))
+    const user = users.find( user => user.email === email)
+    dispatch(_setSingleUser(user))
   }
-};
+}
 
 export const updateUser = (user) => {
   return async (dispatch)=> {
@@ -39,12 +40,11 @@ export const updateUser = (user) => {
   }
 }
 
-
 //reducer
 
-export default function usersReducer(state=[], action) {
-  if(action.type === SET_USERS){
-    state = action.users 
+export default function singleUserReducer(state=[], action) {
+  if(action.type === SET_USER){
+    state = action.user
   }
   if(action.type === UPDATE_USER) {
     state = state.map(user => action.user.id === user.id ? action.user : user);

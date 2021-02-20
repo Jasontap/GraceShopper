@@ -20,41 +20,45 @@ export class OrderHistory extends React.Component{
         return(
             <div id='allOrders'>
                 <h1 id='orderHist'>Order History</h1>
-                {orders.length > 0 ? <ol className='orderBox'>
-                {orders.map(order=>{
-                    const books = cart.filter(book=> book.orderId === order.id)
-                    
-                    return(
-                        <li key={order.id} className='orderItem'>
-                            <h2>Order {order.id}</h2>
-                            <div className='orderInfo'>
-                                <h3 className='shipped'>Shipped to:</h3>
-                                <p className='orderP'>{order.address}</p>
-                                <p className='orderP'>{order.city}, {order.state} {order.zip}</p>
-                            </div>
-                            <div className='orderInfo'>
-                                <h3 className='shipped'>Books Purchased:</h3>
-                                <ul className='bookBox'>
-                                    {books.map(book=>{
-                                        return(
-                                            <li key={book.id} className='orderList'>
-                                                <h4 className='orderTitle'>{book.book}</h4>
-                                                <div className='bookInfo'>
-                                                    <p className='bookPrice'>Price: {book.price} </p>
-                                                    <p>Quantity: {book.quantity}</p>
-                                                </div>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                        </li>
-                    )
-                })}
-            </ol> : <h4>You do not currently have any orders</h4>}
-                
+                <div id='orderHistBox'>
+                    {orders.length > 0 ? (
+                        <ol className='orderBox'>
+                            {orders.map(order=>{
+                                const books = cart.filter(book=> book.orderId === order.id)
+                                
+                                return(
+                                    <li key={order.id} className='orderItem'>
+                                        <h2>Order {order.id}</h2>
+                                        <div className='orderInfo'>
+                                            <h3 className='shipped'>Shipped to:</h3>
+                                            <p className='orderP'>{order.address}</p>
+                                            <p className='orderP'>{order.city}, {order.state} {order.zip}</p>
+                                        </div>
+                                        <div className='orderInfo'>
+                                            <h3 className='shipped'>Books Purchased:</h3>
+                                            <ul className='bookBox'>
+                                                {books.map(book=>{
+                                                    return(
+                                                        <li key={book.id} className='orderList'>
+                                                            <h4 className='orderTitle'>{book.book}</h4>
+                                                            <div className='bookInfo'>
+                                                                <p className='bookPrice'>Price: {book.price} </p>
+                                                                <p>Quantity: {book.quantity}</p>
+                                                            </div>
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ol>
+                    ) : (
+                        <h4>You do not currently have any orders</h4>
+                    )}
+                </div>
             </div>
-            
         )
     }
 }

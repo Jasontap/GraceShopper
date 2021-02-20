@@ -41,7 +41,6 @@ export class CheckoutForm extends React.Component{
     }
     handleSubmit (ev){
         ev.preventDefault()
-        console.log(localStorage)
         const userId = this.props.auth.id
         const order = {
             address: this.state.shipAddy,
@@ -59,7 +58,6 @@ export class CheckoutForm extends React.Component{
             }
         }
         if(alerts.length > 0){
-            console.log(alerts)
             const string = alerts.reduce((acc,item)=>{
                 acc += `${item}\n`
                 return acc
@@ -70,7 +68,6 @@ export class CheckoutForm extends React.Component{
             this.props.createOrder(order, userId)
             this.setState({continue: true})
             localStorage.clear()
-            console.log(localStorage)
         }
 
     }

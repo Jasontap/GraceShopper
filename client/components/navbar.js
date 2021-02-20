@@ -1,15 +1,15 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
-import {Drawer} from '@material-ui/core'
-import Cart from './Cart'
+import React from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {logout} from '../store';
+import {Drawer} from '@material-ui/core';
+import Cart from './Cart';
 import { fetchBooks, fetchGenres, pagingBooks } from "../store/books";
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Dropdown from 'react-bootstrap/Dropdown'
-import history from '../history'
+import Dropdown from 'react-bootstrap/Dropdown';
+import history from '../history';
 
 
 export class Navbar extends React.Component {
@@ -40,6 +40,7 @@ export class Navbar extends React.Component {
       this.props.setBooks(window.location.hash.slice(1))
     }
   }
+
 
   toggleDrawerStatus(){ 
     const isDrawerOpened = !this.state.isDrawerOpened;
@@ -72,7 +73,7 @@ export class Navbar extends React.Component {
 
   render(){
     const { isDrawerOpened, anchorEl } = this.state
-    const {handleClick, isLoggedIn, admin, genres } = this.props
+    const {handleClick, isLoggedIn, admin, genres, email, user } = this.props
 
     return(
       <div>
@@ -84,8 +85,8 @@ export class Navbar extends React.Component {
                 <Link to="/home"><h1>JWT Books</h1></Link>
                 {admin ? (
                   <span>
-                    <Link to='/users'>View Users</Link>
-                    <Link to='/add-book'>Add a Book</Link>
+                    <Button><Link to='/users'>View Users</Link></Button>
+                    <Button><Link to='/add-book'>Add a Book</Link></Button>
                   </span>
 
                 ) : (
@@ -93,7 +94,7 @@ export class Navbar extends React.Component {
                 )}
                 <Button><Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link></Button>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
-                  Select A Genre
+                  <Link to='/allbooks'>Genres</Link>
                 </Button>
                 <Menu
                   id="simple-menu"
@@ -107,7 +108,7 @@ export class Navbar extends React.Component {
                       const genreTag = genre.split(' ').join('');
                       return (
                         <MenuItem onClick={this.handleClose} key={genre}>
-                        <a href={`#${genreTag}`}>{genre}</a>
+                          <a href={`#${genreTag}`}>{genre}</a>
                         </MenuItem> 
                       )
                     })
@@ -123,9 +124,6 @@ export class Navbar extends React.Component {
                     <Cart />
 
                   </Drawer>
-                {/* <a href="#" onClick={handleClick}>
-                  Logout
-                </a> */}
               </div>
             ) : (
               <div>
@@ -133,7 +131,7 @@ export class Navbar extends React.Component {
                 <Link to="/allbooks" onClick={this.resetAllBooks}><h1>JWT Books</h1></Link>
                 <Button><Link to="/allbooks" onClick={this.resetAllBooks}>All Books</Link></Button>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleMenuClick}>
-                  Select A Genre
+                  <Link to='/allbooks'>Genres</Link>
                 </Button>
                 <Menu
                   id="simple-menu"
@@ -163,8 +161,6 @@ export class Navbar extends React.Component {
                   <Cart history={history}/>
 
                 </Drawer>
-                {/* <Link to="/login">Login</Link>
-                <Link to="/signup">Sign Up</Link> */}
               </div>
             )}
 
@@ -177,10 +173,13 @@ export class Navbar extends React.Component {
               {
                 isLoggedIn?(
                   <Dropdown.Menu>
-                    <Dropdown.Item >
+                    <Dropdown.Item className='close-buttons'>
+                      <Link to={`/users/${ user.id }`}>{ user.name }'s Account</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item className='close-buttons'>
                       <Link to='/orders'>Order History</Link>
                     </Dropdown.Item>
-                    <Dropdown.Item href="#" onClick={handleClick}>
+                    <Dropdown.Item href="#" onClick={handleClick} className='close-buttons'>
                       Logout
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -188,10 +187,10 @@ export class Navbar extends React.Component {
                 :
                 (
                   <Dropdown.Menu>
-                    <Dropdown.Item href="/login">
+                    <Dropdown.Item href="/login" className='close-buttons'>
                       Login
                     </Dropdown.Item>
-                    <Dropdown.Item href="/signup">
+                    <Dropdown.Item href="/signup" className='close-buttons'>
                       Sign Up
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -205,11 +204,13 @@ export class Navbar extends React.Component {
   }
 }
 
-const mapState = ({ books, auth }) => {
+const mapState = ({ books, auth, singleUser }) => {
   return {
     isLoggedIn: !!auth.id,
     admin: auth.adminAuth,
-    genres: books.genres
+    genres: books.genres,
+    email: auth.email,
+    user: singleUser
   }
 }
 

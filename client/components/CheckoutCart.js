@@ -38,7 +38,6 @@ export class CheckoutCart extends React.Component{
 
   render(){
     const cart = this.state.cart
-    console.log(this.props)
     // const userId = this.props.auth.id || ''
     return(
       <div id='cartBox'>

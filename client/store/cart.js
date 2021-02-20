@@ -76,7 +76,6 @@ export const getCart = (userId) => {
 export const updateCart = (userId, book, qty, history) => {
   return async (dispatch)=>{
     const cart = (await axios.put(`/api/cart/${userId}/cart`,{book: book.book , quantity: qty})).data
-    console.log(cart);
     dispatch(_updateCart(cart))
     //history.push('/allbooks#mycart');
   }
@@ -98,7 +97,6 @@ export default function cartReducer(state=[], action) {
       return action.cart
     }
     if(action.type === REMOVE_BOOK_FROM_CART){
-      console.log(action.book)
       state = state.filter(book => book.id !== action.book.id)
       return state
     }

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {addToCart} from '../store/cart';
 import {updateBook} from '../store/books';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 
 export class SingleBook extends React.Component{
@@ -49,42 +50,44 @@ export class SingleBook extends React.Component{
     const { handleChange, handleSubmit } = this;
     const userId = this.props.auth.id;
     const book = this.props.book;
-    console.log(book.author.split(''))
+
     return(
-      <div>
+      <div className='single-item-container'>
         {admin ? (
           <div>
-            <form onSubmit={ handleSubmit }>
-              <div>
+            <form onSubmit={ handleSubmit } className='singleInfoBox'>
+              <div className='imageBox'>
                 <img src={ img } />
               </div>
-              <div>
-                <label htmlFor='title'>Title:
-                  <input name='title' onChange={ handleChange } value={ title } size={ title.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='author'>Author:
-                  <input name='author' onChange={ handleChange } value={ author } size={ author.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='genre'>Genre:
-                  <input name='genre' onChange={ handleChange } value={ genre } size={ genre.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='description'>Desctription:
-                  <input name='description' onChange={ handleChange } value={ description } size={ description.length }/>
-                </label>
-              </div>
-              <div>
-                <label htmlFor='price'>$:
-                  <input name='price' onChange={ handleChange } value={ price } size={ (price + '').length }/>
-                </label>
-              </div>
-              <div>
-                <button type="submit">SUBMIT</button>
+              <div className='singleInfo'>
+                <div className='bookStuff'>
+                  <label htmlFor='title'><h1>Title:</h1></label>
+                    <input name='title' onChange={ handleChange } value={ title } size={ title.length }/>
+                </div>
+                <div className='bookStuff'>
+                  <label htmlFor='author'><h3>Author:</h3></label>
+                    <input name='author' onChange={ handleChange } value={ author } size={ author.length }/>
+                </div>
+                <div className='bookStuff'>
+                  <label htmlFor='genre'><h3>Genre:</h3></label>
+                    <input name='genre' onChange={ handleChange } value={ genre } size={ genre.length }/>
+                </div>
+                <div className='bookStuff'>
+                  <label htmlFor='description'><h3>Desctription:</h3></label>
+                    <input name='description' onChange={ handleChange } value={ description } size={ description.length }/>
+                </div>
+                <div className='bookStuff'>
+                  <label htmlFor='price'><h3>Price:</h3></label>
+                    <input name='price' onChange={ handleChange } value={ price } size={ (price + '').length }/>
+                </div>
+                <div className='container'>
+                  <div className='close-buttons'>
+                    <Button type="submit">Save</Button>
+                  </div>
+                  <div className='close-buttons'>
+                    <Button><Link to='/allbooks'>Return to Books</Link></Button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>

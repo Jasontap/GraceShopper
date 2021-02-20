@@ -110,7 +110,6 @@ export class Cart extends React.Component{
           <div className="cart-card"><p>Your cart is Empty. <a href='/allbooks'>Shop?</a></p></div>
           :
           cart.map(item => {
-            console.log(item)
             return(
               <div key={item.book} className="cart-card">
                 <h4 className='bookName'>{item.book}</h4>

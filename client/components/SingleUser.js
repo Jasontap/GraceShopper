@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../store/users";
-import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+
 
 export class SingleUser extends React.Component {
   componentDidMount() {
@@ -9,16 +11,46 @@ export class SingleUser extends React.Component {
   }
   
   render() {
-    const { user } = this.props;
-    // const userId = this.props.auth.id;
+    const { name, email, githubId, adminAuth, id } = this.props.user;
+    const { isLoggedIn, admin } = this.props;
+
     return (
       <div>
-        <div>
+        <div className='single-item-container' >
           <div>
-            <p>User Name: { user.name }</p>
-            <p>User Email: { user.email }</p>
-            <p>User Github ID: { user.githubId ? user.githubId : 'No linked Github account.'}</p>
-            <p>Admin? { user.adminAuth ? 'Yes' : 'No' }</p>
+            <p>User Name: { name }</p>
+            <p>User Email: { email }</p>
+            <p>User Github ID: { githubId ? githubId : 'No linked Github account.'}</p>
+            {
+              admin ? (
+                <p>Admin User? { adminAuth ? 'Yes' : 'No' }</p>
+              ) : (
+                ''
+              )
+            }
+          </div>
+        </div>
+        <div className='container'>
+          <div className='close-buttons'>
+            <Button>
+              <Link to={`/users/edit/${id}`}>Update Info</Link>
+            </Button>
+          </div>
+          {
+            admin ? (
+              <div className='close-buttons'>
+                <Button>
+                  <Link to='/users'>View All Users</Link>
+                </Button>
+              </div>
+            ) : (
+              ''
+            )
+          }
+          <div className='close-buttons'>
+            <Button>
+              <Link to='/allbooks'>Return to shopping</Link>
+            </Button>
           </div>
         </div>
       </div>
@@ -28,7 +60,11 @@ export class SingleUser extends React.Component {
 
 const mapState = (state, { match }) => {
   const user = state.users.find( user => user.id === match.params.id * 1 ) || {};
-  return { user };
+  return { 
+    user,
+    isLoggedIn: !!state.auth.id,
+    admin: state.auth.adminAuth
+  };
 };
 
 const mapDispatch = (dispatch) => {

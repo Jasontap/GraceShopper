@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {authenticate} from '../store'
 import Button from '@material-ui/core/Button'
+import { setSingleUser } from '../store/singleUser'
 import GoogleLogin from 'react-google-login'
 
 const handleLogin = (res)=>{
@@ -19,20 +20,30 @@ const AuthForm = props => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
+      <form onSubmit={handleSubmit} name={name} className='container'>
+        {name === 'signup' ? (
+          <div className='close-buttons'>
+            <label htmlFor="userName">
+              <small>Name</small>
+            </label>
+            <input name="userName" type="text" />
+          </div>
+        ) : (
+          ''
+        )}
+        <div className='close-buttons'>
           <label htmlFor="email">
             <small>Email</small>
           </label>
           <input name="email" type="text" />
         </div>
-        <div>
+        <div className='close-buttons'>
           <label htmlFor="password">
             <small>Password</small>
           </label>
           <input name="password" type="password" />
         </div>
-        <div>
+        <div className='close-buttons'>
           <Button type="submit">{displayName}</Button>
           {/* {
             name==='login'? (
@@ -91,8 +102,9 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      console.log(email);
-      dispatch(authenticate(email, password, formName))
+      const name = evt.target.userName ? evt.target.userName.value : '';
+      dispatch(authenticate(name, email, password, formName));
+      dispatch(setSingleUser(email));
     },
     GoogleLogin() {
 

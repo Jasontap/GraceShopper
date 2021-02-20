@@ -18,7 +18,12 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    res.send(await User.findByPk(req.params.id));
+    res.send(await User.findAll({
+      where: {
+        id: req.params.id
+      },
+      attributes: ['id', 'email', 'name', 'githubId', 'adminAuth']
+    }));
   }
   catch(ex) {
     next(ex);
